@@ -1,27 +1,23 @@
 # LearnBridge — Learn Today. Build Tomorrow.
 
-A lightweight, responsive learning website starter for secondary school students.
+A lightweight, mobile-friendly educational website designed for low-bandwidth use.
 
-## Included
-- Home page with Natural Science and Social Science streams
-- Eight subject areas: Mathematics, Physics, Chemistry, Biology, History, Geography, Economics and Civics
-- Eight sample lessons with explanations and examples
-- Interactive practice quizzes with correct/incorrect feedback and explanations
-- Search and subject/stream filters
-- Bookmarks and completed lesson tracking
-- Progress dashboard
-- Dark/light theme and larger text setting
-- PWA manifest, icon and service worker for caching the website shell
-- Responsive Android/mobile design; no external libraries or paid APIs
+## Included in this version
+- Common Subjects: Mathematics, English, and SAT preparation.
+- Natural Science: Chemistry, Physics, and Biology.
+- Social Science: History, Geography, and Economics.
+- Subject → Grade 9–12 → Unit → Notes → unit quiz navigation.
+- A 15-question quiz for each selected unit, with feedback after checking. Every question shows the correct answer and an explanation; incorrect answers also show the learner's selected answer.
+- Unit completion, saved units, quiz scores, dark/light theme, larger text, and browser-local progress.
+- Service-worker cache for the website shell after a first successful online visit.
 
-## Important limitations
-This is a first working starter, not a complete curriculum. Only the sample lessons in `app.js` are included; review all content against the current school curriculum before relying on it for exams. Amharic and Tigrinya translations, accounts/cloud sync, teacher tools, timed exams, flashcards, a large past-exam question bank and an AI tutor are future work, not implemented. Progress is stored only in this browser/device; clearing browser data can erase it. Offline caching requires a first successful visit over HTTPS, such as GitHub Pages.
+## Important curriculum/content status
+This is an upgraded functional framework, not yet a complete official curriculum content pack. Several unit titles—especially some History, Geography, and Economics grade lists—are marked for verification against the current Ethiopian Ministry of Education textbook before they should be treated as official. The lesson screen currently gives study-method guidance where verified subject-specific notes are not yet available. The generated 15-question set is a practice scaffold about studying the unit, not a substitute for 15 reviewed subject-content questions. Replace these scaffolding questions and generic notes with reviewed, unit-specific educational material before presenting the site as a full curriculum resource.
 
-## Publish with GitHub Pages
-1. Extract this ZIP and upload the files inside it to the root of your GitHub repository. `index.html`, `app.js`, `styles.css`, `manifest.json`, `sw.js`, `icon.svg` and `README.md` should sit beside each other, not inside another folder.
-2. Open repository **Settings → Pages**.
-3. Under Build and deployment, choose **Deploy from a branch**, branch `main`, folder `/(root)`, then Save.
-4. Wait for deployment and open the Pages URL.
-5. Visit once online, wait for it to finish loading, then test offline mode.
+Do not label unverified titles, generic notes, or scaffold questions as official curriculum content. Use original explanations and questions; do not copy entire copyrighted textbooks.
 
-No account is required. Avoid entering private information.
+## Deploy to Cloudflare Pages
+The site is static. Keep `index.html`, `app.js`, `styles.css`, `manifest.json`, `icon.svg`, and `sw.js` together in the deployed root. If Cloudflare Pages is connected to GitHub, commit the updated files to the configured branch and wait for its deployment to finish.
+
+## Offline note
+Offline caching works only after the learner has successfully opened the site online over HTTPS at least once. Progress is saved in the browser on that device and is not synced to other devices.
