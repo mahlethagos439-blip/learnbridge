@@ -1,10 +1,8 @@
-/* LearnBridge authentication setup.
- * Create a Firebase project, enable Authentication > Email/Password and Google,
- * then paste the web app config below. Never paste a service-account private key here.
- */
+
+/* LearnBridge Firebase authentication configuration. */
 window.LB_FIREBASE_CONFIG = {
-  apiKey: "PASTE_FIREBASE_WEB_API_KEY_HERE",
-  authDomain: "PASTE_PROJECT_ID_HERE.firebaseapp.com",
-  projectId: "PASTE_PROJECT_ID_HERE",
-  appId: "PASTE_FIREBASE_APP_ID_HERE"
+  apiKey: "AIzaSyCd5aE7x_AbF-mbJ0EmxIsB9KJ8Pun7Keg",
+  authDomain: "learnbridge-ddf6c.firebaseapp.com",
+  projectId: "learnbridge-ddf6c",
+  appId: "1:936019355245:web:dc6c92acbe3a9b65dbc164"
 };
