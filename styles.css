@@ -4,3 +4,6 @@
 
 /* Five-section fixed bottom navigation */
 .bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;justify-content:space-around;gap:4px;padding:8px max(8px,env(safe-area-inset-left)) calc(8px + env(safe-area-inset-bottom));background:#0b1228f5;border-top:1px solid #2b3a68;backdrop-filter:blur(14px)}.bottom-nav button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:6px 2px;background:transparent;color:#aeb9d9;font-size:22px;border-radius:12px}.bottom-nav button span{font-size:11px}.bottom-nav button.active{background:#202b54;color:#7dd3fc}.wrap{padding-bottom:105px}footer{padding-bottom:100px}#menu{display:block;margin-left:auto}@media(max-width:850px){.bottom-nav{display:flex}header{position:sticky;top:0}#nav.open{display:flex;flex-direction:row}.bottom-nav.open{display:flex}}
+
+/* Curriculum source links and accessible settings controls */
+.card a,.lessonbody a{color:#7dd3fc;text-underline-offset:3px}.setting select{max-width:220px;min-width:160px;padding:9px;border-radius:10px;background:#101a37;color:inherit;border:1px solid #40517f}.light .setting select{background:#fff;color:#17213b}
