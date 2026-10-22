@@ -33,3 +33,29 @@
 /* LearnBridge account access and Profile section */
 [hidden]{display:none!important}.auth-page{min-height:calc(100vh - 24px);display:grid;place-items:center;padding:24px 14px;background:radial-gradient(ellipse at 15% 10%,#283d79aa,transparent 45%),radial-gradient(ellipse at 90% 80%,#652c79aa,transparent 42%)}.auth-card{width:min(100%,480px);padding:clamp(22px,5vw,36px);border:1px solid #59679a88;border-radius:25px;background:#101a36f5;box-shadow:0 24px 80px #0006}.auth-brand{display:flex;gap:14px;align-items:center}.auth-logo{display:grid;place-items:center;width:54px;height:54px;border-radius:16px;background:#263663;font-size:27px}.auth-brand h1{font-size:clamp(22px,5vw,30px);margin:0;line-height:1.2}.auth-brand p,.auth-intro,.auth-privacy{color:#aeb9d9}.auth-brand p{margin:5px 0 0;font-size:13px}.auth-intro{margin:22px 0}.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px;padding:5px;background:#0a1026;border-radius:13px}.auth-tabs button{background:transparent}.auth-tabs button.selected{background:#283b72;color:#fff}.auth-card label{display:block;margin:14px 0 6px;font-weight:650;font-size:14px}.auth-card input{display:block;width:100%;min-height:47px;padding:12px 13px;border:1px solid #3b4a76;border-radius:12px;background:#0a1026;color:#fff}.auth-card input:focus{outline:2px solid #849dff;border-color:transparent}.auth-hint,.auth-privacy{font-size:12px}.auth-primary,.auth-google{width:100%;min-height:47px;margin-top:15px;font-weight:750}.auth-primary{background:linear-gradient(100deg,#4d72e8,#8b5bd8)}.auth-google{background:#fff;color:#242424}.auth-divider{display:flex;align-items:center;gap:12px;margin:12px 0;color:#aeb9d9;font-size:12px}.auth-divider:before,.auth-divider:after{content:'';height:1px;background:#354365;flex:1}.auth-message{min-height:18px;font-size:13px;color:#9de5bd}.auth-message.error,.auth-warning{color:#ffc2c2}.auth-privacy{line-height:1.6;margin-top:22px}.auth-setup{padding-left:23px;line-height:1.7}.auth-setup li{margin:10px 0}.auth-setup a{color:#9fc7ff}.auth-warning{padding:13px;border-radius:12px;background:#5b293a55;line-height:1.65}.profile-card{text-align:center}.profile-avatar{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;margin:0 auto 12px;background:linear-gradient(135deg,#5d80ef,#a65dd7);font-size:26px;font-weight:800}.danger-button{background:#622d40;color:#ffdce4;margin-top:8px}
 @media(max-width:650px){.auth-card{border-radius:20px}.bottom-nav{display:flex;justify-content:space-around;gap:0}.bottom-nav button{padding:8px 5px;min-width:0;flex:1;font-size:15px}.bottom-nav button span{display:block;font-size:11px}}
+/* Password show/hide control */
+.auth-password-wrap {
+  position: relative;
+}
+
+.auth-password-wrap input {
+  padding-right: 58px;
+}
+
+.auth-password-wrap .auth-eye {
+  position: absolute;
+  right: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  min-height: 40px;
+  padding: 6px;
+  background: transparent;
+  border: 0;
+  font-size: 20px;
+}
+
+.auth-password-wrap .auth-eye:focus-visible {
+  outline: 2px solid #849dff;
+  border-radius: 8px;
+}
