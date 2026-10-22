@@ -7,7 +7,7 @@ A lightweight, mobile-friendly learning website for Ethiopia's New Curriculum, d
 - Three learning groups: Common Subjects, Natural Science, and Social Science.
 - Fixed horizontal bottom navigation: Home, Lessons, Quizzes, Progress, and More.
 - Grade 9–12 subject/unit navigation, lesson framework, unit quiz feedback, progress, saved units, theme and text-size settings.
-- A local question bank of 500 original draft practice items per subject (4,500 total), tagged by grade and broad topic, with multiple-choice options and explanations.
+- A local question bank with a target of 500 practice items per subject (4,500 total in the current draft bank), tagged by grade and topic, with multiple-choice options and explanations. The Quizzes section opens a paginated subject bank directly.
 - Offline-capable static assets after the first successful HTTPS visit; progress is stored locally on the device.
 
 ## Important accuracy status
