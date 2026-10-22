@@ -1,59 +1,42 @@
 # LearnBridge — Learn Today. Build Tomorrow.
 
-A lightweight, mobile-friendly educational website designed for low-bandwidth use.
+A lightweight, mobile-friendly learning website for Ethiopia's New Curriculum, designed for low-bandwidth use.
 
-## Included in this version
-- Common Subjects: Mathematics, English, and SAT preparation.
-- Natural Science: Chemistry, Physics, and Biology.
-- Social Science: History, Geography, and Economics.
-- Subject → Grade 9–12 → Unit → Notes → unit quiz navigation.
-- A 15-question quiz for each selected unit, with feedback after checking. Every question shows the correct answer and an explanation; incorrect answers also show the learner's selected answer.
-- Unit completion, saved units, quiz scores, dark/light theme, larger text, and browser-local progress.
-- Service-worker cache for the website shell after a first successful online visit.
+## Included in this package
+- Exactly nine visible subjects: Mathematics, English, SAT, Biology, Chemistry, Physics, Geography, Economics, and History.
+- Three learning groups: Common Subjects, Natural Science, and Social Science.
+- Fixed horizontal bottom navigation: Home, Lessons, Quizzes, Progress, and More.
+- Grade 9–12 subject/unit navigation, lesson framework, unit quiz feedback, progress, saved units, theme and text-size settings.
+- A local question bank of 500 original draft practice items per subject (4,500 total), tagged by grade and broad topic, with multiple-choice options and explanations.
+- Offline-capable static assets after the first successful HTTPS visit; progress is stored locally on the device.
 
-## Important curriculum/content status
-This is an upgraded functional framework, not yet a complete official curriculum content pack. Several unit titles—especially some History, Geography, and Economics grade lists—are marked for verification against the current Ethiopian Ministry of Education textbook before they should be treated as official. The lesson screen currently gives study-method guidance where verified subject-specific notes are not yet available. The generated 15-question set is a practice scaffold about studying the unit, not a substitute for 15 reviewed subject-content questions. Replace these scaffolding questions and generic notes with reviewed, unit-specific educational material before presenting the site as a full curriculum resource.
+## Important accuracy status
+The 4,500 question count is implemented, but these are **draft practice items**, not a claim of complete textbook verification. A subset is broad-concept practice and some questions have been varied from seed concepts. The bank still requires careful textbook-by-textbook checking for exact grade, unit, subtopic, answer, explanation, duplicate quality, and curriculum fit. Do not advertise it as a fully verified national-exam question bank yet.
 
-Do not label unverified titles, generic notes, or scaffold questions as official curriculum content. Use original explanations and questions; do not copy entire copyrighted textbooks.
+The lesson screen has a structured note framework with competencies, key terms, explanations, worked-example method, activities, review questions, and summaries. Some subject/unit notes are still general frameworks rather than complete, page-by-page notes from the official student textbooks. Unit lists for some Social Science grades remain explicitly unverified.
+
+## New Curriculum source references
+- Ministry of Education textbook announcements: https://t.me/s/ethio_moe/33
+- Ministry textbook library: https://camaraethiopia.org.et/CEE_MoE_Plasma/index.php
+- Ethiopia Schoolnet Learning Passport: https://ethiopia-schoolnet.learningpassport.org/
+- New-curriculum catalogue (independent; cross-check): https://kehulum.com/student-textbook/new
+- Grade 9 Mathematics textbook information: https://kehulum.com/student-textbook/new/grade-9/mathematics
+
+The Ministry's Grade 9 listing includes Mathematics, Physics, Geography, English, ICT, Chemistry and other student textbooks. Always verify the exact grade and edition against the current Ministry-issued book.
+
+## Files
+- `index.html`: app shell and script loading
+- `app.js`: UI, subject/grade/unit navigation, notes, quiz logic, progress
+- `question-bank.js`: 4,500 original draft practice items
+- `content-status.json`: subject counts, sources, and verification status
+- `styles.css`: responsive styles and fixed bottom navigation
+- `manifest.json`, `icon.svg`, `sw.js`: installability and offline shell
 
 ## Deploy to Cloudflare Pages
-The site is static. Keep `index.html`, `app.js`, `styles.css`, `manifest.json`, `icon.svg`, and `sw.js` together in the deployed root. If Cloudflare Pages is connected to GitHub, commit the updated files to the configured branch and wait for its deployment to finish.
+Keep all files together in the deployed root. If connected to GitHub, commit the updated files to the configured branch and wait for deployment.
 
-## Offline note
-Offline caching works only after the learner has successfully opened the site online over HTTPS at least once. Progress is saved in the browser on that device and is not synced to other devices.
-
-
-## Curriculum sources and accuracy note
-
-This project is intended for Ethiopia's **new curriculum**, not the old curriculum. The following catalogue pages were checked for unit names/counts during this revision. Notes in the app should be written as original explanations based on the textbook's concepts, not copied pages. A title should not be treated as verified unless it is explicitly listed in the relevant new-curriculum student textbook.
-
-- All grades and subjects catalogue: https://kehulum.com/student-textbook/new
-- Grade 9 Mathematics (9 units): https://kehulum.com/student-textbook/new/grade-9/mathematics
-- Grade 10 Mathematics (7 units): https://kehulum.com/student-textbook/new/grade-10/mathematics
-- Grade 11 Mathematics: https://kehulum.com/student-textbook/new/grade-11/mathematics
-- Grade 12 Mathematics (5 units): https://kehulum.com/student-textbook/new/grade-12/mathematics
-- Grade 9 Chemistry (5 units): https://kehulum.com/student-textbook/new/grade-9/chemistry
-- Grade 10 Chemistry (6 units): https://kehulum.com/student-textbook/new/grade-10/chemistry
-- Grade 11 Chemistry (6 units): https://kehulum.com/student-textbook/new/grade-11/chemistry
-- Grade 12 Chemistry (5 units): https://kehulum.com/student-textbook/new/grade-12/chemistry
-- Grade 9 Biology (6 units): https://kehulum.com/student-textbook/new/grade-9/biology
-- Grade 10 Biology (6 units): https://kehulum.com/student-textbook/new/grade-10/biology
-- Grade 11 Biology (6 units): https://kehulum.com/student-textbook/new/grade-11/biology
-- Grade 12 Biology (6 units): https://kehulum.com/student-textbook/new/grade-12/biology
-- Grade 9 Physics (7 units): https://kehulum.com/student-textbook/new/grade-9/physics
-- Grade 9 English for Ethiopia (10 units): https://kehulum.com/student-textbook/new/grade-9/english-for-ethiopia
-
-**Important completion status:** this revision fixes the five-item bottom navigation and makes answer feedback appear immediately. Some unit lists and the lesson/quiz bank still need a complete textbook-by-textbook verification pass; do not describe the entire curriculum or all 15-question sets as fully verified until that work is complete. The current general lesson template is not a substitute for detailed unit-specific textbook-based notes and assessment items.
-
-
-## Curriculum notes update (October 2026)
-
-- Lesson pages now render a structured study guide with learning competencies, key terms, detailed topic explanation, a worked-example method, learning activity, review questions with answer explanations, and a unit summary.
-- Mathematics (including Grade 9 Further on Sets), Physics, Chemistry, Biology, History, Geography, Economics, and English have subject-specific note frameworks. Additional listed subjects receive an applied-study framework.
-- Added ICT, Civics and Ethical Education, Amharic, Physical Education, Technical Drawing, and General Business to broaden the subject list.
-- Quiz questions are no longer only generic study-habit questions; they include concept questions and explanations, although some review questions remain scaffolding where exact textbook material has not been verified.
-- Settings include feedback timing: show the answer and explanation after each answer, or after the quiz is finished. The choice is stored locally.
-- The bottom navigation is fixed horizontally and labelled Home, Lessons, Quizzes, Progress, and More.
-- Service-worker cache is bumped to v3 so browsers can fetch the updated files.
-
-**Curriculum verification notice:** The app includes curriculum-aware structure and some topic-specific content, but the full unit titles, competencies, subtopics, examples, activities, and questions for every grade and subject still need comparison against the matching current official student textbook and teacher guide. Do not label every unit curriculum-complete until that review is finished. Reference sources: Ministry of Education site https://www.moe.gov.et/ and textbook library https://camaraethiopia.org.et/CEE_MoE_Plasma/index.php.
+## Next required quality pass
+1. Verify all unit titles against each current Ministry-issued Grade 9–12 textbook.
+2. Read each unit and replace general note frameworks with original, detailed, unit-specific teaching notes.
+3. Review each question and answer against the same textbook; remove duplicates, incorrect items, and mismatched grade/unit tags.
+4. Test every subject/grade/unit route, answer feedback, progress storage, and offline behavior.

@@ -1,0 +1,51 @@
+{
+  "project": "LearnBridge",
+  "version": "updated-question-bank-draft-2026-10-22",
+  "requiredSubjects": [
+    "Mathematics",
+    "English",
+    "SAT",
+    "Biology",
+    "Chemistry",
+    "Physics",
+    "Geography",
+    "Economics",
+    "History"
+  ],
+  "questionCounts": {
+    "Mathematics": 500,
+    "English": 500,
+    "SAT": 500,
+    "Biology": 500,
+    "Chemistry": 500,
+    "Physics": 500,
+    "Geography": 500,
+    "Economics": 500,
+    "History": 500
+  },
+  "totalQuestionItems": 4500,
+  "questionStatus": "draft-review-required",
+  "curriculumSources": [
+    {
+      "title": "Ministry of Education Ethiopia Grade 9 textbook post",
+      "url": "https://t.me/s/ethio_moe/33",
+      "status": "official source listing; not every linked book individually verified"
+    },
+    {
+      "title": "Ministry of Education textbook library",
+      "url": "https://camaraethiopia.org.et/CEE_MoE_Plasma/index.php",
+      "status": "official-library reference; inspect exact editions by grade and subject"
+    },
+    {
+      "title": "Ethiopian Schoolnet Learning Passport",
+      "url": "https://ethiopia-schoolnet.learningpassport.org/",
+      "status": "supplementary learning resource"
+    },
+    {
+      "title": "Kehulum new curriculum catalogue",
+      "url": "https://kehulum.com/student-textbook/new",
+      "status": "independent catalogue; cross-check against Ministry sources"
+    }
+  ],
+  "completionNote": "This package implements a 4,500-item draft question bank and the nine-subject visible catalogue. It does not claim all 4,500 questions or all detailed notes are fully verified against every official textbook. The next content pass must check unit titles, textbook subtopics, learning outcomes, explanations, and answers."
+}
