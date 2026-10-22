@@ -64,3 +64,18 @@ Lesson pages now include a longer structure: learning objectives, key terms, an 
 - College Board SAT Reading and Writing domains: https://satsuite.collegeboard.org/sat/whats-on-the-test/reading-writing
 
 **Important content status:** The notes are independently written study guides and are not copied textbook pages. This package is an expanded draft, not yet a claim of complete textbook-by-textbook alignment. Some unit lists and detailed subtopic mappings—especially where the full current book contents were not accessible—must still be checked against the exact edition used by the school. The question bank remains draft-review-required; its 4,500 items are not certified as fully curriculum-aligned.
+
+
+## Account registration and Profile (new)
+The bottom navigation still has five horizontal sections: Home, Lessons, Quizzes, Progress, and Profile. Visitors are shown an account gate before entering the learning app. The account UI supports email/password registration and Google sign-in through Firebase Authentication. New email accounts receive an email-verification message before they can sign in. Profile shows the signed-in learner and a sign-out action; settings remain reachable from Profile. Lesson notes and question-bank content were not edited for this update.
+
+### Required one-time Firebase setup before deployment
+Authentication cannot work securely until you connect your own Firebase project; this package intentionally does not fake registration or save passwords in local storage.
+1. Open https://console.firebase.google.com/ and create a Firebase project.
+2. In Build → Authentication → Sign-in method, enable Email/Password and Google. Configure the support email required by Google sign-in.
+3. Add a Web app and copy its Firebase web config.
+4. Replace the placeholder values in `auth-config.js` with the `apiKey`, `authDomain`, `projectId`, and `appId` values from your Firebase web app. These are client web configuration values, not a service-account private key.
+5. In Authentication settings, add the exact LearnBridge hosting domain to Authorized domains. Deploy all files, including `auth.js` and `auth-config.js`, over HTTPS.
+6. Test registration with an email you can access, verify the email, sign in, test Google sign-in, and test sign-out.
+
+Until step 4 is completed and the package is redeployed, users will see the Firebase setup instructions instead of an account form. This is deliberate: the app must not imply account security before a real authentication provider is configured. Learning progress remains stored locally on the device and is not yet synced to the account.
