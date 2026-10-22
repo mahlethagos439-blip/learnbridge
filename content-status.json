@@ -1,6 +1,6 @@
 {
   "project": "LearnBridge",
-  "version": "updated-question-bank-draft-2026-10-22",
+  "version": "detailed-topic-notes-expanded-2026-10-22",
   "requiredSubjects": [
     "Mathematics",
     "English",
@@ -27,25 +27,30 @@
   "questionStatus": "draft-review-required",
   "curriculumSources": [
     {
-      "title": "Ministry of Education Ethiopia Grade 9 textbook post",
-      "url": "https://t.me/s/ethio_moe/33",
-      "status": "official source listing; not every linked book individually verified"
+      "title": "Ethiopian Ministry of Education curriculum framework",
+      "url": "https://www.moe.gov.et/storage/Books/Curriculum%20Framework%20for%20Ethiopian%20Education%20%28KG%20%E2%80%93%20Grade%2012%29.pdf",
+      "status": "official framework for grade/subject structure; not a substitute for each current textbook"
     },
     {
-      "title": "Ministry of Education textbook library",
-      "url": "https://camaraethiopia.org.et/CEE_MoE_Plasma/index.php",
-      "status": "official-library reference; inspect exact editions by grade and subject"
+      "title": "Ministry of Education Ethiopia textbook announcement",
+      "url": "https://t.me/s/ethio_moe/27",
+      "status": "official channel listing textbooks; verify individual edition and unit structure"
     },
     {
-      "title": "Ethiopian Schoolnet Learning Passport",
+      "title": "Ethiopia Schoolnet Learning Passport",
       "url": "https://ethiopia-schoolnet.learningpassport.org/",
-      "status": "supplementary learning resource"
+      "status": "supplementary online lessons; subject and grade coverage varies"
     },
     {
-      "title": "Kehulum new curriculum catalogue",
-      "url": "https://kehulum.com/student-textbook/new",
-      "status": "independent catalogue; cross-check against Ministry sources"
+      "title": "Abrari Ethiopian new-curriculum textbook catalogue",
+      "url": "https://abrari.app/textbooks/grade-9",
+      "status": "independent catalogue, not affiliated with the Ministry; used as a cross-check, not final authority"
+    },
+    {
+      "title": "College Board SAT content domains",
+      "url": "https://satsuite.collegeboard.org/sat/whats-on-the-test/reading-writing",
+      "status": "official SAT topic/skill domains for SAT practice organization"
     }
   ],
-  "completionNote": "This package implements a 4,500-item draft question bank and the nine-subject visible catalogue. It does not claim all 4,500 questions or all detailed notes are fully verified against every official textbook. The next content pass must check unit titles, textbook subtopics, learning outcomes, explanations, and answers."
+  "completionNote": "Expanded lesson pages with learning objectives, key terms, explanations, study steps, subject-specific study guidance, detailed subtopic checklists, worked-example method, activity, review questions, and summaries. English and SAT remain topic/skill based without grade selectors. Other subjects remain grade based. Unit-title lists were cross-checked against available online Ethiopian textbook catalogues and Ministry/schoolnet sources where accessible, but some Grade 11/12 topic lists and all detailed subtopic/learning-outcome mappings still require direct comparison with the exact current student textbook before claiming complete curriculum verification."
 }

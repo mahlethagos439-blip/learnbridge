@@ -40,3 +40,27 @@ Keep all files together in the deployed root. If connected to GitHub, commit the
 2. Read each unit and replace general note frameworks with original, detailed, unit-specific teaching notes.
 3. Review each question and answer against the same textbook; remove duplicates, incorrect items, and mismatched grade/unit tags.
 4. Test every subject/grade/unit route, answer feedback, progress storage, and offline behavior.
+
+
+## English and SAT organization update
+English and SAT now open directly to topic/skill lists without Grade 9–12 selectors in lesson navigation or the quiz bank. Quiz banks for these two subjects show all available topic-tagged questions together. The subject content and question explanations remain drafts requiring careful verification against current textbooks and the official SAT framework.
+
+
+## Expanded lesson-note structure (October 2026)
+Each lesson now includes expanded subject-specific study guidance covering core concepts, reasoning, examples/application, checking work, and transferring knowledge to a new situation. Mathematics, Physics, Chemistry, Biology, Geography, History, Economics, English, and SAT each receive different explanatory guidance. English and SAT remain topic/skill based rather than being separated by grade.
+
+Important content-quality note: this is an expanded original study-guide layer, not a claim that every paragraph, unit title, objective, or example has been individually cross-checked against every current Ethiopian New Curriculum textbook. The Ministry textbook listings and curriculum framework are research starting points; exact unit-by-unit mapping still needs verification against the matching textbook edition. Treat curriculum-specific titles and any draft question-bank content as provisional until checked.
+
+
+## Expanded lesson notes (2026-10-22)
+
+Lesson pages now include a longer structure: learning objectives, key terms, an explanation and study method, subject-specific guidance, a detailed subtopic checklist, a worked-example approach, an activity, review questions with answers, and a summary. Mathematics, Biology, Chemistry, Physics, Geography, Economics, and History remain grade/unit based. English and SAT are organized by topic and skill without grade selectors.
+
+### Online curriculum references checked
+- Ministry of Education curriculum framework: https://www.moe.gov.et/storage/Books/Curriculum%20Framework%20for%20Ethiopian%20Education%20%28KG%20%E2%80%93%20Grade%2012%29.pdf
+- Ministry of Education textbook listings: https://t.me/s/ethio_moe/27
+- Ethiopia Schoolnet Learning Passport: https://ethiopia-schoolnet.learningpassport.org/
+- Independent new-curriculum catalogue (cross-check only; not an official Ministry site): https://abrari.app/textbooks/grade-9
+- College Board SAT Reading and Writing domains: https://satsuite.collegeboard.org/sat/whats-on-the-test/reading-writing
+
+**Important content status:** The notes are independently written study guides and are not copied textbook pages. This package is an expanded draft, not yet a claim of complete textbook-by-textbook alignment. Some unit lists and detailed subtopic mappings—especially where the full current book contents were not accessible—must still be checked against the exact edition used by the school. The question bank remains draft-review-required; its 4,500 items are not certified as fully curriculum-aligned.
