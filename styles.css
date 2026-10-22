@@ -26,3 +26,6 @@
 .bank-controls{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:16px 0}
 .bank-controls select{max-width:100%;padding:10px;border-radius:10px}
 .bank-pagination{align-items:center;justify-content:space-between;margin:18px 0}
+
+/* Interactive question-bank answer controls */
+.bank-answers{display:grid;grid-template-columns:1fr;gap:.55rem;margin:.9rem 0}.bank-answers .answer{text-align:left;white-space:normal;line-height:1.45;padding:.8rem 1rem;min-height:44px}.bank-answers .answer.correct{border-color:#218a61;background:rgba(33,138,97,.13)}.bank-answers .answer.wrong{border-color:#c94b55;background:rgba(201,75,85,.12)}.bank-answers .answer.selected{outline:2px solid var(--accent,#6789ff)}.bank-question .feedback{margin-top:.8rem}
