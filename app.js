@@ -146,16 +146,65 @@ function topicSubtopics(s,g,title){
  if(n==='sat')return ['Identify the tested skill and task','Apply the relevant rule or evidence standard','Compare all answer choices','Eliminate unsupported claims or algebra errors','Use time deliberately and revisit difficult items','Review errors by skill and explain why the correct answer works'];
  return ['Core definitions and concepts','Subtopics and their relationships','Key processes, rules or evidence','Worked examples and applications','Common misconceptions and self-checks','Short review and independent practice'];
 }
+
 function lesson(){
-let title=activeUnit||unitTitle(activeSubject,grade,unitIndex);
-let key=unitKey(activeSubject,grade,unitIndex);
-return `<p class="breadcrumb">${esc(group)} <span>›</span> ${esc(activeSubject.name)} <span>›</span> ${isSkillSubject(activeSubject)?'Topics & skills':`Grade ${grade}`} <span>›</span> ${esc(title)}</p>
-<header class="lesson-hero"><div class="eyebrow">LEARNBRIDGE STUDY GUIDE</div><h1 class="title">${esc(title)}</h1><p>${isSkillSubject(activeSubject)?'Topic-based learning':`Grade ${grade}`} · ${esc(activeSubject.name)}</p></header>
-<div class="lessonlayout"><article class="lessonbody">
-<section class="note-section"><h2>New study notes coming soon</h2><p>The previous lesson notes have been removed from this page. New notes will be added after they are prepared and checked against the Ethiopian New Curriculum.</p></section>
-${btn('Open practice quiz →','quiz')}
-</article><aside class="aside"><h3>My study tools</h3><p class="muted">Your progress is saved on this device.</p>${btn(state.saved.includes(key)?'★ Saved':'☆ Save this unit','saveunit','secondary')}<p>${btn(state.done.includes(key)?'✓ Completed':'Mark as studied','doneunit','secondary')}</p><hr><b>Practice quiz</b><p>Answer questions and read explanations.</p>${btn('Open settings','settings','ghost')}</aside></div>`;
-}
+  let title=activeUnit||unitTitle(activeSubject,grade,unitIndex);
+  let key=unitKey(activeSubject,grade,unitIndex);
+
+  const biologyNotes=typeof GRADE9_BIOLOGY_NOTES!=="undefined"?GRADE9_BIOLOGY_NOTES:null;
+  const isBiology=activeSubject.name==="Biology" && Number(grade)===9;
+  const noteUnit=isBiology && biologyNotes
+    ? biologyNotes.units.find(u=>u.title===title) ||
+      biologyNotes.units.find(u=>u.id===unitIndex+1)
+    : null;
+
+  const noteContent=noteUnit
+    ? `
+      <div class="callout">
+        <b>Study objectives</b>
+        <ul>${noteUnit.objectives.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+      </div>
+      ${noteUnit.sections.map(s=>`
+        <section class="note-section">
+          <h2>${esc(s.heading)}</h2>
+          <p>${esc(s.content)}</p>
+        </section>
+      `).join('')}
+      <section class="note-section">
+        <h2>Learning activity</h2>
+        <p>${esc(noteUnit.activity)}</p>
+      </section>
+      <section class="note-section">
+        <h2>Unit summary</h2>
+        <p>${esc(noteUnit.summary)}</p>
+      </section>
+      <section class="note-section">
+        <h2>Review questions and answers</h2>
+        ${noteUnit.questions.map((q,i)=>`
+          <div class="card">
+            <h3>${i+1}. ${esc(q.question)}</h3>
+            <p><b>Answer:</b> ${esc(q.answer)}</p>
+          </div>
+        `).join('')}
+      </section>
+    `
+    : `
+      <section class="note-section">
+        <h2>${isBiology ? 'Biology notes unavailable' : 'Study notes'}</h2>
+        <p>${isBiology
+          ? 'The notes for this unit could not be matched. Check the unit title and notes.js.'
+          : 'Detailed notes for this subject and unit have not yet been connected.'}</p>
+      </section>
+    `;
+
+  return `<p class="breadcrumb">${esc(group)} <span>›</span> ${esc(activeSubject.name)} <span>›</span> ${isSkillSubject(activeSubject)?'Topics & skills':`Grade ${grade}`} <span>›</span> ${esc(title)}</p>
+  <header class="lesson-hero"><div class="eyebrow">LEARNBRIDGE STUDY GUIDE</div><h1 class="title">${esc(title)}</h1><p>${isSkillSubject(activeSubject)?'Topic-based learning':`Grade ${grade}`} · ${esc(activeSubject.name)}</p></header>
+  <div class="lessonlayout"><article class="lessonbody">
+  ${noteContent}
+  ${btn('Open practice quiz →','quiz')}
+  </article><aside class="aside"><h3>My study tools</h3><p class="muted">Your progress is saved on this device.</p>${btn(state.saved.includes(key)?'★ Saved':'☆ Save this unit','saveunit','secondary')}<p>${btn(state.done.includes(key)?'✓ Completed':'Mark as studied','doneunit','secondary')}</p><hr><b>Practice quiz</b><p>Answer questions and read explanations.</p>${btn('Open settings','settings','ghost')}</aside></div>`;
+                                                                                                        }
+ 
 function quiz(){let qs=questionSet(activeSubject,grade,activeUnit),correct=quizAnswers.filter((a,i)=>a===qs[i].a).length;return `<p class="muted">${activeSubject.name} / Grade ${grade} / Unit ${unitIndex+1}</p><h1 class="title">Unit practice quiz</h1><div class="callout"><b>Question-bank status:</b> This 15-question session draws from the 500-item subject bank. The items are original drafts; exact grade/unit mapping and every answer still require checking against the current Ethiopian New Curriculum textbook.</div><p class="intro">Only questions for <b>${esc(activeUnit)}</b>. Feedback mode: ${state.feedbackMode==='immediate'?'show answer after each question':'show answers after finishing'}. Change this in More → Settings.</p><div class="card"><div class="progress"><span style="width:${Math.min(100,quizAnswers.filter(x=>x!==undefined).length/15*100)}%"></span></div>${qs.map((q,i)=>`<section class="qblock"><p class="question">${i+1}. ${esc(q.q)}</p><div class="answers">${q.opts.map((o,j)=>`<button class="answer ${(quizChecked||(state.feedbackMode==='immediate'&&quizAnswers[i]!==undefined))&&j===q.a?'correct':''} ${(quizChecked||(state.feedbackMode==='immediate'&&quizAnswers[i]!==undefined))&&quizAnswers[i]===j&&j!==q.a?'wrong':''} ${!quizChecked&&quizAnswers[i]===j?'selected':''}" data-answer-index="${i}" data-answer="${j}" ${quizChecked?'disabled':''}>${'ABCD'[j]}. ${esc(o)} ${quizAnswers[i]!==undefined&&(state.feedbackMode==='immediate'||quizChecked)&&j===q.a?'✓':''}</button>`).join('')}</div>${(quizAnswers[i]!==undefined&&(state.feedbackMode==='immediate'||quizChecked))?`<div class="feedback ${quizAnswers[i]===q.a?'':'bad'}"><b>${quizAnswers[i]===q.a?'Correct!':'Incorrect — try to understand why.'}</b><p><b>Correct answer:</b> ${esc(q.opts[q.a])}</p><p><b>Explanation:</b> ${esc(q.why)}</p>${quizAnswers[i]!==q.a?`<p><b>Your answer:</b> ${esc(q.opts[quizAnswers[i]]||'No answer selected')}. Review the explanation, then try the question again.</p>`:''}</div>`:''}</section>`).join('')}${quizChecked?`<div class="callout"><h2>Your score: ${correct}/15 (${Math.round(correct/15*100)}%)</h2><p>Review every explanation, especially for questions you missed.</p></div><div class="actions">${btn('Try quiz again','retry','secondary')}${btn('Back to unit notes','backlesson','ghost')}${btn('Unit list','units')}</div>`:`<div class="actions">${btn('Finish quiz and see score','checkquiz')}${btn('Back to notes','backlesson','ghost')}</div><p class="muted">You can answer questions one by one. Feedback follows your setting. Unanswered questions count as incorrect in the final score.</p>`}</div>`}
 function practice(){const counts=allSubjects.map(s=>`<div class="lesson"><span class="lessonicon">${s.icon}</span><span class="lessonmain"><strong>${esc(s.name)}</strong><small>${bankCount(s.name)} available practice questions${isSkillSubject(s)?' · all topics & skills':' · Grades 9–12'}</small></span><span>${btn('Open quizzes','subjectbank:'+s.name,'secondary')}</span></div>`).join('');return `<h1 class="title">Quizzes</h1><p class="intro">Choose a subject to browse its question bank. Questions, answer choices, correct answers, and explanations appear directly in this Quizzes section.</p><div class="list">${counts}</div>`}
 function subjectBank(){
