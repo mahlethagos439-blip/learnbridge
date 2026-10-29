@@ -1,684 +1,334 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f4f5ff">
-<title>LearnBridge</title>
-
-<style>
-:root {
-  --blue: #0757ed;
-  --navy: #101638;
-  --yellow: #ffc400;
-  --muted: #525c89;
-}
-
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  padding-bottom: 100px;
-  font-family: Arial, sans-serif;
-  color: var(--navy);
-  background: linear-gradient(#f2f4ff, #fff 40%);
-}
-
-button { font: inherit; cursor: pointer; }
-
-header {
-  max-width: 1300px;
-  margin: auto;
-  min-height: 92px;
-  padding: 14px 4%;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.menu-button {
-  order: -1;
-  width: 42px;
-  padding: 6px;
-  border: 0;
-  background: transparent;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.menu-button span {
-  height: 3px;
-  width: 28px;
-  background: #101b53;
-  border-radius: 5px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo { font-size: 40px; }
-
-.brand h1 {
-  margin: 0;
-  font-size: clamp(25px, 4vw, 36px);
-  color: var(--blue);
-}
-
-.brand p {
-  margin: 3px 0 0;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-main {
-  max-width: 1300px;
-  padding: 0 4%;
-  margin: auto;
-}
-
-.hero {
-  overflow: hidden;
-  border-radius: 25px;
-  background: #1049d7;
-  position: relative;
-}
-
-.hero img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-  margin: 24px 0 34px;
-}
-
-.stat {
-  min-height: 120px;
-  padding: 14px 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  text-align: center;
-  background: white;
-  border: 1px solid #edf0fb;
-  border-radius: 22px;
-  box-shadow: 0 5px 18px #243c8d0d;
-}
-
-.stat-icon {
-  color: var(--blue);
-  font-size: 28px;
-}
-
-.stat:nth-child(3) .stat-icon,
-.stat:nth-child(4) .stat-icon {
-  color: #efb600;
-}
-
-.stat strong {
-  font-size: clamp(16px, 2.5vw, 27px);
-}
-
-.stat span:last-child { font-size: 13px; }
-
-.heading {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 22px;
-}
-
-.heading-bar {
-  width: 7px;
-  height: 38px;
-  background: var(--blue);
-  border-radius: 8px;
-}
-
-.heading h2 {
-  margin: 0 0 5px;
-  font-size: clamp(25px, 3vw, 36px);
-}
-
-.heading p {
-  margin: 0;
-  color: var(--muted);
-  font-size: clamp(14px, 2vw, 20px);
-}
-
-.subjects {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
-}
-
-.subject {
-  min-width: 0;
-  padding: 0;
-  overflow: hidden;
-  text-align: left;
-  color: inherit;
-  background: white;
-  border: 1px solid #dce3fb;
-  border-radius: 18px;
-  box-shadow: 0 2px 7px #13265e09;
-}
-
-.subject img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 194 / 119;
-  object-fit: cover;
-}
-
-.subject-info { padding: 12px; }
-
-.subject-info strong {
-  display: block;
-  margin-bottom: 7px;
-  font-size: clamp(14px, 1.7vw, 20px);
-}
-
-.subject-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 5px;
-  color: #45517e;
-}
-
-.subject-bottom small { font-size: 12px; }
-
-.arrow {
-  width: 32px;
-  height: 32px;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  background: #edf0ff;
-  border-radius: 50%;
-  font-size: 24px;
-}
-
-.cta {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin: 25px 0;
-  padding: 20px;
-  border: 1px solid #cbd8ff;
-  border-radius: 22px;
-  background: linear-gradient(100deg, #e7edff, #e3e8ff);
-}
-
-.trophy { font-size: 40px; }
-.cta-copy { flex: 1; }
-
-.cta h3 {
-  margin: 0 0 7px;
-  color: #081d80;
-  font-size: clamp(17px, 2vw, 25px);
-}
-
-.cta p { margin: 0; color: #202b5d; }
-
-.cta button {
-  padding: 14px 18px;
-  border: 0;
-  border-radius: 14px;
-  color: white;
-  background: var(--blue);
-  font-weight: bold;
-}
-
-/* Left-side menu and overlay */
-.scrim {
-  position: fixed;
-  z-index: 19;
-  inset: 0;
-  background: #07143b70;
-  opacity: 0;
-  visibility: hidden;
-  transition: .2s;
-}
-
-.drawer {
-  position: fixed;
-  z-index: 20;
-  inset: 0 auto 0 0;
-  width: min(340px, 86vw);
-  padding: 20px;
-  background: white;
-  box-shadow: 12px 0 35px #07143b25;
-  transform: translateX(-105%);
-  transition: transform .25s ease;
-}
-
-.menu-open .scrim {
-  opacity: 1;
-  visibility: visible;
-}
-
-.menu-open .drawer { transform: translateX(0); }
-
-.drawer-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #edf0fb;
-}
-
-.drawer-head h2 {
-  margin: 0;
-  color: var(--blue);
-  font-size: 23px;
-}
-
-.drawer-head p { margin: 4px 0 0; font-size: 12px; }
-
-.close-button {
-  width: 42px;
-  height: 42px;
-  border: 0;
-  border-radius: 50%;
-  background: #edf0ff;
-  color: #10205c;
-  font-size: 32px;
-}
-
-.drawer nav {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  padding-top: 18px;
-}
-
-.drawer-link {
-  width: 100%;
-  padding: 14px;
-  border: 0;
-  border-radius: 12px;
-  background: transparent;
-  text-align: left;
-  color: #202b55;
-}
-
-.drawer-link.active {
-  color: var(--blue);
-  background: #edf2ff;
-  font-weight: bold;
-}
-
-.drawer-footer {
-  position: absolute;
-  bottom: 22px;
-  color: #697398;
-  font-size: 13px;
-}
-
-.bottom-nav {
-  position: fixed;
-  z-index: 10;
-  bottom: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(94%, 1200px);
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  padding: 10px 5px;
-  border: 1px solid #eef0fb;
-  border-radius: 25px;
-  background: #fffffffa;
-  box-shadow: 0 8px 28px #243c8d15;
-}
-
-.bottom-link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  border: 0;
-  background: transparent;
-  color: #525b85;
-  padding: 4px 0;
-}
-
-.bottom-link .icon { font-size: 26px; }
-.bottom-link small { font-size: 11px; }
-.bottom-link.active { color: var(--blue); font-weight: bold; }
-
-.message {
-  margin: 20px 0;
-  padding: 20px;
-  background: white;
-  border: 1px solid #dce3fb;
-  border-radius: 16px;
-}
-
-.message h2 { margin-top: 0; }
-
-.toast {
-  position: fixed;
-  z-index: 30;
-  left: 50%;
-  bottom: 100px;
-  transform: translateX(-50%);
-  padding: 12px 17px;
-  border-radius: 12px;
-  color: white;
-  background: #111a48;
-  display: none;
-  max-width: 90%;
-  text-align: center;
-}
-
-.toast.show { display: block; }
-
-@media (max-width: 680px) {
-  body { padding-bottom: 88px; }
-  header { min-height: 80px; padding: 10px 16px; gap: 12px; }
-  .logo { font-size: 34px; }
-  .brand h1 { font-size: 26px; }
-  .brand p { font-size: 11px; }
-  main { padding: 0 15px; }
-  .hero { border-radius: 19px; }
-  .stats { gap: 8px; margin: 16px 0 25px; }
-  .stat { min-height: 92px; border-radius: 16px; }
-  .stat-icon { font-size: 22px; }
-  .stat strong { font-size: clamp(14px, 3.8vw, 20px); }
-  .stat span:last-child { font-size: 10px; }
-  .heading { gap: 12px; margin-bottom: 16px; }
-  .heading-bar { height: 31px; width: 6px; }
-  .subjects { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
-  .subject { border-radius: 15px; }
-  .subject-info { padding: 9px; }
-  .subject-info strong { font-size: 15px; }
-  .cta { gap: 10px; padding: 13px; flex-wrap: wrap; }
-  .trophy { font-size: 30px; }
-  .cta h3 { font-size: 16px; }
-  .cta p { font-size: 12px; line-height: 1.4; }
-  .cta button { padding: 12px; font-size: 12px; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnBridge - Learn Today. Build Tomorrow.</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7fc;
+        }
+        
+        /* Custom visual cards gradient and visuals */
+        .hero-bg {
+            background: linear-gradient(135deg, #0b2571 0%, #1d4ed8 60%, #3b82f6 100%);
+        }
+        .yellow-accent-bg {
+            background-color: #eab308;
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+        
+        /* Custom image placeholders styled to match image subjects perfectly */
+        .math-bg { background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); }
+        .physics-bg { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
+        .chem-bg { background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); }
+        .bio-bg { background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); }
+        .geo-bg { background: linear-gradient(135deg, #e0f2fe 0%, #93c5fd 100%); }
+        .history-bg { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); }
+        .econ-bg { background: linear-gradient(135deg, #dbeafe 0%, #60a5fa 100%); }
+    </style>
 </head>
+<body class="pb-24 pt-2 px-2 sm:px-4 max-w-md md:max-w-4xl lg:max-w-6xl mx-auto min-h-screen text-slate-800">
 
-<body>
-<header>
-  <button class="menu-button" id="openMenu"
-    aria-label="Open menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-
-  <div class="brand">
-    <span class="logo">🎓</span>
-    <div>
-      <h1>LearnBridge</h1>
-      <p>Learn Today. Build Tomorrow.</p>
-    </div>
-  </div>
-</header>
-
-<div class="scrim" id="scrim"></div>
-
-<aside class="drawer" id="drawer" aria-label="Navigation menu">
-  <div class="drawer-head">
-    <div>
-      <h2>🎓 LearnBridge</h2>
-      <p>Learn Today. Build Tomorrow.</p>
-    </div>
-    <button class="close-button" id="closeMenu"
-      aria-label="Close menu">×</button>
-  </div>
-
-  <nav>
-    <button class="drawer-link active" data-page="Home">⌂　Home</button>
-    <button class="drawer-link" data-page="Exams">▣　Exams</button>
-    <button class="drawer-link" data-page="Resources">▤　Resources</button>
-    <button class="drawer-link" data-page="About">ⓘ　About</button>
-    <button class="drawer-link" data-page="My Profile">♙　My Profile</button>
-    <button class="drawer-link" data-page="Settings">⚙　Settings</button>
-    <button class="drawer-link" data-page="Log out">↪　Log out</button>
-  </nav>
-
-  <div class="drawer-footer">Learn Today. Build Tomorrow.</div>
-</aside>
-
-<main>
-  <section class="hero">
-    <!-- Keep your original design's banner image at this path. -->
-    <img src="assets/hero-reference.jpg"
-      alt="LearnBridge student holding the blue book">
-  </section>
-
-  <section class="stats">
-    <article class="stat">
-      <span class="stat-icon">▤</span>
-      <strong>7</strong>
-      <span>Subjects</span>
-    </article>
-    <article class="stat">
-      <span class="stat-icon">📚</span>
-      <strong>Learn</strong>
-      <span>At Your Pace</span>
-    </article>
-    <article class="stat">
-      <span class="stat-icon">🏆</span>
-      <strong>Practice</strong>
-      <span>Build Skills</span>
-    </article>
-    <article class="stat">
-      <span class="stat-icon">★</span>
-      <strong>Always</strong>
-      <span>Free</span>
-    </article>
-  </section>
-
-  <section id="subjectSection">
-    <div class="heading">
-      <span class="heading-bar"></span>
-      <div>
-        <h2>Our Subjects</h2>
-        <p>Choose a subject to start learning</p>
-      </div>
-    </div>
-
-    <div class="subjects">
-      <button class="subject" data-subject="Mathematics">
-        <img src="assets/math.jpg" alt="Mathematics">
-        <div class="subject-info">
-          <strong>Mathematics</strong>
-          <div class="subject-bottom">
-            <small>Study materials</small><span class="arrow">›</span>
-          </div>
+    <!-- Top Navigation Header -->
+    <header class="flex items-center justify-between px-4 py-3 my-2 bg-white rounded-3xl card-shadow">
+        <div class="flex items-center gap-3">
+            <div class="bg-blue-600 text-yellow-400 p-2.5 rounded-2xl flex items-center justify-center shadow-md">
+                <i class="fa-solid fa-graduation-cap text-2xl"></i>
+            </div>
+            <div>
+                <h1 class="text-xl font-bold tracking-tight text-blue-900 leading-tight">LearnBridge</h1>
+                <p class="text-xs font-medium text-slate-500">Learn Today. Build Tomorrow.</p>
+            </div>
         </div>
-      </button>
+        <button class="text-slate-700 p-2 hover:bg-slate-100 rounded-xl transition-colors focus:outline-none" aria-label="Menu">
+            <i class="fa-solid fa-bars text-2xl"></i>
+        </button>
+    </header>
 
-      <button class="subject" data-subject="Physics">
-        <img src="assets/physics.jpg" alt="Physics">
-        <div class="subject-info">
-          <strong>Physics</strong>
-          <div class="subject-bottom">
-            <small>Study materials</small><span class="arrow">›</span>
-          </div>
+    <!-- Main Hero Banner -->
+    <section class="relative overflow-hidden hero-bg text-white rounded-3xl mt-4 card-shadow">
+        <div class="grid grid-cols-1 md:grid-cols-12 items-center">
+            <!-- Left Text Content -->
+            <div class="p-6 md:p-10 md:col-span-7 z-10">
+                <h2 class="text-3xl md:text-5xl font-extrabold leading-tight mb-3">
+                    Prepare for<br/>Your Success
+                </h2>
+                <p class="text-blue-100 font-medium text-sm md:text-base mb-6 tracking-wide">
+                    Study • Practice • Excel
+                </p>
+                <button class="yellow-accent-bg hover:bg-yellow-500 text-slate-900 font-bold px-6 py-3 rounded-full flex items-center gap-2 transition-all transform hover:scale-105 shadow-lg active:scale-95 text-sm md:text-base">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>Start Learning</span>
+                    <i class="fa-solid fa-arrow-right text-xs ml-1"></i>
+                </button>
+            </div>
+            
+            <!-- Right Graphic / Student Image -->
+            <div class="md:col-span-5 relative flex justify-end h-64 md:h-full min-h-[240px]">
+                <!-- Yellow Geometric Accent background graphic -->
+                <div class="absolute right-0 top-0 bottom-0 w-3/4 bg-yellow-500 rounded-l-full transform translate-x-1/4 scale-125 opacity-90"></div>
+                
+                <!-- Student Image with fallback illustration design -->
+                <div class="relative z-10 w-full h-full flex items-end justify-center pr-2">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop" 
+                         alt="Student learning" 
+                         class="h-full object-cover object-top rounded-b-3xl md:rounded-r-3xl md:rounded-b-none"
+                         onerror="this.onerror=null; this.src='https://placehold.co/400x500/1d4ed8/ffffff?text=LearnBridge+Student';" />
+                </div>
+            </div>
         </div>
-      </button>
+    </section>
 
-      <button class="subject" data-subject="Chemistry">
-        <img src="assets/chemistry.jpg" alt="Chemistry">
-        <div class="subject-info">
-          <strong>Chemistry</strong>
-          <div class="subject-bottom">
-            <small>Study materials</small><span class="arrow">›</span>
-          </div>
+    <!-- Quick Stats Grid -->
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-4">
+        <!-- Subjects Stat -->
+        <div class="bg-white p-4 rounded-2xl card-shadow flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow">
+            <div class="text-blue-600 bg-blue-50 w-10 h-10 rounded-xl flex items-center justify-center mb-2">
+                <i class="fa-solid fa-book text-lg"></i>
+            </div>
+            <span class="text-2xl font-extrabold text-slate-900">7+</span>
+            <span class="text-xs font-semibold text-slate-500 mt-0.5">Subjects</span>
         </div>
-      </button>
 
-      <button class="subject" data-subject="Biology">
-        <img src="assets/biology.jpg" alt="Biology">
-        <div class="subject-info">
-          <strong>Biology</strong>
-          <div class="subject-bottom">
-            <small>Study materials</small><span class="arrow">›</span>
-          </div>
+        <!-- Students Stat -->
+        <div class="bg-white p-4 rounded-2xl card-shadow flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow">
+            <div class="text-blue-600 bg-blue-50 w-10 h-10 rounded-xl flex items-center justify-center mb-2">
+                <i class="fa-solid fa-users text-lg"></i>
+            </div>
+            <span class="text-2xl font-extrabold text-slate-900">100K+</span>
+            <span class="text-xs font-semibold text-slate-500 mt-0.5">Students</span>
         </div>
-      </button>
 
-      <button class="subject" data-subject="Geography">
-        <img src="assets/geography.jpg" alt="Geography">
-        <div class="subject-info">
-          <strong>Geography</strong>
-          <div class="subject-bottom">
-            <small>Study materials</small><span class="arrow">›</span>
-          </div>
+        <!-- Success Rate Stat -->
+        <div class="bg-white p-4 rounded-2xl card-shadow flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow">
+            <div class="text-yellow-500 bg-amber-50 w-10 h-10 rounded-xl flex items-center justify-center mb-2">
+                <i class="fa-solid fa-trophy text-lg"></i>
+            </div>
+            <span class="text-2xl font-extrabold text-slate-900">95%+</span>
+            <span class="text-xs font-semibold text-slate-500 mt-0.5">Success Rate</span>
         </div>
-      </button>
 
-      <button class="subject" data-subject="History">
-        <img src="assets/history.jpg" alt="History">
-        <div class="subject-info">
-          <strong>History</strong>
-          <div class="subject-bottom">
-            <small>Study materials</small><span class="arrow">›</span>
-          </div>
+        <!-- Price Stat -->
+        <div class="bg-white p-4 rounded-2xl card-shadow flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow">
+            <div class="text-yellow-400 bg-yellow-50 w-10 h-10 rounded-xl flex items-center justify-center mb-2">
+                <i class="fa-solid fa-star text-lg"></i>
+            </div>
+            <span class="text-2xl font-extrabold text-slate-900">Always</span>
+            <span class="text-xs font-semibold text-slate-500 mt-0.5">Free</span>
         </div>
-      </button>
+    </section>
 
-      <button class="subject" data-subject="Economics">
-        <img src="assets/economics.jpg" alt="Economics">
-        <div class="subject-info">
-          <strong>Economics</strong>
-          <div class="subject-bottom">
-            <small>Study materials</small><span class="arrow">›</span>
-          </div>
+    <!-- Our Subjects Section Header -->
+    <section class="mt-6">
+        <div class="flex items-center gap-2 mb-1">
+            <div class="w-1.5 h-6 bg-blue-600 rounded-full"></div>
+            <h3 class="text-xl font-extrabold text-slate-900">Our Subjects</h3>
         </div>
-      </button>
-    </div>
-  </section>
+        <p class="text-xs md:text-sm text-slate-500 font-medium ml-3.5 mb-4">Choose a subject to start learning</p>
 
-  <section class="cta">
-    <span class="trophy">🏆</span>
-    <div class="cta-copy">
-      <h3>Ready to Achieve More?</h3>
-      <p>Start studying now and reach your goals!</p>
-    </div>
-    <button id="goExams">Go to Exams →</button>
-  </section>
+        <!-- Subjects Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3.5 md:gap-5">
+            
+            <!-- Mathematics Card -->
+            <div class="bg-white rounded-2xl overflow-hidden card-shadow hover:shadow-lg transition-all duration-200 cursor-pointer group flex flex-col justify-between">
+                <div>
+                    <!-- Visual banner with icons matching photo -->
+                    <div class="math-bg h-28 flex items-center justify-center p-3 relative">
+                        <div class="grid grid-cols-2 gap-1.5 bg-blue-600 p-2.5 rounded-2xl text-white font-bold text-center text-xl shadow-md transform group-hover:scale-105 transition-transform">
+                            <span class="w-6 h-6 flex items-center justify-center"><i class="fa-solid fa-plus text-xs"></i></span>
+                            <span class="w-6 h-6 flex items-center justify-center"><i class="fa-solid fa-minus text-xs"></i></span>
+                            <span class="w-6 h-6 flex items-center justify-center"><i class="fa-solid fa-xmark text-xs"></i></span>
+                            <span class="w-6 h-6 flex items-center justify-center"><i class="fa-solid fa-divide text-xs"></i></span>
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <h4 class="font-bold text-slate-900 text-sm md:text-base">Mathematics</h4>
+                    </div>
+                </div>
+                <div class="p-3 pt-0 flex items-center justify-between text-slate-400">
+                    <span class="text-xs font-medium flex items-center gap-1.5 text-slate-500">
+                        <i class="fa-regular fa-file-lines"></i> 12 Notes
+                    </span>
+                    <button class="w-7 h-7 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors" aria-label="Open Mathematics">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
 
-  <section class="message" id="pageMessage" hidden></section>
-</main>
+            <!-- Physics Card -->
+            <div class="bg-white rounded-2xl overflow-hidden card-shadow hover:shadow-lg transition-all duration-200 cursor-pointer group flex flex-col justify-between">
+                <div>
+                    <div class="physics-bg h-28 flex items-center justify-center p-3 text-cyan-300">
+                        <i class="fa-solid fa-atom text-5xl transform group-hover:rotate-45 transition-transform duration-500 drop-shadow-md"></i>
+                    </div>
+                    <div class="p-3">
+                        <h4 class="font-bold text-slate-900 text-sm md:text-base">Physics</h4>
+                    </div>
+                </div>
+                <div class="p-3 pt-0 flex items-center justify-between text-slate-400">
+                    <span class="text-xs font-medium flex items-center gap-1.5 text-slate-500">
+                        <i class="fa-regular fa-file-lines"></i> 12 Notes
+                    </span>
+                    <button class="w-7 h-7 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors" aria-label="Open Physics">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
 
-<nav class="bottom-nav" aria-label="Bottom navigation">
-  <button class="bottom-link active" data-page="Home">
-    <span class="icon">⌂</span><small>Home</small>
-  </button>
-  <button class="bottom-link" data-page="Lessons">
-    <span class="icon">▤</span><small>Lessons</small>
-  </button>
-  <button class="bottom-link" data-page="Quizzes">
-    <span class="icon">☑</span><small>Quizzes</small>
-  </button>
-  <button class="bottom-link" data-page="Progress">
-    <span class="icon">▥</span><small>Progress</small>
-  </button>
-  <button class="bottom-link" data-page="Profile">
-    <span class="icon">♙</span><small>Profile</small>
-  </button>
-</nav>
+            <!-- Chemistry Card -->
+            <div class="bg-white rounded-2xl overflow-hidden card-shadow hover:shadow-lg transition-all duration-200 cursor-pointer group flex flex-col justify-between">
+                <div>
+                    <div class="chem-bg h-28 flex items-center justify-center gap-2 p-3 text-blue-600">
+                        <i class="fa-solid fa-flask text-4xl drop-shadow"></i>
+                        <i class="fa-solid fa-vial text-3xl text-amber-500 drop-shadow"></i>
+                    </div>
+                    <div class="p-3">
+                        <h4 class="font-bold text-slate-900 text-sm md:text-base">Chemistry</h4>
+                    </div>
+                </div>
+                <div class="p-3 pt-0 flex items-center justify-between text-slate-400">
+                    <span class="text-xs font-medium flex items-center gap-1.5 text-slate-500">
+                        <i class="fa-regular fa-file-lines"></i> 12 Notes
+                    </span>
+                    <button class="w-7 h-7 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors" aria-label="Open Chemistry">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
 
-<div class="toast" id="toast" role="status"></div>
+            <!-- Biology Card -->
+            <div class="bg-white rounded-2xl overflow-hidden card-shadow hover:shadow-lg transition-all duration-200 cursor-pointer group flex flex-col justify-between">
+                <div>
+                    <div class="bio-bg h-28 flex items-center justify-center p-3 text-pink-500">
+                        <i class="fa-solid fa-brain text-5xl transform group-hover:scale-110 transition-transform drop-shadow"></i>
+                    </div>
+                    <div class="p-3">
+                        <h4 class="font-bold text-slate-900 text-sm md:text-base">Biology</h4>
+                    </div>
+                </div>
+                <div class="p-3 pt-0 flex items-center justify-between text-slate-400">
+                    <span class="text-xs font-medium flex items-center gap-1.5 text-slate-500">
+                        <i class="fa-regular fa-file-lines"></i> 12 Notes
+                    </span>
+                    <button class="w-7 h-7 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors" aria-label="Open Biology">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
 
-<script>
-const body = document.body;
-const openMenu = document.getElementById("openMenu");
-const closeMenu = document.getElementById("closeMenu");
-const scrim = document.getElementById("scrim");
-const toast = document.getElementById("toast");
-const pageMessage = document.getElementById("pageMessage");
+            <!-- Geography Card -->
+            <div class="bg-white rounded-2xl overflow-hidden card-shadow hover:shadow-lg transition-all duration-200 cursor-pointer group flex flex-col justify-between">
+                <div>
+                    <div class="geo-bg h-28 flex items-center justify-center p-3 text-blue-600">
+                        <i class="fa-solid fa-earth-americas text-5xl transform group-hover:rotate-12 transition-transform drop-shadow"></i>
+                    </div>
+                    <div class="p-3">
+                        <h4 class="font-bold text-slate-900 text-sm md:text-base">Geography</h4>
+                    </div>
+                </div>
+                <div class="p-3 pt-0 flex items-center justify-between text-slate-400">
+                    <span class="text-xs font-medium flex items-center gap-1.5 text-slate-500">
+                        <i class="fa-regular fa-file-lines"></i> 12 Notes
+                    </span>
+                    <button class="w-7 h-7 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors" aria-label="Open Geography">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
 
-function showMenu() {
-  body.classList.add("menu-open");
-  openMenu.setAttribute("aria-expanded", "true");
-}
+            <!-- History Card -->
+            <div class="bg-white rounded-2xl overflow-hidden card-shadow hover:shadow-lg transition-all duration-200 cursor-pointer group flex flex-col justify-between">
+                <div>
+                    <div class="history-bg h-28 flex items-center justify-center gap-2 p-3 text-amber-700">
+                        <i class="fa-solid fa-scroll text-4xl drop-shadow"></i>
+                        <i class="fa-solid fa-monument text-3xl drop-shadow"></i>
+                    </div>
+                    <div class="p-3">
+                        <h4 class="font-bold text-slate-900 text-sm md:text-base">History</h4>
+                    </div>
+                </div>
+                <div class="p-3 pt-0 flex items-center justify-between text-slate-400">
+                    <span class="text-xs font-medium flex items-center gap-1.5 text-slate-500">
+                        <i class="fa-regular fa-file-lines"></i> 12 Notes
+                    </span>
+                    <button class="w-7 h-7 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors" aria-label="Open History">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
 
-function hideMenu() {
-  body.classList.remove("menu-open");
-  openMenu.setAttribute("aria-expanded", "false");
-}
+            <!-- Economics Card -->
+            <div class="bg-white rounded-2xl overflow-hidden card-shadow hover:shadow-lg transition-all duration-200 cursor-pointer group flex flex-col justify-between col-span-2 md:col-span-1">
+                <div>
+                    <div class="econ-bg h-28 flex items-center justify-center gap-2 p-3 text-blue-700">
+                        <i class="fa-solid fa-coins text-3xl text-yellow-500 drop-shadow"></i>
+                        <i class="fa-solid fa-chart-line text-4xl text-blue-600 drop-shadow"></i>
+                    </div>
+                    <div class="p-3">
+                        <h4 class="font-bold text-slate-900 text-sm md:text-base">Economics</h4>
+                    </div>
+                </div>
+                <div class="p-3 pt-0 flex items-center justify-between text-slate-400">
+                    <span class="text-xs font-medium flex items-center gap-1.5 text-slate-500">
+                        <i class="fa-regular fa-file-lines"></i> 12 Notes
+                    </span>
+                    <button class="w-7 h-7 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors" aria-label="Open Economics">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
 
-openMenu.addEventListener("click", showMenu);
-closeMenu.addEventListener("click", hideMenu);
-scrim.addEventListener("click", hideMenu);
+        </div>
+    </section>
 
-document.addEventListener("keydown", event => {
-  if (event.key === "Escape") hideMenu();
-});
+    <!-- Lower Callout Banner -->
+    <section class="mt-6 bg-blue-50/80 border border-blue-100 rounded-2xl p-4 md:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 card-shadow">
+        <div class="flex items-center gap-4 text-center sm:text-left">
+            <div class="text-4xl text-yellow-500 drop-shadow-sm flex-shrink-0">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+            <div>
+                <h4 class="font-bold text-slate-900 text-base md:text-lg">Ready to Achieve More?</h4>
+                <p class="text-xs md:text-sm text-slate-500 font-medium mt-0.5">Start studying now and reach your goals!</p>
+            </div>
+        </div>
+        <button class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm shadow-md active:scale-95">
+            <span>Go to Exams</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+        </button>
+    </section>
 
-function navigate(page) {
-  hideMenu();
+    <!-- Bottom Sticky Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-100 py-2.5 px-4 z-50">
+        <div class="max-w-md mx-auto flex items-center justify-between">
+            
+            <!-- Home Item (Active) -->
+            <button class="flex flex-col items-center gap-1 text-blue-600 font-semibold focus:outline-none">
+                <i class="fa-solid fa-house text-lg"></i>
+                <span class="text-[10px]">Home</span>
+            </button>
 
-  document.querySelectorAll("[data-page]").forEach(button => {
-    button.classList.toggle("active", button.dataset.page === page);
-  });
+            <!-- Lessons Item -->
+            <button class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition-colors focus:outline-none">
+                <i class="fa-solid fa-book-open text-lg"></i>
+                <span class="text-[10px]">Lessons</span>
+            </button>
 
-  if (page === "Home") {
-    pageMessage.hidden = true;
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    return;
-  }
+            <!-- Quizzes Item -->
+            <button class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition-colors focus:outline-none">
+                <i class="fa-solid fa-square-check text-lg"></i>
+                <span class="text-[10px]">Quizzes</span>
+            </button>
 
-  pageMessage.hidden = false;
-  pageMessage.replaceChildren();
-
-  const title = document.createElement("h2");
-  title.textContent = page;
-
-  const description = document.createElement("p");
-  description.textContent =
-    page === "Log out"
-      ? "Account sign-out will work after authentication is connected."
-      : "This section will be built in the next development step.";
-
-  pageMessage.append(title, description);
-  pageMessage.scrollIntoView({ behavior: "smooth", block: "center" });
-}
-
-document.querySelectorAll("[data-page]").forEach(button => {
-  button.addEventListener("click", () => navigate(button.dataset.page));
-});
-
-function notify(message) {
-  toast.textContent = message;
-  toast.classList.add("show");
-  window.clearTimeout(window.learnBridgeToastTimer);
-  window.learnBridgeToastTimer = window.setTimeout(() => {
-    toast.classList.remove("show");
-  }, 2500);
-}
-
-document.querySelectorAll("[data-subject]").forEach(button => {
-  button.addEventListener("click", () => {
-    notify(button.dataset.subject +
-      " selected. Learning content will be added later.");
-  });
-});
-
-document.getElementById("goExams").addEventListener("click", () => {
-  navigate("Exams");
-});
-</script>
-</body>
-  </html>
-  
+            <!--
