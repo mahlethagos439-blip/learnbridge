@@ -3,358 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LearnBridge - Learn Today. Build Tomorrow.</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>LearnBridge</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            font-family: 'Inter', sans-serif;
             background-color: #f4f7fc;
-            -webkit-tap-highlight-color: transparent;
-        }
-        .hero-banner {
-            background: linear-gradient(135deg, #0d2870 0%, #1740b0 60%, #1e52db 100%);
-            border-radius: 28px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 12px 30px -10px rgba(13, 40, 112, 0.3);
-        }
-        .yellow-accent-shape {
-            position: absolute;
-            right: -30px;
-            bottom: -20px;
-            width: 55%;
-            height: 110%;
-            background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
-            transform: skewX(-20deg);
-            border-top-left-radius: 40px;
-            z-index: 1;
-        }
-        .card-shadow {
-            box-shadow: 0 8px 20px -4px rgba(16, 24, 40, 0.06), 0 4px 6px -4px rgba(16, 24, 40, 0.02);
-        }
-        .card-header-gradient {
-            height: 105px;
-            position: relative;
             display: flex;
-            align-items: center;
             justify-content: center;
-            overflow: hidden;
-            border-top-left-radius: 18px;
-            border-top-right-radius: 18px;
+            align-items: flex-start;
+            min-height: 100vh;
         }
-        .math-header { background: linear-gradient(180deg, #e0f2fe 0%, #bae6fd 100%); }
-        .physics-header { background: linear-gradient(180deg, #1e3a8a 0%, #2563eb 100%); }
-        .chem-header { background: linear-gradient(180deg, #dbeafe 0%, #93c5fd 100%); }
-        .bio-header { background: linear-gradient(180deg, #fce7f3 0%, #fbcfe8 100%); }
-        .geo-header { background: linear-gradient(180deg, #e0f2fe 0%, #7dd3fc 100%); }
-        .history-header { background: linear-gradient(180deg, #fef3c7 0%, #fde68a 100%); }
-        .econ-header { background: linear-gradient(180deg, #dbeafe 0%, #60a5fa 100%); }
-        ::-webkit-scrollbar { width: 0px; background: transparent; }
+        .container {
+            width: 100%;
+            max-width: 430px;
+            background: #ffffff;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* This shifts the image up to perfectly hide the phone status bar/time at the top */
+            margin-top: -55px;
+        }
     </style>
 </head>
-<body class="flex justify-center items-start min-h-screen text-slate-800">
+<body>
 
-    <!-- Mobile App Container Frame -->
-    <div class="w-full max-w-[430px] min-h-screen bg-[#f4f7fc] px-4 pt-3 pb-24 relative flex flex-col justify-between">
-        
-        <div>
-            <!-- Header Section (Clickable Menu) -->
-            <header class="flex items-center justify-between py-2 mb-2">
-                <div class="flex items-center gap-3 cursor-pointer" onclick="alert('Welcome to LearnBridge!')">
-                    <div class="w-11 h-11 bg-blue-600 rounded-2xl flex items-center justify-center shadow-md shadow-blue-500/20 text-yellow-400">
-                        <i class="fa-solid fa-graduation-cap text-2xl"></i>
-                    </div>
-                    <div>
-                        <h1 class="text-2xl font-black text-blue-950 tracking-tight leading-none">LearnBridge</h1>
-                        <p class="text-[11px] font-semibold text-slate-500 mt-1">Learn Today. Build Tomorrow.</p>
-                    </div>
-                </div>
-                <button onclick="alert('Menu options opened!')" class="p-2 text-slate-800 hover:bg-slate-200/50 rounded-xl transition-colors focus:outline-none" aria-label="Menu">
-                    <i class="fa-solid fa-bars text-2xl"></i>
-                </button>
-            </header>
-
-            <!-- Main Hero Banner (Clickable Start Learning Button) -->
-            <section class="hero-banner my-3 text-white min-h-[210px] flex items-center">
-                <div class="yellow-accent-shape"></div>
-
-                <div class="grid grid-cols-12 w-full relative z-10 p-5 items-center">
-                    <div class="col-span-7 pr-1">
-                        <h2 class="text-[26px] font-black leading-[1.15] tracking-tight mb-2 text-white">
-                            Prepare for<br>Your Success
-                        </h2>
-                        <p class="text-blue-100 text-[13px] font-semibold mb-4 tracking-wide">
-                            Study • Practice • Excel
-                        </p>
-                        <button onclick="alert('Starting your learning journey!')" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-4 py-2.5 rounded-full flex items-center gap-2 text-xs shadow-lg shadow-amber-500/30 transition-all active:scale-95 cursor-pointer">
-                            <i class="fa-solid fa-book-open text-xs"></i>
-                            <span>Start Learning</span>
-                            <i class="fa-solid fa-arrow-right text-[10px] ml-0.5"></i>
-                        </button>
-                    </div>
-
-                    <div class="col-span-5 relative h-[190px] flex items-end justify-center">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop" 
-                             alt="Student holding book" 
-                             class="h-[185px] object-cover object-top rounded-b-xl drop-shadow-2xl z-10"
-                             style="filter: drop-shadow(-4px 8px 12px rgba(0,0,0,0.25));" />
-                    </div>
-                </div>
-            </section>
-
-            <!-- Quick Stats Grid -->
-            <section class="grid grid-cols-4 gap-2.5 my-3.5">
-                <div onclick="alert('7+ Subjects available')" class="bg-white p-2.5 rounded-2xl card-shadow flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors">
-                    <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-1">
-                        <i class="fa-solid fa-book-open text-sm"></i>
-                    </div>
-                    <span class="text-base font-extrabold text-slate-900 leading-tight">7+</span>
-                    <span class="text-[10px] font-semibold text-slate-400 mt-0.5">Subjects</span>
-                </div>
-
-                <div onclick="alert('100K+ Active Students')" class="bg-white p-2.5 rounded-2xl card-shadow flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors">
-                    <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-1">
-                        <i class="fa-solid fa-users text-sm"></i>
-                    </div>
-                    <span class="text-base font-extrabold text-slate-900 leading-tight">100K+</span>
-                    <span class="text-[10px] font-semibold text-slate-400 mt-0.5">Students</span>
-                </div>
-
-                <div onclick="alert('95%+ Success Rate')" class="bg-white p-2.5 rounded-2xl card-shadow flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors">
-                    <div class="w-8 h-8 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center mb-1">
-                        <i class="fa-solid fa-trophy text-sm"></i>
-                    </div>
-                    <span class="text-base font-extrabold text-slate-900 leading-tight">95%+</span>
-                    <span class="text-[10px] font-semibold text-slate-400 mt-0.5">Success Rate</span>
-                </div>
-
-                <div onclick="alert('Always 100% Free')" class="bg-white p-2.5 rounded-2xl card-shadow flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-colors">
-                    <div class="w-8 h-8 rounded-xl bg-amber-50 text-amber-400 flex items-center justify-center mb-1">
-                        <i class="fa-solid fa-star text-sm"></i>
-                    </div>
-                    <span class="text-base font-extrabold text-slate-900 leading-tight">Always</span>
-                    <span class="text-[10px] font-semibold text-slate-400 mt-0.5">Free</span>
-                </div>
-            </section>
-
-            <!-- Our Subjects Section -->
-            <section class="mt-4">
-                <div class="flex items-center gap-2 mb-0.5">
-                    <div class="w-1.5 h-5 bg-blue-600 rounded-full"></div>
-                    <h3 class="text-lg font-extrabold text-slate-900 tracking-tight">Our Subjects</h3>
-                </div>
-                <p class="text-xs font-semibold text-slate-400 mb-3 ml-3.5">Choose a subject to start learning</p>
-
-                <!-- Clickable Subject Cards Grid -->
-                <div class="grid grid-cols-2 gap-3">
-
-                    <!-- Mathematics -->
-                    <div onclick="alert('Opening Mathematics Notes (12 Notes)')" class="bg-white rounded-2xl overflow-hidden card-shadow flex flex-col justify-between cursor-pointer group hover:shadow-lg transition-all">
-                        <div>
-                            <div class="card-header-gradient math-header">
-                                <div class="bg-blue-600 text-white p-2.5 rounded-2xl grid grid-cols-2 gap-1.5 text-xs font-bold shadow-md shadow-blue-500/20">
-                                    <span class="w-4 h-4 flex items-center justify-center"><i class="fa-solid fa-plus"></i></span>
-                                    <span class="w-4 h-4 flex items-center justify-center"><i class="fa-solid fa-minus"></i></span>
-                                    <span class="w-4 h-4 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></span>
-                                    <span class="w-4 h-4 flex items-center justify-center"><i class="fa-solid fa-divide"></i></span>
-                                </div>
-                            </div>
-                            <div class="px-3 pt-2.5 pb-1">
-                                <h4 class="font-extrabold text-slate-900 text-sm">Mathematics</h4>
-                            </div>
-                        </div>
-                        <div class="px-3 pb-3 flex items-center justify-between text-slate-400">
-                            <span class="text-[11px] font-semibold flex items-center gap-1.5 text-slate-400">
-                                <i class="fa-regular fa-file-lines"></i> 12 Notes
-                            </span>
-                            <div class="w-6 h-6 bg-slate-100 text-blue-600 rounded-full flex items-center justify-center text-[10px] group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Physics -->
-     <div onclick="alert('Opening Physics Notes (12 Notes)')" class="bg-white rounded-2xl overflow-hidden card-shadow flex flex-col justify-between cursor-pointer group hover:shadow-lg transition-all">
-                        <div>
-                            <div class="card-header-gradient physics-header">
-                                <i class="fa-solid fa-atom text-5xl text-cyan-300 drop-shadow-lg group-hover:rotate-45 transition-transform duration-500"></i>
-                            </div>
-                            <div class="px-3 pt-2.5 pb-1">
-                                <h4 class="font-extrabold text-slate-900 text-sm">Physics</h4>
-                            </div>
-                        </div>
-                        <div class="px-3 pb-3 flex items-center justify-between text-slate-400">
-                            <span class="text-[11px] font-semibold flex items-center gap-1.5 text-slate-400">
-                                <i class="fa-regular fa-file-lines"></i> 12 Notes
-                            </span>
-                            <div class="w-6 h-6 bg-slate-100 text-blue-600 rounded-full flex items-center justify-center text-[10px] group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Chemistry -->
-                    <div onclick="alert('Opening Chemistry Notes (12 Notes)')" class="bg-white rounded-2xl overflow-hidden card-shadow flex flex-col justify-between cursor-pointer group hover:shadow-lg transition-all">
-                        <div>
-                            <div class="card-header-gradient chem-header">
-                                <div class="flex items-end gap-1 text-blue-600">
-                                    <i class="fa-solid fa-flask text-4xl drop-shadow"></i>
-                                    <i class="fa-solid fa-vial text-2xl text-amber-500 drop-shadow mb-1"></i>
-                                </div>
-                            </div>
-                            <div class="px-3 pt-2.5 pb-1">
-                                <h4 class="font-extrabold text-slate-900 text-sm">Chemistry</h4>
-                            </div>
-                        </div>
-                        <div class="px-3 pb-3 flex items-center justify-between text-slate-400">
-                            <span class="text-[11px] font-semibold flex items-center gap-1.5 text-slate-400">
-                                <i class="fa-regular fa-file-lines"></i> 12 Notes
-                            </span>
-                            <div class="w-6 h-6 bg-slate-100 text-blue-600 rounded-full flex items-center justify-center text-[10px] group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Biology -->
-                    <div onclick="alert('Opening Biology Notes (12 Notes)')" class="bg-white rounded-2xl overflow-hidden card-shadow flex flex-col justify-between cursor-pointer group hover:shadow-lg transition-all">
-                        <div>
-                            <div class="card-header-gradient bio-header">
-                                <i class="fa-solid fa-brain text-5xl text-pink-500 drop-shadow-md group-hover:scale-110 transition-transform"></i>
-                            </div>
-                            <div class="px-3 pt-2.5 pb-1">
-                                <h4 class="font-extrabold text-slate-900 text-sm">Biology</h4>
-                            </div>
-                        </div>
-                        <div class="px-3 pb-3 flex items-center justify-between text-slate-400">
-                            <span class="text-[11px] font-semibold flex items-center gap-1.5 text-slate-400">
-                                <i class="fa-regular fa-file-lines"></i> 12 Notes
-                            </span>
-                            <div class="w-6 h-6 bg-slate-100 text-blue-600 rounded-full flex items-center justify-center text-[10px] group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Geography -->
-                    <div onclick="alert('Opening Geography Notes (12 Notes)')" class="bg-white rounded-2xl overflow-hidden card-shadow flex flex-col justify-between cursor-pointer group hover:shadow-lg transition-all">
-                        <div>
-                            <div class="card-header-gradient geo-header">
-                                <i class="fa-solid fa-earth-americas text-5xl text-blue-600 drop-shadow-md group-hover:rotate-12 transition-transform"></i>
-                            </div>
-                            <div class="px-3 pt-2.5 pb-1">
-                                <h4 class="font-extrabold text-slate-900 text-sm">Geography</h4>
-                            </div>
-                        </div>
-                        <div class="px-3 pb-3 flex items-center justify-between text-slate-400">
-                            <span class="text-[11px] font-semibold flex items-center gap-1.5 text-slate-400">
-                                <i class="fa-regular fa-file-lines"></i> 12 Notes
-                            </span>
-                            <div class="w-6 h-6 bg-slate-100 text-blue-600 rounded-full flex items-center justify-center text-[10px] group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- History -->
-                    <div onclick="alert('Opening History Notes (12 Notes)')" class="bg-white rounded-2xl overflow-hidden card-shadow flex flex-col justify-between cursor-pointer group hover:shadow-lg transition-all">
-                        <div>
-                            <div class="card-header-gradient history-header">
-                                <div class="flex items-center gap-1.5 text-amber-700">
-                                    <i class="fa-solid fa-scroll text-3xl drop-shadow"></i>
-                                    <i class="fa-solid fa-monument text-3xl drop-shadow"></i>
-                                </div>
-                            </div>
-                            <div class="px-3 pt-2.5 pb-1">
-                                <h4 class="font-extrabold text-slate-900 text-sm">History</h4>
-                            </div>
-                        </div>
-                        <div class="px-3 pb-3 flex items-center justify-between text-slate-400">
-                            <span class="text-[11px] font-semibold flex items-center gap-1.5 text-slate-400">
-                                <i class="fa-regular fa-file-lines"></i> 12 Notes
-                            </span>
-                            <div class="w-6 h-6 bg-slate-100 text-blue-600 rounded-full flex items-center justify-center text-[10px] group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Economics -->
-                    <div onclick="alert('Opening Economics Notes (12 Notes)')" class="bg-white rounded-2xl overflow-hidden card-shadow flex flex-col justify-between cursor-pointer group hover:shadow-lg transition-all col-span-2">
-                        <div>
-                            <div class="card-header-gradient econ-header">
-                                <div class="flex items-center gap-3 text-blue-700">
-                                    <i class="fa-solid fa-coins text-3xl text-yellow-500 drop-shadow"></i>
-                                    <i class="fa-solid fa-chart-line text-4xl text-blue-700 drop-shadow"></i>
-                                </div>
-                            </div>
-                            <div class="px-3 pt-2.5 pb-1">
-                                <h4 class="font-extrabold text-slate-900 text-sm">Economics</h4>
-                            </div>
-                        </div>
-                        <div class="px-3 pb-3 flex items-center justify-between text-slate-400">
-                            <span class="text-[11px] font-semibold flex items-center gap-1.5 text-slate-400">
-                                <i class="fa-regular fa-file-lines"></i> 12 Notes
-                            </span>
-                            <div class="w-6 h-6 bg-slate-100 text-blue-600 rounded-full flex items-center justify-center text-[10px] group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- Go to Exams Banner Callout -->
-            <section class="mt-5 mb-3 bg-blue-50/80 border border-blue-100/80 rounded-2xl p-4 card-shadow flex items-center justify-between gap-3">
-                <div class="flex items-center gap-3">
-                    <div class="text-3xl text-amber-500 flex-shrink-0">
-                        <i class="fa-solid fa-trophy"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-extrabold text-slate-900 text-sm">Ready to Achieve More?</h4>
-                        <p class="text-[11px] font-medium text-slate-500">Start studying now and reach your goals!</p>
-                    </div>
-                </div>
-                <button onclick="alert('Redirecting to Exams page!')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-3.5 py-2.5 rounded-xl transition-colors flex items-center gap-1.5 text-xs flex-shrink-0 shadow-md shadow-blue-500/20 active:scale-95 cursor-pointer">
-                    <span>Go to Exams</span>
-                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                </button>
-            </section>
-        </div>
-
-        <!-- Sticky Bottom Navigation Bar (Fully Clickable) -->
-        <nav class="fixed bottom-0 left-0 right-0 max-w-[430px] mx-auto bg-white/95 backdrop-blur-md border-t border-slate-100 py-2.5 px-6 z-50 rounded-t-3xl shadow-lg">
-            <div class="flex items-center justify-between">
-                <button onclick="alert('You are on Home')" class="flex flex-col items-center gap-1 text-blue-600 font-bold focus:outline-none cursor-pointer">
-                    <i class="fa-solid fa-house text-lg"></i>
-                    <span class="text-[10px]">Home</span>
-                </button>
-                <button onclick="alert('Opening Lessons')" class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition-colors focus:outline-none cursor-pointer">
-                    <i class="fa-solid fa-book-open text-lg"></i>
-                    <span class="text-[10px]">Lessons</span>
-                </button>
-                <button onclick="alert('Opening Quizzes')" class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition-colors focus:outline-none cursor-pointer">
-                    <i class="fa-solid fa-square-check text-lg"></i>
-                    <span class="text-[10px]">Quizzes</span>
-                </button>
-                <button onclick="alert('Opening Progress')" class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition-colors focus:outline-none cursor-pointer">
-                    <i class="fa-solid fa-chart-column text-lg"></i>
-                    <span class="text-[10px]">Progress</span>
-                </button>
-                <button onclick="alert('Opening Profile')" class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition-colors focus:outline-none cursor-pointer">
-                    <i class="fa-solid fa-user text-lg"></i>
-                    <span class="text-[10px]">Profile</span>
-                </button>
-            </div>
-        </nav>
-
+    <div class="container">
+        <!-- Displays your exact uploaded image -->
+        <img src="home.png" alt="LearnBridge Homepage">
     </div>
 
 </body>
-                                </html>
+</html>
