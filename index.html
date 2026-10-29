@@ -12,22 +12,28 @@
         }
         html, body {
             width: 100%;
-            height: 100%;
-            overflow: hidden;
             background-color: #ffffff;
+            overflow-x: hidden;
         }
-        .app-wrapper {
-            width: 100vw;
-            height: 100vh;
+        .app-container {
+            width: 100%;
+            max-width: 430px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            position: relative;
+        }
+        /* Container that crops the top status bar while keeping full vertical height for bottom features */
+        .image-crop-box {
+            width: 100%;
             overflow: hidden;
             position: relative;
         }
-        .app-wrapper img {
+        .image-crop-box img {
             width: 100%;
-            height: 107%; /* Stretches the image vertically to completely eliminate the bottom white space */
-            object-fit: fill;
-            margin-top: -7%; /* Pulls the image up to hide the phone status bar */
+            height: auto;
             display: block;
+            margin-top: -8.5%; /* Cleanly crops out the top phone time/status bar */
+            margin-bottom: -1%;
         }
         area {
             cursor: pointer;
@@ -36,38 +42,40 @@
 </head>
 <body>
 
-    <div class="app-wrapper">
-        <!-- Exact photo stretched to cover 100% of the screen -->
-        <img src="home.png" alt="LearnBridge Homepage" usemap="#learnbridge-map">
+    <div class="app-container">
+        <div class="image-crop-box">
+            <!-- Exact uploaded photo -->
+            <img src="home.png" alt="LearnBridge Homepage" usemap="#learnbridge-map">
 
-        <!-- Clickable Area overlay across image elements -->
-        <map name="learnbridge-map">
-            <!-- Top Right Hamburger Menu -->
-            <area shape="rect" coords="330,80,410,140" alt="Menu" onclick="alert('Menu opened!')">
+            <!-- Clickable Hotspots Map -->
+            <map name="learnbridge-map">
+                <!-- Top Right Hamburger Menu -->
+                <area shape="rect" coords="340,110,410,170" alt="Menu" onclick="alert('Menu opened!')">
 
-            <!-- Start Learning Button -->
-            <area shape="rect" coords="50,330,210,390" alt="Start Learning" onclick="alert('Starting your learning journey!')">
+                <!-- Start Learning Button -->
+                <area shape="rect" coords="45,360,215,420" alt="Start Learning" onclick="alert('Starting your learning journey!')">
 
-            <!-- Subject Cards -->
-            <area shape="rect" coords="30,600,115,730" alt="Mathematics" onclick="alert('Opening Mathematics Notes')">
-            <area shape="rect" coords="130,600,210,730" alt="Physics" onclick="alert('Opening Physics Notes')">
-            <area shape="rect" coords="220,600,300,730" alt="Chemistry" onclick="alert('Opening Chemistry Notes')">
-            <area shape="rect" coords="310,600,390,730" alt="Biology" onclick="alert('Opening Biology Notes')">
+                <!-- Quick Stats / Subject Cards Clickable Areas -->
+                <area shape="rect" coords="30,650,115,770" alt="Mathematics" onclick="alert('Opening Mathematics Notes')">
+                <area shape="rect" coords="130,650,215,770" alt="Physics" onclick="alert('Opening Physics Notes')">
+                <area shape="rect" coords="225,650,310,770" alt="Chemistry" onclick="alert('Opening Chemistry Notes')">
+                <area shape="rect" coords="320,650,405,770" alt="Biology" onclick="alert('Opening Biology Notes')">
 
-            <area shape="rect" coords="30,740,120,860" alt="Geography" onclick="alert('Opening Geography Notes')">
-            <area shape="rect" coords="130,740,220,860" alt="History" onclick="alert('Opening History Notes')">
-            <area shape="rect" coords="230,740,320,860" alt="Economics" onclick="alert('Opening Economics Notes')">
+                <area shape="rect" coords="30,780,125,900" alt="Geography" onclick="alert('Opening Geography Notes')">
+                <area shape="rect" coords="135,780,230,900" alt="History" onclick="alert('Opening History Notes')">
+                <area shape="rect" coords="240,780,335,900" alt="Economics" onclick="alert('Opening Economics Notes')">
 
-            <!-- Go to Exams Button -->
-            <area shape="rect" coords="280,910,400,960" alt="Go to Exams" onclick="alert('Redirecting to Exams!')">
+                <!-- Go to Exams Button -->
+                <area shape="rect" coords="280,950,405,1000" alt="Go to Exams" onclick="alert('Redirecting to Exams!')">
 
-            <!-- Bottom Navigation Items -->
-            <area shape="rect" coords="40,980,100,1050" alt="Home" onclick="alert('Home tab')">
-            <area shape="rect" coords="110,980,180,1050" alt="Lessons" onclick="alert('Lessons tab')">
-            <area shape="rect" coords="190,980,250,1050" alt="Quizzes" onclick="alert('Quizzes tab')">
-            <area shape="rect" coords="260,980,320,1050" alt="Progress" onclick="alert('Progress tab')">
-            <area shape="rect" coords="330,980,400,1050" alt="Profile" onclick="alert('Profile tab')">
-        </map>
+                <!-- Bottom Navigation Bar (Fully visible at the end) -->
+                <area shape="rect" coords="35,1030,105,1100" alt="Home" onclick="alert('Home tab')">
+                <area shape="rect" coords="115,1030,185,1100" alt="Lessons" onclick="alert('Lessons tab')">
+                <area shape="rect" coords="195,1030,265,1100" alt="Quizzes" onclick="alert('Quizzes tab')">
+                <area shape="rect" coords="275,1030,345,1100" alt="Progress" onclick="alert('Progress tab')">
+                <area shape="rect" coords="355,1030,425,1100" alt="Profile" onclick="alert('Profile tab')">
+            </map>
+        </div>
     </div>
 
 </body>
