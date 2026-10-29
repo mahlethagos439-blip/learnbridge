@@ -1,6 +1,6 @@
 {
   "project": "LearnBridge",
-  "version": "integrated-digital-textbook-reader-2026-10-29",
+  "version": "detailed-topic-notes-expanded-2026-10-22",
   "requiredSubjects": [
     "Mathematics",
     "English",
@@ -52,5 +52,5 @@
       "status": "official SAT topic/skill domains for SAT practice organization"
     }
   ],
-  "completionNote": "The app now renders lessonPack and extendedNotes content inside a four-part page-by-page reader for the existing listed units and topics. Content includes subject-specific study guidance, terms, topic subheadings, worked-method guidance, activities, and review questions where available. This is an integrated learning-guide batch, not a claim that every page or every listed unit has been directly verified against the exact current official textbook. Verify exact textbook editions, unit outcomes, and unit titles before describing all content as officially curriculum-verified. Existing question bank completeness depends on the question-bank file included in the archive."
+  "completionNote": "Expanded lesson pages with learning objectives, key terms, explanations, study steps, subject-specific study guidance, detailed subtopic checklists, worked-example method, activity, review questions, and summaries. English and SAT remain topic/skill based without grade selectors. Other subjects remain grade based. Unit-title lists were cross-checked against available online Ethiopian textbook catalogues and Ministry/schoolnet sources where accessible, but some Grade 11/12 topic lists and all detailed subtopic/learning-outcome mappings still require direct comparison with the exact current student textbook before claiming complete curriculum verification."
 }
