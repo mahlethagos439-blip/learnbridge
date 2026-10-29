@@ -1,96 +1,716 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
-  <title>LearnBridge — Learn Today. Build Tomorrow.</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f5ff">
+<title>LearnBridge | Learn Today. Build Tomorrow.</title>
+
+<style>
+:root {
+  --blue: #0757ed;
+  --navy: #101638;
+  --yellow: #ffc400;
+  --muted: #525c89;
+  --line: #dce3fb;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding-bottom: 100px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--navy);
+  background: linear-gradient(#f2f4ff, #fff 40%);
+}
+
+button { font: inherit; cursor: pointer; }
+
+header {
+  max-width: 1300px;
+  margin: auto;
+  min-height: 100px;
+  padding: 15px 4%;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.menu-button {
+  order: -1;
+  width: 42px;
+  padding: 6px;
+  border: 0;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.menu-button span {
+  height: 3px;
+  width: 28px;
+  background: #101b53;
+  border-radius: 5px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo { font-size: 42px; }
+
+.brand h1 {
+  margin: 0;
+  font-size: clamp(25px, 4vw, 36px);
+  color: var(--blue);
+  letter-spacing: -1px;
+}
+
+.brand p {
+  margin: 3px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+main {
+  max-width: 1300px;
+  padding: 0 4%;
+  margin: auto;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 25px;
+  background: #1049d7;
+}
+
+.hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-button {
+  position: absolute;
+  left: 4%;
+  bottom: 7%;
+  width: 37%;
+  height: 20%;
+  border: 0;
+  border-radius: 50px;
+  background: transparent;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0 34px;
+}
+
+.stat {
+  min-height: 125px;
+  padding: 14px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  text-align: center;
+  background: white;
+  border: 1px solid #edf0fb;
+  border-radius: 22px;
+  box-shadow: 0 5px 18px #243c8d0d;
+}
+
+.stat-icon {
+  color: var(--blue);
+  font-size: 29px;
+}
+
+.stat:nth-child(3) .stat-icon,
+.stat:nth-child(4) .stat-icon {
+  color: #efb600;
+}
+
+.stat strong {
+  font-size: clamp(17px, 2.5vw, 29px);
+}
+
+.stat span:last-child { font-size: 14px; }
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.heading-bar {
+  width: 7px;
+  height: 38px;
+  background: var(--blue);
+  border-radius: 8px;
+}
+
+.heading h2 {
+  margin: 0 0 5px;
+  font-size: clamp(25px, 3vw, 36px);
+}
+
+.heading p {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(14px, 2vw, 20px);
+}
+
+.subjects {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.subject {
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: left;
+  color: inherit;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 2px 7px #13265e09;
+}
+
+.subject img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 194 / 119;
+  object-fit: cover;
+}
+
+.subject-info { padding: 12px; }
+
+.subject-info strong {
+  display: block;
+  margin-bottom: 7px;
+  font-size: clamp(14px, 1.7vw, 20px);
+}
+
+.subject-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  color: #45517e;
+}
+
+.subject-bottom small { font-size: 13px; }
+
+.arrow {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  background: #edf0ff;
+  border-radius: 50%;
+  font-size: 25px;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 25px 0;
+  padding: 20px;
+  border: 1px solid #cbd8ff;
+  border-radius: 22px;
+  background: linear-gradient(100deg, #e7edff, #e3e8ff);
+}
+
+.trophy { font-size: 43px; }
+
+.cta-copy { flex: 1; }
+
+.cta h3 {
+  margin: 0 0 7px;
+  color: #081d80;
+  font-size: clamp(17px, 2vw, 25px);
+}
+
+.cta p { margin: 0; color: #202b5d; }
+
+.cta button {
+  padding: 15px 20px;
+  border: 0;
+  border-radius: 15px;
+  color: white;
+  background: var(--blue);
+  font-weight: bold;
+}
+
+.bottom-nav {
+  position: fixed;
+  z-index: 10;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(94%, 1200px);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 10px 5px;
+  border: 1px solid #eef0fb;
+  border-radius: 25px;
+  background: #fffffffa;
+  box-shadow: 0 8px 28px #243c8d15;
+}
+
+.bottom-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  border: 0;
+  background: transparent;
+  color: #525b85;
+}
+
+.bottom-link .icon { font-size: 27px; }
+.bottom-link small { font-size: 12px; }
+.bottom-link.active { color: var(--blue); font-weight: bold; }
+
+/* Left-side slide-out menu */
+.scrim {
+  position: fixed;
+  z-index: 19;
+  inset: 0;
+  background: #07143b70;
+  opacity: 0;
+  visibility: hidden;
+  transition: .2s;
+}
+
+.drawer {
+  position: fixed;
+  z-index: 20;
+  inset: 0 auto 0 0;
+  width: min(340px, 86vw);
+  padding: 20px;
+  background: white;
+  box-shadow: 12px 0 35px #07143b25;
+  transform: translateX(-105%);
+  transition: transform .25s ease;
+}
+
+.menu-open .scrim {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-open .drawer { transform: translateX(0); }
+
+.drawer-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #edf0fb;
+}
+
+.drawer-head h2 {
+  margin: 0;
+  color: var(--blue);
+  font-size: 23px;
+}
+
+.drawer-head p { margin: 4px 0 0; font-size: 12px; }
+
+.close-button {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: #edf0ff;
+  color: #10205c;
+  font-size: 32px;
+}
+
+.drawer nav {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-top: 18px;
+}
+
+.drawer-link {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  padding: 14px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  text-align: left;
+  color: #202b55;
+}
+
+.drawer-link.active {
+  color: var(--blue);
+  background: #edf2ff;
+  font-weight: bold;
+}
+
+.drawer-footer {
+  position: absolute;
+  bottom: 22px;
+  color: #697398;
+  font-size: 13px;
+}
+
+.message {
+  margin: 20px 0;
+  padding: 20px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.message h2 { margin-top: 0; }
+
+.toast {
+  position: fixed;
+  z-index: 30;
+  left: 50%;
+  bottom: 100px;
+  transform: translateX(-50%);
+  padding: 12px 17px;
+  border-radius: 12px;
+  color: white;
+  background: #111a48;
+  display: none;
+  max-width: 90%;
+  text-align: center;
+}
+
+.toast.show { display: block; }
+
+@media (max-width: 680px) {
+  body { padding-bottom: 88px; }
+  header { min-height: 82px; padding: 10px 16px; gap: 12px; }
+  .logo { font-size: 34px; }
+  .brand h1 { font-size: 27px; }
+  .brand p { font-size: 11px; }
+  main { padding: 0 15px; }
+  .hero { border-radius: 19px; }
+  .stats { gap: 8px; margin: 16px 0 25px; }
+  .stat { min-height: 95px; border-radius: 16px; }
+  .stat-icon { font-size: 23px; }
+  .stat strong { font-size: clamp(14px, 3.8vw, 21px); }
+  .stat span:last-child { font-size: 11px; }
+  .heading { gap: 12px; margin-bottom: 16px; }
+  .heading-bar { height: 31px; width: 6px; }
+  .subjects { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
+  .subject { border-radius: 15px; }
+  .subject-info { padding: 9px; }
+  .subject-info strong { font-size: 15px; }
+  .subject-bottom small { font-size: 11px; }
+  .arrow { width: 30px; height: 30px; }
+  .cta { gap: 10px; padding: 13px; flex-wrap: wrap; }
+  .trophy { font-size: 31px; }
+  .cta h3 { font-size: 16px; }
+  .cta p { font-size: 12px; line-height: 1.4; }
+  .cta button { padding: 12px; font-size: 12px; }
+}
+
+@media (max-width: 370px) {
+  .brand h1 { font-size: 23px; }
+  .brand p { font-size: 10px; }
+  .stat span:last-child { font-size: 9px; }
+}
+</style>
 </head>
+
 <body>
-  <header class="topbar">
-    <button class="menu-button" id="openMenu" aria-label="Open navigation menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <a class="brand" href="#" data-page="Home" aria-label="LearnBridge Home">
-      <span class="cap" aria-hidden="true">🎓</span>
-      <span class="brand-copy"><strong>LearnBridge</strong><small>Learn Today. Build Tomorrow.</small></span>
-    </a>
-    <div class="topbar-spacer"></div>
-  </header>
+<header>
+  <button class="menu-button" id="openMenu"
+    aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 
-  <div class="scrim" id="scrim"></div>
-  <aside class="drawer" id="drawer" aria-hidden="true">
-    <div class="drawer-head">
-      <div class="drawer-brand"><span class="cap">🎓</span><div><strong>LearnBridge</strong><small>Learn Today. Build Tomorrow.</small></div></div>
-      <button class="close-menu" id="closeMenu" aria-label="Close navigation menu">×</button>
+  <div class="brand">
+    <span class="logo">🎓</span>
+    <div>
+      <h1>LearnBridge</h1>
+      <p>Learn Today. Build Tomorrow.</p>
     </div>
-    <nav class="drawer-nav" aria-label="Main menu">
-      <button class="drawer-link active" data-page="Home"><span>⌂</span>Home</button>
-      <button class="drawer-link" data-page="Exams"><span>▣</span>Exams</button>
-      <button class="drawer-link" data-page="Resources"><span>▤</span>Resources</button>
-      <button class="drawer-link" data-page="About"><span>ⓘ</span>About</button>
-      <button class="drawer-link" data-page="My Profile"><span>♙</span>My Profile</button>
-      <button class="drawer-link" data-page="Settings"><span>⚙</span>Settings</button>
-      <button class="drawer-link" data-page="Log out"><span>↪</span>Log out</button>
-    </nav>
-    <div class="drawer-footer">Learn Today. Build Tomorrow.</div>
-  </aside>
+  </div>
+</header>
 
-  <main class="page-wrap">
-    <section class="hero" aria-label="Welcome to LearnBridge">
-      <div class="hero-copy">
-        <p class="eyebrow">YOUR LEARNING JOURNEY STARTS HERE</p>
-        <h1>Prepare for<br>Your Success</h1>
-        <p class="hero-subtitle">Study <span>•</span> Practice <span>•</span> Excel</p>
-        <button class="button button-yellow" id="startLearning"><span>▣</span> Start Learning <b>→</b></button>
-      </div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="sun-shape"></div>
-        <div class="school-building"><div class="roof"></div><div class="school-windows"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="school-door"></div></div>
-        <div class="hero-ribbon"></div>
-        <div class="student">
-          <div class="hair"></div><div class="head"><div class="eye e1"></div><div class="eye e2"></div><div class="smile"></div></div>
-          <div class="neck"></div><div class="shirt"><div class="collar"></div><div class="tie"></div></div>
-          <div class="book"><strong>LearnBridge</strong><small>STUDY • GROW • SUCCEED</small></div>
-        </div>
-      </div>
-    </section>
+<div class="scrim" id="scrim"></div>
 
-    <section class="quick-stats" aria-label="LearnBridge features">
-      <article class="stat-card"><span class="stat-icon blue">▤</span><strong>7</strong><span>Subjects</span></article>
-      <article class="stat-card"><span class="stat-icon blue">✓</span><strong>Learn</strong><span>At your pace</span></article>
-      <article class="stat-card"><span class="stat-icon yellow">🏆</span><strong>Practice</strong><span>Build confidence</span></article>
-      <article class="stat-card"><span class="stat-icon yellow">★</span><strong>Always</strong><span>Keep learning</span></article>
-    </section>
+<aside class="drawer" id="drawer" aria-label="Navigation menu">
+  <div class="drawer-head">
+    <div>
+      <h2>🎓 LearnBridge</h2>
+      <p>Learn Today. Build Tomorrow.</p>
+    </div>
+    <button class="close-button" id="closeMenu"
+      aria-label="Close menu">×</button>
+  </div>
 
-    <section class="subjects-section" id="subjects">
-      <div class="section-heading"><span class="heading-bar"></span><div><h2>Our Subjects</h2><p>Choose a subject to start learning</p></div></div>
-      <div class="subjects-grid">
-        <button class="subject-card" data-subject="Mathematics"><div class="subject-art math-art"><span class="math-tile plus">+</span><span class="math-tile minus">−</span><span class="math-tile times">×</span><span class="math-tile divide">÷</span></div><div class="subject-info"><strong>Mathematics</strong><span class="subject-bottom"><small>Explore subject</small><i>›</i></span></div></button>
-        <button class="subject-card" data-subject="Physics"><div class="subject-art physics-art"><span class="atom">⚛</span><span class="orb"></span></div><div class="subject-info"><strong>Physics</strong><span class="subject-bottom"><small>Explore subject</small><i>›</i></span></div></button>
-        <button class="subject-card" data-subject="Chemistry"><div class="subject-art chemistry-art"><span class="flask flask-one">⚗</span><span class="flask flask-two">⚗</span><span class="bubble b1"></span><span class="bubble b2"></span></div><div class="subject-info"><strong>Chemistry</strong><span class="subject-bottom"><small>Explore subject</small><i>›</i></span></div></button>
-        <button class="subject-card" data-subject="Biology"><div class="subject-art biology-art"><span class="brain">🧠</span><span class="leaf"></span></div><div class="subject-info"><strong>Biology</strong><span class="subject-bottom"><small>Explore subject</small><i>›</i></span></div></button>
-        <button class="subject-card" data-subject="Geography"><div class="subject-art geography-art"><span class="globe">🌍</span><span class="cloud c1"></span><span class="cloud c2"></span></div><div class="subject-info"><strong>Geography</strong><span class="subject-bottom"><small>Explore subject</small><i>›</i></span></div></button>
-        <button class="subject-card" data-subject="History"><div class="subject-art history-art"><span class="column">🏛️</span><span class="scroll">▤</span></div><div class="subject-info"><strong>History</strong><span class="subject-bottom"><small>Explore subject</small><i>›</i></span></div></button>
-        <button class="subject-card" data-subject="Economics"><div class="subject-art economics-art"><span class="coin c1">●</span><span class="coin c2">●</span><span class="coin c3">●</span><span class="growth">↗</span></div><div class="subject-info"><strong>Economics</strong><span class="subject-bottom"><small>Explore subject</small><i>›</i></span></div></button>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="trophy">🏆</div><div class="cta-copy"><h3>Ready to Achieve More?</h3><p>Start studying now and reach your goals!</p></div><button class="button button-blue" id="goExams">Go to Exams <b>→</b></button>
-    </section>
-    <section class="page-message" id="pageMessage" hidden aria-live="polite"></section>
-  </main>
-
-  <nav class="bottom-nav" aria-label="Bottom navigation">
-    <button class="bottom-link active" data-page="Home"><span>⌂</span><small>Home</small></button>
-    <button class="bottom-link" data-page="Lessons"><span>▤</span><small>Lessons</small></button>
-    <button class="bottom-link" data-page="Quizzes"><span>☑</span><small>Quizzes</small></button>
-    <button class="bottom-link" data-page="Progress"><span>▥</span><small>Progress</small></button>
-    <button class="bottom-link" data-page="Profile"><span>♙</span><small>Profile</small></button>
+  <nav>
+    <button class="drawer-link active" data-page="Home">⌂　Home</button>
+    <button class="drawer-link" data-page="Exams">▣　Exams</button>
+    <button class="drawer-link" data-page="Resources">▤　Resources</button>
+    <button class="drawer-link" data-page="About">ⓘ　About</button>
+    <button class="drawer-link" data-page="My Profile">♙　My Profile</button>
+    <button class="drawer-link" data-page="Settings">⚙　Settings</button>
+    <button class="drawer-link" data-page="Log out">↪　Log out</button>
   </nav>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js"></script>
+
+  <div class="drawer-footer">Learn Today. Build Tomorrow.</div>
+</aside>
+
+<main>
+  <section class="hero">
+    <img src="assets/hero-reference.jpg"
+      alt="LearnBridge student holding a blue book">
+    <button class="hero-button" id="startLearning"
+      aria-label="Start learning"></button>
+  </section>
+
+  <section class="stats">
+    <article class="stat">
+      <span class="stat-icon">▤</span>
+      <strong>7</strong>
+      <span>Subjects</span>
+    </article>
+    <article class="stat">
+      <span class="stat-icon">👥</span>
+      <strong>Learn</strong>
+      <span>At Your Pace</span>
+    </article>
+    <article class="stat">
+      <span class="stat-icon">🏆</span>
+      <strong>Practice</strong>
+      <span>Build Skills</span>
+    </article>
+    <article class="stat">
+      <span class="stat-icon">★</span>
+      <strong>Always</strong>
+      <span>Free</span>
+    </article>
+  </section>
+
+  <section id="subjectSection">
+    <div class="heading">
+      <span class="heading-bar"></span>
+      <div>
+        <h2>Our Subjects</h2>
+        <p>Choose a subject to start learning</p>
+      </div>
+    </div>
+
+    <div class="subjects">
+      <button class="subject" data-subject="Mathematics">
+        <img src="assets/math.jpg" alt="Mathematics">
+        <div class="subject-info">
+          <strong>Mathematics</strong>
+          <div class="subject-bottom">
+            <small>Study materials</small><span class="arrow">›</span>
+          </div>
+        </div>
+      </button>
+
+      <button class="subject" data-subject="Physics">
+        <img src="assets/physics.jpg" alt="Physics">
+        <div class="subject-info">
+          <strong>Physics</strong>
+          <div class="subject-bottom">
+            <small>Study materials</small><span class="arrow">›</span>
+          </div>
+        </div>
+      </button>
+
+      <button class="subject" data-subject="Chemistry">
+        <img src="assets/chemistry.jpg" alt="Chemistry">
+        <div class="subject-info">
+          <strong>Chemistry</strong>
+          <div class="subject-bottom">
+            <small>Study materials</small><span class="arrow">›</span>
+          </div>
+        </div>
+      </button>
+
+      <button class="subject" data-subject="Biology">
+        <img src="assets/biology.jpg" alt="Biology">
+        <div class="subject-info">
+          <strong>Biology</strong>
+          <div class="subject-bottom">
+            <small>Study materials</small><span class="arrow">›</span>
+          </div>
+        </div>
+      </button>
+
+      <button class="subject" data-subject="Geography">
+        <img src="assets/geography.jpg" alt="Geography">
+        <div class="subject-info">
+          <strong>Geography</strong>
+          <div class="subject-bottom">
+            <small>Study materials</small><span class="arrow">›</span>
+          </div>
+        </div>
+      </button>
+
+      <button class="subject" data-subject="History">
+        <img src="assets/history.jpg" alt="History">
+        <div class="subject-info">
+          <strong>History</strong>
+          <div class="subject-bottom">
+            <small>Study materials</small><span class="arrow">›</span>
+          </div>
+        </div>
+      </button>
+
+      <button class="subject" data-subject="Economics">
+        <img src="assets/economics.jpg" alt="Economics">
+        <div class="subject-info">
+          <strong>Economics</strong>
+          <div class="subject-bottom">
+            <small>Study materials</small><span class="arrow">›</span>
+          </div>
+        </div>
+      </button>
+    </div>
+  </section>
+
+  <section class="cta">
+    <span class="trophy">🏆</span>
+    <div class="cta-copy">
+      <h3>Ready to Achieve More?</h3>
+      <p>Start studying now and reach your goals!</p>
+    </div>
+    <button id="goExams">Go to Exams →</button>
+  </section>
+
+  <section class="message" id="pageMessage" hidden></section>
+</main>
+
+<nav class="bottom-nav" aria-label="Bottom navigation">
+  <button class="bottom-link active" data-page="Home">
+    <span class="icon">⌂</span><small>Home</small>
+  </button>
+  <button class="bottom-link" data-page="Lessons">
+    <span class="icon">▤</span><small>Lessons</small>
+  </button>
+  <button class="bottom-link" data-page="Quizzes">
+    <span class="icon">☑</span><small>Quizzes</small>
+  </button>
+  <button class="bottom-link" data-page="Progress">
+    <span class="icon">▥</span><small>Progress</small>
+  </button>
+  <button class="bottom-link" data-page="Profile">
+    <span class="icon">♙</span><small>Profile</small>
+  </button>
+</nav>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const body = document.body;
+const openMenu = document.getElementById("openMenu");
+const closeMenu = document.getElementById("closeMenu");
+const scrim = document.getElementById("scrim");
+const toast = document.getElementById("toast");
+const pageMessage = document.getElementById("pageMessage");
+
+function showMenu() {
+  body.classList.add("menu-open");
+  openMenu.setAttribute("aria-expanded", "true");
+}
+
+function hideMenu() {
+  body.classList.remove("menu-open");
+  openMenu.setAttribute("aria-expanded", "false");
+}
+
+openMenu.addEventListener("click", showMenu);
+closeMenu.addEventListener("click", hideMenu);
+scrim.addEventListener("click", hideMenu);
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") hideMenu();
+});
+
+function notify(message) {
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(window.learnBridgeToastTimer);
+  window.learnBridgeToastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
+}
+
+function navigate(page) {
+  hideMenu();
+
+  document.querySelectorAll("[data-page]").forEach(button => {
+    button.classList.toggle("active", button.dataset.page === page);
+  });
+
+  if (page === "Home") {
+    pageMessage.hidden = true;
+    document.getElementById("subjectSection")
+      .scrollIntoView({ behavior: "smooth", block: "start" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+
+  pageMessage.hidden = false;
+  pageMessage.innerHTML = "";
+
+  const title = document.createElement("h2");
+  title.textContent = page;
+
+  const description = document.createElement("p");
+  description.textContent =
+    page === "Log out"
+      ? "Sign-out will be available after account authentication is connected."
+      : "This section will be connected when we build the next part of LearnBridge.";
+
+  pageMessage.append(title, description);
+  pageMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+document.querySelectorAll("[data-page]").forEach(button => {
+  button.addEventListener("click", () => navigate(button.dataset.page));
+});
+
+document.querySelectorAll("[data-subject]").forEach(button => {
+  button.addEventListener("click", () => {
+    notify(button.dataset.subject +
+      " selected. Study materials will be added in a later step.");
+  });
+});
+
+document.getElementById("startLearning").addEventListener("click", () => {
+  document.getElementById("subjectSection")
+    .scrollIntoView({ behavior: "smooth" });
+});
+
+document.getElementById("goExams").addEventListener("click", () => {
+  navigate("Exams");
+});
+</script>
 </body>
-</html>
+        </html>
+  
