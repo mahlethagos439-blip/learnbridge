@@ -1,22 +1,23 @@
-# LearnBridge — Modern Design & Feature Foundation
+# LearnBridge — Integrated Digital Textbook Reader
 
-This package is the design-and-features foundation for LearnBridge. It intentionally excludes the question-bank file and does not display prewritten lesson notes, quiz questions, seeded flashcards, or glossary entries. Add the actual curriculum content and question bank separately with Gemini.
+LearnBridge is a mobile-friendly learning web app with the slogan “Learn Today. Build Tomorrow.” This update starts from the saved `LearnBridge-Modern-Design-No-Account-Updated.zip` project and integrates a page-by-page lesson reader into the existing Lessons flow.
 
 ## Included
-- Refreshed, responsive homepage and subject-area cards
-- Nine subject areas: Mathematics, English, SAT, Biology, Chemistry, Physics, Geography, Economics, History
-- Prepared lesson and quiz screens with empty content states for Gemini to fill
-- Study planner saved locally on this device
-- Flashcard and glossary workspaces (empty until content is added)
-- Progress, saved units, settings, profile/auth scaffolding
-- Light/dark theme styling already present in the app
+- Existing LearnBridge shell, homepage, subject groups, navigation drawer, five bottom-navigation sections, and study tools
+- Exactly nine selected subject areas: Mathematics, English, SAT, Biology, Chemistry, Physics, Geography, Economics, and History
+- Integrated lesson content renderer using the project's existing `lessonPack`, `extendedNotes`, and topic-subtopic data
+- Numbered digital pages with Previous/Next controls, page count, and reading-progress indicator
+- Learning objectives, key terms, subject-specific study guidance, worked-method guidance, activities, summaries, and review questions where available in the existing content data
+- Existing saved-unit/progress logic, themes, responsive styles, PWA manifest, and service worker files
 
-## Setup and limitations
-- Firebase sign-in requires your own project configuration in `auth-config.js`; it is not preconfigured.
-- Progress/planner information is stored locally unless a backend is added.
-- This is a mobile-friendly web app package, not an Android APK.
-- ZIP integrity and JavaScript syntax should be checked after any further edits; visual/browser testing on the user's phone is still needed.
-- Gemini should add verified textbook-aligned notes, page-by-page lesson structure, real practice questions, answer keys, explanations, and working quiz logic.
+## Important content accuracy note
+The reader is integrated and lesson content is generated for the topics listed in the project. However, this package has not been verified page-by-page against every current Ethiopian Ministry of Education textbook. Treat the notes as a study-guide draft and verify exact textbook edition, unit titles, learning outcomes, and topic-specific examples against the current approved student textbook before claiming official curriculum verification.
 
-## Run
-Extract the ZIP and open `index.html` in a browser for basic testing. A local/static web server is recommended for progressive web app/service-worker behavior.
+## Existing limitations retained
+- The source project did not include a separate question-bank file, so this update does not claim to add or verify a complete quiz bank.
+- Flashcard and glossary areas remain workspaces rather than fully populated subject databases.
+- Progress and planner data are stored locally on the device.
+- Firebase sign-in is not enabled by this account-free project.
+
+## Run and test
+Extract the ZIP and open `index.html` in a browser. A local/static web server is recommended for service-worker behavior. The `app.js` JavaScript syntax was checked with `node --check`; visual interaction testing in a real browser and on Android is still recommended.

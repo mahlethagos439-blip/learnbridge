@@ -53,3 +53,20 @@ header .brand{order:1}
 .side-drawer>button:hover{background:#202b54;border-color:#40517f}
 .side-drawer>button span{font-size:15px}
 @media(max-width:520px){.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px}.feature-grid .feature{padding:13px 11px}.feature-grid .feature strong{font-size:14px}.feature-grid .feature p{font-size:11px}.feature-grid .feature button{font-size:11px;padding:8px 7px}}
+
+/* Integrated LearnBridge digital textbook reader */
+.reader-progress{display:flex;align-items:center;gap:12px;margin:14px 0 18px;color:var(--muted);font-size:.82rem}
+.reader-progress .progress{flex:1;min-width:80px}
+.reader-page-heading{padding-bottom:14px;margin-bottom:10px;border-bottom:1px solid #d4e0f0}
+.reader-page-heading .eyebrow{margin:0 0 6px;color:#52627e;font-weight:800;letter-spacing:.08em;font-size:.76rem}
+.reader-page-heading h2{margin:0}
+.reader-controls{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid #d4e0f0;padding-top:18px;margin-top:22px}
+.reader-controls span{font-size:.85rem;color:#52627e}
+.reader-controls button:disabled{opacity:.42;cursor:not-allowed;filter:grayscale(.6)}
+.source-note{font-size:.82rem;color:var(--muted);line-height:1.6;margin:14px 2px}
+.lessonbody details{margin-top:12px;border:1px solid #c5d3e8;border-radius:10px;padding:10px 12px;background:#f8fbff;color:#17213b}
+.lessonbody summary{cursor:pointer;font-weight:700;color:#1d4ed8}
+.lessonbody details p{margin:8px 0 0}
+.lessonbody .note-section ol{padding-left:22px}
+.lessonbody .note-section ol li{margin:8px 0;color:#30405f}
+@media(max-width:520px){.reader-controls{display:grid;grid-template-columns:1fr 1fr}.reader-controls span{grid-column:1/-1;grid-row:1;text-align:center}.reader-controls button{width:100%;padding:11px 8px}.reader-progress{align-items:flex-start;flex-direction:column;gap:6px}.reader-progress .progress{width:100%}}
