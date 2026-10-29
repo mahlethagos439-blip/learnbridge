@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LearnBridge</title>
     <style>
         * {
@@ -12,21 +12,20 @@
         }
         html, body {
             width: 100%;
-            height: 100%;
             background-color: #ffffff;
-            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
         }
         .container {
-            width: 100vw;
-            min-height: 100vh;
-            overflow: hidden;
-            position: relative;
+            width: 100%;
+            margin: 0;
+            padding: 0;
         }
         .container img {
             width: 100%;
             height: auto;
             display: block;
-            margin-top: -62px; /* Pulls image up to completely crop the status bar */
+            margin-top: -65px; /* Pulls the image up to remove the top gap completely */
         }
         area {
             cursor: pointer;
@@ -36,10 +35,8 @@
 <body>
 
     <div class="container">
-        <!-- Exact uploaded photo -->
         <img src="home.png" alt="LearnBridge Homepage" usemap="#learnbridge-map">
 
-        <!-- Clickable hotspots aligned to screen percentage -->
         <map name="learnbridge-map">
             <!-- Top Right Hamburger Menu -->
             <area shape="rect" coords="350,110,410,160" alt="Menu" onclick="alert('Menu opened!')">
