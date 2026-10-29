@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>LearnBridge — Learn Today. Build Tomorrow.</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="menu-button" id="openMenu" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="brand" href="#" data-page="Home" aria-label="LearnBridge Home">
+      <span class="cap" aria-hidden="true">🎓</span>
+      <span class="brand-copy"><strong>LearnBridge</strong><small>Learn Today. Build Tomorrow.</small></span>
+    </a>
+    <div class="topbar-spacer"></div>
+  </header>
+
+  <div class="scrim" id="scrim"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <div class="drawer-brand"><span class="cap">🎓</span><div><strong>LearnBridge</strong><small>Learn Today. Build Tomorrow.</small></div></div>
+      <button class="close-menu" id="closeMenu" aria-label="Close navigation menu">×</button>
+    </div>
+    <nav class="drawer-nav" aria-label="Main menu">
+      <button class="drawer-link active" data-page="Home"><span>⌂</span>Home</button>
+      <button class="drawer-link" data-page="Exams"><span>▣</span>Exams</button>
+      <button class="drawer-link" data-page="Resources"><span>▤</span>Resources</button>
+      <button class="drawer-link" data-page="About"><span>ⓘ</span>About</button>
+      <button class="drawer-link" data-page="My Profile"><span>♙</span>My Profile</button>
+      <button class="drawer-link" data-page="Settings"><span>⚙</span>Settings</button>
+      <button class="drawer-link" data-page="Log out"><span>↪</span>Log out</button>
+    </nav>
+    <div class="drawer-footer">Learn Today. Build Tomorrow.</div>
+  </aside>
+
+  <main class="page-wrap">
+    <section class="hero" aria-label="Welcome to LearnBridge">
+      <div class="hero-copy">
+        <p class="eyebrow">YOUR LEARNING JOURNEY STARTS HERE</p>
+        <h1>Prepare for<br>Your Success</h1>
+        <p class="hero-subtitle">Study <span>•</span> Practice <span>•</span> Excel</p>
+        <button class="button button-yellow" id="startLearning"><span>▣</span> Start Learning <b>→</b></button>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="sun-shape"></div>
+        <div class="school-building"><div class="roof"></div><div class="school-windows"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="school-door"></div></div>
+        <div class="hero-ribbon"></div>
+        <div class="student">
+          <div class="hair"></div><div class="head"><div class="eye e1"></div><div class="eye e2"></div><div class="smile"></div></div>
+          <div class="neck"></div><div class="shirt"><div class="collar"></div><div class="tie"></div></div>
+          <div class="book"><strong>LearnBridge</strong><small>STUDY • GROW • SUCCEED</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-stats" aria-label="LearnBridge features">
+      <article class="stat-card"><span class="stat-icon blue">▤</span><strong>7</strong><span>Subjects</span></article>
+      <article class="stat-card"><span class="stat-icon blue">✓</span><strong>Learn</strong><span>At your pace</span></article>
+      <article class="stat-card"><span class="stat-icon yellow">🏆</span><strong>Practice</strong><span>Build confidence</span></article>
+      <article class="stat-card"><span class="stat-icon yellow">★</span><strong>Always</strong><span>Keep learning</span></article>
+    </section>
+
+    <section class="subjects-section" id="subjects">
+      <div class="section-heading"><span class="heading-bar"></span><div><h2>Our Subjects</h2><p>Choose a subject to start learning</p></div></div>
+      <div class="subjects-grid">
+        <button class="subject-card" data-subject="Mathematics"><div class="subject-art math-art"><span class="math-tile plus">+</span><span class="math-tile minus">−</span><span class="math-tile times">×</span><span class="math-tile divide">÷</span></div><div class="subject-info"><strong>Mathematics</strong><span class="subject-bottom"><small>Explore subject</small><i>›</i></span></div></button>
+        <button class="subject-card" data-subject="Physics"><div class="subject-art physics-art"><span class="atom">⚛</span><span class="orb"></span></div><div class="subject-info"><strong>Physics</strong><span class="subject-bottom"><small>Explore subject</small><i>›</i></span></div></button>
+        <button class="subject-card" data-subject="Chemistry"><div class="subject-art chemistry-art"><span class="flask flask-one">⚗</span><span class="flask flask-two">⚗</span><span class="bubble b1"></span><span class="bubble b2"></span></div><div class="subject-info"><strong>Chemistry</strong><span class="subject-bottom"><small>Explore subject</small><i>›</i></span></div></button>
+        <button class="subject-card" data-subject="Biology"><div class="subject-art biology-art"><span class="brain">🧠</span><span class="leaf"></span></div><div class="subject-info"><strong>Biology</strong><span class="subject-bottom"><small>Explore subject</small><i>›</i></span></div></button>
+        <button class="subject-card" data-subject="Geography"><div class="subject-art geography-art"><span class="globe">🌍</span><span class="cloud c1"></span><span class="cloud c2"></span></div><div class="subject-info"><strong>Geography</strong><span class="subject-bottom"><small>Explore subject</small><i>›</i></span></div></button>
+        <button class="subject-card" data-subject="History"><div class="subject-art history-art"><span class="column">🏛️</span><span class="scroll">▤</span></div><div class="subject-info"><strong>History</strong><span class="subject-bottom"><small>Explore subject</small><i>›</i></span></div></button>
+        <button class="subject-card" data-subject="Economics"><div class="subject-art economics-art"><span class="coin c1">●</span><span class="coin c2">●</span><span class="coin c3">●</span><span class="growth">↗</span></div><div class="subject-info"><strong>Economics</strong><span class="subject-bottom"><small>Explore subject</small><i>›</i></span></div></button>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="trophy">🏆</div><div class="cta-copy"><h3>Ready to Achieve More?</h3><p>Start studying now and reach your goals!</p></div><button class="button button-blue" id="goExams">Go to Exams <b>→</b></button>
+    </section>
+    <section class="page-message" id="pageMessage" hidden aria-live="polite"></section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Bottom navigation">
+    <button class="bottom-link active" data-page="Home"><span>⌂</span><small>Home</small></button>
+    <button class="bottom-link" data-page="Lessons"><span>▤</span><small>Lessons</small></button>
+    <button class="bottom-link" data-page="Quizzes"><span>☑</span><small>Quizzes</small></button>
+    <button class="bottom-link" data-page="Progress"><span>▥</span><small>Progress</small></button>
+    <button class="bottom-link" data-page="Profile"><span>♙</span><small>Profile</small></button>
+  </nav>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
