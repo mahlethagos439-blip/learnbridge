@@ -1,0 +1,56 @@
+{
+  "project": "LearnBridge",
+  "version": "detailed-topic-notes-expanded-2026-10-22",
+  "requiredSubjects": [
+    "Mathematics",
+    "English",
+    "SAT",
+    "Biology",
+    "Chemistry",
+    "Physics",
+    "Geography",
+    "Economics",
+    "History"
+  ],
+  "questionCounts": {
+    "Mathematics": 500,
+    "English": 500,
+    "SAT": 500,
+    "Biology": 500,
+    "Chemistry": 500,
+    "Physics": 500,
+    "Geography": 500,
+    "Economics": 500,
+    "History": 500
+  },
+  "totalQuestionItems": 4500,
+  "questionStatus": "draft-review-required",
+  "curriculumSources": [
+    {
+      "title": "Ethiopian Ministry of Education curriculum framework",
+      "url": "https://www.moe.gov.et/storage/Books/Curriculum%20Framework%20for%20Ethiopian%20Education%20%28KG%20%E2%80%93%20Grade%2012%29.pdf",
+      "status": "official framework for grade/subject structure; not a substitute for each current textbook"
+    },
+    {
+      "title": "Ministry of Education Ethiopia textbook announcement",
+      "url": "https://t.me/s/ethio_moe/27",
+      "status": "official channel listing textbooks; verify individual edition and unit structure"
+    },
+    {
+      "title": "Ethiopia Schoolnet Learning Passport",
+      "url": "https://ethiopia-schoolnet.learningpassport.org/",
+      "status": "supplementary online lessons; subject and grade coverage varies"
+    },
+    {
+      "title": "Abrari Ethiopian new-curriculum textbook catalogue",
+      "url": "https://abrari.app/textbooks/grade-9",
+      "status": "independent catalogue, not affiliated with the Ministry; used as a cross-check, not final authority"
+    },
+    {
+      "title": "College Board SAT content domains",
+      "url": "https://satsuite.collegeboard.org/sat/whats-on-the-test/reading-writing",
+      "status": "official SAT topic/skill domains for SAT practice organization"
+    }
+  ],
+  "completionNote": "Expanded lesson pages with learning objectives, key terms, explanations, study steps, subject-specific study guidance, detailed subtopic checklists, worked-example method, activity, review questions, and summaries. English and SAT remain topic/skill based without grade selectors. Other subjects remain grade based. Unit-title lists were cross-checked against available online Ethiopian textbook catalogues and Ministry/schoolnet sources where accessible, but some Grade 11/12 topic lists and all detailed subtopic/learning-outcome mappings still require direct comparison with the exact current student textbook before claiming complete curriculum verification."
+}
