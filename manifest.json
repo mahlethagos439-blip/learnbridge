@@ -1,0 +1,19 @@
+{
+  "name": "LearnBridge \u2014 Design Foundation",
+  "short_name": "LearnBridge",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a1026",
+  "theme_color": "#101936",
+  "description": "Modern mobile-friendly learning platform foundation ready for Gemini curriculum content.",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "version": "1.2.0"
+}
