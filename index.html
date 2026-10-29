@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LearnBridge</title>
     <style>
         * {
@@ -12,22 +12,21 @@
         }
         html, body {
             width: 100%;
-            height: 100%;
             background-color: #ffffff;
-            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
         }
-        .crop-wrapper {
+        .frame {
             width: 100%;
-            height: 100vh;
+            max-width: 430px;
             overflow: hidden;
             position: relative;
         }
-        .crop-wrapper img {
+        .frame img {
             width: 100%;
-            height: 106%; /* Expands height so status bar is pushed outside clipping bounds */
-            object-fit: cover;
-            object-position: center bottom; /* Pins bottom and crops top status bar */
+            height: auto;
             display: block;
+            margin-top: -6.5%; /* Percent-based top shift crops phone bar proportionally on all screens */
         }
         area {
             cursor: pointer;
@@ -36,35 +35,35 @@
 </head>
 <body>
 
-    <div class="crop-wrapper">
+    <div class="frame">
         <img src="home.png" alt="LearnBridge Homepage" usemap="#learnbridge-map">
 
         <map name="learnbridge-map">
             <!-- Top Right Hamburger Menu -->
-            <area shape="rect" coords="350,60,410,110" alt="Menu" onclick="alert('Menu opened!')">
+            <area shape="rect" coords="350,110,410,160" alt="Menu" onclick="alert('Menu opened!')">
 
             <!-- Start Learning Button -->
-            <area shape="rect" coords="55,310,200,360" alt="Start Learning" onclick="alert('Starting your learning journey!')">
+            <area shape="rect" coords="55,360,200,410" alt="Start Learning" onclick="alert('Starting your learning journey!')">
 
             <!-- Subject Cards -->
-            <area shape="rect" coords="40,600,115,720" alt="Mathematics" onclick="alert('Opening Mathematics Notes')">
-            <area shape="rect" coords="135,600,210,720" alt="Physics" onclick="alert('Opening Physics Notes')">
-            <area shape="rect" coords="225,600,300,720" alt="Chemistry" onclick="alert('Opening Chemistry Notes')">
-            <area shape="rect" coords="315,600,390,720" alt="Biology" onclick="alert('Opening Biology Notes')">
+            <area shape="rect" coords="40,650,115,770" alt="Mathematics" onclick="alert('Opening Mathematics Notes')">
+            <area shape="rect" coords="135,650,210,770" alt="Physics" onclick="alert('Opening Physics Notes')">
+            <area shape="rect" coords="225,650,300,770" alt="Chemistry" onclick="alert('Opening Chemistry Notes')">
+            <area shape="rect" coords="315,650,390,770" alt="Biology" onclick="alert('Opening Biology Notes')">
 
-            <area shape="rect" coords="40,730,125,850" alt="Geography" onclick="alert('Opening Geography Notes')">
-            <area shape="rect" coords="135,730,225,850" alt="History" onclick="alert('Opening History Notes')">
-            <area shape="rect" coords="235,730,325,850" alt="Economics" onclick="alert('Opening Economics Notes')">
+            <area shape="rect" coords="40,780,125,900" alt="Geography" onclick="alert('Opening Geography Notes')">
+            <area shape="rect" coords="135,780,225,900" alt="History" onclick="alert('Opening History Notes')">
+            <area shape="rect" coords="235,780,325,900" alt="Economics" onclick="alert('Opening Economics Notes')">
 
             <!-- Go to Exams Button -->
-            <area shape="rect" coords="290,900,390,940" alt="Go to Exams" onclick="alert('Redirecting to Exams!')">
+            <area shape="rect" coords="290,950,390,990" alt="Go to Exams" onclick="alert('Redirecting to Exams!')">
 
             <!-- Bottom Navigation Items -->
-            <area shape="rect" coords="50,980,100,1030" alt="Home" onclick="alert('Home tab')">
-            <area shape="rect" coords="120,980,180,1030" alt="Lessons" onclick="alert('Lessons tab')">
-            <area shape="rect" coords="190,980,250,1030" alt="Quizzes" onclick="alert('Quizzes tab')">
-            <area shape="rect" coords="260,980,320,1030" alt="Progress" onclick="alert('Progress tab')">
-            <area shape="rect" coords="330,980,390,1030" alt="Profile" onclick="alert('Profile tab')">
+            <area shape="rect" coords="50,1030,100,1080" alt="Home" onclick="alert('Home tab')">
+            <area shape="rect" coords="120,1030,180,1080" alt="Lessons" onclick="alert('Lessons tab')">
+            <area shape="rect" coords="190,1030,250,1080" alt="Quizzes" onclick="alert('Quizzes tab')">
+            <area shape="rect" coords="260,1030,320,1080" alt="Progress" onclick="alert('Progress tab')">
+            <area shape="rect" coords="330,1030,390,1080" alt="Profile" onclick="alert('Profile tab')">
         </map>
     </div>
 
