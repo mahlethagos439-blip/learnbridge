@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f4f5ff">
-<title>LearnBridge | Learn Today. Build Tomorrow.</title>
+<title>LearnBridge</title>
 
 <style>
 :root {
@@ -13,7 +13,6 @@
   --navy: #101638;
   --yellow: #ffc400;
   --muted: #525c89;
-  --line: #dce3fb;
 }
 
 * { box-sizing: border-box; }
@@ -21,7 +20,7 @@
 body {
   margin: 0;
   padding-bottom: 100px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
   color: var(--navy);
   background: linear-gradient(#f2f4ff, #fff 40%);
 }
@@ -31,11 +30,11 @@ button { font: inherit; cursor: pointer; }
 header {
   max-width: 1300px;
   margin: auto;
-  min-height: 100px;
-  padding: 15px 4%;
+  min-height: 92px;
+  padding: 14px 4%;
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
 }
 
 .menu-button {
@@ -62,18 +61,17 @@ header {
   gap: 10px;
 }
 
-.logo { font-size: 42px; }
+.logo { font-size: 40px; }
 
 .brand h1 {
   margin: 0;
   font-size: clamp(25px, 4vw, 36px);
   color: var(--blue);
-  letter-spacing: -1px;
 }
 
 .brand p {
   margin: 3px 0 0;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
 }
 
@@ -84,27 +82,16 @@ main {
 }
 
 .hero {
-  position: relative;
   overflow: hidden;
   border-radius: 25px;
   background: #1049d7;
+  position: relative;
 }
 
 .hero img {
   display: block;
   width: 100%;
   height: auto;
-}
-
-.hero-button {
-  position: absolute;
-  left: 4%;
-  bottom: 7%;
-  width: 37%;
-  height: 20%;
-  border: 0;
-  border-radius: 50px;
-  background: transparent;
 }
 
 .stats {
@@ -115,7 +102,7 @@ main {
 }
 
 .stat {
-  min-height: 125px;
+  min-height: 120px;
   padding: 14px 5px;
   display: flex;
   flex-direction: column;
@@ -131,7 +118,7 @@ main {
 
 .stat-icon {
   color: var(--blue);
-  font-size: 29px;
+  font-size: 28px;
 }
 
 .stat:nth-child(3) .stat-icon,
@@ -140,15 +127,15 @@ main {
 }
 
 .stat strong {
-  font-size: clamp(17px, 2.5vw, 29px);
+  font-size: clamp(16px, 2.5vw, 27px);
 }
 
-.stat span:last-child { font-size: 14px; }
+.stat span:last-child { font-size: 13px; }
 
 .heading {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 15px;
   margin-bottom: 22px;
 }
 
@@ -183,7 +170,7 @@ main {
   text-align: left;
   color: inherit;
   background: white;
-  border: 1px solid var(--line);
+  border: 1px solid #dce3fb;
   border-radius: 18px;
   box-shadow: 0 2px 7px #13265e09;
 }
@@ -211,23 +198,23 @@ main {
   color: #45517e;
 }
 
-.subject-bottom small { font-size: 13px; }
+.subject-bottom small { font-size: 12px; }
 
 .arrow {
-  width: 34px;
-  height: 34px;
-  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
   display: grid;
   place-items: center;
+  flex-shrink: 0;
   background: #edf0ff;
   border-radius: 50%;
-  font-size: 25px;
+  font-size: 24px;
 }
 
 .cta {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
   margin: 25px 0;
   padding: 20px;
   border: 1px solid #cbd8ff;
@@ -235,8 +222,7 @@ main {
   background: linear-gradient(100deg, #e7edff, #e3e8ff);
 }
 
-.trophy { font-size: 43px; }
-
+.trophy { font-size: 40px; }
 .cta-copy { flex: 1; }
 
 .cta h3 {
@@ -248,45 +234,15 @@ main {
 .cta p { margin: 0; color: #202b5d; }
 
 .cta button {
-  padding: 15px 20px;
+  padding: 14px 18px;
   border: 0;
-  border-radius: 15px;
+  border-radius: 14px;
   color: white;
   background: var(--blue);
   font-weight: bold;
 }
 
-.bottom-nav {
-  position: fixed;
-  z-index: 10;
-  bottom: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(94%, 1200px);
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  padding: 10px 5px;
-  border: 1px solid #eef0fb;
-  border-radius: 25px;
-  background: #fffffffa;
-  box-shadow: 0 8px 28px #243c8d15;
-}
-
-.bottom-link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  border: 0;
-  background: transparent;
-  color: #525b85;
-}
-
-.bottom-link .icon { font-size: 27px; }
-.bottom-link small { font-size: 12px; }
-.bottom-link.active { color: var(--blue); font-weight: bold; }
-
-/* Left-side slide-out menu */
+/* Left-side menu and overlay */
 .scrim {
   position: fixed;
   z-index: 19;
@@ -351,9 +307,6 @@ main {
 }
 
 .drawer-link {
-  display: flex;
-  align-items: center;
-  gap: 13px;
   width: 100%;
   padding: 14px;
   border: 0;
@@ -376,11 +329,42 @@ main {
   font-size: 13px;
 }
 
+.bottom-nav {
+  position: fixed;
+  z-index: 10;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(94%, 1200px);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 10px 5px;
+  border: 1px solid #eef0fb;
+  border-radius: 25px;
+  background: #fffffffa;
+  box-shadow: 0 8px 28px #243c8d15;
+}
+
+.bottom-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  border: 0;
+  background: transparent;
+  color: #525b85;
+  padding: 4px 0;
+}
+
+.bottom-link .icon { font-size: 26px; }
+.bottom-link small { font-size: 11px; }
+.bottom-link.active { color: var(--blue); font-weight: bold; }
+
 .message {
   margin: 20px 0;
   padding: 20px;
   background: white;
-  border: 1px solid var(--line);
+  border: 1px solid #dce3fb;
   border-radius: 16px;
 }
 
@@ -405,36 +389,28 @@ main {
 
 @media (max-width: 680px) {
   body { padding-bottom: 88px; }
-  header { min-height: 82px; padding: 10px 16px; gap: 12px; }
+  header { min-height: 80px; padding: 10px 16px; gap: 12px; }
   .logo { font-size: 34px; }
-  .brand h1 { font-size: 27px; }
+  .brand h1 { font-size: 26px; }
   .brand p { font-size: 11px; }
   main { padding: 0 15px; }
   .hero { border-radius: 19px; }
   .stats { gap: 8px; margin: 16px 0 25px; }
-  .stat { min-height: 95px; border-radius: 16px; }
-  .stat-icon { font-size: 23px; }
-  .stat strong { font-size: clamp(14px, 3.8vw, 21px); }
-  .stat span:last-child { font-size: 11px; }
+  .stat { min-height: 92px; border-radius: 16px; }
+  .stat-icon { font-size: 22px; }
+  .stat strong { font-size: clamp(14px, 3.8vw, 20px); }
+  .stat span:last-child { font-size: 10px; }
   .heading { gap: 12px; margin-bottom: 16px; }
   .heading-bar { height: 31px; width: 6px; }
   .subjects { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
   .subject { border-radius: 15px; }
   .subject-info { padding: 9px; }
   .subject-info strong { font-size: 15px; }
-  .subject-bottom small { font-size: 11px; }
-  .arrow { width: 30px; height: 30px; }
   .cta { gap: 10px; padding: 13px; flex-wrap: wrap; }
-  .trophy { font-size: 31px; }
+  .trophy { font-size: 30px; }
   .cta h3 { font-size: 16px; }
   .cta p { font-size: 12px; line-height: 1.4; }
   .cta button { padding: 12px; font-size: 12px; }
-}
-
-@media (max-width: 370px) {
-  .brand h1 { font-size: 23px; }
-  .brand p { font-size: 10px; }
-  .stat span:last-child { font-size: 9px; }
 }
 </style>
 </head>
@@ -482,10 +458,9 @@ main {
 
 <main>
   <section class="hero">
+    <!-- Keep your original design's banner image at this path. -->
     <img src="assets/hero-reference.jpg"
-      alt="LearnBridge student holding a blue book">
-    <button class="hero-button" id="startLearning"
-      aria-label="Start learning"></button>
+      alt="LearnBridge student holding the blue book">
   </section>
 
   <section class="stats">
@@ -495,7 +470,7 @@ main {
       <span>Subjects</span>
     </article>
     <article class="stat">
-      <span class="stat-icon">👥</span>
+      <span class="stat-icon">📚</span>
       <strong>Learn</strong>
       <span>At Your Pace</span>
     </article>
@@ -651,15 +626,6 @@ document.addEventListener("keydown", event => {
   if (event.key === "Escape") hideMenu();
 });
 
-function notify(message) {
-  toast.textContent = message;
-  toast.classList.add("show");
-  clearTimeout(window.learnBridgeToastTimer);
-  window.learnBridgeToastTimer = setTimeout(() => {
-    toast.classList.remove("show");
-  }, 2500);
-}
-
 function navigate(page) {
   hideMenu();
 
@@ -669,14 +635,12 @@ function navigate(page) {
 
   if (page === "Home") {
     pageMessage.hidden = true;
-    document.getElementById("subjectSection")
-      .scrollIntoView({ behavior: "smooth", block: "start" });
     window.scrollTo({ top: 0, behavior: "smooth" });
     return;
   }
 
   pageMessage.hidden = false;
-  pageMessage.innerHTML = "";
+  pageMessage.replaceChildren();
 
   const title = document.createElement("h2");
   title.textContent = page;
@@ -684,8 +648,8 @@ function navigate(page) {
   const description = document.createElement("p");
   description.textContent =
     page === "Log out"
-      ? "Sign-out will be available after account authentication is connected."
-      : "This section will be connected when we build the next part of LearnBridge.";
+      ? "Account sign-out will work after authentication is connected."
+      : "This section will be built in the next development step.";
 
   pageMessage.append(title, description);
   pageMessage.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -695,16 +659,20 @@ document.querySelectorAll("[data-page]").forEach(button => {
   button.addEventListener("click", () => navigate(button.dataset.page));
 });
 
+function notify(message) {
+  toast.textContent = message;
+  toast.classList.add("show");
+  window.clearTimeout(window.learnBridgeToastTimer);
+  window.learnBridgeToastTimer = window.setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
+}
+
 document.querySelectorAll("[data-subject]").forEach(button => {
   button.addEventListener("click", () => {
     notify(button.dataset.subject +
-      " selected. Study materials will be added in a later step.");
+      " selected. Learning content will be added later.");
   });
-});
-
-document.getElementById("startLearning").addEventListener("click", () => {
-  document.getElementById("subjectSection")
-    .scrollIntoView({ behavior: "smooth" });
 });
 
 document.getElementById("goExams").addEventListener("click", () => {
@@ -712,5 +680,5 @@ document.getElementById("goExams").addEventListener("click", () => {
 });
 </script>
 </body>
-        </html>
+  </html>
   
