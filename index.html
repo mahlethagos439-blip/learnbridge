@@ -1,92 +1,866 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#ffffff">
-<title>LearnBridge | Learn Today. Build Tomorrow.</title>
-<style>
-:root{--blue:#0757f5;--deep:#092b8d;--navy:#101b48;--yellow:#ffc400;--muted:#53618d;--line:#dbe4ff;--bg:#f8faff;--white:#fff}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--navy);padding:0 0 104px}
-button{font:inherit;border:0;cursor:pointer}
-.header{max-width:900px;margin:auto;height:88px;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;background:#fff}
-.brand{display:flex;align-items:center;gap:12px}.logo{width:56px;height:48px;display:grid;place-items:center;color:#0757f5;font-size:42px;line-height:1}
-.brand h1{font-size:29px;letter-spacing:-1px;color:#0648cf}.brand p{font-size:15px;color:#16265a;margin-top:3px}
-.menu-button{background:transparent;color:#10245c;font-size:32px;padding:4px 8px}
-main{max-width:900px;margin:0 auto;padding:0 24px}
-.hero{height:344px;border-radius:24px;overflow:hidden;position:relative;display:flex;align-items:center;background:linear-gradient(105deg,#092b9b 0%,#0756d9 58%,#176df5 100%);color:#fff;isolation:isolate}
-.hero:before{content:"";position:absolute;inset:0 0 0 43%;background:linear-gradient(90deg,rgba(8,44,146,.16),transparent 50%);z-index:-1}
-.hero-content{position:relative;z-index:3;width:52%;padding:28px 0 28px 42px}
-.hero h2{font-size:clamp(34px,5vw,52px);line-height:1.08;letter-spacing:-1.2px;margin-bottom:17px}
-.hero p{font-size:25px;margin-bottom:26px;color:#f1f5ff}
-.start-button{background:var(--yellow);color:#071b4c;border-radius:28px;padding:15px 25px;font-size:20px;font-weight:700;box-shadow:0 4px 10px #001b5a25}
-.hero-student{position:absolute;z-index:2;right:0;bottom:0;width:49%;height:100%;object-fit:cover;object-position:center 25%;border:0;border-radius:0;background:transparent}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:22px 0 32px}
-.stat{min-height:145px;background:#fff;border:1px solid #edf1ff;border-radius:22px;box-shadow:0 5px 18px #193c9810;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px 5px}
-.stat-icon{font-size:35px;line-height:1;margin-bottom:8px}.stat strong{font-size:31px;color:#111a43;margin-bottom:4px}.stat span:last-child{font-size:19px;color:#152453}
-.section-heading{margin:0 0 22px}.section-heading h2{font-size:35px;display:flex;align-items:center;gap:18px;margin-bottom:8px;letter-spacing:-.7px}.section-heading h2:before{content:"";display:block;width:9px;height:36px;border-radius:5px;background:#0757f5}.section-heading p{font-size:22px;color:#53618d}
-.subject-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
-.subject-card{overflow:hidden;background:#fff;border:1.5px solid #d8e2ff;border-radius:19px;box-shadow:0 3px 12px #0d3b9810;min-width:0;cursor:pointer;transition:transform .18s,box-shadow .18s;text-align:left}
-.subject-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px #0d3b9820}
-.subject-card img{display:block;width:100%;height:116px;object-fit:cover}
-.subject-info{padding:12px 14px 13px}.subject-info h3{font-size:19px;color:#101a43;margin-bottom:9px;white-space:nowrap}
-.subject-bottom{display:flex;align-items:center;justify-content:space-between;color:#46558a;font-size:17px;gap:5px}.note-label{white-space:nowrap}.arrow{width:36px;height:36px;border-radius:50%;background:#e9edff;color:#273c85;display:grid;place-items:center;font-size:29px;line-height:1;flex:none}
-.cta{margin:27px 0 16px;padding:23px 24px;background:linear-gradient(105deg,#e8efff,#dfe8ff);border:1px solid #cad8ff;border-radius:22px;display:flex;align-items:center;gap:22px}.trophy{font-size:54px;line-height:1}.cta-content{flex:1}.cta h2{font-size:25px;color:#0c2380;margin-bottom:9px}.cta p{font-size:19px;color:#1a2a60}.exam-button{background:#0757f5;color:#fff;border-radius:18px;padding:17px 25px;font-size:20px;font-weight:700;white-space:nowrap}
-.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(900px,100%);height:88px;padding:7px 8px max(7px,env(safe-area-inset-bottom));background:#fff;border-radius:25px 25px 0 0;box-shadow:0 -4px 22px #173b9510;display:flex;align-items:center;justify-content:space-around;z-index:30}
-.nav-item{flex:1;height:100%;background:transparent;color:#4c588e;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:17px}.nav-icon{font-size:31px;line-height:1}.nav-item.active{color:#0757f5;font-weight:700}
-.drawer{display:none;position:fixed;inset:0;background:#061b4c80;z-index:60}.drawer.open{display:block}.drawer-panel{height:100%;width:min(310px,84%);background:#fff;padding:22px;box-shadow:8px 0 30px #0002}.drawer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:25px}.drawer-top h2{font-size:24px;color:#092b8d}.close-menu{background:transparent;font-size:32px;color:#152453}.drawer-link{width:100%;display:block;text-align:left;background:#fff;padding:16px 8px;border-bottom:1px solid #edf0fa;color:#192b49;font-size:16px}
-@media(max-width:650px){body{padding-bottom:94px}.header{height:88px;padding:10px 17px}.logo{width:48px;font-size:38px}.brand h1{font-size:26px}.brand p{font-size:13px}main{padding:0 14px}.hero{height:310px;border-radius:22px}.hero-content{width:55%;padding:20px 0 20px 22px}.hero h2{font-size:clamp(29px,6vw,40px)}.hero p{font-size:17px;margin-bottom:22px}.start-button{font-size:15px;padding:13px 16px}.hero-student{width:49%;object-position:center 25%}.stats{gap:9px;margin:17px 0 27px}.stat{min-height:112px;border-radius:17px}.stat-icon{font-size:27px}.stat strong{font-size:clamp(17px,4vw,23px)}.stat span:last-child{font-size:13px}.section-heading h2{font-size:27px;gap:12px}.section-heading h2:before{height:29px;width:7px}.section-heading p{font-size:16px}.subject-grid{gap:12px}.subject-card{border-radius:15px}.subject-card img{height:91px}.subject-info{padding:9px 9px 10px}.subject-info h3{font-size:14px;margin-bottom:7px}.subject-bottom{font-size:12px}.arrow{width:29px;height:29px;font-size:23px}.cta{padding:17px 13px;gap:12px;border-radius:17px}.trophy{font-size:39px}.cta h2{font-size:17px}.cta p{font-size:13px;line-height:1.35}.exam-button{font-size:14px;padding:13px 14px;border-radius:13px}.bottom-nav{height:82px;border-radius:21px 21px 0 0}.nav-item{font-size:12px}.nav-icon{font-size:25px}}
-@media(max-width:370px){.hero{height:280px}.hero-content{width:58%;padding-left:16px}.hero h2{font-size:27px}.hero p{font-size:14px}.start-button{font-size:13px;padding:11px 12px}.stats{gap:5px}.stat{min-height:100px}.stat strong{font-size:16px}.stat span:last-child{font-size:11px}.subject-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.subject-card img{height:105px}.subject-info h3{font-size:15px}.cta{flex-wrap:wrap}.exam-button{margin-left:auto}.nav-item{font-size:10px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0757f5">
+  <meta name="description" content="LearnBridge — Learn Today. Build Tomorrow. Study, practice and prepare for success.">
+
+  <title>LearnBridge | Learn Today. Build Tomorrow.</title>
+
+  <!-- Main application stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Application icon -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
+
 <body>
-<header class="header">
-  <div class="brand"><div class="logo" aria-hidden="true">🎓</div><div><h1>LearnBridge</h1><p>Learn Today. Build Tomorrow.</p></div></div>
-  <button class="menu-button" id="menuButton" aria-label="Open menu">☰</button>
-</header>
-<main>
-  <section class="hero">
-    <div class="hero-content"><h2>Prepare for<br>Your Success</h2><p>Study • Practice • Excel</p><button class="start-button" onclick="goTo('lessons')">▢ Start Learning&nbsp; →</button></div>
-    <img class="hero-student" src="hero-student.jpg" alt="Student holding a LearnBridge book" onerror="this.style.display='none'">
-  </section>
-  <section class="stats" aria-label="LearnBridge features">
-    <div class="stat"><span class="stat-icon">📘</span><strong>7+</strong><span>Subjects</span></div>
-    <div class="stat"><span class="stat-icon">👥</span><strong>Learn</strong><span>Anywhere</span></div>
-    <div class="stat"><span class="stat-icon">🏆</span><strong>Practice</strong><span>Daily</span></div>
-    <div class="stat"><span class="stat-icon">⭐</span><strong>Always</strong><span>Free</span></div>
-  </section>
-  <section>
-    <div class="section-heading"><h2>Our Subjects</h2><p>Choose a subject to start learning</p></div>
-    <div class="subject-grid">
-      <button class="subject-card" onclick="openSubject('Mathematics')"><img src="mathematics.jpg" alt="Mathematics"><div class="subject-info"><h3>Mathematics</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
-      <button class="subject-card" onclick="openSubject('Physics')"><img src="physics.jpg" alt="Physics"><div class="subject-info"><h3>Physics</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
-      <button class="subject-card" onclick="openSubject('Chemistry')"><img src="chemistry.jpg" alt="Chemistry"><div class="subject-info"><h3>Chemistry</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
-      <button class="subject-card" onclick="openSubject('Biology')"><img src="biology.jpg" alt="Biology"><div class="subject-info"><h3>Biology</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
-      <button class="subject-card" onclick="openSubject('Geography')"><img src="geography.jpg" alt="Geography"><div class="subject-info"><h3>Geography</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
-      <button class="subject-card" onclick="openSubject('History')"><img src="history.jpg" alt="History"><div class="subject-info"><h3>History</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
-      <button class="subject-card" onclick="openSubject('Economics')"><img src="economics.jpg" alt="Economics"><div class="subject-info"><h3>Economics</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
-    </div>
-  </section>
-  <section class="cta"><div class="trophy">🏆</div><div class="cta-content"><h2>Ready to Achieve More?</h2><p>Start studying now and reach your goals!</p></div><button class="exam-button" onclick="goTo('quizzes')">Go to Exams&nbsp; →</button></section>
-</main>
-<nav class="bottom-nav" aria-label="Main navigation">
-  <button class="nav-item active" onclick="goTo('home',this)"><span class="nav-icon">⌂</span><span>Home</span></button>
-  <button class="nav-item" onclick="goTo('lessons',this)"><span class="nav-icon">♧</span><span>Lessons</span></button>
-  <button class="nav-item" onclick="goTo('quizzes',this)"><span class="nav-icon">☑</span><span>Quizzes</span></button>
-  <button class="nav-item" onclick="goTo('progress',this)"><span class="nav-icon">▥</span><span>Progress</span></button>
-  <button class="nav-item" onclick="goTo('profile',this)"><span class="nav-icon">♙</span><span>Profile</span></button>
-</nav>
-<div class="drawer" id="drawer"><div class="drawer-panel"><div class="drawer-top"><h2>LearnBridge</h2><button class="close-menu" id="closeMenu" aria-label="Close menu">×</button></div>
-  <button class="drawer-link" onclick="goTo('home')">⌂ Home</button><button class="drawer-link" onclick="goTo('quizzes')">✍ Exams</button><button class="drawer-link" onclick="goTo('resources')">📚 Resources</button><button class="drawer-link" onclick="goTo('about')">ℹ About</button><button class="drawer-link" onclick="goTo('profile')">👤 My Profile</button><button class="drawer-link" onclick="goTo('settings')">⚙ Settings</button>
-</div></div>
-<script>
-const drawer=document.getElementById('drawer');
-document.getElementById('menuButton').addEventListener('click',()=>drawer.classList.add('open'));
-document.getElementById('closeMenu').addEventListener('click',()=>drawer.classList.remove('open'));
-drawer.addEventListener('click',event=>{if(event.target===drawer)drawer.classList.remove('open')});
-function goTo(page,button){drawer.classList.remove('open');document.querySelectorAll('.nav-item').forEach(item=>item.classList.remove('active'));if(button)button.classList.add('active');if(page==='home'){window.scrollTo({top:0,behavior:'smooth'});return;}alert(page.charAt(0).toUpperCase()+page.slice(1)+' page has not been connected yet.');}
-function openSubject(subject){alert(subject+' lessons have not been connected yet.');}
-</script>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+  <header class="header" id="siteHeader">
+
+    <a href="#home" class="brand" aria-label="LearnBridge Home">
+      <div class="logo" aria-hidden="true">🎓</div>
+
+      <div class="brand-text">
+        <h1>LearnBridge</h1>
+        <p>Learn Today. Build Tomorrow.</p>
+      </div>
+    </a>
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="drawer"
+    >
+      <span aria-hidden="true">☰</span>
+    </button>
+
+  </header>
+
+
+  <!-- =========================
+       MAIN APPLICATION
+  ========================== -->
+  <main id="appMain">
+
+    <!-- =========================
+         HOME PAGE
+    ========================== -->
+    <section class="page active" id="homePage" data-page="home">
+
+      <!-- HERO -->
+      <section class="hero">
+
+        <div class="hero-content">
+
+          <h2>
+            Prepare for<br>
+            Your Success
+          </h2>
+
+          <p>Study • Practice • Excel</p>
+
+          <button
+            class="start-button"
+            type="button"
+            data-navigate="lessons"
+          >
+            ▢ Start Learning&nbsp; →
+          </button>
+
+        </div>
+
+        <img
+          class="hero-student"
+          src="hero-student.jpg"
+          alt="Student holding a LearnBridge book"
+          onerror="this.style.display='none'"
+        >
+
+      </section>
+
+
+      <!-- STATISTICS -->
+      <section class="stats" aria-label="LearnBridge features">
+
+        <div class="stat">
+          <span class="stat-icon">📘</span>
+          <strong>7+</strong>
+          <span>Subjects</span>
+        </div>
+
+        <div class="stat">
+          <span class="stat-icon">👥</span>
+          <strong>Learn</strong>
+          <span>Anywhere</span>
+        </div>
+
+        <div class="stat">
+          <span class="stat-icon">🏆</span>
+          <strong>Practice</strong>
+          <span>Daily</span>
+        </div>
+
+        <div class="stat">
+          <span class="stat-icon">⭐</span>
+          <strong>Always</strong>
+          <span>Free</span>
+        </div>
+
+      </section>
+
+
+      <!-- SUBJECTS -->
+      <section class="subjects-section" id="subjectsSection">
+
+        <div class="section-heading">
+
+          <h2>Our Subjects</h2>
+
+          <p>Choose a subject to start learning</p>
+
+        </div>
+
+
+        <div class="subject-grid">
+
+          <!-- MATHEMATICS -->
+          <button
+            class="subject-card"
+            type="button"
+            data-subject="Mathematics"
+          >
+
+            <img
+              src="mathematics.jpg"
+              alt="Mathematics"
+              loading="lazy"
+            >
+
+            <div class="subject-info">
+
+              <h3>Mathematics</h3>
+
+              <div class="subject-bottom">
+                <span class="note-label">▤ 7 Notes</span>
+                <span class="arrow" aria-hidden="true">›</span>
+              </div>
+
+            </div>
+
+          </button>
+
+
+          <!-- PHYSICS -->
+          <button
+            class="subject-card"
+            type="button"
+            data-subject="Physics"
+          >
+
+            <img
+              src="physics.jpg"
+              alt="Physics"
+              loading="lazy"
+            >
+
+            <div class="subject-info">
+
+              <h3>Physics</h3>
+
+              <div class="subject-bottom">
+                <span class="note-label">▤ 7 Notes</span>
+                <span class="arrow" aria-hidden="true">›</span>
+              </div>
+
+            </div>
+
+          </button>
+
+
+          <!-- CHEMISTRY -->
+          <button
+            class="subject-card"
+            type="button"
+            data-subject="Chemistry"
+          >
+
+            <img
+              src="chemistry.jpg"
+              alt="Chemistry"
+              loading="lazy"
+            >
+
+            <div class="subject-info">
+
+              <h3>Chemistry</h3>
+
+              <div class="subject-bottom">
+                <span class="note-label">▤ 7 Notes</span>
+                <span class="arrow" aria-hidden="true">›</span>
+              </div>
+
+            </div>
+
+          </button>
+
+
+          <!-- BIOLOGY -->
+          <button
+            class="subject-card"
+            type="button"
+            data-subject="Biology"
+          >
+
+            <img
+              src="biology.jpg"
+              alt="Biology"
+              loading="lazy"
+            >
+
+            <div class="subject-info">
+
+              <h3>Biology</h3>
+
+              <div class="subject-bottom">
+                <span class="note-label">▤ 7 Notes</span>
+                <span class="arrow" aria-hidden="true">›</span>
+              </div>
+
+            </div>
+
+          </button>
+
+
+          <!-- GEOGRAPHY -->
+          <button
+            class="subject-card"
+            type="button"
+            data-subject="Geography"
+          >
+
+            <img
+              src="geography.jpg"
+              alt="Geography"
+              loading="lazy"
+            >
+
+            <div class="subject-info">
+
+              <h3>Geography</h3>
+
+              <div class="subject-bottom">
+                <span class="note-label">▤ 7 Notes</span>
+                <span class="arrow" aria-hidden="true">›</span>
+              </div>
+
+            </div>
+
+          </button>
+
+
+          <!-- HISTORY -->
+          <button
+            class="subject-card"
+            type="button"
+            data-subject="History"
+          >
+
+            <img
+              src="history.jpg"
+              alt="History"
+              loading="lazy"
+            >
+
+            <div class="subject-info">
+
+              <h3>History</h3>
+
+              <div class="subject-bottom">
+                <span class="note-label">▤ 7 Notes</span>
+                <span class="arrow" aria-hidden="true">›</span>
+              </div>
+
+            </div>
+
+          </button>
+
+
+          <!-- ECONOMICS -->
+          <button
+            class="subject-card"
+            type="button"
+            data-subject="Economics"
+          >
+
+            <img
+              src="economics.jpg"
+              alt="Economics"
+              loading="lazy"
+            >
+
+            <div class="subject-info">
+
+              <h3>Economics</h3>
+
+              <div class="subject-bottom">
+                <span class="note-label">▤ 7 Notes</span>
+                <span class="arrow" aria-hidden="true">›</span>
+              </div>
+
+            </div>
+
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- EXAM CTA -->
+      <section class="cta">
+
+        <div class="trophy" aria-hidden="true">🏆</div>
+
+        <div class="cta-content">
+
+          <h2>Ready to Achieve More?</h2>
+
+          <p>Start studying now and reach your goals!</p>
+
+        </div>
+
+        <button
+          class="exam-button"
+          type="button"
+          data-navigate="quizzes"
+        >
+          Go to Exams&nbsp; →
+        </button>
+
+      </section>
+
+
+      <!-- =========================
+           DESKTOP DASHBOARD PANELS
+           These appear below the
+           existing homepage content.
+      ========================== -->
+      <section class="desktop-dashboard" id="desktopDashboard">
+
+        <div class="section-heading">
+          <h2>Your Learning Dashboard</h2>
+          <p>Organize your learning and follow your study journey</p>
+        </div>
+
+
+        <div class="dashboard-grid">
+
+          <!-- CONTINUE LEARNING -->
+          <button
+            class="dashboard-panel"
+            type="button"
+            data-navigate="lessons"
+          >
+
+            <span class="dashboard-icon">📖</span>
+
+            <span class="dashboard-panel-content">
+
+              <strong>Continue Learning</strong>
+
+              <span>
+                Open your lessons and continue studying.
+              </span>
+
+            </span>
+
+            <span class="dashboard-arrow">→</span>
+
+          </button>
+
+
+          <!-- STUDY PLANNER -->
+          <button
+            class="dashboard-panel"
+            type="button"
+            data-navigate="planner"
+          >
+
+            <span class="dashboard-icon">📅</span>
+
+            <span class="dashboard-panel-content">
+
+              <strong>Your Study Planner</strong>
+
+              <span>
+                Organize your study activities.
+              </span>
+
+            </span>
+
+            <span class="dashboard-arrow">→</span>
+
+          </button>
+
+
+          <!-- EXAM PREPARATION -->
+          <button
+            class="dashboard-panel"
+            type="button"
+            data-navigate="quizzes"
+          >
+
+            <span class="dashboard-icon">🎯</span>
+
+            <span class="dashboard-panel-content">
+
+              <strong>Prepare for Exams</strong>
+
+              <span>
+                Find your examination preparation area.
+              </span>
+
+            </span>
+
+            <span class="dashboard-arrow">→</span>
+
+          </button>
+
+
+          <!-- LEARNING PROGRESS -->
+          <button
+            class="dashboard-panel"
+            type="button"
+            data-navigate="progress"
+          >
+
+            <span class="dashboard-icon">📊</span>
+
+            <span class="dashboard-panel-content">
+
+              <strong>Learning Progress</strong>
+
+              <span>
+                Review your actual learning activity.
+              </span>
+
+            </span>
+
+            <span class="dashboard-arrow">→</span>
+
+          </button>
+
+        </div>
+
+      </section>
+
+    </section>
+
+
+    <!-- =========================
+         OTHER APPLICATION PAGES
+         app.js will connect these
+    ========================== -->
+
+    <section
+      class="page"
+      id="lessonsPage"
+      data-page="lessons"
+      hidden
+    >
+
+      <div class="page-heading">
+        <h2>Lessons</h2>
+        <p>Choose a subject and explore its learning topics.</p>
+      </div>
+
+      <div id="lessonsContent"></div>
+
+    </section>
+
+
+    <section
+      class="page"
+      id="subjectPage"
+      data-page="subject"
+      hidden
+    >
+
+      <div class="page-heading">
+        <button
+          type="button"
+          class="back-button"
+          data-navigate="lessons"
+        >
+          ← Back to Lessons
+        </button>
+
+        <h2 id="subjectPageTitle">Subject</h2>
+
+        <p id="subjectPageDescription">
+          Explore your learning topics.
+        </p>
+      </div>
+
+      <div id="subjectTopics"></div>
+
+    </section>
+
+
+    <section
+      class="page"
+      id="notePage"
+      data-page="note"
+      hidden
+    >
+
+      <div class="page-heading">
+
+        <button
+          type="button"
+          class="back-button"
+          data-navigate="lessons"
+        >
+          ← Back to Lessons
+        </button>
+
+        <h2 id="notePageTitle">Learning Notes</h2>
+
+      </div>
+
+      <article id="noteContent" class="note-content"></article>
+
+    </section>
+
+
+    <section
+      class="page"
+      id="quizzesPage"
+      data-page="quizzes"
+      hidden
+    >
+
+      <div class="page-heading">
+
+        <h2>Quizzes & Exams</h2>
+
+        <p>
+          Your quiz subjects and examination practice area.
+        </p>
+
+      </div>
+
+      <div id="quizzesContent"></div>
+
+    </section>
+
+
+    <section
+      class="page"
+      id="progressPage"
+      data-page="progress"
+      hidden
+    >
+
+      <div class="page-heading">
+
+        <h2>Learning Progress</h2>
+
+        <p>Follow your actual learning activities.</p>
+
+      </div>
+
+      <div id="progressContent"></div>
+
+    </section>
+
+
+    <section
+      class="page"
+      id="profilePage"
+      data-page="profile"
+      hidden
+    >
+
+      <div class="page-heading">
+
+        <h2>My Profile</h2>
+
+        <p>Manage your LearnBridge student profile.</p>
+
+      </div>
+
+      <div id="profileContent"></div>
+
+    </section>
+
+
+    <section
+      class="page"
+      id="plannerPage"
+      data-page="planner"
+      hidden
+    >
+
+      <div class="page-heading">
+
+        <h2>Your Study Planner</h2>
+
+        <p>Organize your study time and activities.</p>
+
+      </div>
+
+      <div id="plannerContent"></div>
+
+    </section>
+
+
+    <section
+      class="page"
+      id="resourcesPage"
+      data-page="resources"
+      hidden
+    >
+
+      <div class="page-heading">
+
+        <h2>Learning Resources</h2>
+
+        <p>Explore your available learning resources.</p>
+
+      </div>
+
+      <div id="resourcesContent"></div>
+
+    </section>
+
+
+    <section
+      class="page"
+      id="aboutPage"
+      data-page="about"
+      hidden
+    >
+
+      <div class="page-heading">
+
+        <h2>About LearnBridge</h2>
+
+        <p>Learn Today. Build Tomorrow.</p>
+
+      </div>
+
+      <div id="aboutContent"></div>
+
+    </section>
+
+
+    <section
+      class="page"
+      id="settingsPage"
+      data-page="settings"
+      hidden
+    >
+
+      <div class="page-heading">
+
+        <h2>Settings</h2>
+
+        <p>Manage your application preferences.</p>
+
+      </div>
+
+      <div id="settingsContent"></div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       BOTTOM NAVIGATION
+  ========================== -->
+  <nav class="bottom-nav" aria-label="Main navigation">
+
+    <button
+      class="nav-item active"
+      type="button"
+      data-navigate="home"
+      aria-current="page"
+    >
+
+      <span class="nav-icon" aria-hidden="true">⌂</span>
+      <span>Home</span>
+
+    </button>
+
+
+    <button
+      class="nav-item"
+      type="button"
+      data-navigate="lessons"
+    >
+
+      <span class="nav-icon" aria-hidden="true">♧</span>
+      <span>Lessons</span>
+
+    </button>
+
+
+    <button
+      class="nav-item"
+      type="button"
+      data-navigate="quizzes"
+    >
+
+      <span class="nav-icon" aria-hidden="true">☑</span>
+      <span>Quizzes</span>
+
+    </button>
+
+
+    <button
+      class="nav-item"
+      type="button"
+      data-navigate="progress"
+    >
+
+      <span class="nav-icon" aria-hidden="true">▥</span>
+      <span>Progress</span>
+
+    </button>
+
+
+    <button
+      class="nav-item"
+      type="button"
+      data-navigate="profile"
+    >
+
+      <span class="nav-icon" aria-hidden="true">♙</span>
+      <span>Profile</span>
+
+    </button>
+
+  </nav>
+
+
+  <!-- =========================
+       HAMBURGER MENU
+  ========================== -->
+  <div
+    class="drawer"
+    id="drawer"
+    aria-hidden="true"
+  >
+
+    <aside
+      class="drawer-panel"
+      id="drawerPanel"
+      role="dialog"
+      aria-modal="true"
+      aria-label="LearnBridge navigation menu"
+      tabindex="-1"
+    >
+
+      <div class="drawer-top">
+
+        <div class="drawer-brand">
+
+          <span class="drawer-logo">🎓</span>
+
+          <div>
+            <h2>LearnBridge</h2>
+            <p>Learn Today. Build Tomorrow.</p>
+          </div>
+
+        </div>
+
+        <button
+          class="close-menu"
+          id="closeMenu"
+          type="button"
+          aria-label="Close menu"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="drawer-group">
+
+        <p class="drawer-label">LEARNING</p>
+
+        <button class="drawer-link" type="button" data-navigate="home">
+          <span>⌂</span> Home
+        </button>
+
+        <button class="drawer-link" type="button" data-navigate="lessons">
+          <span>📚</span> Lessons
+        </button>
+
+        <button class="drawer-link" type="button" data-navigate="quizzes">
+          <span>✍️</span> Exams & Quizzes
+        </button>
+
+      </div>
+
+
+      <div class="drawer-group">
+
+        <p class="drawer-label">MY LEARNING</p>
+
+        <button class="drawer-link" type="button" data-navigate="progress">
+          <span>📊</span> Learning Progress
+        </button>
+
+        <button class="drawer-link" type="button" data-navigate="planner">
+          <span>📅</span> Study Planner
+        </button>
+
+        <button class="drawer-link" type="button" data-navigate="profile">
+          <span>👤</span> My Profile
+        </button>
+
+      </div>
+
+
+      <div class="drawer-group">
+
+        <p class="drawer-label">MORE</p>
+
+        <button class="drawer-link" type="button" data-navigate="resources">
+          <span>📖</span> Resources
+        </button>
+
+        <button class="drawer-link" type="button" data-navigate="about">
+          <span>ℹ️</span> About LearnBridge
+        </button>
+
+        <button class="drawer-link" type="button" data-navigate="settings">
+          <span>⚙️</span> Settings
+        </button>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+
+  <!-- Application JavaScript -->
+  <script type="module" src="app.js"></script>
+
 </body>
 </html>
+        
