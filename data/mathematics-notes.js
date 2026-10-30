@@ -224,7 +224,8 @@ export const mathematicsNotes = {
             "Distributive law: A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C).",
             "Identity law: A ∪ ∅ = A.",
             "Identity law: A ∩ U = A.",
-            "De Morgan's law: (A ∪ B)' = A' ∩ B'."
+            "De Morgan's law: (A ∪ B)' = A' ∩ B'.",
+           "De Morgan's law: (A ∩ B)' = A' ∪ B'."
           ],
           workedExamples: [
             {
