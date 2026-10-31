@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+<title>LearnBridge | Learn Today. Build Tomorrow.</title>
+<style>
+:root{--blue:#0757f5;--deep:#092b8d;--navy:#101b48;--yellow:#ffc400;--muted:#53618d;--line:#dbe4ff;--bg:#f8faff;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--navy);padding:0 0 104px}
+button{font:inherit;border:0;cursor:pointer}
+.header{max-width:900px;margin:auto;height:88px;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;background:#fff}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:56px;height:48px;display:grid;place-items:center;color:#0757f5;font-size:42px;line-height:1}
+.brand h1{font-size:29px;letter-spacing:-1px;color:#0648cf}.brand p{font-size:15px;color:#16265a;margin-top:3px}
+.menu-button{background:transparent;color:#10245c;font-size:32px;padding:4px 8px}
+main{max-width:900px;margin:0 auto;padding:0 24px}
+.hero{height:344px;border-radius:24px;overflow:hidden;position:relative;display:flex;align-items:center;background:linear-gradient(105deg,#092b9b 0%,#0756d9 58%,#176df5 100%);color:#fff;isolation:isolate}
+.hero:before{content:"";position:absolute;inset:0 0 0 43%;background:linear-gradient(90deg,rgba(8,44,146,.16),transparent 50%);z-index:-1}
+.hero-content{position:relative;z-index:3;width:52%;padding:28px 0 28px 42px}
+.hero h2{font-size:clamp(34px,5vw,52px);line-height:1.08;letter-spacing:-1.2px;margin-bottom:17px}
+.hero p{font-size:25px;margin-bottom:26px;color:#f1f5ff}
+.start-button{background:var(--yellow);color:#071b4c;border-radius:28px;padding:15px 25px;font-size:20px;font-weight:700;box-shadow:0 4px 10px #001b5a25}
+.hero-student{position:absolute;z-index:2;right:0;bottom:0;width:49%;height:100%;object-fit:cover;object-position:center 25%;border:0;border-radius:0;background:transparent}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:22px 0 32px}
+.stat{min-height:145px;background:#fff;border:1px solid #edf1ff;border-radius:22px;box-shadow:0 5px 18px #193c9810;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px 5px}
+.stat-icon{font-size:35px;line-height:1;margin-bottom:8px}.stat strong{font-size:31px;color:#111a43;margin-bottom:4px}.stat span:last-child{font-size:19px;color:#152453}
+.section-heading{margin:0 0 22px}.section-heading h2{font-size:35px;display:flex;align-items:center;gap:18px;margin-bottom:8px;letter-spacing:-.7px}.section-heading h2:before{content:"";display:block;width:9px;height:36px;border-radius:5px;background:#0757f5}.section-heading p{font-size:22px;color:#53618d}
+.subject-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.subject-card{overflow:hidden;background:#fff;border:1.5px solid #d8e2ff;border-radius:19px;box-shadow:0 3px 12px #0d3b9810;min-width:0;cursor:pointer;transition:transform .18s,box-shadow .18s;text-align:left}
+.subject-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px #0d3b9820}
+.subject-card img{display:block;width:100%;height:116px;object-fit:cover}
+.subject-info{padding:12px 14px 13px}.subject-info h3{font-size:19px;color:#101a43;margin-bottom:9px;white-space:nowrap}
+.subject-bottom{display:flex;align-items:center;justify-content:space-between;color:#46558a;font-size:17px;gap:5px}.note-label{white-space:nowrap}.arrow{width:36px;height:36px;border-radius:50%;background:#e9edff;color:#273c85;display:grid;place-items:center;font-size:29px;line-height:1;flex:none}
+.cta{margin:27px 0 16px;padding:23px 24px;background:linear-gradient(105deg,#e8efff,#dfe8ff);border:1px solid #cad8ff;border-radius:22px;display:flex;align-items:center;gap:22px}.trophy{font-size:54px;line-height:1}.cta-content{flex:1}.cta h2{font-size:25px;color:#0c2380;margin-bottom:9px}.cta p{font-size:19px;color:#1a2a60}.exam-button{background:#0757f5;color:#fff;border-radius:18px;padding:17px 25px;font-size:20px;font-weight:700;white-space:nowrap}
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(900px,100%);height:88px;padding:7px 8px max(7px,env(safe-area-inset-bottom));background:#fff;border-radius:25px 25px 0 0;box-shadow:0 -4px 22px #173b9510;display:flex;align-items:center;justify-content:space-around;z-index:30}
+.nav-item{flex:1;height:100%;background:transparent;color:#4c588e;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:17px}.nav-icon{font-size:31px;line-height:1}.nav-item.active{color:#0757f5;font-weight:700}
+.drawer{display:none;position:fixed;inset:0;background:#061b4c80;z-index:60}.drawer.open{display:block}.drawer-panel{height:100%;width:min(310px,84%);background:#fff;padding:22px;box-shadow:8px 0 30px #0002}.drawer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:25px}.drawer-top h2{font-size:24px;color:#092b8d}.close-menu{background:transparent;font-size:32px;color:#152453}.drawer-link{width:100%;display:block;text-align:left;background:#fff;padding:16px 8px;border-bottom:1px solid #edf0fa;color:#192b49;font-size:16px}
+@media(max-width:650px){body{padding-bottom:94px}.header{height:88px;padding:10px 17px}.logo{width:48px;font-size:38px}.brand h1{font-size:26px}.brand p{font-size:13px}main{padding:0 14px}.hero{height:310px;border-radius:22px}.hero-content{width:55%;padding:20px 0 20px 22px}.hero h2{font-size:clamp(29px,6vw,40px)}.hero p{font-size:17px;margin-bottom:22px}.start-button{font-size:15px;padding:13px 16px}.hero-student{width:49%;object-position:center 25%}.stats{gap:9px;margin:17px 0 27px}.stat{min-height:112px;border-radius:17px}.stat-icon{font-size:27px}.stat strong{font-size:clamp(17px,4vw,23px)}.stat span:last-child{font-size:13px}.section-heading h2{font-size:27px;gap:12px}.section-heading h2:before{height:29px;width:7px}.section-heading p{font-size:16px}.subject-grid{gap:12px}.subject-card{border-radius:15px}.subject-card img{height:91px}.subject-info{padding:9px 9px 10px}.subject-info h3{font-size:14px;margin-bottom:7px}.subject-bottom{font-size:12px}.arrow{width:29px;height:29px;font-size:23px}.cta{padding:17px 13px;gap:12px;border-radius:17px}.trophy{font-size:39px}.cta h2{font-size:17px}.cta p{font-size:13px;line-height:1.35}.exam-button{font-size:14px;padding:13px 14px;border-radius:13px}.bottom-nav{height:82px;border-radius:21px 21px 0 0}.nav-item{font-size:12px}.nav-icon{font-size:25px}}
+@media(max-width:370px){.hero{height:280px}.hero-content{width:58%;padding-left:16px}.hero h2{font-size:27px}.hero p{font-size:14px}.start-button{font-size:13px;padding:11px 12px}.stats{gap:5px}.stat{min-height:100px}.stat strong{font-size:16px}.stat span:last-child{font-size:11px}.subject-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.subject-card img{height:105px}.subject-info h3{font-size:15px}.cta{flex-wrap:wrap}.exam-button{margin-left:auto}.nav-item{font-size:10px}}
+
+/* LearnBridge dashboard additions */
+.dashboard-panels{margin:30px 0 36px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,auto);grid-auto-flow:column;gap:18px}
+.dashboard-panel{min-height:116px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;align-items:center;gap:15px;text-align:left;color:var(--navy);box-shadow:0 4px 16px #193c9810}
+.dashboard-panel:active{transform:translateY(1px)}.panel-icon{width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:#eaf0ff;font-size:24px;flex:none}
+.dashboard-panel h3{font-size:18px;color:var(--deep);margin-bottom:7px}.dashboard-panel p{font-size:14px;line-height:1.45;color:var(--muted)}
+.page-view{display:none;min-height:50vh;padding:26px 0 38px}.page-view.active{display:block}.page-view h2{font-size:29px;color:var(--deep);margin-bottom:10px}.page-intro{color:var(--muted);line-height:1.6;margin-bottom:20px}
+.back-button,.action-button{background:#e8efff;color:var(--deep);padding:11px 15px;border-radius:11px;font-weight:700;margin:0 8px 16px 0}
+.item-list{display:grid;gap:10px}.item-row{background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px;display:flex;align-items:center;gap:10px}.item-row label{flex:1}.item-row button{background:#f0f3fb;border-radius:8px;padding:7px 10px;color:#263b78}
+.page-input{padding:13px;border:1px solid #cbd7f4;border-radius:10px;width:min(100%,420px);font:inherit;margin:0 8px 12px 0}
+.subject-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.subject-choice{background:white;border:1px solid var(--line);border-radius:14px;padding:15px;text-align:left;color:var(--navy);font-weight:700}
+.note-content{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;line-height:1.7}.note-content h3{color:var(--blue);margin:18px 0 7px}.note-content .definition{background:#e9f7ed;border-left:5px solid #239653;padding:12px;margin:12px 0}.note-content .exam-tip{background:#fff7d9;border-left:5px solid #e0ad00;padding:12px;margin:12px 0}.note-content .example{background:#f2eaff;border-left:5px solid #8652c7;padding:12px;margin:12px 0}
+@media(max-width:650px){.dashboard-panels{grid-template-columns:1fr;grid-template-rows:none;grid-auto-flow:row;gap:11px;margin:22px 0}.dashboard-panel{min-height:94px;padding:15px}.dashboard-panel h3{font-size:16px}.dashboard-panel p{font-size:13px}.page-view h2{font-size:25px}.subject-list{grid-template-columns:1fr}}
+@media(max-width:980px) and (pointer:coarse){.section-heading p{font-size:clamp(17px,2.4vw,22px)}.subject-info h3{font-size:clamp(15px,2vw,19px)}.nav-item{font-size:clamp(13px,1.8vw,17px)}.dashboard-panel h3{font-size:clamp(16px,2vw,19px)}}
+
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="brand"><div class="logo" aria-hidden="true">🎓</div><div><h1>LearnBridge</h1><p>Learn Today. Build Tomorrow.</p></div></div>
+  <button class="menu-button" id="menuButton" aria-label="Open menu">☰</button>
+</header>
+<main>
+  <section class="hero">
+    <div class="hero-content"><h2>Prepare for<br>Your Success</h2><p>Study • Practice • Excel</p><button class="start-button" onclick="goTo('lessons')">▢ Start Learning&nbsp; →</button></div>
+    <img class="hero-student" src="hero-student.jpg" alt="Student holding a LearnBridge book" onerror="this.style.display='none'">
+  </section>
+  <section class="stats" aria-label="LearnBridge features">
+    <div class="stat"><span class="stat-icon">📘</span><strong>7+</strong><span>Subjects</span></div>
+    <div class="stat"><span class="stat-icon">👥</span><strong>Learn</strong><span>Anywhere</span></div>
+    <div class="stat"><span class="stat-icon">🏆</span><strong>Practice</strong><span>Daily</span></div>
+    <div class="stat"><span class="stat-icon">⭐</span><strong>Always</strong><span>Free</span></div>
+  </section>
+  <section>
+    <div class="section-heading"><h2>Our Subjects</h2><p>Choose a subject to start learning</p></div>
+    <div class="subject-grid">
+      <button class="subject-card" onclick="openSubject('Mathematics')"><img src="mathematics.jpg" alt="Mathematics"><div class="subject-info"><h3>Mathematics</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
+      <button class="subject-card" onclick="openSubject('Physics')"><img src="physics.jpg" alt="Physics"><div class="subject-info"><h3>Physics</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
+      <button class="subject-card" onclick="openSubject('Chemistry')"><img src="chemistry.jpg" alt="Chemistry"><div class="subject-info"><h3>Chemistry</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
+      <button class="subject-card" onclick="openSubject('Biology')"><img src="biology.jpg" alt="Biology"><div class="subject-info"><h3>Biology</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
+      <button class="subject-card" onclick="openSubject('Geography')"><img src="geography.jpg" alt="Geography"><div class="subject-info"><h3>Geography</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
+      <button class="subject-card" onclick="openSubject('History')"><img src="history.jpg" alt="History"><div class="subject-info"><h3>History</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
+      <button class="subject-card" onclick="openSubject('Economics')"><img src="economics.jpg" alt="Economics"><div class="subject-info"><h3>Economics</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
+    </div>
+  </section>
+  <section class="cta"><div class="trophy">🏆</div><div class="cta-content"><h2>Ready to Achieve More?</h2><p>Start studying now and reach your goals!</p></div><button class="exam-button" onclick="goTo('quizzes')">Go to Exams&nbsp; →</button></section>
+  <section class="dashboard-panels" aria-label="Your learning dashboard">
+    <button class="dashboard-panel" onclick="goTo('continue')"><span class="panel-icon">📖</span><span><h3>1. Continue Learning</h3><p>Return to a lesson you opened recently.</p></span></button>
+    <button class="dashboard-panel" onclick="goTo('planner')"><span class="panel-icon">🗓️</span><span><h3>2. Your Study Planner</h3><p>Organize your study sessions.</p></span></button>
+    <button class="dashboard-panel" onclick="goTo('quizzes')"><span class="panel-icon">🎓</span><span><h3>3. Prepare for Exams</h3><p>Open exam preparation.</p></span></button>
+    <button class="dashboard-panel" onclick="goTo('progress')"><span class="panel-icon">📊</span><span><h3>4. Learning Progress</h3><p>Review lessons you have completed.</p></span></button>
+    <button class="dashboard-panel" onclick="goTo('goals')"><span class="panel-icon">🎯</span><span><h3>5. Daily Learning Goals</h3><p>Set goals and mark them complete.</p></span></button>
+    <button class="dashboard-panel" onclick="goTo('saved')"><span class="panel-icon">🔖</span><span><h3>6. Saved Lessons</h3><p>Find your bookmarked notes.</p></span></button>
+  </section>
+  <section id="appPage" class="page-view" aria-live="polite"></section>
+</main>
+<nav class="bottom-nav" aria-label="Main navigation">
+  <button class="nav-item active" onclick="goTo('home',this)"><span class="nav-icon">⌂</span><span>Home</span></button>
+  <button class="nav-item" onclick="goTo('lessons',this)"><span class="nav-icon">♧</span><span>Lessons</span></button>
+  <button class="nav-item" onclick="goTo('quizzes',this)"><span class="nav-icon">☑</span><span>Quizzes</span></button>
+  <button class="nav-item" onclick="goTo('progress',this)"><span class="nav-icon">▥</span><span>Progress</span></button>
+  <button class="nav-item" onclick="goTo('profile',this)"><span class="nav-icon">♙</span><span>Profile</span></button>
+</nav>
+<div class="drawer" id="drawer"><div class="drawer-panel"><div class="drawer-top"><h2>LearnBridge</h2><button class="close-menu" id="closeMenu" aria-label="Close menu">×</button></div>
+  <button class="drawer-link" onclick="goTo('home')">⌂ Home</button><button class="drawer-link" onclick="goTo('lessons')">📚 Lessons</button><button class="drawer-link" onclick="goTo('continue')">📖 Continue Learning</button><button class="drawer-link" onclick="goTo('planner')">🗓️ Study Planner</button><button class="drawer-link" onclick="goTo('goals')">🎯 Daily Goals</button><button class="drawer-link" onclick="goTo('saved')">🔖 Saved Lessons</button><button class="drawer-link" onclick="goTo('progress')">📊 Progress</button><button class="drawer-link" onclick="goTo('quizzes')">✍ Exams</button><button class="drawer-link" onclick="goTo('resources')">📚 Resources</button><button class="drawer-link" onclick="goTo('about')">ℹ About</button><button class="drawer-link" onclick="goTo('profile')">👤 My Profile</button><button class="drawer-link" onclick="goTo('settings')">⚙ Settings</button>
+</div></div>
+<script>
+const drawer=document.getElementById('drawer');
+const appPage=document.getElementById('appPage');
+const homeSections=[...document.querySelectorAll('main > section:not(#appPage)')];
+const subjects={
+'Mathematics':['Number Systems, Sets, and Real Numbers','Algebraic Expressions, Equations, and Inequalities','Relations, Functions, and Graphs','Polynomial, Rational, Exponential, and Logarithmic Functions','Trigonometry and Applications','Coordinate Geometry, Vectors, and Matrices','Statistics, Probability, and Calculus'],
+'Physics':['Physical Quantities, Units, and Measurement','Motion: Kinematics and Graphs','Forces, Newton’s Laws, and Momentum','Work, Energy, and Power','Waves, Sound, and Oscillations','Electricity, Magnetism, and Electromagnetic Induction','Optics, Modern Physics, and Nuclear Physics'],
+'Chemistry':['Acid–Base Equilibria','Electrochemistry','Chemical Bonding and Molecular Structure','Chemical Equilibrium and Chemical Kinetics','Solutions and Stoichiometry','Organic Chemistry','Industrial Chemistry and Polymers'],
+'Biology':['Cell Biology and Cell Division','Biological Molecules, Enzymes, and Metabolism','Plant Structure, Transport, and Photosynthesis','Human Body Systems and Homeostasis','Genetics, DNA, and Inheritance','Evolution, Classification, and Biodiversity','Ecology, Ecosystems, and Environmental Biology'],
+'Geography':['Map Reading, Scale, Direction, and Geographic Skills','Earth’s Structure, Rocks, and Landforms','Weather, Climate, and Climate Change','Natural Resources and Environmental Management','Population, Settlement, and Migration','Agriculture, Industry, Transport, and Trade','Geography of Ethiopia and Africa'],
+'History':['Historical Sources, Evidence, and Chronology','Ancient Civilizations and Early Societies','Ancient and Medieval Ethiopian History','The Rise and Development of States and Empires','Ethiopia in the Nineteenth Century','Ethiopia in the Twentieth Century and Modern Period','African History, Colonialism, and Independence'],
+'Economics':['Introduction to Economics, Scarcity, and Choice','Demand, Supply, and Market Equilibrium','Consumer Behaviour and Utility','Production, Costs, and Market Structures','Money, Banking, and Financial Systems','National Income, Inflation, and Unemployment','Economic Growth, Development, and the Ethiopian Economy']};
+let currentSubject='';
+function readStore(key,fallback=[]){try{return JSON.parse(localStorage.getItem('learnbridge_'+key))??fallback}catch(e){return fallback}}
+function writeStore(key,value){try{localStorage.setItem('learnbridge_'+key,JSON.stringify(value));return true}catch(e){return false}}
+function setActive(page){document.querySelectorAll('.nav-item').forEach(x=>x.classList.toggle('active',x.textContent.trim().toLowerCase()===page))}
+function showHome(){homeSections.forEach(x=>x.style.display='');appPage.classList.remove('active');appPage.innerHTML='';window.scrollTo({top:0,behavior:'smooth'});setActive('home')}
+function goTo(page,button){drawer.classList.remove('open');if(page==='home'){showHome();return}homeSections.forEach(x=>x.style.display='none');appPage.classList.add('active');setActive(page);let title='',body='';
+if(page==='lessons'||page==='resources'){title='Lessons';body='<p class="page-intro">Choose a subject to explore its topic list.</p>'+subjectButtons()}
+else if(page==='quizzes'){title='Prepare for Exams';body='<div class="empty-state">The quiz question bank has not been added yet. This page does not show invented questions or scores.</div>'}
+else if(page==='progress'){title='Learning Progress';const done=readStore('completed',[]);const total=Object.values(subjects).reduce((n,a)=>n+a.length,0);body='<p class="page-intro">Completed notes: <strong>'+done.length+'</strong> of '+total+'</p><div class="empty-state">Progress is calculated from notes you mark as completed on this device.</div>'}
+else if(page==='profile'){title='Profile';body='<div class="empty-state">Your profile and sign-in will be connected when account authentication is added.</div>'}
+else if(page==='planner'){title='Your Study Planner';body='<p class="page-intro">Add study tasks. They are saved in this browser on this device.</p><input class="page-input" id="planInput" placeholder="e.g. Revise Chemistry"><button class="action-button" onclick="addPlan()">Add task</button><div id="planList" class="item-list">'+planRows()+'</div>'}
+else if(page==='goals'){title='Daily Learning Goals';body='<p class="page-intro">Add a goal and tick it when you finish.</p><input class="page-input" id="goalInput" placeholder="Write a learning goal"><button class="action-button" onclick="addGoal()">Add goal</button><div id="goalList" class="item-list">'+goalRows()+'</div>'}
+else if(page==='continue'){title='Continue Learning';const recent=readStore('recent',[]);body=recent.length?'<div class="item-list">'+recent.map(x=>'<button class="subject-choice" onclick="openSubject(\''+x.subject+'\');openNote('+x.index+')">'+x.subject+' — '+x.title+'</button>').join('')+'</div>': '<div class="empty-state">You have not opened a note yet. Choose a subject below to begin.</div>'+subjectButtons()}
+else if(page==='saved'){title='Saved Lessons';const saved=readStore('saved',[]);body=saved.length?'<div class="item-list">'+saved.map(x=>'<div class="item-row"><label>'+x.subject+' — '+x.title+'</label><button onclick="openSubject(\''+x.subject+'\');openNote('+x.index+')">Open</button><button onclick="toggleSaved(\''+x.subject+'\','+x.index+')">Remove</button></div>').join('')+'</div>':'<div class="empty-state">No lessons have been saved yet. Open a note and tap Save lesson.</div>'}
+else if(page==='about'){title='About LearnBridge';body='<p class="page-intro">LearnBridge — Learn Today. Build Tomorrow.</p>'}
+else if(page==='settings'){title='Settings';body='<div class="empty-state">Learning plans and bookmarks are stored locally in this browser. Clearing browser data may remove them.</div>'}
+else{title='LearnBridge';body='<div class="empty-state">This section is being prepared.</div>'}
+appPage.innerHTML='<button class="back-button" onclick="showHome()">← Back to Home</button><h2>'+title+'</h2>'+body;window.scrollTo({top:0,behavior:'smooth'})}
+function subjectButtons(){return '<div class="subject-list">'+Object.keys(subjects).map(s=>'<button class="subject-choice" onclick="openSubject(\''+s+'\')">📚 '+s+' <span style="float:right">7 topics →</span></button>').join('')+'</div>'}
+function openSubject(subject){currentSubject=subject;homeSections.forEach(x=>x.style.display='none');appPage.classList.add('active');setActive('lessons');appPage.innerHTML='<button class="back-button" onclick="goTo(\'lessons\')">← All subjects</button><h2>'+subject+'</h2><p class="page-intro">Choose a topic to open its note outline.</p><div class="item-list">'+subjects[subject].map((n,i)=>'<button class="subject-choice" onclick="openNote('+i+')">'+(i+1)+'. '+n+' <span style="float:right">→</span></button>').join('')+'</div>';window.scrollTo({top:0,behavior:'smooth'})}
+function openNote(index){const title=subjects[currentSubject][index];const key=currentSubject+'|'+index;let recent=readStore('recent',[]).filter(x=>x.key!==key);recent.unshift({key,subject:currentSubject,index,title});writeStore('recent',recent.slice(0,10));const saved=readStore('saved',[]);const isSaved=saved.some(x=>x.key===key);const done=readStore('completed',[]).includes(key);appPage.innerHTML='<button class="back-button" onclick="openSubject(\''+currentSubject+'\')">← Back to '+currentSubject+'</button><h2>'+title+'</h2><p class="page-intro">Study note</p><button class="action-button" onclick="toggleSaved(\''+currentSubject+'\','+index+')">'+(isSaved?'Remove saved lesson':'🔖 Save lesson')+'</button><button class="action-button" onclick="toggleCompleted(\''+currentSubject+'\','+index+')">'+(done?'Mark as not completed':'✓ Mark completed')+'</button><article class="note-content"><div class="definition"><strong>Key concept</strong><br>This note section is an outline. The full textbook-verified explanation, definitions and formulas still need to be written.</div><h3>Learning objectives</h3><p>Identify the main ideas and explain the important relationships in this topic.</p><h3>Detailed explanation</h3><p>Use the relevant Ethiopian curriculum textbook to develop the complete lesson before treating it as verified study material.</p><div class="example"><strong>Worked examples</strong><br>Step-by-step textbook-aligned examples will be added to the completed note.</div><div class="exam-tip"><strong>Exam tip</strong><br>Review definitions, key relationships and worked examples carefully.</div><h3>Practice and revision</h3><p>Practice questions with explained answers and a revision summary are still to be added.</p></article>';window.scrollTo({top:0,behavior:'smooth'})}
+function toggleSaved(subject,index){const key=subject+'|'+index,title=subjects[subject][index];let a=readStore('saved',[]);a=a.some(x=>x.key===key)?a.filter(x=>x.key!==key):[{key,subject,index,title},...a];writeStore('saved',a);if(appPage.classList.contains('active')){if(currentSubject===subject)openNote(index);else goTo('saved')}}
+function toggleCompleted(subject,index){const key=subject+'|'+index;let a=readStore('completed',[]);a=a.includes(key)?a.filter(x=>x!==key):[...a,key];writeStore('completed',a);openNote(index)}
+function planRows(){return readStore('plans',[]).map((x,i)=>'<div class="item-row"><label>'+escapeText(x)+'</label><button onclick="removePlan('+i+')">Remove</button></div>').join('')}
+function addPlan(){const el=document.getElementById('planInput'),v=el.value.trim();if(!v)return;const a=readStore('plans',[]);a.push(v);writeStore('plans',a);document.getElementById('planList').innerHTML=planRows();el.value=''}
+function removePlan(i){const a=readStore('plans',[]);a.splice(i,1);writeStore('plans',a);document.getElementById('planList').innerHTML=planRows()}
+function goalRows(){return readStore('goals',[]).map((x,i)=>'<div class="item-row"><label><input type="checkbox" '+(x.done?'checked':'')+' onchange="checkGoal('+i+',this.checked)"> '+escapeText(x.text)+'</label><button onclick="removeGoal('+i+')">Remove</button></div>').join('')}
+function addGoal(){const el=document.getElementById('goalInput'),v=el.value.trim();if(!v)return;const a=readStore('goals',[]);a.push({text:v,done:false});writeStore('goals',a);document.getElementById('goalList').innerHTML=goalRows();el.value=''}
+function checkGoal(i,done){const a=readStore('goals',[]);if(a[i])a[i].done=done;writeStore('goals',a)}
+function removeGoal(i){const a=readStore('goals',[]);a.splice(i,1);writeStore('goals',a);document.getElementById('goalList').innerHTML=goalRows()}
+function escapeText(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+document.getElementById('menuButton').addEventListener('click',()=>drawer.classList.add('open'));
+document.getElementById('closeMenu').addEventListener('click',()=>drawer.classList.remove('open'));
+drawer.addEventListener('click',event=>{if(event.target===drawer)drawer.classList.remove('open')});
+document.addEventListener('keydown',event=>{if(event.key==='Escape')drawer.classList.remove('open')});
+</script>
+</body>
+</html>
