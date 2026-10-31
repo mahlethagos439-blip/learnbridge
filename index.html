@@ -1,687 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LearnBridge - Mathematics (7 Comprehensive Topics)</title>
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --bg-dark: #0f172a;
-            --card-bg: #1e293b;
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: #334155;
-            --accent-blue: #dbeafe;
-            --accent-green: #dcfce7;
-            --accent-amber: #fef3c7;
-            --accent-rose: #ffe4e6;
-            --accent-purple: #f3e8ff;
-        }
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            margin: 0;
-            padding: 0;
-            padding-bottom: 80px;
-        }
-        header {
-            background: linear-gradient(135deg, #1e3a8a, #2563eb);
-            padding: 1.5rem 1rem;
-            text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 1.6rem;
-            font-weight: 800;
-        }
-        header p {
-            color: #93c5fd;
-            margin: 0.3rem 0 0 0;
-            font-size: 0.9rem;
-        }
-        .container {
-            padding: 1rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .nav-back {
-            display: inline-block;
-            color: #60a5fa;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.25rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);
-        }
-        .topic-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        .topic-icon {
-            font-size: 2.2rem;
-            background: #334155;
-            padding: 0.5rem;
-            border-radius: 10px;
-        }
-        .topic-title h2 {
-            margin: 0;
-            font-size: 1.2rem;
-            color: #60a5fa;
-        }
-        .topic-title p {
-            margin: 0.2rem 0 0 0;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-        /* Interactive Pills */
-        .pills-container {
-            display: flex;
-            gap: 0.5rem;
-            overflow-x: auto;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        .pill {
-            background: #334155;
-            color: #e2e8f0;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            white-space: nowrap;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s;
-        }
-        .pill.active, .pill:hover {
-            background: var(--primary);
-            color: white;
-        }
-        /* Content Blocks */
-        .content-block {
-            margin-bottom: 1rem;
-            padding: 1rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-        .concept-box { background: rgba(59, 130, 246, 0.1); border-left: 4px solid #3b82f6; color: #bfdbfe; }
-        .rule-box { background: rgba(16, 185, 129, 0.1); border-left: 4px solid #10b981; color: #a7f3d0; }
-        .example-box { background: rgba(139, 92, 246, 0.1); border-left: 4px solid #8b5cf6; color: #ddd6fe; }
-        .tip-box { background: rgba(245, 158, 11, 0.1); border-left: 4px solid #f59e0b; color: #fde68a; }
-        .warning-box { background: rgba(239, 68, 68, 0.1); border-left: 4px solid #ef4444; color: #fecaca; }
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0757f5"><title>LearnBridge | Learn Today. Build Tomorrow.</title><style>
+:root{--blue:#0757f5;--deep:#092b8d;--navy:#101b48;--yellow:#ffc400;--muted:#53618d;--line:#dbe4ff;--bg:#f8faff;--white:#fff;--green:#16834a;--purple:#7442a8;--red:#b83232}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;padding:0 0 calc(94px + env(safe-area-inset-bottom));font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--navy)}button,input{font:inherit}button{cursor:pointer;border:0}.header{max-width:1120px;margin:auto;height:82px;padding:10px 22px;display:flex;align-items:center;justify-content:space-between;background:#fff}.brand{display:flex;align-items:center;gap:12px}.logo{font-size:42px}.brand h1{font-size:28px;color:#0648cf;margin:0}.brand p{font-size:14px;margin:3px 0 0;color:#263761}.menu-button{font-size:30px;background:#edf2ff;color:var(--deep);border-radius:12px;padding:7px 13px}main{max-width:1120px;margin:auto;padding:0 22px}.hero{height:340px;position:relative;overflow:hidden;border-radius:24px;background:linear-gradient(110deg,#092b9b,#0756d9 62%,#176df5);color:white;display:flex;align-items:center}.hero-content{position:relative;z-index:2;width:54%;padding:30px 0 30px 42px}.hero h2{font-size:clamp(34px,5vw,54px);line-height:1.08;margin:0 0 16px}.hero p{font-size:23px;margin:0 0 24px}.hero-student{position:absolute;right:0;bottom:0;width:48%;height:100%;object-fit:cover;object-position:center 25%}.primary{background:var(--yellow);color:#10204a;border-radius:24px;padding:13px 21px;font-weight:700}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0 30px}.stat,.card,.panel,.subject-choice,.note{background:white;border:1px solid var(--line);border-radius:18px;box-shadow:0 5px 18px #193c9810}.stat{text-align:center;padding:20px 8px}.stat b{display:block;font-size:27px;margin:7px}.section-heading{margin:12px 0 18px}.section-heading h2{font-size:30px;margin:0 0 7px}.section-heading p,.muted{color:var(--muted);line-height:1.55}.subject-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.subject-card{padding:0;text-align:left;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:18px;color:var(--navy);box-shadow:0 4px 15px #193c9810}.subject-card img{width:100%;height:145px;object-fit:cover;display:block}.subject-info{padding:13px}.subject-info h3{margin:0 0 7px;font-size:19px}.subject-info span{font-size:14px;color:var(--muted)}.cta{margin:24px 0;padding:22px;border-radius:20px;background:linear-gradient(110deg,#e8efff,#dfe8ff);display:flex;align-items:center;gap:18px}.cta .grow{flex:1}.cta h2{margin:0 0 6px;color:var(--deep)}.dashboard{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:28px 0}.panel{display:flex;align-items:center;gap:14px;text-align:left;padding:20px;color:var(--navy);min-height:108px}.panel-icon{font-size:26px;background:#edf2ff;border-radius:14px;padding:12px}.panel h3{margin:0 0 5px;color:var(--deep);font-size:18px}.panel p{margin:0;color:var(--muted);font-size:14px;line-height:1.4}.bottom-nav{position:fixed;z-index:30;bottom:0;left:50%;transform:translateX(-50%);width:min(1120px,100%);height:82px;padding:6px 8px max(6px,env(safe-area-inset-bottom));display:flex;justify-content:space-around;background:#fff;box-shadow:0 -5px 24px #173b9518;border-radius:22px 22px 0 0}.nav-item{flex:1;background:transparent;color:#56618b;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:13px}.nav-item .ico{font-size:25px}.nav-item.active{color:var(--blue);font-weight:bold}.drawer{display:none;position:fixed;inset:0;background:#061b4c80;z-index:60}.drawer.open{display:block}.drawer-panel{height:100%;width:min(340px,88vw);overflow:auto;background:#fff;padding:20px;box-shadow:8px 0 30px #0002}.drawer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}.drawer-top h2{color:var(--deep);margin:0}.close-menu{background:#edf2ff;border-radius:10px;font-size:26px;padding:5px 12px}.drawer-link{width:100%;display:flex;gap:12px;align-items:center;text-align:left;background:#fff;padding:13px 10px;border-radius:11px;color:#192b49;font-weight:600}.drawer-link:hover{background:#edf2ff}.page{display:none;padding:26px 0 38px;min-height:50vh}.page.active{display:block}.page h2{color:var(--deep);font-size:29px;margin:0 0 8px}.btn{background:#e8efff;color:var(--deep);padding:11px 15px;border-radius:11px;font-weight:700;margin:0 8px 14px 0}.input{padding:13px;border:1px solid #cbd7f4;border-radius:10px;width:min(100%,460px);margin:0 8px 12px 0}.list{display:grid;gap:10px}.row{background:white;border:1px solid var(--line);border-radius:13px;padding:13px;display:flex;align-items:center;gap:10px}.row span{flex:1}.row button{padding:8px 10px;border-radius:8px;background:#edf2ff;color:var(--deep)}.subject-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.subject-choice{padding:16px;text-align:left;color:var(--navy);font-weight:700}.note{padding:20px;line-height:1.68;margin-top:14px}.note h3{color:var(--blue);margin:22px 0 8px}.note .definition{background:#e9f7ed;border-left:5px solid var(--green);padding:13px;margin:13px 0}.note .example{background:#f2eaff;border-left:5px solid var(--purple);padding:13px;margin:13px 0}.note .tip{background:#fff7d9;border-left:5px solid #e0ad00;padding:13px;margin:13px 0}.note .warning{background:#fff0f0;border-left:5px solid var(--red);padding:13px;margin:13px 0}.note li{margin:7px 0}.note table{border-collapse:collapse;width:100%;margin:12px 0}.note td,.note th{border:1px solid var(--line);padding:9px;text-align:left}.note th{background:#eaf0ff;color:var(--deep)}.notice{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;color:var(--muted);line-height:1.5}
+@media(max-width:760px){main{padding:0 14px}.header{height:74px;padding:8px 14px}.brand h1{font-size:24px}.brand p{font-size:12px}.logo{font-size:34px}.hero{height:290px;border-radius:18px}.hero-content{width:57%;padding:20px}.hero h2{font-size:clamp(28px,7vw,40px)}.hero p{font-size:16px}.hero-student{width:47%}.stats{gap:8px}.stat{padding:13px 4px}.stat b{font-size:20px}.subject-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.subject-card img{height:115px}.subject-info{padding:10px}.subject-info h3{font-size:16px}.dashboard{grid-template-columns:1fr;gap:10px}.panel{min-height:88px;padding:14px}.panel h3{font-size:16px}.panel p{font-size:13px}.cta{flex-wrap:wrap}.cta .grow{min-width:65%}.subject-list{grid-template-columns:1fr}.bottom-nav{height:76px}.nav-item{font-size:11px}.nav-item .ico{font-size:22px}.page h2{font-size:24px}.note{padding:15px}}
+@media(max-width:380px){.hero{height:260px}.hero-content{padding:14px;width:60%}.hero h2{font-size:26px}.hero p{font-size:14px}.primary{padding:10px 13px;font-size:13px}.stat b{font-size:17px}.stat{font-size:12px}.nav-item{font-size:10px}}
 
-        .content-block h3 {
-            margin-top: 0;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
-        /* Tables */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-            font-size: 0.85rem;
-        }
-        th, td {
-            border: 1px solid var(--border-color);
-            padding: 0.6rem;
-            text-align: center;
-        }
-        th {
-            background: #334155;
-            color: #f8fafc;
-        }
-        /* Bottom Navigation */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #1e293b;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-around;
-            padding: 0.75rem 0;
-            z-index: 1000;
-        }
-        .nav-item {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.75rem;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .nav-item.active {
-            color: #60a5fa;
-        }
-        .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 0.6rem 1rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.85rem;
-            border: none;
-            cursor: pointer;
-            margin-top: 0.5rem;
-        }
-        .btn:hover { background: var(--primary-dark); }
-        .hidden { display: none; }
-    </style>
-</head>
-<body>
+/* LearnBridge navigation and lesson visual refresh */
+.bottom-nav{height:88px;padding:8px 10px max(8px,env(safe-area-inset-bottom));gap:5px;background:rgba(255,255,255,.97);border:1px solid #e3eaff;box-shadow:0 -8px 30px #123a951c;border-radius:24px 24px 0 0;backdrop-filter:blur(14px)}
+.nav-item{position:relative;border-radius:16px;gap:5px;font-size:12px;font-weight:700;letter-spacing:.1px;transition:background .18s,color .18s}
+.nav-item .ico{width:34px;height:32px;display:grid;place-items:center;border-radius:11px;background:#f0f4ff;font-size:21px;line-height:1}
+.nav-item.active{color:#0648cf;background:#edf3ff}.nav-item.active .ico{background:linear-gradient(135deg,#0757f5,#4a8cff);color:white;box-shadow:0 4px 12px #0757f544}
+.menu-button{width:48px;height:46px;display:grid;place-items:center;box-shadow:0 4px 14px #092b8d18;border:1px solid #dce6ff;transition:transform .18s,background .18s}.menu-button:active{transform:scale(.96)}
+.drawer{background:linear-gradient(115deg,#061b4ccc,#092b8d99);backdrop-filter:blur(5px)}
+.drawer-panel{width:min(370px,88vw);padding:22px 18px;background:linear-gradient(180deg,#f7f9ff 0%,#fff 36%);box-shadow:12px 0 40px #00133b33;animation:drawerIn .22s ease-out}
+@keyframes drawerIn{from{transform:translateX(-18px);opacity:.75}to{transform:translateX(0);opacity:1}}
+.drawer-top{padding:8px 5px 14px;border-bottom:1px solid #e1e9ff}.drawer-top h2{font-size:23px}.close-menu{width:40px;height:40px;display:grid;place-items:center;color:#173b8f;border:1px solid #dce6ff;background:#edf3ff}.drawer-panel>.muted{padding:0 5px 10px;font-size:13px}
+.drawer-link{min-height:48px;margin:4px 0;padding:10px 12px;border:1px solid transparent;border-radius:13px;font-size:15px;transition:background .15s,border .15s,transform .15s}.drawer-link span{width:32px;height:32px;display:grid;place-items:center;border-radius:10px;background:#edf3ff;color:#0757f5;font-size:18px}.drawer-link:hover,.drawer-link:focus-visible{background:#edf3ff;border-color:#d8e4ff;transform:translateX(2px);outline:none}
+.subject-list{gap:14px}.subject-choice{display:flex;align-items:center;gap:13px;min-height:88px;padding:10px 14px;overflow:hidden;text-align:left}.subject-choice img{width:88px;height:66px;flex:0 0 88px;object-fit:cover;border-radius:12px}.subject-choice .subject-choice-copy{flex:1;min-width:0}.subject-choice strong{display:block;color:#10265c;font-size:16px;margin-bottom:5px}.subject-choice small{color:#64739b;font-weight:500}.subject-choice .choice-arrow{color:#0757f5;font-size:22px;font-weight:700}
+.subject-hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(180px,.9fr);gap:18px;align-items:center;background:linear-gradient(120deg,#eaf1ff,#fff);border:1px solid #dce6ff;border-radius:22px;padding:16px;margin:12px 0 20px}.subject-hero img{width:100%;height:160px;object-fit:cover;border-radius:16px}.subject-hero h2{margin:0 0 8px}.topic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.topic-grid .subject-choice{min-height:82px}.note-banner{display:grid;grid-template-columns:170px 1fr;gap:18px;align-items:center;background:linear-gradient(120deg,#eaf1ff,#fff);border:1px solid #dce6ff;border-radius:20px;padding:13px;margin:12px 0}.note-banner img{width:100%;height:120px;object-fit:cover;border-radius:14px}.note-banner h2{margin:0 0 7px}.note-banner p{margin:0;color:#53618d;line-height:1.5}.note h3{padding-bottom:7px;border-bottom:2px solid #e7edff}.note .explain-block{line-height:1.8}.note .formula-box{background:#edf3ff;border-left:5px solid #0757f5;padding:14px;border-radius:10px;margin:12px 0;overflow-wrap:anywhere}
+@media(max-width:600px){body{padding-bottom:calc(100px + env(safe-area-inset-bottom))}.bottom-nav{height:84px;width:100%;border-radius:20px 20px 0 0}.nav-item{font-size:10px;gap:4px}.nav-item .ico{width:31px;height:29px;font-size:19px}.subject-hero{grid-template-columns:1fr;padding:12px}.subject-hero img{height:145px}.topic-grid{grid-template-columns:1fr}.subject-choice img{width:78px;height:62px;flex-basis:78px}.note-banner{grid-template-columns:105px 1fr;gap:11px;padding:10px}.note-banner img{height:100px}.note-banner h2{font-size:20px}.drawer-panel{width:min(350px,90vw)}}
 
-    <header>
-        <h1>LearnBridge</h1>
-        <p>Ethiopian Secondary Curriculum (Grade 11 Mathematics)</p>
-    </header>
 
-    <div class="container">
-        <a href="#" class="topic-header" onclick="showHome(); return false;" id="back-btn" class="hidden">← Back to All 7 Topics</a>
+/* Quiz system: section -> 100-question part -> customizable attempt */
+.quiz-subject-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.quiz-subject{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--line);border-radius:16px;background:#fff;text-align:left;box-shadow:0 4px 14px #193c9810}.quiz-subject img{width:70px;height:58px;object-fit:cover;border-radius:10px}.quiz-subject strong{display:block;color:var(--deep)}.quiz-subject small{color:var(--muted)}.quiz-section-grid,.quiz-part-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}.quiz-tile{padding:14px;border:1px solid var(--line);border-radius:14px;background:#fff;text-align:left;color:var(--navy)}.quiz-tile strong{display:block;color:var(--deep);margin-bottom:5px}.quiz-tile small{color:var(--muted)}.quiz-config{background:#f0f5ff;border:1px solid #dce6ff;border-radius:16px;padding:15px;margin:14px 0}.quiz-config select,.quiz-config input{padding:10px;border:1px solid #cbd7f4;border-radius:9px;background:white;max-width:100%}.quiz-question{background:white;border:1px solid var(--line);border-radius:18px;padding:18px;margin:14px 0}.quiz-option{display:block;width:100%;padding:13px;margin:8px 0;border:1px solid #dce6ff;border-radius:12px;background:#fff;text-align:left;color:var(--navy)}.quiz-option.selected{border-color:var(--blue);background:#edf3ff}.quiz-option.correct{border-color:#16834a;background:#e9f7ed}.quiz-option.incorrect{border-color:#b83232;background:#fff0f0}.quiz-progress{height:9px;background:#e7edff;border-radius:9px;overflow:hidden}.quiz-progress>span{display:block;height:100%;background:linear-gradient(90deg,#0757f5,#29a3ff)}.setting-row{display:flex;align-items:center;gap:10px;padding:10px 0;color:var(--navy)}
+@media(max-width:600px){.quiz-subject-grid,.quiz-section-grid,.quiz-part-grid{grid-template-columns:1fr}.quiz-question{padding:14px}}
 
-        <!-- TOPIC LIST VIEW -->
-        <div id="topic-list-view">
-            <div class="card">
-                <h2>Mathematics Curriculum Hub</h2>
-                <p style="color: var(--text-muted); font-size: 0.85rem;">Explore all 7 core topics meticulously detailed with formulas, tables, worked examples, exam tips, and practice questions.</p>
-            </div>
+</style></head><body>
+<header class="header"><div class="brand"><div class="logo">🎓</div><div><h1>LearnBridge</h1><p>Learn Today. Build Tomorrow.</p></div></div><button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false">☰</button></header>
+<main><div id="homeView">
+<section class="hero"><div class="hero-content"><h2>Prepare for<br>Your Success</h2><p>Study • Practice • Excel</p><button class="primary" onclick="navigate('lessons')">▢ Start Learning →</button></div><img class="hero-student" src="hero-student.jpg" alt="Student holding a LearnBridge book"></section>
+<section class="stats"><div class="stat">📘<b>7</b>Subjects</div><div class="stat">👥<b>Learn</b>Anywhere</div><div class="stat">🏆<b>Practice</b>Daily</div><div class="stat">⭐<b>Always</b>Free</div></section>
+<section><div class="section-heading"><h2>Our Subjects</h2><p>Choose a subject to start learning</p></div><div class="subject-grid" id="homeSubjects"></div></section>
+<section class="cta"><div style="font-size:45px">🏆</div><div class="grow"><h2>Ready to Achieve More?</h2><p>Start studying now and reach your goals!</p></div><button class="btn" onclick="navigate('quizzes')">Go to Exams →</button></section>
+<div class="section-heading"><h2>Your Learning Dashboard</h2><p>Keep your study journey organized.</p></div><section class="dashboard">
+<button class="panel" onclick="navigate('continue')"><span class="panel-icon">▶️</span><span><h3>Continue Learning</h3><p>Return to your recently opened lessons.</p></span></button>
+<button class="panel" onclick="navigate('progress')"><span class="panel-icon">📈</span><span><h3>Learning Progress</h3><p>See the lessons you have completed.</p></span></button>
+<button class="panel" onclick="navigate('planner')"><span class="panel-icon">🗓️</span><span><h3>Your Study Planner</h3><p>Organize your study activities.</p></span></button>
+<button class="panel" onclick="navigate('goals')"><span class="panel-icon">🎯</span><span><h3>Daily Learning Goals</h3><p>Create and complete daily goals.</p></span></button>
+<button class="panel" onclick="navigate('quizzes')"><span class="panel-icon">📝</span><span><h3>Prepare for Exams</h3><p>Open the exam preparation section.</p></span></button>
+<button class="panel" onclick="navigate('saved')"><span class="panel-icon">🔖</span><span><h3>Saved Lessons</h3><p>Find your bookmarked lessons.</p></span></button>
+</section></div><section id="page" class="page" aria-live="polite"></section></main>
+<nav class="bottom-nav" aria-label="Main navigation"><button class="nav-item active" data-page="home" onclick="navigate('home')"><span class="ico">⌂</span>Home</button><button class="nav-item" data-page="lessons" onclick="navigate('lessons')"><span class="ico">📚</span>Lessons</button><button class="nav-item" data-page="quizzes" onclick="navigate('quizzes')"><span class="ico">✎</span>Quizzes</button><button class="nav-item" data-page="progress" onclick="navigate('progress')"><span class="ico">▥</span>Progress</button><button class="nav-item" data-page="profile" onclick="navigate('profile')"><span class="ico">♙</span>Profile</button></nav>
+<div class="drawer" id="drawer"><aside class="drawer-panel"><div class="drawer-top"><h2>🎓 LearnBridge</h2><button class="close-menu" id="closeMenu" aria-label="Close menu">×</button></div><p class="muted">Learn Today. Build Tomorrow.</p><div style="height:12px"></div>
+<button class="drawer-link" onclick="navigate('home')"><span>⌂</span>Home</button><button class="drawer-link" onclick="navigate('lessons')"><span>📚</span>Lessons</button><button class="drawer-link" onclick="navigate('continue')"><span>▶️</span>Continue</button><button class="drawer-link" onclick="navigate('planner')"><span>🗓️</span>Planner</button><button class="drawer-link" onclick="navigate('progress')"><span>📈</span>Progress</button><button class="drawer-link" onclick="navigate('goals')"><span>🎯</span>Goals</button><button class="drawer-link" onclick="navigate('saved')"><span>🔖</span>Saved</button><button class="drawer-link" onclick="navigate('quizzes')"><span>✎</span>Quizzes</button><button class="drawer-link" onclick="navigate('profile')"><span>♙</span>Profile</button><button class="drawer-link" onclick="navigate('about')"><span>ⓘ</span>About</button><button class="drawer-link" onclick="navigate('settings')"><span>⚙️</span>Settings</button></aside></div><script>
+const subjects={"Mathematics": ["Number Systems, Sets, and Real Numbers", "Algebraic Expressions, Equations, and Inequalities", "Relations, Functions, and Graphs", "Polynomial, Rational, Exponential, and Logarithmic Functions", "Trigonometry and Applications", "Coordinate Geometry, Vectors, and Matrices", "Statistics, Probability, and Calculus"], "Physics": ["Physical Quantities, Units, and Measurement", "Motion: Kinematics and Graphs", "Forces, Newton’s Laws, and Momentum", "Work, Energy, and Power", "Waves, Sound, and Oscillations", "Electricity, Magnetism, and Electromagnetic Induction", "Optics, Modern Physics, and Nuclear Physics"], "Chemistry": ["Acid–Base Equilibria", "Electrochemistry", "Chemical Bonding and Molecular Structure", "Chemical Equilibrium and Chemical Kinetics", "Solutions and Stoichiometry", "Organic Chemistry", "Industrial Chemistry and Polymers, including Environmental Chemistry"], "Biology": ["Cell Biology and Cell Division", "Biological Molecules, Enzymes, and Metabolism", "Plant Structure, Transport, and Photosynthesis", "Human Body Systems and Homeostasis", "Genetics, DNA, and Inheritance", "Evolution, Classification, and Biodiversity", "Ecology, Ecosystems, and Environmental Biology"], "Geography": ["Map Reading, Scale, Direction, and Geographic Skills", "Earth’s Structure, Rocks, and Landforms", "Weather, Climate, and Climate Change", "Natural Resources and Environmental Management", "Population, Settlement, and Migration", "Agriculture, Industry, Transport, and Trade", "Geography of Ethiopia and Africa"], "History": ["Historical Sources, Evidence, and Chronology", "Ancient Civilizations and Early Societies", "Ancient and Medieval Ethiopian History", "The Rise and Development of States and Empires", "Ethiopia in the Nineteenth Century", "Ethiopia in the Twentieth Century and Modern Period", "African History, Colonialism, and Independence"], "Economics": ["Introduction to Economics, Scarcity, and Choice", "Demand, Supply, and Market Equilibrium", "Consumer Behaviour and Utility", "Production, Costs, and Market Structures", "Money, Banking, and Financial Systems", "National Income, Inflation, and Unemployment", "Economic Growth, Development, and the Ethiopian Economy"]};
+const chemistryNotes=[{"objectives": ["Explain acid and base models and conjugate pairs.", "Calculate pH, pOH and ion concentrations.", "Describe strong/weak acid equilibrium and buffer action."], "key": "An acid donates a proton (H⁺) in the Brønsted–Lowry model; a base accepts a proton. A conjugate acid–base pair differs by one proton.", "explain": "In water, strong acids ionize almost completely, while weak acids establish a reversible equilibrium. For a monoprotic weak acid HA: HA ⇌ H⁺ + A⁻ and Ka = [H⁺][A⁻]/[HA]. The larger Ka, the stronger the acid. For bases, Kb = [BH⁺][OH⁻]/[B]. At 25 °C, pH = −log₁₀[H⁺], pOH = −log₁₀[OH⁻], and pH + pOH = 14. Neutral water has pH 7 at this temperature. A buffer contains a weak acid and its conjugate base (or weak base and conjugate acid); it resists modest pH changes because one component consumes added H⁺ and the other consumes added OH⁻.", "formula": "pH = −log[H⁺]; pOH = −log[OH⁻]; pH + pOH = 14 (at 25 °C); Ka × Kb = Kw for conjugate pairs.", "example": "A solution has [H⁺] = 1.0 × 10⁻³ mol L⁻¹. pH = −log(1.0 × 10⁻³) = 3.00. Since pH is below 7 at 25 °C, the solution is acidic.", "tip": "Memorize the logarithm relationship and state the temperature when using pH + pOH = 14.", "mistake": "Do not confuse concentration with pH: a tenfold increase in [H⁺] lowers pH by one unit. Do not call every acid strong; strength describes ionization, not simply concentration.", "practice": [["If [OH⁻] = 1.0 × 10⁻⁴ M at 25 °C, what is pOH and pH?", "pOH = 4.00; pH = 14 − 4 = 10.00."], ["What happens when a small amount of acid is added to an effective buffer?", "The conjugate base reacts with much of the added H⁺, so the pH changes only slightly."]], "summary": "Acids donate H⁺; bases accept H⁺. Use Ka/Kb for weak equilibria and logarithms for pH. Buffers resist small pH changes."}, {"objectives": ["Define oxidation, reduction and redox reactions.", "Identify anode, cathode and electron flow.", "Relate cell potential to spontaneity and electrolysis."], "key": "Oxidation is loss of electrons and increase in oxidation number; reduction is gain of electrons and decrease in oxidation number. Remember OIL RIG: Oxidation Is Loss, Reduction Is Gain.", "explain": "A galvanic (voltaic) cell converts energy from a spontaneous redox reaction into electrical energy. Oxidation occurs at the anode and reduction at the cathode. Electrons travel through the external wire from anode to cathode. In a galvanic cell, the anode is negative and cathode positive. A salt bridge maintains electrical neutrality by allowing ions to migrate. Standard cell potential is E°cell = E°cathode − E°anode when tabulated as reduction potentials. A positive E°cell indicates a spontaneous reaction under standard conditions. Electrolysis uses an external power supply to drive a non-spontaneous reaction; the anode remains the site of oxidation and cathode of reduction.", "formula": "E°cell = E°red(cathode) − E°red(anode); Q = It; m = (MIt)/(nF), where F ≈ 96485 C mol⁻¹.", "example": "For a cell with E°red(cathode) = +0.34 V and E°red(anode) = −0.76 V: E°cell = 0.34 − (−0.76) = +1.10 V.", "tip": "Always label potentials as reduction potentials before subtracting. Write oxidation and reduction half-equations and balance electrons.", "mistake": "The anode is not always negative: its sign depends on cell type. Oxidation always occurs at the anode; reduction always occurs at the cathode.", "practice": [["Where does oxidation occur in an electrolytic cell?", "At the anode; this rule is true for both galvanic and electrolytic cells."], ["A current of 2.0 A flows for 10 minutes. What charge passes?", "Q = It = 2.0 × 600 = 1200 C."]], "summary": "Redox transfers electrons. Anode = oxidation; cathode = reduction. Galvanic cells generate electricity; electrolytic cells consume it."}, {"objectives": ["Compare ionic, covalent and metallic bonding.", "Use electronegativity and electron structure to predict bonding.", "Relate molecular shape to electron-pair repulsion."], "key": "A chemical bond is an attractive interaction that holds atoms or ions together. Bonding generally lowers the energy of the system.", "explain": "Ionic bonding results from electrostatic attraction between oppositely charged ions, commonly formed after electron transfer. Covalent bonding involves shared electron pairs. Metallic bonding is often described as positive metal-ion cores surrounded by delocalized electrons. Electronegativity measures an atom’s attraction for shared electrons; a large difference often indicates polar bonding, although bonding is a continuum. Lewis structures show valence electrons and bonding pairs. The VSEPR model predicts shape by arranging electron domains to reduce repulsion: two domains are linear, three are trigonal planar, and four are tetrahedral. Lone pairs repel more strongly than bonding pairs and can reduce bond angles. Molecular polarity depends on both bond polarity and molecular geometry.", "formula": "Formal charge = valence electrons − nonbonding electrons − ½(bonding electrons). Common electron-domain geometries: 2 linear, 3 trigonal planar, 4 tetrahedral.", "example": "For H₂O, oxygen has two O–H bonding pairs and two lone pairs: four electron domains give a tetrahedral electron arrangement. The molecular shape is bent because only atom positions are counted; the molecule is polar.", "tip": "Draw the Lewis structure first, count electron domains around the central atom, then distinguish electron geometry from molecular shape.", "mistake": "Do not assume a molecule is nonpolar merely because it has polar bonds. Check whether the bond dipoles cancel because of the molecular shape.", "practice": [["What type of bond forms through sharing electron pairs?", "A covalent bond."], ["Why is CO₂ nonpolar overall although each C=O bond is polar?", "Its linear geometry makes the two equal bond dipoles point in opposite directions and cancel."]], "summary": "Ionic bonding is ion attraction; covalent bonding shares electrons; metallic bonding uses delocalized electrons. Shape affects polarity."}, {"objectives": ["Explain dynamic equilibrium in a closed system.", "Write equilibrium-constant expressions.", "Predict shifts using Le Châtelier’s principle and explain reaction rates."], "key": "At dynamic equilibrium, forward and reverse reaction rates are equal. Concentrations remain constant, but reactions continue at the particle level.", "explain": "For aA + bB ⇌ cC + dD, Kc = [C]ᶜ[D]ᵈ / ([A]ᵃ[B]ᵇ), omitting pure solids and liquids. The value of K indicates the relative product/reactant amounts at equilibrium at a given temperature. The reaction quotient Q has the same form but uses current concentrations: Q<K means net forward reaction; Q>K means net reverse reaction. Le Châtelier’s principle says a system at equilibrium shifts in the direction that partly opposes a disturbance. A catalyst speeds both forward and reverse reactions equally and does not change K or the equilibrium composition. Kinetics studies rates: rate depends on concentration, temperature, surface area (for solids), and catalysts. The Arrhenius equation connects rate constant and activation energy.", "formula": "Kc = [products]ᵖ/[reactants]ʳ; rate = change in concentration/time; k = Ae^(−Ea/RT).", "example": "For N₂ + 3H₂ ⇌ 2NH₃, Kc = [NH₃]²/([N₂][H₂]³). Increasing H₂ at constant temperature makes Q smaller than K, so the net reaction shifts toward NH₃.", "tip": "When predicting a shift, identify exactly what changed: concentration, pressure/volume for gases, or temperature. A catalyst does not shift equilibrium.", "mistake": "Do not include pure solids or pure liquids in Kc. Do not say equilibrium means equal concentrations; it means equal forward and reverse rates.", "practice": [["What does a catalyst change at equilibrium?", "It helps equilibrium be reached faster but does not change K or the equilibrium composition."], ["If Q is greater than K, which direction is favored?", "The reverse direction, toward reactants, until Q returns to K."]], "summary": "K describes equilibrium composition; Q predicts direction. Le Châtelier predicts shifts. Catalysts change rate, not equilibrium position."}, {"objectives": ["Define solute, solvent and concentration.", "Convert between common concentration units.", "Use balanced equations and mole ratios in stoichiometry."], "key": "A solution is a homogeneous mixture. The solute is dissolved in the solvent. Stoichiometry uses balanced chemical equations to relate amounts of reactants and products.", "explain": "Molarity is moles of solute per litre of solution. Dilution lowers concentration by adding solvent while the amount of solute remains constant, so M₁V₁ = M₂V₂. The mole is the amount containing Avogadro’s number (6.022 × 10²³) of specified entities. In a balanced equation, coefficients give mole ratios, not mass ratios. Typical stoichiometry: convert given mass to moles using molar mass; use the balanced equation ratio; convert the required moles to the requested unit. The limiting reactant is consumed first and determines the maximum product. Percentage yield compares actual yield with theoretical yield.", "formula": "n = m/Mr; c = n/V; M₁V₁ = M₂V₂; percentage yield = (actual yield/theoretical yield) × 100%.", "example": "How many moles are in 5.85 g NaCl (Mr = 58.5 g mol⁻¹)? n = m/Mr = 5.85/58.5 = 0.100 mol.", "tip": "Balance the equation before using mole ratios. Keep units at every step and convert mL to L when calculating molarity.", "mistake": "Do not use an unbalanced equation. Do not confuse the volume of solvent with the final volume of solution.", "practice": [["What is the molarity of 0.20 mol solute in 0.50 L solution?", "c = n/V = 0.20/0.50 = 0.40 mol L⁻¹."], ["If 25 mL of 2.0 M solution is diluted to 100 mL, what is the new concentration?", "M₂ = M₁V₁/V₂ = 2.0 × 25/100 = 0.50 M."]], "summary": "Use moles as the bridge between mass and equations. Molarity uses final solution volume; balance equations before calculating."}, {"objectives": ["Recognize hydrocarbons and common functional groups.", "Distinguish major organic reaction types.", "Relate structure, naming and properties of organic compounds."], "key": "Organic chemistry studies carbon compounds, especially compounds containing carbon–hydrogen bonds. Carbon can form four covalent bonds and build chains, branches and rings.", "explain": "Hydrocarbons contain only carbon and hydrogen. Alkanes are saturated and contain C–C single bonds; alkenes contain at least one C=C double bond; alkynes contain at least one C≡C triple bond. Functional groups determine many characteristic reactions: alcohols contain –OH, carboxylic acids –COOH, aldehydes –CHO, ketones contain a carbonyl within a chain, and esters contain –COO–. Structural isomers share a molecular formula but have different connectivity. Common reactions include substitution (often alkanes), addition (alkenes/alkynes), oxidation of alcohols, esterification, and polymerization. Naming requires selecting the longest appropriate chain, numbering to give substituents/functional groups the lowest suitable locants, and using standard prefixes/suffixes.", "formula": "General formulae for open-chain compounds: alkanes CₙH₂ₙ₊₂; alkenes CₙH₂ₙ; alkynes CₙH₂ₙ₋₂ (one double/triple bond, respectively).", "example": "Ethene, CH₂=CH₂, undergoes addition with bromine: CH₂=CH₂ + Br₂ → CH₂Br–CH₂Br. The C=C bond opens and each carbon forms a new bond to bromine.", "tip": "Learn functional groups with a structure and one representative compound. When naming, identify the principal functional group before numbering the chain.", "mistake": "Do not confuse molecular formula with structural formula. Compounds can share a molecular formula yet have different structures and properties.", "practice": [["Which functional group identifies an alcohol?", "The hydroxyl group, –OH."], ["What is the product class when a carboxylic acid reacts with an alcohol?", "An ester is formed, commonly with water as a by-product."]], "summary": "Carbon forms diverse structures. Identify the carbon skeleton and functional group; use reaction patterns to predict products."}, {"objectives": ["Describe important industrial chemical processes and their purposes.", "Explain polymer formation and distinguish addition/condensation polymerization.", "Discuss environmental impacts and pollution prevention."], "key": "Industrial chemistry applies chemical principles to manufacture materials at scale. A polymer is a large molecule built from repeating smaller units called monomers.", "explain": "Industrial processes balance yield, rate, energy use, safety, cost and environmental impact. The Haber process makes ammonia from nitrogen and hydrogen using elevated temperature and pressure with an iron-based catalyst; operating conditions balance equilibrium yield and rate. Sulfuric acid is manufactured by the Contact process: sulfur dioxide is oxidized to sulfur trioxide, then absorbed appropriately to produce sulfuric acid. Addition polymerization joins unsaturated monomers without eliminating a small molecule; condensation polymerization joins monomers while eliminating a small molecule such as water. Environmental chemistry examines air, water and soil pollutants, their sources, effects and control. Green chemistry seeks to prevent waste, use safer substances, improve energy efficiency and design products that degrade appropriately.", "formula": "Haber: N₂(g) + 3H₂(g) ⇌ 2NH₃(g). Contact oxidation: 2SO₂(g) + O₂(g) ⇌ 2SO₃(g).", "example": "Ethene molecules form poly(ethene): nCH₂=CH₂ → (–CH₂–CH₂–)ₙ. The C=C double bond opens and links many ethene units into a long chain.", "tip": "For industrial-process questions, connect conditions to rate and equilibrium, then mention catalyst, raw materials, energy and environmental controls.", "mistake": "A catalyst changes reaction rate, not the equilibrium constant. Do not assume every polymer is biodegradable; many common plastics persist in the environment.", "practice": [["What is the monomer used to make poly(ethene)?", "Ethene (CH₂=CH₂)."], ["Give one principle of green chemistry.", "Prevent waste at source, improve atom economy, use safer chemicals or reduce energy demand."]], "summary": "Industrial chemistry scales reactions responsibly. Know key processes, polymer types, environmental impacts and pollution prevention."}];
+const images={Mathematics:'mathematics.jpg',Physics:'physics.jpg',Chemistry:'chemistry.jpg',Biology:'biology.jpg',Geography:'geography.jpg',History:'history.jpg',Economics:'economics.jpg'};
+const home=document.getElementById('homeView'),page=document.getElementById('page'),drawer=document.getElementById('drawer');let currentSubject='Chemistry';
+function read(key, fallback=[]){try{return JSON.parse(localStorage.getItem('learnbridge_'+key))??fallback}catch(e){return fallback}}
+function save(key,value){try{localStorage.setItem('learnbridge_'+key,JSON.stringify(value));return true}catch(e){alert('Your browser could not save this item. Check available device storage.');return false}}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function activeNav(name){document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.page===name))}
+function navigate(name){drawer.classList.remove('open');document.getElementById('menuButton').setAttribute('aria-expanded','false');activeNav(['home','lessons','quizzes','progress','profile'].includes(name)?name:'');if(name==='home'){home.style.display='block';page.classList.remove('active');window.scrollTo({top:0,behavior:'smooth'});return}home.style.display='none';page.classList.add('active');renderPage(name);window.scrollTo({top:0,behavior:'smooth'})}
+function subjectCards(){document.getElementById('homeSubjects').innerHTML=Object.keys(subjects).map(s=>`<button class="subject-card" onclick="openSubject('${s}')"><img src="${images[s]}" alt="${s}"/><div class="subject-info"><h3>${s}</h3><span>▤ 7 Topics　　›</span></div></button>`).join('')}
+function subjectList(){return `<div class="subject-list">${Object.keys(subjects).map(s=>`<button class="subject-choice" onclick="openSubject('${s}')"><img src="${images[s]}" alt="${s}"><span class="subject-choice-copy"><strong>${s}</strong><small>7 topics • Explore lessons</small></span><span class="choice-arrow">→</span></button>`).join('')}</div>`}
+function openSubject(s){currentSubject=s;home.style.display='none';page.classList.add('active');activeNav('lessons');page.innerHTML=`<button class="btn" onclick="navigate('lessons')">← All subjects</button><section class="subject-hero"><div><h2>${s}</h2><p class="muted">Explore seven organized topics, study detailed notes, and track your learning.</p><strong>7 learning topics</strong></div><img src="${images[s]}" alt="${s} subject"></section><div class="topic-grid">${subjects[s].map((t,i)=>`<button class="subject-choice" onclick="openNote(${i})"><span class="note-number">${i+1}</span><span class="subject-choice-copy"><strong>${esc(t)}</strong><small>Open detailed lesson</small></span><span class="choice-arrow">→</span></button>`).join('')}</div>`;window.scrollTo(0,0)}
+function generalNote(subject,title,index){
+const bank={
+Mathematics:{objectives:['Identify the mathematical ideas and vocabulary used in this topic.','Select and apply an appropriate method to solve problems.','Show working clearly, check results, and interpret answers.'],concept:`${title} develops mathematical tools for describing relationships, representing quantities, and solving structured problems. Begin by identifying the given information, the required result, and the conditions that must remain true.`,detail:`A reliable approach is to define every symbol before using it, write the relevant property or rule, and keep each algebraic step logically equivalent to the previous one. When a problem includes a diagram, graph, table, or statement, translate it into mathematical notation carefully. Check domain restrictions, signs, units, and special cases. A result should be tested in the original condition whenever possible. Different representations—verbal, numerical, graphical, and symbolic—can reveal different parts of the same mathematical idea.`,formula:'Write the known rule or identity first; substitute values only after checking that its conditions are satisfied. Keep exact values until the final step.',example:'Worked method: (1) list the known values and the unknown; (2) choose the definition, identity, or theorem that connects them; (3) substitute carefully; (4) simplify one step at a time; (5) verify the result in the original question.',tip:'In examinations, show the method even when a calculator is allowed. Check signs, brackets, restrictions, units, and whether the answer is reasonable.',mistake:'Do not skip conditions such as a non-zero denominator, valid domain, angle units, or required interval. A numerically plausible answer may still violate the original question.',practice:[['Why should a solution be checked in the original condition?','Substitution confirms that the result satisfies the actual problem, not merely an intermediate rearrangement.'],['What should be written before substituting into a formula?','The relevant rule and the known quantities, with their units and conditions.']],summary:`Understand the definitions behind ${title}; choose a valid method; show clear steps; and verify the final result.`},
+Physics:{objectives:['Define the physical quantities and principles in this topic.','Use suitable equations and SI units in calculations.','Explain physical situations using evidence and scientific reasoning.'],concept:`${title} describes physical behaviour through measurable quantities and relationships. A physical model simplifies a situation while keeping the features needed to answer a particular question.`,detail:`Start by identifying the system being studied and the quantities that describe it. Distinguish scalar quantities, which have magnitude only, from vector quantities, which also have direction. Use SI units consistently and convert values before calculation. A diagram, graph, or free-body representation can help identify relationships. Equations express relationships between variables, but they are valid only under their stated assumptions. Interpret the sign and unit of the result, and explain what it means physically. Where a process changes with time, compare initial and final conditions and identify the cause of the change.`,formula:'Use the defining equation for the quantity in the question. Write symbols, SI units, and assumptions before substitution; check dimensional consistency.',example:'Worked method: (1) draw a simple labelled diagram; (2) list known quantities with SI units; (3) identify the governing physical law; (4) rearrange before substituting; (5) calculate and state the unit; (6) check direction and physical meaning.',tip:'Convert to SI units first. For vector quantities, state direction as well as magnitude. Read graph axes and gradients carefully.',mistake:'Do not mix units or treat a vector as a scalar. Do not apply an equation outside its assumptions or confuse a graph gradient with its area.',practice:[['Why are SI units important in physics calculations?','They provide a consistent measurement system and prevent errors caused by incompatible units.'],['What should accompany the magnitude of a vector answer?','Its direction, using the reference direction stated in the problem.']],summary:`Identify the system and quantities in ${title}; select the correct physical law; use SI units; and interpret the result.`},
+Chemistry:{objectives:['Describe the particles, substances, and chemical principles in this topic.','Represent chemical changes with correct symbols and equations.','Use chemical evidence and calculations to explain observations.'],concept:`${title} connects the composition, structure, properties, and transformations of matter. Chemical explanations should be consistent with particle behaviour and conservation of atoms and charge.`,detail:`When studying a chemical system, identify the substances present and the level of description being used: observable properties, particles, or symbolic equations. Use correct formulae and state symbols where appropriate. A balanced chemical equation has the same number of each type of atom on both sides and conserves total charge. For quantitative problems, convert measured quantities to moles when needed, use the balanced equation coefficients as mole ratios, and convert to the requested unit. Explain trends by connecting them to bonding, structure, energy, concentration, or particle interactions relevant to the topic.`,formula:'Common quantitative relationships: n = m/M; c = n/V; number of particles = n × Nₐ. Apply only when the quantities and units match the definition.',example:'Worked method: (1) write correct reactant and product formulae; (2) balance the equation; (3) convert the supplied amount to moles; (4) apply the coefficient ratio; (5) convert to the requested amount and include units.',tip:'Balance equations before using mole ratios. Distinguish atoms, molecules, ions, and moles, and state conditions when they affect the result.',mistake:'Do not change subscripts to balance an equation. Change coefficients only. Do not confuse concentration with amount of substance.',practice:[['Why must a chemical equation be balanced?','It represents conservation of atoms; the same number of each element must appear on both sides.'],['What do coefficients in a balanced equation represent?','The relative amounts in moles of the reacting and produced substances.']],summary:`Connect particle-level explanations with formulae and balanced equations in ${title}; calculate carefully and use correct units.`},
+Biology:{objectives:['Define the biological structures and processes in this topic.','Explain how structure relates to function and regulation.','Interpret biological examples, diagrams, and evidence accurately.'],concept:`${title} examines living systems and the relationships among their structures, functions, and environments. Biological processes are often regulated and depend on interactions among several levels of organization.`,detail:`Biology can be studied at molecular, cellular, organism, population, and ecosystem levels. Identify the level being discussed and trace how a change at one level may affect another. When explaining a process, put events in a logical sequence and identify the structures involved, what each does, and why the process matters. Compare related terms carefully and use precise scientific vocabulary. Diagrams should have clear labels and show direction where movement or flow is involved. Biological explanations should distinguish correlation from cause and should not claim that one example proves a universal rule.`,formula:'For data questions, calculate percentage = (part ÷ whole) × 100. For rates, state the measured change divided by the time interval.',example:'Worked interpretation: identify the structure shown; match each labelled part to its function; describe the sequence of events; then explain how the process supports the organism or ecosystem.',tip:'Learn key terms with their functions. Practise explaining processes as ordered steps and interpreting labelled diagrams and data tables.',mistake:'Do not confuse similar biological terms or describe a structure without its function. Avoid treating a simplified diagram as a perfect picture of scale.',practice:[['Why is structure–function a useful principle in biology?','The form and organization of a biological part help explain the role it performs.'],['What should you do first when interpreting a biological diagram?','Read its title and labels, identify the level of organization, and note what the arrows show.']],summary:`For ${title}, connect accurate terminology, structure, function, process sequence, and evidence.`},
+Geography:{objectives:['Use geographical terms, maps, and spatial evidence correctly.','Explain patterns and interactions between people and environments.','Interpret geographical data and support conclusions with evidence.'],concept:`${title} studies the spatial patterns and processes that shape places and the relationships between people, environments, and resources.`,detail:`Geographical explanations consider location, scale, distribution, change, and connections. Start by identifying where a feature occurs and the scale of analysis: local, national, regional, or global. Maps require careful reading of title, legend, scale, orientation, and symbols. Data may be shown in tables, graphs, maps, or written descriptions; identify the pattern before explaining possible causes. Physical and human factors often interact, so avoid explaining a complex outcome with only one cause. When discussing Ethiopia or Africa, use the specific place and evidence named in the question rather than assuming every region is the same.`,formula:'Map distance = ground distance ÷ scale denominator (for a representative fraction). Always convert both distances to the same unit first.',example:'Worked map method: measure the map distance; read the scale; convert units consistently; multiply by the scale relationship; then state the ground distance with its unit.',tip:'Use map evidence and named examples. In longer answers, organize points as location or pattern, causes, effects, and possible responses.',mistake:'Do not confuse weather with climate, absolute location with relative location, or map distance with ground distance. Check scale units.',practice:[['What information should be checked before measuring a map?','The map scale, title, legend, orientation, and the units requested.'],['Why can geographical patterns have more than one cause?','Physical conditions, human decisions, and connections between places often interact.']],summary:`Study ${title} through location, scale, spatial patterns, causes, impacts, and evidence-based explanations.`},
+History:{objectives:['Place events and developments in a clear chronological context.','Evaluate historical sources and distinguish evidence from interpretation.','Explain causes, events, consequences, and continuity or change.'],concept:`${title} is studied by examining evidence about people, institutions, events, and changes over time. Historical explanations are built from sources and careful reasoning rather than unsupported claims.`,detail:`Begin by establishing the period, place, and people involved. Chronology helps show what happened before, during, and after an event, but sequence alone does not prove causation. Separate long-term conditions, immediate triggers, key actions, and consequences. When evaluating a source, consider who created it, when, for what audience or purpose, and what it can and cannot tell us. Compare accounts where possible and support conclusions with specific evidence. Historical developments may involve continuity as well as change, and different groups may experience the same event differently.`,formula:'For chronology questions, build a timeline with dates in ascending order and distinguish approximate dates from exact dates.',example:'Worked source analysis: identify the author and date; summarize the source’s claim; consider its purpose and context; identify one strength and one limitation; compare it with other evidence.',tip:'Use precise dates and names when known. Structure essays around a clear argument supported by evidence, not a list of disconnected events.',mistake:'Do not assume that a source is neutral or that events have only one cause. Do not confuse a historical interpretation with direct evidence.',practice:[['Why should a historian examine a source’s purpose?','Purpose can shape what the source emphasizes, omits, or tries to persuade its audience to believe.'],['Does an event occurring earlier automatically make it the cause of a later event?','No. A causal link needs supporting evidence and an explanation of how the earlier factor contributed.']],summary:`Place ${title} in context, assess sources, explain multiple causes and consequences, and support interpretations with evidence.`},
+Economics:{objectives:['Define the economic concepts and agents in this topic.','Interpret economic models, data, and relationships.','Apply concepts to household, business, national, and wider economic situations.'],concept:`${title} examines how individuals, firms, governments, and societies make choices when resources are limited and needs or wants compete.`,detail:`Economic analysis begins by defining the relevant market, group, time period, and assumptions. Distinguish a change in quantity demanded or supplied from a shift of the entire demand or supply curve. Models simplify real economies, so explain what the model assumes and what it leaves out. Use data carefully: identify units, dates, whether values are nominal or real, and whether a percentage is a rate or a change. Economic outcomes can involve trade-offs and distributional effects; explain who gains, who bears costs, and over what period. For Ethiopia-related examples, use the facts and time period supplied by the question or source.`,formula:'Percentage change = [(new value − original value) ÷ original value] × 100. For a simple market model, equilibrium occurs where quantity demanded equals quantity supplied.',example:'Worked calculation: if a price rises from 20 to 25, percentage increase = [(25 − 20) ÷ 20] × 100 = 25%. State that the result is an increase.',tip:'Define the term first, explain the mechanism, then apply it to the stated example. Label axes and curves clearly in diagrams.',mistake:'Do not confuse a movement along a curve with a shift of the curve. Do not compare percentages without checking their base values and time periods.',practice:[['What does scarcity mean in economics?','Resources are limited relative to competing wants, so choices and trade-offs are necessary.'],['What is market equilibrium in a basic demand-and-supply model?','The price and quantity at which quantity demanded equals quantity supplied.']],summary:`Explain ${title} with clear definitions, model assumptions, diagrams or calculations, and real-world application.`}
+};
+const n=bank[subject];return `<article class="note"><h3>Learning objectives</h3><ul>${n.objectives.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><div class="definition"><strong>Key concepts and definitions</strong><p>${esc(n.concept)}</p></div><h3>Detailed explanation</h3><p class="explain-block">${esc(n.detail)}</p><h3>Important rules, formulas, and methods</h3><div class="formula-box">${esc(n.formula)}</div><div class="example"><strong>Worked example — method and reasoning</strong><p>${esc(n.example)}</p></div><div class="tip"><strong>Exam tips</strong><p>${esc(n.tip)}</p></div><div class="warning"><strong>Common mistakes and warnings</strong><p>${esc(n.mistake)}</p></div><h3>Practice questions with explained answers</h3>${n.practice.map((q,j)=>`<p><strong>${j+1}. ${esc(q[0])}</strong></p><p>${esc(q[1])}</p>`).join('')}<h3>Revision summary</h3><p>${esc(n.summary)}</p><p class="muted">These are original study notes prepared for LearnBridge. Check your current class textbook and teacher guidance for exact curriculum coverage and terminology.</p></article>`;
+}
+function openNote(i){let title=subjects[currentSubject][i],key=currentSubject+'|'+i,recent=read('recent',[]).filter(x=>x.key!==key);recent.unshift({key,subject:currentSubject,index:i,title});save('recent',recent.slice(0,12));const saved=read('saved',[]),done=read('completed',[]),isSaved=saved.some(x=>x.key===key),isDone=done.includes(key);let content=currentSubject==='Chemistry'?chemistryHTML(chemistryNotes[i]):generalNote(currentSubject,title,i);
+page.innerHTML=`<button class="btn" onclick="openSubject('${currentSubject}')">← Back to ${currentSubject}</button><section class="note-banner"><img src="${images[currentSubject]}" alt="${currentSubject}"><div><h2>${esc(title)}</h2><p>${currentSubject} • Topic ${i+1} of 7<br>LearnBridge detailed study note</p></div></section><button class="btn" onclick="toggleSaved('${currentSubject}',${i})">${isSaved?'Remove bookmark':'🔖 Save lesson'}</button><button class="btn" onclick="toggleDone('${currentSubject}',${i})">${isDone?'Undo completion':'✓ Mark completed'}</button>${content}`;window.scrollTo(0,0)}
+function chemistryHTML(n){return `<article class="note"><h3>Learning objectives</h3><ul>${n.objectives.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><div class="definition"><strong>Key concept</strong><p>${esc(n.key)}</p></div><h3>Detailed explanation</h3><p>${esc(n.explain)}</p><h3>Important formulas and equations</h3><div class="definition"><strong>Formula reference</strong><p>${esc(n.formula)}</p></div><div class="example"><strong>Worked example — step by step</strong><p>${esc(n.example)}</p></div><div class="tip"><strong>Exam tips</strong><p>${esc(n.tip)}</p></div><div class="warning"><strong>Common mistakes and warnings</strong><p>${esc(n.mistake)}</p></div><h3>Practice questions with explained answers</h3>${n.practice.map((q,i)=>`<p><strong>${i+1}. ${esc(q[0])}</strong></p><p>${esc(q[1])}</p>`).join('')}<h3>Revision summary</h3><p>${esc(n.summary)}</p><p class="muted">Study note: These are concise learning notes, not a verified reproduction of an official textbook. Check class materials for your course's exact scope.</p></article>`}
+function toggleSaved(s,i){let key=s+'|'+i,a=read('saved',[]);a=a.some(x=>x.key===key)?a.filter(x=>x.key!==key):[{key,subject:s,index:i,title:subjects[s][i]},...a];save('saved',a);openNote(i)}
+function toggleDone(s,i){let key=s+'|'+i,a=read('completed',[]);a=a.includes(key)?a.filter(x=>x!==key):[...a,key];save('completed',a);openNote(i)}
+const quizSubjects=Object.keys(subjects);
+const quizPilot={
+Mathematics:[{q:'In a right-angled triangle, which ratio is opposite side divided by hypotenuse?',o:['Sine','Cosine','Tangent','Cotangent'],a:0,e:'Sine is defined as opposite ÷ hypotenuse (SOH).'}],
+Physics:[{q:'Which SI unit is used for force?',o:['Joule','Newton','Watt','Pascal'],a:1,e:'Force is measured in newtons (N).'}],
+Chemistry:[{q:'At 25 °C, a solution with pH 3 is best described as:',o:['Acidic','Neutral','Alkaline','Saturated'],a:0,e:'A pH below 7 is acidic at 25 °C.'}],
+Biology:[{q:'Which cell structure contains most of the genetic material in a typical eukaryotic cell?',o:['Ribosome','Nucleus','Cell wall','Vacuole'],a:1,e:'The nucleus contains most of the cell’s DNA.'}],
+Geography:[{q:'Which map element explains the meaning of symbols?',o:['Scale','Legend or key','Contour interval','Grid reference'],a:1,e:'The legend or key explains map symbols.'}],
+History:[{q:'Which source is an example of primary historical evidence?',o:['A modern textbook summary','A historian’s recent article','A letter written during the event','A present-day documentary'],a:2,e:'A contemporaneous letter is a primary source from the period being studied.'}],
+Economics:[{q:'What basic economic problem arises because resources are limited while wants are many?',o:['Scarcity','Inflation','Monopoly','Surplus'],a:0,e:'Scarcity means resources are limited relative to competing wants.'}]
+};
+let quizState={subject:'',section:1,part:1,questions:[],index:0,answers:[],started:0,seconds:3600};
+function quizHomeHTML(){return `<p class="muted">Choose a subject, then a section and a 100-question part. You can customize each attempt from 10 to 100 questions.</p><div class="notice"><strong>Question-bank status</strong><p>The question system and full 10,000-question structure are set up as 10 sections per subject, with 10 parts per section. The complete 70,000-question bank is not yet populated. The current build contains a small pilot set to test the quiz experience; it does not pretend that the full bank is ready.</p></div><div class="quiz-subject-grid">${quizSubjects.map(s=>`<button class="quiz-subject" onclick="openQuizSubject('${s}')"><img src="${images[s]}" alt="${s}"><span><strong>${s}</strong><small>10 sections • 100 parts • 10,000 target</small></span></button>`).join('')}</div>`}
+function openQuizSubject(s){quizState.subject=s;titleQuiz('Choose a section',`<button class="btn" onclick="navigate('quizzes')">← Subjects</button><p class="muted">${s}: 10 sections, each planned for 1,000 questions.</p><div class="quiz-section-grid">${Array.from({length:10},(_,i)=>`<button class="quiz-tile" onclick="openQuizSection(${i+1})"><strong>Section ${i+1}</strong><small>10 parts • 100 questions per part</small></button>`).join('')}</div>`)}
+function openQuizSection(n){quizState.section=n;titleQuiz(`Section ${n}`,`<button class="btn" onclick="openQuizSubject('${quizState.subject}')">← Sections</button><p class="muted">Choose one part. Each part is designed for a maximum of 100 questions.</p><div class="quiz-part-grid">${Array.from({length:10},(_,i)=>`<button class="quiz-tile" onclick="configureQuiz(${i+1})"><strong>Part ${i+1}</strong><small>Questions 1–100 • Customize attempt</small></button>`).join('')}</div>`)}
+function titleQuiz(t,b){page.innerHTML=`<h2>${t}</h2>${b}`;window.scrollTo(0,0)}
+function configureQuiz(part){quizState.part=part;const available=(quizPilot[quizState.subject]||[]).length;titleQuiz(`Section ${quizState.section} · Part ${part}`,`<button class="btn" onclick="openQuizSection(${quizState.section})">← Parts</button><div class="quiz-config"><h3>Customize your quiz</h3><p>Choose how many questions you want to attempt.</p><label>Number of questions (10–100)<br><select id="quizCount">${[10,20,30,40,50,60,70,80,90,100].map(n=>`<option value="${n}">${n} questions</option>`).join('')}</select></label><p class="muted">Available pilot questions for this subject in this build: ${available}. The full 100-question part is not yet populated.</p><label><input id="quizTimed" type="checkbox" checked> 60-minute timer</label><br><label><input id="quizInstant" type="checkbox" checked> Instant feedback after each answer</label><br><button class="btn" onclick="startQuiz()">Start quiz →</button></div>`)}
+function startQuiz(){const count=Number(document.getElementById('quizCount').value),pool=quizPilot[quizState.subject]||[];if(!pool.length){alert('Questions for this part have not been added yet.');return}const selected=pool.slice(0,Math.min(count,pool.length));quizState.questions=selected;quizState.index=0;quizState.answers=[];quizState.started=Date.now();quizState.seconds=document.getElementById('quizTimed').checked?3600:0;quizState.instant=document.getElementById('quizInstant').checked;renderQuizQuestion()}
+function renderQuizQuestion(){const q=quizState.questions[quizState.index],i=quizState.index,answer=quizState.answers[i];const pct=Math.round((i/quizState.questions.length)*100);page.innerHTML=`<button class="btn" onclick="openQuizSection(${quizState.section})">← Exit quiz</button><div class="row"><span><strong>Instant Feedback</strong><br><small>${quizState.subject} • Section ${quizState.section}, Part ${quizState.part}</small></span><strong>${i+1}/${quizState.questions.length}</strong></div><div class="quiz-progress"><span style="width:${pct}%"></span></div><section class="quiz-question"><p><strong>Question ${i+1}</strong></p><h3>${esc(q.q)}</h3>${q.o.map((o,j)=>`<button class="quiz-option ${answer===j?'selected':''}" onclick="answerQuiz(${j})">${String.fromCharCode(65+j)}. ${esc(o)}</button>`).join('')}${answer!==undefined&&quizState.instant?`<div class="${answer===q.a?'definition':'warning'}"><strong>${answer===q.a?'Correct':'Not quite'}</strong><p>${esc(q.e)}</p></div>`:''}</section><div class="row"><button onclick="quizMove(-1)" ${i===0?'disabled':''}>← Previous</button><span></span><button onclick="quizMove(1)">${i===quizState.questions.length-1?'Finish':'Next →'}</button></div>`}
+function answerQuiz(v){quizState.answers[quizState.index]=v;renderQuizQuestion()}
+function quizMove(d){if(d<0){quizState.index=Math.max(0,quizState.index-1);renderQuizQuestion();return}if(quizState.index<quizState.questions.length-1){quizState.index++;renderQuizQuestion()}else finishQuiz()}
+function finishQuiz(){let correct=quizState.questions.reduce((n,q,i)=>n+(quizState.answers[i]===q.a?1:0),0),total=quizState.questions.length,results=read('quizResults',[]);results.unshift({subject:quizState.subject,section:quizState.section,part:quizState.part,correct,total,date:new Date().toISOString()});save('quizResults',results.slice(0,100));titleQuiz('Quiz results',`<div class="card" style="padding:20px"><h2>${correct}/${total}</h2><p>${Math.round(correct/total*100)}% correct</p>${quizState.questions.map((q,i)=>`<div class="quiz-question"><strong>Question ${i+1}: ${quizState.answers[i]===q.a?'Correct':'Review this answer'}</strong><p>${esc(q.q)}</p><p><strong>Correct answer:</strong> ${esc(q.o[q.a])}</p><p>${esc(q.e)}</p></div>`).join('')}<button class="btn" onclick="openQuizSection(${quizState.section})">Back to parts</button></div>`)}
+function savePreference(k,v){let p=read('preferences',{});p[k]=v;save('preferences',p)}
+function clearLearningData(){['recent','saved','completed','plans','goals','quizResults','preferences'].forEach(k=>localStorage.removeItem('lb_'+k));navigate('home')}
 
-            <div class="card" onclick="openTopic(1)" style="cursor: pointer;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <h3 style="margin: 0; color: #60a5fa;">Topic 1: Number Systems, Sets & Real Numbers</h3>
-                        <p style="margin: 0.3rem 0 0 0; font-size: 0.8rem; color: var(--text-muted);">Real number properties, intervals, set operations, and proofs.</p>
-                    </div>
-                    <span style="font-size: 1.2rem;">➔</span>
-                </div>
-            </div>
-              <div class="card" onclick="openTopic(3)" style="cursor: pointer;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <h3 style="margin: 0; color: #60a5fa;">Topic 3: Relations, Functions, and Graphs</h3>
-                        <p style="margin: 0.3rem 0 0 0; font-size: 0.8rem; color: var(--text-muted);">Domain, range, inverse functions, transformations, and composite graphs.</p>
-                    </div>
-                    <span style="font-size: 1.2rem;">➔</span>
-                </div>
-            </div>
-
-            <div class="card" onclick="openTopic(4)" style="cursor: pointer;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <h3 style="margin: 0; color: #60a5fa;">Topic 4: Polynomial, Rational, Exponential & Logarithmic Functions</h3>
-                        <p style="margin: 0.3rem 0 0 0; font-size: 0.8rem; color: var(--text-muted);">Synthetic division, asymptotes, exponential growth, and log laws.</p>
-                    </div>
-                    <span style="font-size: 1.2rem;">➔</span>
-                </div>
-            </div>
-
-            <div class="card" onclick="openTopic(5)" style="cursor: pointer;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <h3 style="margin: 0; color: #60a5fa;">Topic 5: Trigonometry and Applications</h3>
-                        <p style="margin: 0.3rem 0 0 0; font-size: 0.8rem; color: var(--text-muted);">Trig identities, Sine & Cosine laws, radians, and triangle solving.</p>
-                    </div>
-                    <span style="font-size: 1.2rem;">➔</span>
-                </div>
-            </div>
-
-            <div class="card" onclick="openTopic(6)" style="cursor: pointer;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <h3 style="margin: 0; color: #60a5fa;">Topic 6: Coordinate Geometry, Vectors, and Matrices</h3>
-                        <p style="margin: 0.3rem 0 0 0; font-size: 0.8rem; color: var(--text-muted);">Lines, conic sections, dot products, matrix inverses, and determinants.</p>
-                    </div>
-                    <span style="font-size: 1.2rem;">➔</span>
-                </div>
-            </div>
-
-            <div class="card" onclick="openTopic(7)" style="cursor: pointer;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <h3 style="margin: 0; color: #60a5fa;">Topic 7: Statistics, Probability, and Calculus</h3>
-                        <p style="margin: 0.3rem 0 0 0; font-size: 0.8rem; color: var(--text-muted);">Standard deviation, permutations, combinations, limits, and derivatives.</p>
-                    </div>
-                    <span style="font-size: 1.2rem;">➔</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- DETAILED TOPIC VIEW CONTAINER -->
-        <div id="topic-detail-view" class="hidden">
-            <button class="btn" onclick="showHome()" style="margin-bottom: 1rem;">← Back to All Topics</button>
-            <div id="topic-content-body"></div>
-        </div>
-    </div>
-
-    <!-- Bottom Navigation Bar -->
-    <nav class="bottom-nav">
-        <a href="#" class="nav-item active" onclick="showHome(); return false;">🏠 Home</a>
-        <a href="#" class="nav-item" onclick="showHome(); return false;">📚 Topics</a>
-        <a href="#" class="nav-item">🤖 AI Help</a>
-        <a href="#" class="nav-item">📊 Progress</a>
-        <a href="#" class="nav-item">⚙️ Settings</a>
-    </nav>
-      <script>
-        const topicsData = {
-            1: `
-                <div class="card">
-                    <div class="topic-header">
-                        <div class="topic-icon">🔢</div>
-                        <div class="topic-title">
-                            <h2>Topic 1: Number Systems, Sets, and Real Numbers</h2>
-                            <p>Mathematics • Grade 11 Curriculum</p>
-                        </div>
-                    </div>
-
-                    <div class="pills-container">
-                        <button class="pill active" onclick="switchTab(1, 'concept')">Core Concepts</button>
-                        <button class="pill" onclick="switchTab(1, 'rules')">Intervals & Sets</button>
-                        <button class="pill" onclick="switchTab(1, 'example')">Worked Example</button>
-                        <button class="pill" onclick="switchTab(1, 'quiz')">Practice Quiz</button>
-                    </div>
-
-                    <div id="t1-concept" class="tab-content">
-                        <div class="content-block concept-box">
-                            <h3>Key Concepts & Definitions</h3>
-                            <p>The real number system $\mathbb{R}$ comprises rational numbers $\mathbb{Q}$ (fractions/terminating decimals) and irrational numbers $\mathbb{Q}'$ ($\sqrt{2}, \pi, e$). Real numbers satisfy field axioms (commutative, associative, distributive) and order axioms.</p>
-                        </div>
-                    </div>
-
-                    <div id="t1-rules" class="tab-content hidden">
-                        <div class="content-block rule-box">
-                            <h3>Important Rules & Notations</h3>
-                            <ul>
-                                <li><b>Open Interval:</b> $(a, b) = \{x \in \mathbb{R} \mid a < x < b\}$</li>
-                                <li><b>Closed Interval:</b> $[a, b] = \{x \in \mathbb{R} \mid a \le x \le b\}$</li>
-                                <li><b>De Morgan's Laws:</b> $(A \cup B)' = A' \cap B'$ and $(A \cap B)' = A' \cup B'$</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div id="t1-example" class="tab-content hidden">
-                        <div class="content-block example-box">
-                            <h3>Worked Example</h3>
-                            <p><b>Problem:</b> Solve the inequality $|2x - 3| \le 5$.</p>
-                            <p><b>Solution:</b><br>
-                            1. Rewrite as compound inequality: $-5 \le 2x - 3 \le 5$<br>
-                            2. Add 3 to all parts: $-2 \le 2x \le 8$<br>
-                            3. Divide by 2: $-1 \le x \le 4$<br>
-                            <b>Answer:</b> $[-1, 4]$</p>
-                        </div>
-                    </div>
-
-                    <div id="t1-quiz" class="tab-content hidden">
-                        <div class="content-block tip-box">
-                            <h3>Practice Question</h3>
-                            <p><b>Question:</b> Which of the following numbers is irrational?</p>
-                            <p>A) $3.14$ &nbsp;&nbsp; B) $\sqrt{49}$ &nbsp;&nbsp; C) $\sqrt{15}$ &nbsp;&nbsp; D) $\frac{22}{7}$</p>
-                            <p><b>Answer:</b> C) $\sqrt{15}$ because 15 is not a perfect square.</p>
-                        </div>
-                    </div>
-                </div>
-            `,
-            2: `
-                <div class="card">
-                    <div class="topic-header">
-                        <div class="topic-icon">✖️</div>
-                        <div class="topic-title">
-                            <h2>Topic 2: Algebraic Expressions, Equations, and Inequalities</h2>
-                            <p>Mathematics • Grade 11 Curriculum</p>
-                        </div>
-                    </div>
-
-                    <div class="pills-container">
-                        <button class="pill active" onclick="switchTab(2, 'concept')">Polynomials</button>
-                        <button class="pill" onclick="switchTab(2, 'rules')">Partial Fractions</button>
-                        <button class="pill" onclick="switchTab(2, 'example')">Worked Example</button>
-                        <button class="pill" onclick="switchTab(2, 'quiz')">Practice Quiz</button>
-                    </div>
-
-                    <div id="t2-concept" class="tab-content">
-                        <div class="content-block concept-box">
-                            <h3>Polynomial Division & Remainder Theorem</h3>
-                            <p>The Remainder Theorem states that when a polynomial $P(x)$ is divided by $(x - c)$, the remainder is $P(c)$. If $P(c) = 0$, then $(x - c)$ is a factor.</p>
-                        </div>
-                    </div>
-
-                    <div id="t2-rules" class="tab-content hidden">
-                        <div class="content-block rule-box">
-                            <h3>Partial Fraction Decomposition</h3>
-                            <p>For rational expressions $\frac{P(x)}{Q(x)}$ where degree of $P <$ degree of $Q$, factor $Q(x)$ into linear or irreducible quadratic factors and equate coefficients.</p>
-                        </div>
-                    </div>
-
-                    <div id="t2-example" class="tab-content hidden">
-                        <div class="content-block example-box">
-                            <h3>Worked Example</h3>
-                            <p><b>Problem:</b> Find the remainder when $P(x) = x^3 - 4x^2 + x + 6$ is divided by $(x - 2)$.</p>
-                            <p><b>Solution:</b><br>
-                            Evaluate $P(2) = (2)^3 - 4(2)^2 + (2) + 6$<br>
-                            $= 8 - 16 + 2 + 6 = 0$.<br>
-                            <b>Answer:</b> Remainder is 0 (meaning $(x-2)$ is an exact factor).</p>
-                        </div>
-                    </div>
-
-                    <div id="t2-quiz" class="tab-content hidden">
-                        <div class="content-block tip-box">
-                            <h3>Practice Question</h3>
-                            <p><b>Question:</b> What is the solution set of $|x - 3| > 4$?</p>
-                            <p><b>Answer:</b> $(-\infty, -1) \cup (7, \infty)$.</p>
-                        </div>
-                    </div>
-                </div>
-            `,
-            3: `
-                <div class="card">
-                    <div class="topic-header">
-                        <div class="topic-icon">📈</div>
-                        <div class="topic-title">
-                            <h2>Topic 3: Relations, Functions, and Graphs</h2>
-                            <p>Mathematics • Grade 11 Curriculum</p>
-                        </div>
-                    </div>
-
-                    <div class="pills-container">
-                        <button class="pill active" onclick="switchTab(3, 'concept')">Functions</button>
-                        <button class="pill" onclick="switchTab(3, 'rules')">Inverses</button>
-                        <button class="pill" onclick="switchTab(3, 'example')">Worked Example</button>
-                        <button class="pill" onclick="switchTab(3, 'quiz')">Practice Quiz</button>
-                    </div>
-
-                    <div id="t3-concept" class="tab-content">
-                        <div class="content-block concept-box">
-                            <h3>Definition of Function</h3>
-                            <p>A function $f: A \to B$ is a relation where every element in domain $A$ is paired with exactly one element in codomain $B$. Tested via the Vertical Line Test.</p>
-                        </div>
-      </div>
-      <div id="t3-rules" class="tab-content hidden">
-                        <div class="content-block rule-box">
-                            <h3>Inverse Functions $f^{-1}(x)$</h3>
-                            <p>To find $f^{-1}(x)$, replace $f(x)$ with $y$, swap $x$ and $y$, and solve for $y$. Note that $\text{Domain of } f^{-1} = \text{Range of } f$.</p>
-                        </div>
-                    </div>
-
-                    <div id="t3-example" class="tab-content hidden">
-                        <div class="content-block example-box">
-                            <h3>Worked Example</h3>
-                            <p><b>Problem:</b> Find the inverse of $f(x) = 3x - 5$.</p>
-                            <p><b>Solution:</b><br>
-                            1. $y = 3x - 5$<br>
-                            2. Swap $x$ and $y$: $x = 3y - 5$<br>
-                            3. Solve for $y$: $3y = x + 5 \implies y = \frac{x+5}{3}$<br>
-                            <b>Answer:</b> $f^{-1}(x) = \frac{x+5}{3}$</p>
-                        </div>
-                    </div>
-
-                    <div id="t3-quiz" class="tab-content hidden">
-                        <div class="content-block tip-box">
-                            <h3>Practice Question</h3>
-                            <p><b>Question:</b> If $f(x) = x^2$ for $x \ge 0$, what is $f^{-1}(4)$?</p>
-                            <p><b>Answer:</b> 2</p>
-                        </div>
-                    </div>
-                </div>
-            `,
-            4: `
-                <div class="card">
-                    <div class="topic-header">
-                        <div class="topic-icon">📉</div>
-                        <div class="topic-title">
-                            <h2>Topic 4: Polynomial, Rational, Exponential & Logarithmic Functions</h2>
-                            <p>Mathematics • Grade 11 Curriculum</p>
-                        </div>
-                    </div>
-
-                    <div class="pills-container">
-                        <button class="pill active" onclick="switchTab(4, 'concept')">Logarithms</button>
-                        <button class="pill" onclick="switchTab(4, 'rules')">Log Laws</button>
-                        <button class="pill" onclick="switchTab(4, 'example')">Worked Example</button>
-                        <button class="pill" onclick="switchTab(4, 'quiz')">Practice Quiz</button>
-                    </div>
-
-                    <div id="t4-concept" class="tab-content">
-                        <div class="content-block concept-box">
-                            <h3>Exponential & Logarithmic Relationship</h3>
-                            <p>For $b > 0, b \neq 1$, $y = b^x \iff \log_b(y) = x$. Logarithms turn multiplication into addition and powers into products.</p>
-                        </div>
-                    </div>
-
-                    <div id="t4-rules" class="tab-content hidden">
-                        <div class="content-block rule-box">
-                            <h3>Laws of Logarithms</h3>
-                            <ul>
-                                <li>$\log_b(xy) = \log_b(x) + \log_b(y)$</li>
-                                <li>$\log_b\left(\frac{x}{y}\right) = \log_b(x) - \log_b(y)$</li>
-                                <li>$\log_b(x^k) = k \log_b(x)$</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div id="t4-example" class="tab-content hidden">
-                        <div class="content-block example-box">
-                            <h3>Worked Example</h3>
-                            <p><b>Problem:</b> Solve for $x$: $\log_2(x) + \log_2(x - 2) = 3$.</p>
-                            <p><b>Solution:</b><br>
-                            1. Combine logs: $\log_2(x(x-2)) = 3$<br>
-                            2. Convert to exponential form: $x^2 - 2x = 2^3 = 8$<br>
-                            3. Rearrange: $x^2 - 2x - 8 = 0 \implies (x-4)(x+2) = 0$<br>
-                            4. Check domain ($x > 2$): $x = 4$.<br>
-                            <b>Answer:</b> $x = 4$</p>
-                        </div>
-                    </div>
-
-                    <div id="t4-quiz" class="tab-content hidden">
-                        <div class="content-block tip-box">
-                            <h3>Practice Question</h3>
-                            <p><b>Question:</b> Evaluate $\log_3(81)$.</p>
-                            <p><b>Answer:</b> 4 (since $3^4 = 81$).</p>
-                        </div>
-                    </div>
-                </div>
-            `,
-            5: `
-                <div class="card">
-                    <div class="topic-header">
-                        <div class="topic-icon">📐</div>
-                        <div class="topic-title">
-                            <h2>Topic 5: Trigonometry and Applications</h2>
-                            <p>Mathematics • Grade 11 Curriculum</p>
-                        </div>
-                    </div>
-
-                    <div class="pills-container">
-                        <button class="pill active" onclick="switchTab(5, 'concept')">Identities</button>
-                        <button class="pill" onclick="switchTab(5, 'rules')">Sine & Cosine Law</button>
-                        <button class="pill" onclick="switchTab(5, 'example')">Worked Example</button>
-                        <button class="pill" onclick="switchTab(5, 'quiz')">Practice Quiz</button>
-                    </div>
-
-                    <div id="t5-concept" class="tab-content">
-                        <div class="content-block concept-box">
-                            <h3>Fundamental Trigonometric Identities</h3>
-                            <p>$\sin^2\theta + \cos^2\theta = 1$, $\tan\theta = \frac{\sin\theta}{\cos\theta}$, $1 + \tan^2\theta = \sec^2\theta$.</p>
-                        </div>
-                    </div>
-
-                    <div id="t5-rules" class="tab-content hidden">
-                        <div class="content-block rule-box">
-                            <h3>Sine Law & Cosine Law</h3>
-                            <p><b>Sine Law:</b> $\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C}$<br>
-                            <b>Cosine Law:</b> $c^2 = a^2 + b^2 - 2ab \cos C$</p>
-                        </div>
-                    </div>
-
-                    <div id="t5-example" class="tab-content hidden">
-                        <div class="content-block example-box">
-                            <h3>Worked Example</h3>
-                            <p><b>Problem:</b> In $\triangle ABC$, $a = 7, b = 10, C = 60^\circ$. Find side $c$.</p>
-                            <p><b>Solution:</b><br>
-                            $c^2 = 7^2 + 10^2 - 2(7)(10)\cos(60^\circ)$<br>
-                            $c^2 = 49 + 100 - 140(0.5) = 149 - 70 = 79$.<br>
-                            <b>Answer:</b> $c = \sqrt{79}$</p>
-                        </div>
-                    </div>
-
-                    <div id="t5-quiz" class="tab-content hidden">
-                        <div class="content-block tip-box">
-                            <h3>Practice Question</h3>
-                            <p><b>Question:</b> What is the exact value of $\sin(30^\circ)$?</p>
-                            <p><b>Answer:</b> $\frac{1}{2}$</p>
-                        </div>
-                    </div>
-                </div>
-            `,
-            6: `
-                <div class="card">
-                    <div class="topic-header">
-                        <div class="topic-icon">📊</div>
-                        <div class="topic-title">
-                            <h2>Topic 6: Coordinate Geometry, Vectors, and Matrices</h2>
-                            <p>Mathematics • Grade 11 Curriculum</p>
-                        </div>
-                    </div>
-                      <div class="pills-container">
-                        <button class="pill active" onclick="switchTab(6, 'concept')">Vectors</button>
-                        <button class="pill" onclick="switchTab(6, 'rules')">Matrices</button>
-                        <button class="pill" onclick="switchTab(6, 'example')">Worked Example</button>
-                        <button class="pill" onclick="switchTab(6, 'quiz')">Practice Quiz</button>
-                    </div>
-
-                    <div id="t6-concept" class="tab-content">
-                        <div class="content-block concept-box">
-                            <h3>Dot Product of Vectors</h3>
-                            <p>For vectors $\mathbf{u} = \langle u_1, u_2 \rangle$ and $\mathbf{v} = \langle v_1, v_2 \rangle$, $\mathbf{u} \cdot \mathbf{v} = u_1v_1 + u_2v_2 = |\mathbf{u}||\mathbf{v}|\cos\theta$.</p>
-                        </div>
-                    </div>
-
-                    <div id="t6-rules" class="tab-content hidden">
-                        <div class="content-block rule-box">
-                            <h3>Matrix Determinant & Inverse</h3>
-                            <p>For $2 \times 2$ matrix $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$, $\det(A) = ad - bc$.<br>
-                            If $\det(A) \neq 0$, $A^{-1} = \frac{1}{ad-bc}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$.</p>
-                        </div>
-                    </div>
-
-                    <div id="t6-example" class="tab-content hidden">
-                        <div class="content-block example-box">
-                            <h3>Worked Example</h3>
-                            <p><b>Problem:</b> Find the inverse of matrix $A = \begin{pmatrix} 2 & 1 \\ 5 & 3 \end{pmatrix}$.</p>
-                            <p><b>Solution:</b><br>
-                            1. $\det(A) = (2)(3) - (1)(5) = 6 - 5 = 1$<br>
-                            2. $A^{-1} = \frac{1}{1}\begin{pmatrix} 3 & -1 \\ -5 & 2 \end{pmatrix}$<br>
-                            <b>Answer:</b> $\begin{pmatrix} 3 & -1 \\ -5 & 2 \end{pmatrix}$</p>
-                        </div>
-                    </div>
-
-                    <div id="t6-quiz" class="tab-content hidden">
-                        <div class="content-block tip-box">
-                            <h3>Practice Question</h3>
-                            <p><b>Question:</b> Find the dot product of $\langle 2, -3 \langle$ and $\langle 4, 5 \rangle$.</p>
-                            <p><b>Answer:</b> $(2)(4) + (-3)(5) = 8 - 15 = -7$.</p>
-                        </div>
-                    </div>
-                </div>
-            `,
-            7: `
-                <div class="card">
-                    <div class="topic-header">
-                        <div class="topic-icon">📐</div>
-                        <div class="topic-title">
-                            <h2>Topic 7: Statistics, Probability, and Calculus</h2>
-                            <p>Mathematics • Grade 11 Curriculum</p>
-                        </div>
-                    </div>
-
-                    <div class="pills-container">
-                        <button class="pill active" onclick="switchTab(7, 'concept')">Calculus Limits</button>
-                        <button class="pill" onclick="switchTab(7, 'rules')">Derivatives</button>
-                        <button class="pill" onclick="switchTab(7, 'example')">Worked Example</button>
-                        <button class="pill" onclick="switchTab(7, 'quiz')">Practice Quiz</button>
-                    </div>
-
-                    <div id="t7-concept" class="tab-content">
-                        <div class="content-block concept-box">
-                            <h3>Introduction to Limits</h3>
-                            <p>The derivative of a function $f(x)$ at $x$ is defined as the limit: $f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$.</p>
-                        </div>
-                    </div>
-
-                    <div id="t7-rules" class="tab-content hidden">
-                        <div class="content-block rule-box">
-                            <h3>Power Rule for Derivatives</h3>
-                            <p>If $f(x) = x^n$, then $\frac{d}{dx}[x^n] = n x^{n-1}$.</p>
-                        </div>
-                    </div>
-
-                    <div id="t7-example" class="tab-content hidden">
-                        <div class="content-block example-box">
-                            <h3>Worked Example</h3>
-                            <p><b>Problem:</b> Find the derivative of $f(x) = 4x^3 - 5x^2 + 7$.</p>
-                            <p><b>Solution:</b><br>
-                            Apply power rule term by term:<br>
-                            $\frac{d}{dx}[4x^3] = 12x^2$<br>
-                            $\frac{d}{dx}[-5x^2] = -10x$<br>
-                            $\frac{d}{dx}[7] = 0$<br>
-                            <b>Answer:</b> $f'(x) = 12x^2 - 10x$</p>
-                        </div>
-                    </div>
-
-                    <div id="t7-quiz" class="tab-content hidden">
-                        <div class="content-block tip-box">
-                            <h3>Practice Question</h3>
-                            <p><b>Question:</b> What is the derivative of $f(x) = 9x$? </p>
-                            <p><b>Answer:</b> 9</p>
-                        </div>
-                    </div>
-                </div>
-            `
-        };
-         function openTopic(id) {
-            document.getElementById('topic-list-view').classList.add('hidden');
-            document.getElementById('topic-detail-view').classList.remove('hidden');
-            document.getElementById('back-btn').classList.remove('hidden');
-            document.getElementById('topic-content-body').innerHTML = topicsData[id];
-            window.scrollTo(0, 0);
-        }
-
-        function showHome() {
-            document.getElementById('topic-detail-view').classList.add('hidden');
-            document.getElementById('topic-list-view').classList.remove('hidden');
-            document.getElementById('back-btn').classList.add('hidden');
-            window.scrollTo(0, 0);
-        }
-
-        function switchTab(topicId, tabName) {
-            const container = document.getElementById('topic-content-body');
-            const pills = container.querySelectorAll('.pill');
-            pills.forEach(p => p.classList.remove('active'));
-            event.target.classList.add('active');
-
-            const tabs = container.querySelectorAll('.tab-content');
-            tabs.forEach(t => t.classList.add('hidden'));
-
-            container.querySelector(`#t${topicId}-${tabName}`).classList.remove('hidden');
-        }
-    </script>
-</body>
-</html>
+function renderPage(name){let title='',body='';if(name==='lessons'){title='Lessons';body='<p class="muted">Choose one of the seven subjects to explore its seven topics.</p>'+subjectList()}
+else if(name==='quizzes'){title='Quizzes & Exam Preparation';body=quizHomeHTML()}
+else if(name==='progress'){title='Learning Progress';let done=read('completed',[]),total=49,pct=Math.round(done.length/total*100);let quizDone=read('quizResults',[]);body=`<div class="card" style="padding:18px"><h3>${done.length} of ${total} topics completed</h3><p class="muted">${pct}% of the 49-topic course structure marked complete on this device.</p><div style="height:12px;background:#e7edff;border-radius:9px;overflow:hidden;margin-top:12px"><div style="height:100%;width:${pct}%;background:#0757f5"></div></div></div><div class="card" style="padding:18px;margin-top:14px"><h3>Quiz attempts</h3><p>${quizDone.length} saved attempts on this device</p>${quizDone.slice(0,5).map(x=>`<p>${esc(x.subject)} — ${x.correct}/${x.total}</p>`).join('')}</div>`}
+else if(name==='profile'){title='My Learning Profile';let done=read('completed',[]),saved=read('saved',[]),recent=read('recent',[]),attempts=read('quizResults',[]);body=`<div class="card" style="padding:18px"><div style="font-size:42px">🎓</div><h3>My LearnBridge Activity</h3><p class="muted">This is a local learner profile. No account or sign-in is required.</p><div class="quiz-section-grid"><div class="quiz-tile"><strong>${done.length}</strong><small>Lessons completed</small></div><div class="quiz-tile"><strong>${saved.length}</strong><small>Saved lessons</small></div><div class="quiz-tile"><strong>${recent.length}</strong><small>Recent lessons</small></div><div class="quiz-tile"><strong>${attempts.length}</strong><small>Quiz attempts</small></div></div><button class="btn" onclick="navigate('progress')">View progress</button></div>`}
+else if(name==='continue'){title='Continue Learning';let a=read('recent',[]);body=a.length?'<div class="list">'+a.map(x=>`<button class="subject-choice" onclick="openSubject('${x.subject}');openNote(${x.index})">${esc(x.subject)} — ${esc(x.title)}</button>`).join('')+'</div>':'<p class="notice">You have not opened a lesson yet. Choose a subject to begin.</p>'+subjectList()}
+else if(name==='planner'){title='Your Study Planner';body=`<p class="muted">Tasks are saved locally in this browser on this device.</p><input class="input" id="planText" placeholder="e.g. Revise Chemistry topic 1"><input class="input" id="planDate" type="date"><button class="btn" onclick="addPlan()">＋ Add task</button><div class="list" id="planList">${planRows()}</div>`}
+else if(name==='goals'){title='Daily Learning Goals';body=`<p class="muted">Create goals and tick them when completed.</p><input class="input" id="goalText" placeholder="Write a learning goal"><button class="btn" onclick="addGoal()">＋ Add goal</button><div class="list" id="goalList">${goalRows()}</div>`}
+else if(name==='saved'){title='Saved Lessons';let a=read('saved',[]);body=a.length?'<div class="list">'+a.map(x=>`<div class="row"><span>${esc(x.subject)} — ${esc(x.title)}</span><button onclick="openSubject('${x.subject}');openNote(${x.index})">Open</button><button onclick="removeSaved('${x.key}')">Remove</button></div>`).join('')+'</div>':'<p class="notice">No saved lessons yet. Open a lesson and select Save lesson.</p>'}
+else if(name==='about'){title='About LearnBridge';body='<p class="notice">LearnBridge — Learn Today. Build Tomorrow. An educational learning interface organized around seven subjects and 49 topics.</p>'}
+else if(name==='settings'){title='Settings';body='<div class="notice"><strong>Learning data</strong><p>Study planner tasks, goals, saved lessons, recently opened topics, completion marks, and quiz results are stored in this browser on this device. They do not automatically synchronize across devices. Clearing browser data may remove them.</p></div><div class="card" style="padding:16px;margin-top:14px"><h3>Study preferences</h3><label class="setting-row"><input type="checkbox" id="instantPref" checked onchange="savePreference(\'instantFeedback\',this.checked)"> Show instant quiz feedback</label><label class="setting-row"><input type="checkbox" id="soundPref" onchange="savePreference(\'sound\',this.checked)"> Enable sound effects</label><p class="muted">No light/dark appearance setting and no account creation are included.</p></div><button class="btn" onclick="if(confirm(\'Clear all LearnBridge learning data stored on this device? This cannot be undone.\'))clearLearningData()">Clear learning data</button>'}
+page.innerHTML=`<button class="btn" onclick="navigate('home')">← Home</button><h2>${title}</h2>${body}`}
+function planRows(){return read('plans',[]).map((x,i)=>`<div class="row"><span>${esc(x.text)}${x.date?' • '+esc(x.date):''}</span><button onclick="removePlan(${i})">Remove</button></div>`).join('')}
+function addPlan(){let el=document.getElementById('planText'),v=el.value.trim();if(!v)return;let a=read('plans',[]);a.push({text:v,date:document.getElementById('planDate').value});save('plans',a);document.getElementById('planList').innerHTML=planRows();el.value=''}function removePlan(i){let a=read('plans',[]);a.splice(i,1);save('plans',a);document.getElementById('planList').innerHTML=planRows()}
+function goalRows(){return read('goals',[]).map((x,i)=>`<div class="row"><label style="flex:1"><input type="checkbox" ${x.done?'checked':''} onchange="checkGoal(${i},this.checked)"> ${esc(x.text)}</label><button onclick="removeGoal(${i})">Remove</button></div>`).join('')}
+function addGoal(){let el=document.getElementById('goalText'),v=el.value.trim();if(!v)return;let a=read('goals',[]);a.push({text:v,done:false});save('goals',a);document.getElementById('goalList').innerHTML=goalRows();el.value=''}function checkGoal(i,v){let a=read('goals',[]);a[i].done=v;save('goals',a)}function removeGoal(i){let a=read('goals',[]);a.splice(i,1);save('goals',a);document.getElementById('goalList').innerHTML=goalRows()}
+function removeSaved(key){save('saved',read('saved',[]).filter(x=>x.key!==key));renderPage('saved')}
+const menuButton=document.getElementById('menuButton');menuButton.addEventListener('click',()=>{drawer.classList.add('open');menuButton.setAttribute('aria-expanded','true')});function closeDrawer(){drawer.classList.remove('open');menuButton.setAttribute('aria-expanded','false')}document.getElementById('closeMenu').addEventListener('click',closeDrawer);drawer.addEventListener('click',e=>{if(e.target===drawer)closeDrawer()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer()});
+subjectCards();
+</script></body></html>
