@@ -19,7 +19,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
-            padding-bottom: 5rem;
+            padding-bottom: 6rem;
         }
         header {
             background: white;
@@ -31,16 +31,162 @@
         }
         .logo-area {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            flex-direction: column;
+        }
+        .logo-title {
             font-weight: bold;
             font-size: 1.25rem;
             color: var(--primary);
+        }
+        .logo-sub {
+            font-size: 0.65rem;
+            color: var(--text-muted);
         }
         .container {
             max-width: 600px;
             margin: 1.5rem auto;
             padding: 0 1rem;
+        }
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+            color: white;
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+        .hero-text h2 {
+            font-size: 1.35rem;
+            margin: 0 0 0.25rem 0;
+        }
+        .hero-text p {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            margin: 0 0 1rem 0;
+        }
+        .btn-start {
+            background: #fbbf24;
+            color: #0f172a;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .hero-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+        /* Stats Bar */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1rem 0.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .stat-item {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+        .stat-value {
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 0.1rem;
+        }
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        /* Subject Grid for Home Screen */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .subject-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .subject-card:hover {
+            border-color: var(--primary);
+        }
+        .subject-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+        .subject-thumb {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid var(--border);
+        }
+        .subject-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 0.15rem;
+        }
+        .subject-notes-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            padding-top: 0.6rem;
+        }
+        /* Lessons List View (when clicked from bottom nav or cards) */
+        .lessons-list-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        .lessons-list-card:hover {
+            border-color: var(--primary);
         }
         .nav-back {
             display: inline-flex;
@@ -49,52 +195,11 @@
             color: var(--primary);
             text-decoration: none;
             background: #eff6ff;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.9rem;
             border-radius: 9999px;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             font-weight: 500;
             margin-bottom: 1rem;
-        }
-        h1 {
-            font-size: 1.5rem;
-            margin-bottom: 0.25rem;
-        }
-        p.subtitle {
-            color: var(--text-muted);
-            font-size: 0.875rem;
-            margin-bottom: 1.5rem;
-        }
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 1rem;
-            padding: 1.25rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .card:hover {
-            border-color: var(--primary);
-        }
-        .card-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .card-title {
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--text-main);
-        }
-        .card-desc {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
-        }
-        .arrow {
-            color: var(--primary);
-            font-weight: bold;
         }
         .view-section {
             display: none;
@@ -128,9 +233,10 @@
         }
         .nav-item {
             text-align: center;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-muted);
             text-decoration: none;
+            cursor: pointer;
         }
         .nav-item.active {
             color: var(--primary);
@@ -142,117 +248,255 @@
 
     <header>
         <div class="logo-area">
-            🎓 LearnBridge
+            <span class="logo-title">🎓 LearnBridge</span>
+            <span class="logo-sub">Learn Today. Build Tomorrow.</span>
         </div>
         <div>☰</div>
     </header>
 
     <div class="container">
 
-        <!-- SUBJECTS VIEW (HOME / LESSONS) -->
-        <div id="subjects-view" class="view-section active">
-            <h1>Lessons</h1>
-            <p class="subtitle">Choose a subject to start learning</p>
+        <!-- HOME VIEW -->
+        <div id="home-view" class="view-section active">
+            <!-- Hero Banner -->
+            <div class="hero-banner">
+                <div class="hero-text">
+                    <h2>Prepare for Your Success</h2>
+                    <p>Study • Practice • Excel</p>
+                    <button class="btn-start" onclick="switchTab('lessons')">Start Learning →</button>
+                </div>
+                <img src="hero-student.jpg" alt="Student" class="hero-img">
+            </div>
 
-            <!-- Subject Cards -->
-            <div class="card" onclick="openSubject('math')">
-                <div class="card-header">
-                    <div>
-                        <div class="card-title">Mathematics</div>
-                        <div class="card-desc">3 topics • Explore lessons</div>
-                    </div>
-                    <div class="arrow">→</div>
+            <!-- Stats Bar -->
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">7+</div>
+                    Subjects
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">100K+</div>
+                    Students
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">95%+</div>
+                    Success Rate
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">Always</div>
+                    Free
                 </div>
             </div>
 
-            <div class="card" onclick="openSubject('physics')">
-                <div class="card-header">
-                    <div>
-                        <div class="card-title">Physics</div>
-                        <div class="card-desc">3 topics • Explore lessons</div>
+            <div class="section-title">📌 Our Subjects</div>
+            <div class="section-subtitle">Choose a subject to start learning</div>
+
+            <!-- Subject Cards Grid (Matching Screenshot) -->
+            <div class="subjects-grid">
+                <div class="subject-card" onclick="openSubject('math')">
+                    <div class="subject-card-top">
+                        <img src="mathematics.jpg" alt="Math" class="subject-thumb">
+                        <span style="color:var(--primary); font-weight:bold;">→</span>
                     </div>
-                    <div class="arrow">→</div>
+                    <div>
+                        <div class="subject-name">Mathematics</div>
+                    </div>
+                    <div class="subject-notes-info">
+                        <span>📄 12 Notes</span>
+                    </div>
+                </div>
+
+                <div class="subject-card" onclick="openSubject('physics')">
+                    <div class="subject-card-top">
+                        <img src="physics.jpg" alt="Physics" class="subject-thumb">
+                        <span style="color:var(--primary); font-weight:bold;">→</span>
+                    </div>
+                    <div>
+                        <div class="subject-name">Physics</div>
+                    </div>
+                    <div class="subject-notes-info">
+                        <span>📄 12 Notes</span>
+                    </div>
+                </div>
+
+                <div class="subject-card" onclick="openSubject('chemistry')">
+                    <div class="subject-card-top">
+                        <img src="chemistry.jpg" alt="Chemistry" class="subject-thumb">
+                        <span style="color:var(--primary); font-weight:bold;">→</span>
+                    </div>
+                    <div>
+                        <div class="subject-name">Chemistry</div>
+                    </div>
+                    <div class="subject-notes-info">
+                        <span>📄 12 Notes</span>
+                    </div>
+                </div>
+
+                <div class="subject-card" onclick="openSubject('biology')">
+                    <div class="subject-card-top">
+                        <img src="biology.jpg" alt="Biology" class="subject-thumb">
+                        <span style="color:var(--primary); font-weight:bold;">→</span>
+                    </div>
+                    <div>
+                        <div class="subject-name">Biology</div>
+                    </div>
+                    <div class="subject-notes-info">
+                        <span>📄 12 Notes</span>
+                    </div>
+                </div>
+
+                <div class="subject-card" onclick="openSubject('geography')">
+                    <div class="subject-card-top">
+                        <img src="geography.jpg" alt="Geography" class="subject-thumb">
+                        <span style="color:var(--primary); font-weight:bold;">→</span>
+                    </div>
+                    <div>
+                        <div class="subject-name">Geography</div>
+                    </div>
+                    <div class="subject-notes-info">
+                        <span>📄 12 Notes</span>
+                    </div>
+                </div>
+
+                <div class="subject-card" onclick="openSubject('history')">
+                    <div class="subject-card-top">
+                        <img src="history.jpg" alt="History" class="subject-thumb">
+                        <span style="color:var(--primary); font-weight:bold;">→</span>
+                    </div>
+                    <div>
+                        <div class="subject-name">History</div>
+                    </div>
+                    <div class="subject-notes-info">
+                        <span>📄 12 Notes</span>
+                    </div>
+                </div>
+
+                <div class="subject-card" onclick="openSubject('economics')">
+                    <div class="subject-card-top">
+                        <img src="economics.jpg" alt="Economics" class="subject-thumb">
+                        <span style="color:var(--primary); font-weight:bold;">→</span>
+                    </div>
+                    <div>
+                        <div class="subject-name">Economics</div>
+                    </div>
+                    <div class="subject-notes-info">
+                        <span>📄 12 Notes</span>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="card" onclick="openSubject('chemistry')">
-                <div class="card-header">
+        <!-- LESSONS VIEW (LIST OF 7 SUBJECTS) -->
+        <div id="lessons-view" class="view-section">
+            <h1 style="font-size: 1.5rem; margin-bottom: 0.25rem;">Lessons</h1>
+            <p class="subtitle" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Choose one of the seven subjects to explore its three topics.</p>
+
+            <div class="lessons-list-card" onclick="openSubject('math')">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <img src="mathematics.jpg" style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover;" alt="Math">
                     <div>
-                        <div class="card-title">Chemistry</div>
-                        <div class="card-desc">3 topics • Explore lessons</div>
+                        <div style="font-weight: 600;">Mathematics</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">3 topics • Explore lessons</div>
                     </div>
-                    <div class="arrow">→</div>
                 </div>
+                <span style="color: var(--primary); font-weight: bold;">→</span>
             </div>
 
-            <div class="card" onclick="openSubject('biology')">
-                <div class="card-header">
+            <div class="lessons-list-card" onclick="openSubject('physics')">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <img src="physics.jpg" style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover;" alt="Physics">
                     <div>
-                        <div class="card-title">Biology</div>
-                        <div class="card-desc">3 topics • Explore lessons</div>
+                        <div style="font-weight: 600;">Physics</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">3 topics • Explore lessons</div>
                     </div>
-                    <div class="arrow">→</div>
                 </div>
+                <span style="color: var(--primary); font-weight: bold;">→</span>
             </div>
 
-            <div class="card" onclick="openSubject('geography')">
-                <div class="card-header">
+            <div class="lessons-list-card" onclick="openSubject('chemistry')">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <img src="chemistry.jpg" style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover;" alt="Chemistry">
                     <div>
-                        <div class="card-title">Geography</div>
-                        <div class="card-desc">3 topics • Explore lessons</div>
+                        <div style="font-weight: 600;">Chemistry</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">3 topics • Explore lessons</div>
                     </div>
-                    <div class="arrow">→</div>
                 </div>
+                <span style="color: var(--primary); font-weight: bold;">→</span>
             </div>
 
-            <div class="card" onclick="openSubject('history')">
-                <div class="card-header">
+            <div class="lessons-list-card" onclick="openSubject('biology')">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <img src="biology.jpg" style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover;" alt="Biology">
                     <div>
-                        <div class="card-title">History</div>
-                        <div class="card-desc">3 topics • Explore lessons</div>
+                        <div style="font-weight: 600;">Biology</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">3 topics • Explore lessons</div>
                     </div>
-                    <div class="arrow">→</div>
                 </div>
+                <span style="color: var(--primary); font-weight: bold;">→</span>
             </div>
 
-            <div class="card" onclick="openSubject('economics')">
-                <div class="card-header">
+            <div class="lessons-list-card" onclick="openSubject('geography')">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <img src="geography.jpg" style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover;" alt="Geography">
                     <div>
-                        <div class="card-title">Economics</div>
-                        <div class="card-desc">3 topics • Explore lessons</div>
+                        <div style="font-weight: 600;">Geography</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">3 topics • Explore lessons</div>
                     </div>
-                    <div class="arrow">→</div>
                 </div>
+                <span style="color: var(--primary); font-weight: bold;">→</span>
+            </div>
+
+            <div class="lessons-list-card" onclick="openSubject('history')">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <img src="history.jpg" style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover;" alt="History">
+                    <div>
+                        <div style="font-weight: 600;">History</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">3 topics • Explore lessons</div>
+                    </div>
+                </div>
+                <span style="color: var(--primary); font-weight: bold;">→</span>
+            </div>
+
+            <div class="lessons-list-card" onclick="openSubject('economics')">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <img src="economics.jpg" style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover;" alt="Economics">
+                    <div>
+                        <div style="font-weight: 600;">Economics</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">3 topics • Explore lessons</div>
+                    </div>
+                </div>
+                <span style="color: var(--primary); font-weight: bold;">→</span>
             </div>
         </div>
 
         <!-- TOPICS LIST VIEW -->
         <div id="topics-view" class="view-section">
-            <a href="#" class="nav-back" onclick="goHome()">← All subjects</a>
-            <h1 id="subject-title-heading">Subject</h1>
-            <p class="subtitle">Explore three organized topics, study detailed notes, and track your learning.</p>
+            <a href="#" class="nav-back" onclick="switchTab('lessons')">← All subjects</a>
+            <h1 id="subject-title-heading" style="font-size: 1.5rem; margin-bottom: 0.25rem;">Subject</h1>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Explore three organized topics, study detailed notes, and track your learning.</p>
             <div id="topics-list-container"></div>
         </div>
 
         <!-- LESSON DETAIL VIEW -->
         <div id="lesson-view" class="view-section">
             <a href="#" class="nav-back" onclick="backToTopics()">← Back to topics</a>
-            <h2 id="lesson-title-heading">Topic Title</h2>
+            <h2 id="lesson-title-heading" style="font-size: 1.35rem;">Topic Title</h2>
             <div id="lesson-text-content" class="lesson-content"></div>
         </div>
 
     </div>
 
-    <!-- Bottom Navigation -->
+    <!-- Bottom Navigation Bar -->
     <div class="bottom-nav">
-        <a href="#" class="nav-item" onclick="goHome()">🏠<br>Home</a>
-        <a href="#" class="nav-item active" onclick="goHome()">📚<br>Lessons</a>
-        <a href="#" class="nav-item">✏️<br>Quizzes</a>
-        <a href="#" class="nav-item">📊<br>Progress</a>
-        <a href="#" class="nav-item">👤<br>Profile</a>
+        <div class="nav-item active" id="nav-home" onclick="switchTab('home')">🏠<br>Home</div>
+        <div class="nav-item" id="nav-lessons" onclick="switchTab('lessons')">📚<br>Lessons</div>
+        <div class="nav-item" onclick="alert('Quizzes coming soon!')">✏️<br>Quizzes</div>
+        <div class="nav-item" onclick="alert('Progress tracking coming soon!')">📊<br>Progress</div>
+        <div class="nav-item" onclick="alert('Profile settings coming soon!')">👤<br>Profile</div>
     </div>
 
     <script>
+        // Data mapping for all 21 topics organized into 7 subjects (3 topics each)
         const subjectsData = {
             math: {
                 title: "Mathematics",
@@ -626,7 +870,7 @@ x-intercept: value of x when y = 0.
                 ]
             },
             physics: {
-                title: "Physics",
+          title: "Physics",
                 topics: [
                     { title: "Kinematics & Motion", content: `📖 DEFINITION
 
@@ -892,6 +1136,7 @@ P = W/t
 
 Efficiency:
 Efficiency = (Useful output energy / Total input energy) × 100%
+
 Mechanical energy:
 ME = KE + GPE
 
@@ -1296,7 +1541,7 @@ C = n/V.
 4. C₁V₁ = C₂V₂.` }
                 ]
             },
-     biology: {
+            biology: {
                 title: "Biology",
                 topics: [
                     { title: "Cell Biology & Division", content: `📖 DEFINITION
@@ -1679,7 +1924,7 @@ Phloem: sugars.
 5. Light intensity and carbon dioxide concentration.` }
                 ]
             },
-           geography: {
+      geography: {
                 title: "Geography",
                 topics: [
                     { title: "Map Reading & Geographic Skills", content: `📖 DEFINITION
@@ -2032,7 +2277,8 @@ Frontal: air masses meet.
 5. Carbon dioxide and methane.` }
                 ]
             },
-            history: {
+            
+   history: {
                 title: "History",
                 topics: [
                     { title: "Historical Methods & Sources", content: `📖 DEFINITION
@@ -2088,7 +2334,8 @@ A larger number is earlier.
 Example:
 500 BCE is earlier than 200 BCE.
 
-🔍 SOURCE EVALUATION 
+🔍 SOURCE EVALUATION
+
 Ask:
 
 1. Who created the source?
@@ -2345,7 +2592,7 @@ Aksum → Zagwe → Solomonic restoration.
 4. Coins, inscriptions or stelae.` }
                 ]
             },
-       economics: {
+            economics: {
                 title: "Economics",
                 topics: [
                     { title: "Introduction to Economics & Scarcity", content: `📖 DEFINITION
@@ -2674,6 +2921,25 @@ Consumer equilibrium = best affordable allocation under the model.
             }
         };
 
+        function switchTab(tabName) {
+            document.getElementById('home-view').classList.remove('active');
+            document.getElementById('lessons-view').classList.remove('active');
+            document.getElementById('topics-view').classList.remove('active');
+            document.getElementById('lesson-view').classList.remove('active');
+
+            document.getElementById('nav-home').classList.remove('active');
+            document.getElementById('nav-lessons').classList.remove('active');
+
+            if (tabName === 'home') {
+                document.getElementById('home-view').classList.add('active');
+                document.getElementById('nav-home').classList.add('active');
+            } else if (tabName === 'lessons') {
+                document.getElementById('lessons-view').classList.add('active');
+                document.getElementById('nav-lessons').classList.add('active');
+            }
+            window.scrollTo(0, 0);
+        }
+
         function openSubject(subjectKey) {
             const data = subjectsData[subjectKey];
             document.getElementById('subject-title-heading').innerText = data.title;
@@ -2683,21 +2949,23 @@ Consumer equilibrium = best affordable allocation under the model.
             
             data.topics.forEach((topic, index) => {
                 let card = document.createElement('div');
-                card.className = 'card';
+                card.className = 'lessons-list-card';
                 card.innerHTML = `
-                    <div class="card-header">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; width: 100%;">
+                        <span style="font-weight: bold; font-size: 1.1rem; color: var(--primary); min-width: 20px;">${index + 1}</span>
                         <div>
-                            <div class="card-title">${index + 1}. ${topic.title}</div>
-                            <div class="card-desc">Open detailed lesson</div>
+                            <div style="font-weight: 600; font-size: 0.95rem; color: var(--text-main);">${topic.title}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">Open detailed lesson</div>
                         </div>
-                        <div class="arrow">→</div>
                     </div>
+                    <span style="color: var(--primary); font-weight: bold;">→</span>
                 `;
                 card.onclick = () => openLesson(topic.title, topic.content);
                 container.appendChild(card);
             });
 
-            document.getElementById('subjects-view').classList.remove('active');
+            document.getElementById('home-view').classList.remove('active');
+            document.getElementById('lessons-view').classList.remove('active');
             document.getElementById('topics-view').classList.add('active');
             window.scrollTo(0, 0);
         }
@@ -2711,13 +2979,6 @@ Consumer equilibrium = best affordable allocation under the model.
             window.scrollTo(0, 0);
         }
 
-        function goHome() {
-            document.getElementById('topics-view').classList.remove('active');
-            document.getElementById('lesson-view').classList.remove('active');
-            document.getElementById('subjects-view').classList.add('active');
-            window.scrollTo(0, 0);
-        }
-
         function backToTopics() {
             document.getElementById('lesson-view').classList.remove('active');
             document.getElementById('topics-view').classList.add('active');
@@ -2725,4 +2986,5 @@ Consumer equilibrium = best affordable allocation under the model.
         }
     </script>
 </body>
-</html>     
+</html>
+            
