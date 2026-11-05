@@ -1,0 +1,2602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+<title>LearnBridge | Learn Today. Build Tomorrow.</title>
+<style>
+:root{--blue:#0757f5;--deep:#092b8d;--navy:#101b48;--yellow:#ffc400;--muted:#53618d;--line:#dbe4ff;--bg:#f8faff;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--navy);padding:0 0 104px}
+button{font:inherit;border:0;cursor:pointer}
+.header{max-width:900px;margin:auto;height:88px;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;background:#fff}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:56px;height:48px;display:grid;place-items:center;color:#0757f5;font-size:42px;line-height:1}
+.brand h1{font-size:29px;letter-spacing:-1px;color:#0648cf}.brand p{font-size:15px;color:#16265a;margin-top:3px}
+.menu-button{background:transparent;color:#10245c;font-size:32px;padding:4px 8px}
+main{max-width:900px;margin:0 auto;padding:0 24px}
+.hero{height:344px;border-radius:24px;overflow:hidden;position:relative;display:flex;align-items:center;background:linear-gradient(105deg,#092b9b 0%,#0756d9 58%,#176df5 100%);color:#fff;isolation:isolate}
+.hero:before{content:"";position:absolute;inset:0 0 0 43%;background:linear-gradient(90deg,rgba(8,44,146,.16),transparent 50%);z-index:-1}
+.hero-content{position:relative;z-index:3;width:52%;padding:28px 0 28px 42px}
+.hero h2{font-size:clamp(34px,5vw,52px);line-height:1.08;letter-spacing:-1.2px;margin-bottom:17px}
+.hero p{font-size:25px;margin-bottom:26px;color:#f1f5ff}
+.start-button{background:var(--yellow);color:#071b4c;border-radius:28px;padding:15px 25px;font-size:20px;font-weight:700;box-shadow:0 4px 10px #001b5a25}
+.hero-student{position:absolute;z-index:2;right:0;bottom:0;width:49%;height:100%;object-fit:cover;object-position:center 25%;border:0;border-radius:0;background:transparent}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:22px 0 32px}
+.stat{min-height:145px;background:#fff;border:1px solid #edf1ff;border-radius:22px;box-shadow:0 5px 18px #193c9810;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px 5px}
+.stat-icon{font-size:35px;line-height:1;margin-bottom:8px}.stat strong{font-size:31px;color:#111a43;margin-bottom:4px}.stat span:last-child{font-size:19px;color:#152453}
+.section-heading{margin:0 0 22px}.section-heading h2{font-size:35px;display:flex;align-items:center;gap:18px;margin-bottom:8px;letter-spacing:-.7px}.section-heading h2:before{content:"";display:block;width:9px;height:36px;border-radius:5px;background:#0757f5}.section-heading p{font-size:22px;color:#53618d}
+.subject-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.subject-card{overflow:hidden;background:#fff;border:1.5px solid #d8e2ff;border-radius:19px;box-shadow:0 3px 12px #0d3b9810;min-width:0;cursor:pointer;transition:transform .18s,box-shadow .18s;text-align:left}
+.subject-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px #0d3b9820}
+.subject-card img{display:block;width:100%;height:116px;object-fit:cover}
+.subject-info{padding:12px 14px 13px}.subject-info h3{font-size:19px;color:#101a43;margin-bottom:9px;white-space:nowrap}
+.subject-bottom{display:flex;align-items:center;justify-content:space-between;color:#46558a;font-size:17px;gap:5px}.note-label{white-space:nowrap}.arrow{width:36px;height:36px;border-radius:50%;background:#e9edff;color:#273c85;display:grid;place-items:center;font-size:29px;line-height:1;flex:none}
+.cta{margin:27px 0 16px;padding:23px 24px;background:linear-gradient(105deg,#e8efff,#dfe8ff);border:1px solid #cad8ff;border-radius:22px;display:flex;align-items:center;gap:22px}.trophy{font-size:54px;line-height:1}.cta-content{flex:1}.cta h2{font-size:25px;color:#0c2380;margin-bottom:9px}.cta p{font-size:19px;color:#1a2a60}.exam-button{background:#0757f5;color:#fff;border-radius:18px;padding:17px 25px;font-size:20px;font-weight:700;white-space:nowrap}
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(900px,100%);height:88px;padding:7px 8px max(7px,env(safe-area-inset-bottom));background:#fff;border-radius:25px 25px 0 0;box-shadow:0 -4px 22px #173b9510;display:flex;align-items:center;justify-content:space-around;z-index:30}
+.nav-item{flex:1;height:100%;background:transparent;color:#4c588e;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:17px}.nav-icon{font-size:31px;line-height:1}.nav-item.active{color:#0757f5;font-weight:700}
+.drawer{display:none;position:fixed;inset:0;background:#061b4c80;z-index:60}.drawer.open{display:block}.drawer-panel{height:100%;width:min(310px,84%);background:#fff;padding:22px;box-shadow:8px 0 30px #0002}.drawer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:25px}.drawer-top h2{font-size:24px;color:#092b8d}.close-menu{background:transparent;font-size:32px;color:#152453}.drawer-link{width:100%;display:block;text-align:left;background:#fff;padding:16px 8px;border-bottom:1px solid #edf0fa;color:#192b49;font-size:16px}
+@media(max-width:650px){body{padding-bottom:94px}.header{height:88px;padding:10px 17px}.logo{width:48px;font-size:38px}.brand h1{font-size:26px}.brand p{font-size:13px}main{padding:0 14px}.hero{height:310px;border-radius:22px}.hero-content{width:55%;padding:20px 0 20px 22px}.hero h2{font-size:clamp(29px,6vw,40px)}.hero p{font-size:17px;margin-bottom:22px}.start-button{font-size:15px;padding:13px 16px}.hero-student{width:49%;object-position:center 25%}.stats{gap:9px;margin:17px 0 27px}.stat{min-height:112px;border-radius:17px}.stat-icon{font-size:27px}.stat strong{font-size:clamp(17px,4vw,23px)}.stat span:last-child{font-size:13px}.section-heading h2{font-size:27px;gap:12px}.section-heading h2:before{height:29px;width:7px}.section-heading p{font-size:16px}.subject-grid{gap:12px}.subject-card{border-radius:15px}.subject-card img{height:91px}.subject-info{padding:9px 9px 10px}.subject-info h3{font-size:14px;margin-bottom:7px}.subject-bottom{font-size:12px}.arrow{width:29px;height:29px;font-size:23px}.cta{padding:17px 13px;gap:12px;border-radius:17px}.trophy{font-size:39px}.cta h2{font-size:17px}.cta p{font-size:13px;line-height:1.35}.exam-button{font-size:14px;padding:13px 14px;border-radius:13px}.bottom-nav{height:82px;border-radius:21px 21px 0 0}.nav-item{font-size:12px}.nav-icon{font-size:25px}}
+@media(max-width:370px){.hero{height:280px}.hero-content{width:58%;padding-left:16px}.hero h2{font-size:27px}.hero p{font-size:14px}.start-button{font-size:13px;padding:11px 12px}.stats{gap:5px}.stat{min-height:100px}.stat strong{font-size:16px}.stat span:last-child{font-size:11px}.subject-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.subject-card img{height:105px}.subject-info h3{font-size:15px}.cta{flex-wrap:wrap}.exam-button{margin-left:auto}.nav-item{font-size:10px}}
+
+/* LearnBridge lesson notes viewer */
+.notes-overlay{display:none;position:fixed;inset:0;z-index:100;background:#f8faff;overflow-y:auto;padding:18px 14px 110px}
+.notes-overlay.open{display:block}
+.notes-shell{max-width:900px;margin:0 auto}
+.notes-back{display:inline-flex;align-items:center;gap:8px;background:#e9efff;color:#092b8d;padding:11px 16px;border-radius:12px;font-weight:700;margin:4px 0 20px}
+.notes-heading{font-size:28px;color:#101b48;margin:0 0 8px}
+.notes-subtitle{color:#53618d;font-size:15px;margin-bottom:20px;line-height:1.5}
+.notes-topic{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;text-align:left;background:#fff;border:1px solid #dbe4ff;border-radius:16px;padding:18px;margin:0 0 12px;color:#101b48;box-shadow:0 3px 12px #0d3b9810}
+.notes-topic-title{font-size:16px;font-weight:700;line-height:1.4}
+.notes-topic-desc{font-size:13px;color:#53618d;margin-top:5px}
+.notes-topic-arrow{font-size:24px;color:#0757f5}
+.notes-content{background:#fff;border:1px solid #dbe4ff;border-radius:18px;padding:20px;margin-top:14px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.65;font-size:15px;color:#18264d}
+.notes-content-title{font-size:23px;line-height:1.3;color:#101b48;margin:0 0 12px}
+@media(max-width:650px){.notes-overlay{padding:12px 12px 100px}.notes-heading{font-size:24px}.notes-topic{padding:15px}.notes-content{padding:16px;font-size:14px}.notes-content-title{font-size:20px}}
+
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="brand"><div class="logo" aria-hidden="true">🎓</div><div><h1>LearnBridge</h1><p>Learn Today. Build Tomorrow.</p></div></div>
+  <button class="menu-button" id="menuButton" aria-label="Open menu">☰</button>
+</header>
+<main>
+  <section class="hero">
+    <div class="hero-content"><h2>Prepare for<br>Your Success</h2><p>Study • Practice • Excel</p><button class="start-button" onclick="goTo('lessons')">▢ Start Learning&nbsp; →</button></div>
+    <img class="hero-student" src="hero-student.jpg" alt="Student holding a LearnBridge book" onerror="this.style.display='none'">
+  </section>
+  <section class="stats" aria-label="LearnBridge features">
+    <div class="stat"><span class="stat-icon">📘</span><strong>7+</strong><span>Subjects</span></div>
+    <div class="stat"><span class="stat-icon">👥</span><strong>Learn</strong><span>Anywhere</span></div>
+    <div class="stat"><span class="stat-icon">🏆</span><strong>Practice</strong><span>Daily</span></div>
+    <div class="stat"><span class="stat-icon">⭐</span><strong>Always</strong><span>Free</span></div>
+  </section>
+  <section>
+    <div class="section-heading"><h2>Our Subjects</h2><p>Choose a subject to start learning</p></div>
+    <div class="subject-grid">
+      <button class="subject-card" onclick="openSubject('Mathematics')"><img src="mathematics.jpg" alt="Mathematics"><div class="subject-info"><h3>Mathematics</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
+      <button class="subject-card" onclick="openSubject('Physics')"><img src="physics.jpg" alt="Physics"><div class="subject-info"><h3>Physics</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
+      <button class="subject-card" onclick="openSubject('Chemistry')"><img src="chemistry.jpg" alt="Chemistry"><div class="subject-info"><h3>Chemistry</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
+      <button class="subject-card" onclick="openSubject('Biology')"><img src="biology.jpg" alt="Biology"><div class="subject-info"><h3>Biology</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
+      <button class="subject-card" onclick="openSubject('Geography')"><img src="geography.jpg" alt="Geography"><div class="subject-info"><h3>Geography</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
+      <button class="subject-card" onclick="openSubject('History')"><img src="history.jpg" alt="History"><div class="subject-info"><h3>History</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
+      <button class="subject-card" onclick="openSubject('Economics')"><img src="economics.jpg" alt="Economics"><div class="subject-info"><h3>Economics</h3><div class="subject-bottom"><span class="note-label">▤ 7 Notes</span><span class="arrow">›</span></div></div></button>
+    </div>
+  </section>
+  <section class="cta"><div class="trophy">🏆</div><div class="cta-content"><h2>Ready to Achieve More?</h2><p>Start studying now and reach your goals!</p></div><button class="exam-button" onclick="goTo('quizzes')">Go to Exams&nbsp; →</button></section>
+</main>
+<nav class="bottom-nav" aria-label="Main navigation">
+  <button class="nav-item active" onclick="goTo('home',this)"><span class="nav-icon">⌂</span><span>Home</span></button>
+  <button class="nav-item" onclick="goTo('lessons',this)"><span class="nav-icon">♧</span><span>Lessons</span></button>
+  <button class="nav-item" onclick="goTo('quizzes',this)"><span class="nav-icon">☑</span><span>Quizzes</span></button>
+  <button class="nav-item" onclick="goTo('progress',this)"><span class="nav-icon">▥</span><span>Progress</span></button>
+  <button class="nav-item" onclick="goTo('profile',this)"><span class="nav-icon">♙</span><span>Profile</span></button>
+</nav>
+<div class="drawer" id="drawer"><div class="drawer-panel"><div class="drawer-top"><h2>LearnBridge</h2><button class="close-menu" id="closeMenu" aria-label="Close menu">×</button></div>
+  <button class="drawer-link" onclick="goTo('home')">⌂ Home</button><button class="drawer-link" onclick="goTo('quizzes')">✍ Exams</button><button class="drawer-link" onclick="goTo('resources')">📚 Resources</button><button class="drawer-link" onclick="goTo('about')">ℹ About</button><button class="drawer-link" onclick="goTo('profile')">👤 My Profile</button><button class="drawer-link" onclick="goTo('settings')">⚙ Settings</button>
+</div></div>
+
+<div class="notes-overlay" id="notesOverlay" aria-live="polite">
+  <div class="notes-shell">
+    <button class="notes-back" id="notesBackButton" type="button">← Back to subjects</button>
+    <section id="notesSubjectsPanel">
+      <h2 class="notes-heading" id="notesSubjectHeading">Subject</h2>
+      <p class="notes-subtitle">Choose a topic to read its detailed notes.</p>
+      <div id="notesTopicsList"></div>
+    </section>
+    <section id="notesLessonPanel" hidden>
+      <button class="notes-back" id="notesTopicBackButton" type="button">← Back to topics</button>
+      <h2 class="notes-content-title" id="notesLessonHeading">Topic</h2>
+      <div class="notes-content" id="notesLessonContent"></div>
+    </section>
+  </div>
+</div>
+
+<script>
+        const subjectsData = {
+            math: {
+                title: "Mathematics",
+                topics: [
+                    { title: "Real Number System & Set Operations", content: `📖 DEFINITION
+
+The real number system consists of all rational and irrational numbers.
+
+A rational number can be expressed as p/q, where p and q are integers and q ≠ 0.
+
+An irrational number cannot be expressed as a ratio of two integers.
+
+🎯 CLASSIFICATION OF NUMBERS
+
+1. Natural numbers: 1, 2, 3, 4, ...
+2. Whole numbers: 0, 1, 2, 3, ...
+3. Integers: ..., -3, -2, -1, 0, 1, 2, ...
+4. Rational numbers: 1/2, -3, 0.75.
+5. Irrational numbers: √2, √3, π.
+6. Real numbers: all rational and irrational numbers.
+
+📊 IMPORTANT NUMBER PROPERTIES
+
+Commutative:
+a + b = b + a
+a × b = b × a
+
+Associative:
+(a + b) + c = a + (b + c)
+
+Distributive:
+a(b + c) = ab + ac
+
+Identity:
+a + 0 = a
+a × 1 = a
+
+Inverse:
+a + (-a) = 0
+a × (1/a) = 1, when a ≠ 0.
+
+📦 SET OPERATIONS
+
+Union: A ∪ B
+All elements belonging to A or B or both.
+
+Intersection: A ∩ B
+Elements common to both sets.
+
+Difference: A - B
+Elements in A but not in B.
+
+Complement: A'
+Elements in the universal set but not in A.
+
+📐 IMPORTANT FORMULA
+
+n(A ∪ B) = n(A) + n(B) - n(A ∩ B)
+
+💡 WORKED EXAMPLE
+
+Let:
+A = {1, 2, 3, 4}
+B = {3, 4, 5, 6}
+
+Union:
+A ∪ B = {1, 2, 3, 4, 5, 6}
+
+Intersection:
+A ∩ B = {3, 4}
+
+Difference:
+A - B = {1, 2}
+
+Number of elements in union:
+n(A ∪ B) = 4 + 4 - 2 = 6
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: Every decimal number is irrational.
+✅ Correct: Terminating and repeating decimals are rational.
+
+❌ Wrong: A ∪ B contains only common elements.
+✅ Correct: The intersection contains common elements; the union combines all elements.
+
+❌ Wrong: Division by zero is allowed.
+✅ Correct: Division by zero is undefined.
+
+🧠 MNEMONICS
+
+"Union joins; intersection intersects."
+
+"Rational = ratio."
+"Irrational = cannot be written as a ratio of integers."
+
+📋 QUICK REFERENCE
+
+Natural ⊂ Whole ⊂ Integers ⊂ Rational ⊂ Real
+
+Irrational numbers are also real numbers but are not rational.
+
+📝 REVIEW QUESTIONS
+
+1. Is √49 rational or irrational?
+2. Find {1, 2, 3} ∩ {2, 3, 4}.
+3. Find {1, 2, 3} ∪ {3, 4}.
+4. Is 0.333... rational?
+5. What is the identity element for addition?
+
+✅ ANSWERS
+
+1. Rational; √49 = 7.
+2. {2, 3}.
+3. {1, 2, 3, 4}.
+4. Yes; it equals 1/3.
+5. Zero.` },
+                    { title: "Algebra, Equations & Inequalities", content: `📖 DEFINITION
+
+An algebraic expression is a mathematical expression containing variables, constants and operations.
+
+An equation is a statement that two expressions are equal.
+
+An inequality compares two expressions using <, >, ≤ or ≥.
+
+🎯 IMPORTANT ALGEBRAIC TERMS
+
+Variable: a symbol representing an unknown or changing value.
+Constant: a fixed numerical value.
+Coefficient: a number multiplying a variable.
+Term: a part of an expression separated by + or -.
+Like terms: terms with identical variable parts.
+
+Example:
+5x + 3x - 2
+
+5x and 3x are like terms.
+
+Simplification:
+5x + 3x - 2 = 8x - 2
+
+📐 IMPORTANT ALGEBRAIC IDENTITIES
+
+(a + b)² = a² + 2ab + b²
+
+(a - b)² = a² - 2ab + b²
+
+a² - b² = (a - b)(a + b)
+
+(a + b)³ = a³ + 3a²b + 3ab² + b³
+
+📊 QUADRATIC EQUATIONS
+
+General form:
+
+ax² + bx + c = 0, where a ≠ 0.
+
+Quadratic formula:
+
+x = [-b ± √(b² - 4ac)] / 2a
+
+Discriminant:
+
+D = b² - 4ac
+
+If D > 0: two distinct real roots.
+If D = 0: one repeated real root.
+If D < 0: no real roots.
+
+💡 WORKED EXAMPLE 1
+
+Solve:
+
+2x + 5 = 17
+
+Subtract 5 from both sides:
+
+2x = 12
+
+Divide by 2:
+
+x = 6
+
+💡 WORKED EXAMPLE 2
+
+Solve:
+
+x² - 5x + 6 = 0
+
+Factor:
+
+(x - 2)(x - 3) = 0
+
+Therefore:
+
+x = 2 or x = 3.
+
+📏 INEQUALITIES
+
+Example:
+
+-2x > 6
+
+Divide both sides by -2.
+
+Remember to reverse the inequality sign:
+
+x < -3
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: (a + b)² = a² + b².
+✅ Correct: (a + b)² = a² + 2ab + b².
+
+❌ Wrong: Dividing an inequality by a negative number leaves its sign unchanged.
+✅ Correct: Reverse the inequality sign.
+
+❌ Wrong: x² = 9 gives only x = 3.
+✅ Correct: x = 3 or x = -3.
+
+🧠 MNEMONICS
+
+"FOIL" for multiplying two binomials:
+First, Outer, Inner, Last.
+
+"Negative division flips the inequality."
+
+📋 QUICK REFERENCE
+
+Linear equation: ax + b = 0.
+
+Quadratic equation: ax² + bx + c = 0.
+
+Discriminant: b² - 4ac.
+
+Difference of squares: a² - b² = (a - b)(a + b).
+
+📝 REVIEW QUESTIONS
+
+1. Simplify 4x + 3x - 5.
+2. Solve 3x + 6 = 18.
+3. Factor x² - 9.
+4. Solve x² - 7x + 12 = 0.
+5. Solve -4x ≤ 12.
+
+✅ ANSWERS
+
+1. 7x - 5.
+2. x = 4.
+3. (x - 3)(x + 3).
+4. x = 3 or x = 4.
+5. x ≥ -3.` },
+                    { title: "Relations, Functions & Graphs", content: `📖 DEFINITION
+
+A relation is a set of ordered pairs connecting elements of two sets.
+
+A function is a relation in which every input has exactly one output.
+
+🎯 IMPORTANT TERMS
+
+Domain: all permitted input values.
+
+Range: all output values produced by the function.
+
+Independent variable: usually x.
+
+Dependent variable: usually y.
+
+Function notation:
+f(x) means the output of function f for input x.
+
+📊 TYPES OF FUNCTIONS
+
+Linear:
+f(x) = mx + c
+
+Quadratic:
+f(x) = ax² + bx + c
+
+Constant:
+f(x) = c
+
+Cubic:
+f(x) = ax³ + bx² + cx + d
+
+📐 GRADIENT OF A STRAIGHT LINE
+
+m = (y₂ - y₁)/(x₂ - x₁)
+
+Equation of a straight line:
+
+y = mx + c
+
+m = gradient.
+c = y-intercept.
+
+📈 IMPORTANT GRAPH FEATURES
+
+x-intercept:
+Set y = 0 and solve for x.
+
+y-intercept:
+Set x = 0 and solve for y.
+
+Vertical line test:
+A graph represents a function if no vertical line crosses it more than once.
+
+💡 WORKED EXAMPLE
+
+Given:
+
+f(x) = 2x + 3
+
+Find f(4).
+
+f(4) = 2(4) + 3
+
+f(4) = 8 + 3
+
+f(4) = 11.
+
+💡 GRADIENT EXAMPLE
+
+Find the gradient through (1, 2) and (3, 6).
+
+m = (6 - 2)/(3 - 1)
+
+m = 4/2
+
+m = 2.
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: Every relation is a function.
+✅ Correct: A function must assign exactly one output to each input.
+
+❌ Wrong: Domain means output values.
+✅ Correct: Domain means input values; range means output values.
+
+❌ Wrong: The gradient is the y-intercept.
+✅ Correct: Gradient measures steepness; y-intercept is where the graph crosses the y-axis.
+
+🧠 MNEMONICS
+
+"Domain goes in; range comes out."
+
+"Rise over run" = gradient.
+
+📋 QUICK REFERENCE
+
+Function: one output per input.
+
+Gradient: change in y / change in x.
+
+y-intercept: value of y when x = 0.
+
+x-intercept: value of x when y = 0.
+
+📝 REVIEW QUESTIONS
+
+1. Find f(3) if f(x) = x² + 2.
+2. Find the gradient between (2, 3) and (4, 7).
+3. What is the y-intercept of y = 5x - 4?
+4. What test identifies a function from its graph?
+
+✅ ANSWERS
+
+1. 11.
+2. 2.
+3. -4.
+4. Vertical line test.` }
+                ]
+            },
+            physics: {
+                title: "Physics",
+                topics: [
+                    { title: "Kinematics & Motion", content: `📖 DEFINITION
+
+Motion is the change in an object's position with time relative to a reference point.
+
+Kinematics is the study of motion without considering the forces responsible for it.
+
+🎯 IMPORTANT CONCEPTS
+
+Distance:
+Total length of the path travelled. It is a scalar.
+
+Displacement:
+Change in position in a particular direction. It is a vector.
+
+Speed:
+Distance travelled per unit time.
+
+Velocity:
+Displacement per unit time.
+
+Acceleration:
+Rate of change of velocity.
+
+📐 IMPORTANT FORMULAS
+
+Average speed = Total distance / Total time
+
+Average velocity = Displacement / Time
+
+Acceleration:
+a = (v - u)/t
+
+For constant acceleration:
+
+v = u + at
+
+s = ut + ½at²
+
+v² = u² + 2as
+
+s = [(u + v)/2]t
+
+Where:
+u = initial velocity
+v = final velocity
+a = acceleration
+t = time
+s = displacement
+
+📊 MOTION GRAPHS
+
+Displacement-time graph:
+Gradient = velocity.
+
+Velocity-time graph:
+Gradient = acceleration.
+
+Area under velocity-time graph:
+Displacement.
+
+💡 WORKED EXAMPLE
+
+A car starts from rest and accelerates at 2 m/s² for 5 seconds.
+
+Given:
+u = 0
+a = 2 m/s²
+t = 5 s
+
+Use:
+
+v = u + at
+
+v = 0 + (2 × 5)
+
+v = 10 m/s.
+
+📋 QUICK REFERENCE
+
+Uniform motion: constant velocity.
+
+Uniform acceleration: constant acceleration.
+
+Free fall: motion under gravity alone, ignoring air resistance.
+
+Near Earth's surface:
+g ≈ 9.8 m/s².
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: Distance and displacement are always equal.
+✅ Correct: Distance is path length; displacement is directed change in position.
+
+❌ Wrong: The gradient of a velocity-time graph gives displacement.
+✅ Correct: Its gradient gives acceleration; its area gives displacement.
+
+❌ Wrong: An object at rest has no acceleration in every possible situation.
+✅ Correct: Its velocity may be zero at an instant while acceleration is non-zero.
+
+🧠 MNEMONICS
+
+"STV":
+Slope of displacement-time = velocity.
+Slope of velocity-time = acceleration.
+Total area under velocity-time = displacement.
+
+📝 REVIEW QUESTIONS
+
+1. Define velocity.
+2. A body changes velocity from 4 m/s to 16 m/s in 3 seconds. Find acceleration.
+3. What does the area under a velocity-time graph represent?
+4. What is the approximate acceleration due to gravity near Earth?
+
+✅ ANSWERS
+
+1. Displacement per unit time.
+2. 4 m/s².
+3. Displacement.
+4. 9.8 m/s².` },
+                    { title: "Forces, Dynamics & Momentum", content: `📖 DEFINITION
+
+A force is a push or pull that can change an object's motion, direction or shape.
+
+Dynamics studies the relationship between forces and motion.
+
+🎯 NEWTON'S THREE LAWS
+
+FIRST LAW:
+An object remains at rest or in uniform straight-line motion unless acted upon by a non-zero net external force.
+
+SECOND LAW:
+The net force on an object equals its mass multiplied by its acceleration.
+
+F = ma
+
+THIRD LAW:
+When one object exerts a force on another, the second object exerts an equal and opposite force on the first.
+
+📐 IMPORTANT FORMULAS
+
+Net force:
+ΣF = ma
+
+Weight:
+W = mg
+
+Momentum:
+p = mv
+
+Impulse:
+J = FΔt
+
+Impulse-momentum theorem:
+J = Δp
+
+Friction:
+f = μN, for kinetic friction in the simple model.
+
+Where:
+m = mass
+a = acceleration
+g = gravitational acceleration
+v = velocity
+μ = coefficient of friction
+N = normal force
+
+💡 WORKED EXAMPLE
+
+A 4 kg object experiences a net force of 12 N.
+
+F = ma
+
+a = F/m
+
+a = 12/4
+
+a = 3 m/s².
+
+📊 MOMENTUM CONSERVATION
+
+In an isolated system, total momentum before an interaction equals total momentum after it.
+
+Total initial momentum = Total final momentum.
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: Mass and weight are the same.
+✅ Correct: Mass is measured in kg; weight is a force measured in N.
+
+❌ Wrong: Action and reaction act on the same object.
+✅ Correct: They act on two different objects.
+
+❌ Wrong: Momentum depends only on mass.
+✅ Correct: Momentum depends on both mass and velocity.
+
+🧠 MNEMONICS
+
+"1 stays, 2 accelerates, 3 pairs."
+
+"Momentum = mass in motion."
+
+📋 QUICK REFERENCE
+
+Force: newton (N).
+
+Mass: kilogram (kg).
+
+Momentum: kg·m/s.
+
+Impulse: N·s.
+
+Weight: gravitational force.
+
+📝 REVIEW QUESTIONS
+
+1. State Newton's second law.
+2. Find the weight of a 5 kg object when g = 9.8 m/s².
+3. Find momentum for a 3 kg object moving at 4 m/s.
+4. State the law of conservation of momentum.
+
+✅ ANSWERS
+
+1. Net force equals mass multiplied by acceleration.
+2. 49 N.
+3. 12 kg·m/s.
+4. Total momentum remains constant in an isolated system.` },
+                    { title: "Work, Energy & Power", content: `📖 DEFINITION
+
+Work is energy transferred when a force causes displacement.
+
+Energy is the capacity to do work.
+
+Power is the rate at which work is done or energy is transferred.
+
+🎯 TYPES OF ENERGY
+
+Kinetic energy:
+Energy possessed by a moving object.
+
+Potential energy:
+Stored energy due to position or configuration.
+
+Thermal energy:
+Energy associated with the random motion and interactions of particles.
+
+Chemical energy:
+Energy associated with chemical substances and bonds.
+
+📐 IMPORTANT FORMULAS
+
+Work:
+W = Fs cos θ
+
+Kinetic energy:
+KE = ½mv²
+
+Gravitational potential energy:
+GPE = mgh
+
+Power:
+P = W/t
+
+Efficiency:
+Efficiency = (Useful output energy / Total input energy) × 100%
+
+Mechanical energy:
+ME = KE + GPE
+
+💡 WORKED EXAMPLE
+
+A 2 kg object moves at 3 m/s.
+
+KE = ½mv²
+
+KE = ½ × 2 × 3²
+
+KE = 9 J.
+
+💡 POWER EXAMPLE
+
+A machine performs 600 J of work in 10 seconds.
+
+P = W/t
+
+P = 600/10
+
+P = 60 W.
+
+⚖️ CONSERVATION OF ENERGY
+
+Energy cannot be created or destroyed. It can only be transferred or transformed from one form to another.
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: Power and energy are identical.
+✅ Correct: Energy is an amount; power is the rate of energy transfer.
+
+❌ Wrong: Every force does work.
+✅ Correct: Work requires displacement and a force component along the displacement.
+
+❌ Wrong: Efficiency can exceed 100% for an ordinary energy conversion device.
+✅ Correct: Useful output energy cannot exceed total input energy.
+
+🧠 MNEMONICS
+
+"Work transfers; power measures speed of transfer."
+
+"KE moves; GPE stores."
+
+📋 QUICK REFERENCE
+
+Work: joule (J).
+
+Energy: joule (J).
+
+Power: watt (W).
+
+1 W = 1 J/s.
+
+📝 REVIEW QUESTIONS
+
+1. Find the kinetic energy of a 4 kg object moving at 2 m/s.
+2. Define power.
+3. Find GPE for a 2 kg object at a height of 5 m, using g = 10 m/s².
+4. What is the SI unit of work?
+
+✅ ANSWERS
+
+1. 8 J.
+2. Rate of doing work.
+3. 100 J.
+4. Joule.` }
+                ]
+            },
+            chemistry: {
+                title: "Chemistry",
+                topics: [
+                    { title: "Chemical Bonding & Molecular Structure", content: `📖 DEFINITION
+
+Chemical bonding is the attractive interaction that holds atoms or ions together in substances.
+
+🎯 TYPES OF CHEMICAL BONDS
+
+1. Ionic bonding:
+Electrons are transferred from one atom to another, forming oppositely charged ions.
+
+Example: NaCl.
+
+2. Covalent bonding:
+Atoms share electron pairs.
+
+Example: H₂O, CO₂.
+
+3. Metallic bonding:
+Positive metal ions are attracted to delocalised electrons.
+
+Example: Copper and iron.
+
+📐 IMPORTANT CONCEPTS
+
+Valence electrons:
+Electrons in the outermost occupied shell.
+
+Electronegativity:
+The ability of an atom to attract shared bonding electrons.
+
+Single bond:
+One shared pair of electrons.
+
+Double bond:
+Two shared pairs.
+
+Triple bond:
+Three shared pairs.
+
+📊 MOLECULAR SHAPES
+
+Linear: CO₂, approximately 180°.
+
+Bent: H₂O, approximately 104.5°.
+
+Trigonal planar: BF₃, approximately 120°.
+
+Tetrahedral: CH₄, approximately 109.5°.
+
+📋 POLARITY
+
+A molecule may be polar if its bond dipoles do not cancel.
+
+Molecular shape is important when determining polarity.
+
+💡 WORKED EXAMPLE
+
+Water (H₂O):
+
+Oxygen forms two covalent bonds with hydrogen.
+
+Oxygen also has two lone electron pairs.
+
+The electron-pair arrangement is approximately tetrahedral.
+
+The molecular shape is bent.
+
+The bond dipoles do not cancel, so water is polar.
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: Covalent bonding involves complete electron transfer.
+✅ Correct: Covalent bonding involves sharing electrons.
+
+❌ Wrong: Every molecule with polar bonds is polar.
+✅ Correct: Molecular geometry determines whether bond dipoles cancel.
+
+❌ Wrong: Solid ionic compounds conduct electricity easily.
+✅ Correct: Their ions are fixed in the solid lattice and cannot move freely.
+
+🧠 MNEMONICS
+
+"Ionic transfers; covalent shares; metallic delocalises."
+
+📋 QUICK REFERENCE
+
+Ionic: electron transfer.
+
+Covalent: electron sharing.
+
+Metallic: delocalised electrons.
+
+⚠️ EXAM TIP
+
+Always distinguish electron-pair geometry from molecular shape. Lone pairs affect molecular shape.
+
+📝 REVIEW QUESTIONS
+
+1. Which bond involves electron sharing?
+2. Why is water polar?
+3. Which type of bonding occurs in sodium chloride?
+4. What are valence electrons?
+
+✅ ANSWERS
+
+1. Covalent bonding.
+2. Its bent shape means its bond dipoles do not cancel.
+3. Ionic bonding.
+4. Electrons in the outermost occupied shell.` },
+                    { title: "Chemical Kinetics & Equilibrium", content: `📖 DEFINITION
+
+Chemical kinetics is the study of reaction rates and the factors affecting them.
+
+Chemical equilibrium is a dynamic state in a reversible reaction where the forward and reverse reaction rates are equal.
+
+🎯 FACTORS AFFECTING REACTION RATE
+
+1. Temperature.
+2. Reactant concentration.
+3. Pressure for gaseous reactants.
+4. Surface area of solid reactants.
+5. Presence of a catalyst.
+6. Nature of reactants.
+
+📐 RATE OF REACTION
+
+Average rate of reaction can be expressed as:
+
+Rate = Change in concentration / Time
+
+For a reactant, concentration usually decreases.
+
+For a product, concentration usually increases.
+
+⚖️ EQUILIBRIUM CONSTANT
+
+For:
+
+aA + bB ⇌ cC + dD
+
+Kc = [C]^c[D]^d / [A]^a[B]^b
+
+Pure solids and pure liquids are omitted from the expression.
+
+🎯 LE CHÂTELIER'S PRINCIPLE
+
+When a system at equilibrium is disturbed, it shifts in a direction that tends to oppose the disturbance.
+
+Increasing reactant concentration:
+Usually shifts equilibrium toward products.
+
+Increasing pressure:
+For gases, favours the side with fewer gas molecules, if the gas-mole numbers differ.
+
+Increasing temperature:
+Favours the endothermic direction.
+
+A catalyst:
+Speeds up both directions and does not change the equilibrium position.
+
+💡 WORKED EXAMPLE
+
+For:
+
+N₂ + 3H₂ ⇌ 2NH₃
+
+The equilibrium expression is:
+
+Kc = [NH₃]² / ([N₂][H₂]³)
+
+The powers come from the balanced equation coefficients.
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: Equilibrium means the reaction has stopped.
+✅ Correct: Both reactions continue at equal rates.
+
+❌ Wrong: A catalyst increases equilibrium yield.
+✅ Correct: It helps equilibrium be reached faster but does not change its position.
+
+❌ Wrong: The equilibrium constant changes whenever concentration changes.
+✅ Correct: At a fixed temperature, Kc is constant for a given reaction.
+
+🧠 MNEMONICS
+
+"Equal rates, constant concentrations."
+
+"CAT speeds; equilibrium position stays."
+
+📋 QUICK REFERENCE
+
+Forward rate = reverse rate at equilibrium.
+
+Kc depends on temperature.
+
+Catalysts do not change Kc.
+
+📝 REVIEW QUESTIONS
+
+1. Define dynamic equilibrium.
+2. What does a catalyst do?
+3. Write Kc for N₂ + 3H₂ ⇌ 2NH₃.
+4. What happens when temperature increases in an exothermic forward reaction?
+
+✅ ANSWERS
+
+1. Forward and reverse rates are equal while reactions continue.
+2. It increases reaction rates by providing a lower-activation-energy pathway.
+3. [NH₃]² / ([N₂][H₂]³).
+4. Equilibrium shifts in the reverse, endothermic direction.` },
+                    { title: "Solutions & Stoichiometry", content: `📖 DEFINITION
+
+A solution is a homogeneous mixture of a solute and a solvent.
+
+A solute is the substance dissolved.
+
+A solvent is the substance that dissolves the solute.
+
+Stoichiometry is the calculation of reactant and product quantities using a balanced chemical equation.
+
+🎯 IMPORTANT CONCEPTS
+
+Mole:
+The amount of substance containing Avogadro's number of elementary entities.
+
+Avogadro's constant:
+6.022 × 10²³ mol⁻¹.
+
+Molar mass:
+Mass of one mole of a substance.
+
+Concentration:
+Amount of solute per volume of solution.
+
+📐 IMPORTANT FORMULAS
+
+Moles:
+
+n = m/M
+
+Concentration:
+
+C = n/V
+
+Number of particles:
+
+N = n × 6.022 × 10²³
+
+Dilution:
+
+C₁V₁ = C₂V₂
+
+Where:
+n = moles
+m = mass in grams
+M = molar mass in g/mol
+C = concentration in mol/dm³
+V = volume in dm³
+
+⚙️ STOICHIOMETRY METHOD
+
+Step 1: Write the balanced equation.
+
+Step 2: Convert the known quantity into moles.
+
+Step 3: Use the balanced equation's mole ratio.
+
+Step 4: Convert moles into the required quantity.
+
+Step 5: Check units and significant figures.
+
+💡 WORKED EXAMPLE
+
+Calculate the moles in 10 g of CaCO₃.
+
+Molar mass = 100 g/mol.
+
+n = m/M
+
+n = 10/100
+
+n = 0.1 mol.
+
+💡 CONCENTRATION EXAMPLE
+
+A solution contains 0.5 mol in 2 dm³.
+
+C = n/V
+
+C = 0.5/2
+
+C = 0.25 mol/dm³.
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: Use coefficients from an unbalanced equation.
+✅ Correct: Balance the chemical equation first.
+
+❌ Wrong: Use millilitres directly when the formula requires dm³.
+✅ Correct: Convert mL to dm³ by dividing by 1000.
+
+❌ Wrong: Molar mass and molecular mass have identical units.
+✅ Correct: Molar mass is commonly expressed in g/mol; relative molecular mass has no unit.
+
+🧠 MNEMONICS
+
+"Balance → Moles → Ratio → Convert."
+
+📋 QUICK REFERENCE
+
+1 dm³ = 1000 cm³ = 1000 mL.
+
+1 mol = 6.022 × 10²³ particles.
+
+n = m/M.
+
+C = n/V.
+
+📝 REVIEW QUESTIONS
+
+1. Calculate moles in 20 g of a substance with molar mass 40 g/mol.
+2. Convert 500 mL into dm³.
+3. Calculate concentration when 0.2 mol occupies 0.5 dm³.
+4. State the dilution equation.
+
+✅ ANSWERS
+
+1. 0.5 mol.
+2. 0.5 dm³.
+3. 0.4 mol/dm³.
+4. C₁V₁ = C₂V₂.` }
+                ]
+            },
+    biology: {
+                title: "Biology",
+                topics: [
+                    { title: "Cell Biology & Division", content: `📖 DEFINITION
+
+The cell is the basic structural and functional unit of life.
+
+Cell biology studies cell structure, function, growth and division.
+
+🎯 CELL ORGANELLES AND FUNCTIONS
+
+Nucleus:
+Contains most of the cell's genetic material and helps control cell activities.
+
+Mitochondria:
+Site of most aerobic respiration and ATP production.
+
+Ribosomes:
+Sites of protein synthesis.
+
+Cell membrane:
+Controls movement of substances into and out of the cell.
+
+Cytoplasm:
+Contains organelles and is the site of many metabolic reactions.
+
+Chloroplast:
+Contains chlorophyll and is the site of photosynthesis in plants.
+
+Vacuole:
+Stores substances; the large central vacuole helps maintain plant cell turgor.
+
+Cell wall:
+Provides support and protection in plant cells.
+
+📊 PROKARYOTIC AND EUKARYOTIC CELLS
+
+Prokaryotic cells:
+- No membrane-bound nucleus.
+- No membrane-bound organelles.
+- Example: bacteria.
+
+Eukaryotic cells:
+- Have a membrane-bound nucleus.
+- Have membrane-bound organelles.
+- Examples: plants, animals and fungi.
+
+🧬 CELL DIVISION
+
+MITOSIS:
+
+Produces two genetically similar daughter cells.
+
+Important for growth, repair and replacement.
+
+MEIOSIS:
+
+Produces haploid cells.
+
+Involves two successive divisions.
+
+Contributes to genetic variation.
+
+📋 CELL CYCLE
+
+Interphase:
+G1: cell growth.
+S: DNA replication.
+G2: preparation for division.
+
+M phase:
+Mitosis and cytokinesis.
+
+💡 WORKED EXAMPLE
+
+A human body cell has 46 chromosomes.
+
+After mitosis:
+Each normal daughter cell has 46 chromosomes.
+
+After meiosis:
+Each normal human gamete has 23 chromosomes.
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: Mitosis halves the chromosome number.
+✅ Correct: Mitosis normally maintains chromosome number.
+
+❌ Wrong: Ribosomes produce energy.
+✅ Correct: Ribosomes synthesise proteins.
+
+❌ Wrong: All cells contain chloroplasts.
+✅ Correct: Chloroplasts occur in photosynthetic organisms, including plants and algae.
+
+🧠 MNEMONICS
+
+"Mitosis maintains; meiosis halves."
+
+"Ribosomes build proteins."
+
+📋 QUICK REFERENCE
+
+Mitosis: two daughter cells.
+
+Meiosis: four haploid cells in the usual complete process.
+
+Human body cell: 46 chromosomes.
+
+Human gamete: 23 chromosomes.
+
+📝 REVIEW QUESTIONS
+
+1. What is the basic unit of life?
+2. What is the function of mitochondria?
+3. How many daughter cells normally result from mitosis?
+4. How many chromosomes are in a human gamete?
+
+✅ ANSWERS
+
+1. Cell.
+2. ATP production during aerobic respiration.
+3. Two.
+4. 23.` },
+                    { title: "Biomolecules & Metabolism", content: `📖 DEFINITION
+
+Biological molecules are chemical substances found in living organisms and needed for life processes.
+
+Metabolism is the sum of all chemical reactions occurring in an organism.
+
+🎯 MAJOR BIOLOGICAL MOLECULES
+
+CARBOHYDRATES
+
+Functions:
+- Main source of energy.
+- Energy storage.
+- Structural roles.
+
+Building blocks:
+Monosaccharides.
+
+Examples:
+Glucose, starch, glycogen and cellulose.
+
+LIPIDS
+
+Functions:
+- Long-term energy storage.
+- Cell membrane structure.
+- Insulation and protection.
+
+Examples:
+Fats, oils and phospholipids.
+
+PROTEINS
+
+Functions:
+- Enzymes.
+- Structural support.
+- Transport.
+- Movement.
+- Defence.
+
+Building blocks:
+Amino acids.
+
+NUCLEIC ACIDS
+
+DNA:
+Stores hereditary information.
+
+RNA:
+Participates in gene expression and protein synthesis.
+
+Building blocks:
+Nucleotides.
+
+⚙️ ENZYMES
+
+Enzymes are biological catalysts that increase reaction rates by lowering activation energy.
+
+Important features:
+- Many enzymes are proteins.
+- They have active sites.
+- They are substrate-specific.
+- They are not consumed overall in the reactions they catalyse.
+
+FACTORS AFFECTING ENZYME ACTIVITY
+
+1. Temperature.
+2. pH.
+3. Substrate concentration.
+4. Enzyme concentration.
+
+💡 WORKED EXAMPLE
+
+An enzyme has an optimum temperature of 37°C.
+
+At a much higher temperature, the enzyme may become denatured.
+
+Denaturation changes its structure and can alter the active site.
+
+As a result, its activity decreases.
+
+📊 METABOLISM
+
+Anabolism:
+Building complex molecules from simpler substances.
+
+Catabolism:
+Breaking down complex molecules into simpler substances.
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: Enzymes are consumed during reactions.
+✅ Correct: Enzymes act as catalysts and are not consumed overall.
+
+❌ Wrong: All enzymes have the same optimum pH.
+✅ Correct: Different enzymes have different optimum pH values.
+
+❌ Wrong: DNA is made of amino acids.
+✅ Correct: DNA is made of nucleotides.
+
+🧠 MNEMONICS
+
+"Carbohydrates: energy."
+"Lipids: storage."
+"Proteins: perform."
+"Nucleic acids: instructions."
+
+"Anabolism adds; catabolism breaks down."
+
+📋 QUICK REFERENCE
+
+Proteins → amino acids.
+
+Carbohydrates → monosaccharides.
+
+Nucleic acids → nucleotides.
+
+Enzymes → biological catalysts.
+
+📝 REVIEW QUESTIONS
+
+1. What are proteins made of?
+2. What is an enzyme?
+3. Define metabolism.
+4. What is denaturation?
+5. What are the building blocks of DNA?
+
+✅ ANSWERS
+
+1. Amino acids.
+2. A biological catalyst.
+3. The sum of chemical reactions in an organism.
+4. Loss of a protein's normal functional structure.
+5. Nucleotides.` },
+                    { title: "Plant Structure & Physiology", content: `📖 DEFINITION
+
+Plant biology studies plant structure, function, growth, transport and reproduction.
+
+Plants have specialised tissues that perform different functions.
+
+🎯 MAIN PLANT STRUCTURES
+
+ROOTS:
+- Anchor the plant.
+- Absorb water and mineral ions.
+- May store food.
+
+STEMS:
+- Support leaves and flowers.
+- Transport materials.
+- Hold leaves toward light.
+
+LEAVES:
+- Main organs of photosynthesis.
+- Allow gas exchange.
+- Help regulate water loss.
+
+📊 VASCULAR TISSUES
+
+XYLEM:
+
+Transports water and mineral ions, mainly from roots toward leaves.
+
+PHLOEM:
+
+Transports sugars and other organic substances between sources and sinks.
+
+📖 STOMATA
+
+Stomata are small pores, mainly in leaf surfaces, that allow gas exchange.
+
+Guard cells control opening and closing.
+
+💧 TRANSPIRATION
+
+Transpiration is the loss of water vapour from the aerial parts of plants, mainly through stomata.
+
+Factors affecting transpiration:
+- Temperature.
+- Humidity.
+- Wind speed.
+- Light intensity.
+- Water availability.
+
+☀️ PHOTOSYNTHESIS
+
+Word equation:
+
+Carbon dioxide + Water
+→ Glucose + Oxygen
+
+Light energy and chlorophyll are required.
+
+Balanced chemical equation:
+
+6CO₂ + 6H₂O
+→ C₆H₁₂O₆ + 6O₂
+
+🎯 PHOTOSYNTHESIS STAGES
+
+Light-dependent reactions:
+Occur in thylakoid membranes.
+
+Calvin cycle:
+Occurs in the chloroplast stroma.
+
+💡 WORKED EXAMPLE
+
+A plant is placed in darkness.
+
+Light-dependent reactions cannot proceed normally because light energy is unavailable.
+
+Photosynthetic production of ATP and NADPH stops, limiting the Calvin cycle.
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: Xylem transports sugars.
+✅ Correct: Xylem transports water and mineral ions; phloem transports organic substances.
+
+❌ Wrong: Plants only photosynthesise.
+✅ Correct: Plants also carry out cellular respiration.
+
+❌ Wrong: Transpiration means absorption of water by roots.
+✅ Correct: Transpiration is water loss from aerial plant parts.
+
+🧠 MNEMONICS
+
+"Xylem = water; phloem = food."
+
+"Light reactions in thylakoids; Calvin cycle in stroma."
+
+📋 QUICK REFERENCE
+
+Root: absorption.
+
+Stem: support and transport.
+
+Leaf: photosynthesis.
+
+Xylem: water and minerals.
+
+Phloem: sugars.
+
+📝 REVIEW QUESTIONS
+
+1. Which tissue transports water?
+2. Which tissue transports sugars?
+3. Where does the Calvin cycle occur?
+4. What is transpiration?
+5. Name two factors affecting photosynthesis.
+
+✅ ANSWERS
+
+1. Xylem.
+2. Phloem.
+3. Chloroplast stroma.
+4. Loss of water vapour from aerial plant parts.
+5. Light intensity and carbon dioxide concentration.` }
+                ]
+            },
+          geography: {
+                title: "Geography",
+                topics: [
+                    { title: "Map Reading & Geographic Skills", content: `📖 DEFINITION
+
+A map is a scaled representation of all or part of Earth's surface.
+
+Map reading involves interpreting symbols, distances, directions, elevations and geographic patterns.
+
+🎯 MAIN MAP ELEMENTS
+
+Title:
+Shows what the map represents.
+
+Legend:
+Explains symbols and colours.
+
+Scale:
+Shows the relationship between map distance and ground distance.
+
+Direction:
+Shows orientation.
+
+Grid:
+Helps locate places.
+
+Contour lines:
+Join points of equal elevation.
+
+📐 MAP SCALE
+
+A scale of 1:50,000 means one unit on the map represents 50,000 of the same units on the ground.
+
+Formula:
+
+Ground distance = Map distance × Scale denominator
+
+💡 WORKED EXAMPLE
+
+Map scale = 1:50,000.
+
+Map distance = 4 cm.
+
+Ground distance:
+
+4 × 50,000 = 200,000 cm.
+
+Convert to kilometres:
+
+200,000 cm = 2 km.
+
+Answer = 2 km.
+
+🧭 DIRECTION AND BEARINGS
+
+The main compass directions are:
+North, East, South and West.
+
+Bearings:
+Measured clockwise from north, using three digits.
+
+Examples:
+East = 090°.
+South = 180°.
+West = 270°.
+North = 000° or 360°.
+
+📊 CONTOUR LINES
+
+Close contour lines:
+Steep slope.
+
+Widely spaced contour lines:
+Gentle slope.
+
+Equal contour spacing:
+Uniform slope.
+
+Closed contours with increasing elevation inward:
+Hill.
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: Widely spaced contours show a steep slope.
+✅ Correct: Widely spaced contours show a gentle slope.
+
+❌ Wrong: Bearings are measured anticlockwise from north.
+✅ Correct: Bearings are measured clockwise from north.
+
+❌ Wrong: A map scale of 1:50,000 means 1 cm equals 50,000 km.
+✅ Correct: 1 cm represents 50,000 cm, or 0.5 km.
+
+🧠 MNEMONICS
+
+"Close contours climb quickly."
+
+"Scale multiplies; convert units at the end."
+
+📋 QUICK REFERENCE
+
+1 km = 100,000 cm.
+
+1 m = 100 cm.
+
+1:100,000 means 1 cm = 1 km.
+
+📝 REVIEW QUESTIONS
+
+1. What does a map scale of 1:100,000 mean?
+2. What do close contour lines indicate?
+3. Find ground distance for 3 cm at 1:50,000.
+4. In which direction are bearings measured?
+
+✅ ANSWERS
+
+1. 1 cm represents 1 km.
+2. Steep slope.
+3. 1.5 km.
+4. Clockwise from north.` },
+                    { title: "Physical Geography & Earth Processes", content: `📖 DEFINITION
+
+Physical geography studies Earth's natural features and processes.
+
+It includes Earth's internal structure, rocks, landforms and surface processes.
+
+🌍 STRUCTURE OF THE EARTH
+
+1. CRUST:
+The thin, solid outer layer.
+
+2. MANTLE:
+A thick layer of hot rock beneath the crust.
+
+3. OUTER CORE:
+A liquid layer made mainly of iron and nickel.
+
+4. INNER CORE:
+A solid central layer made mainly of iron and nickel.
+
+🪨 THREE MAIN ROCK TYPES
+
+IGNEOUS ROCKS:
+
+Form when magma or lava cools and solidifies.
+
+Examples:
+Granite and basalt.
+
+SEDIMENTARY ROCKS:
+
+Form through accumulation, compaction and cementation of sediments, among other processes.
+
+Examples:
+Sandstone and limestone.
+
+METAMORPHIC ROCKS:
+
+Form when existing rocks are changed by heat, pressure or chemically active fluids.
+
+Examples:
+Marble and slate.
+
+📊 EARTH SURFACE PROCESSES
+
+Weathering:
+Breakdown of rocks in place.
+
+Erosion:
+Removal and transport of weathered material.
+
+Transportation:
+Movement of sediment.
+
+Deposition:
+Laying down transported material.
+
+Plate tectonics:
+Movement and interaction of Earth's lithospheric plates.
+
+💡 WORKED EXAMPLE
+
+Basalt forms when lava cools at Earth's surface.
+
+Therefore:
+Basalt is an extrusive igneous rock.
+
+Granite forms when magma cools slowly beneath the surface.
+
+Therefore:
+Granite is an intrusive igneous rock.
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: Weathering and erosion are identical.
+✅ Correct: Weathering breaks rock down in place; erosion transports material.
+
+❌ Wrong: All rocks are formed in the same way.
+✅ Correct: Igneous, sedimentary and metamorphic rocks form through different processes.
+
+❌ Wrong: Metamorphic rocks must completely melt.
+✅ Correct: Metamorphism usually occurs without complete melting.
+
+🧠 MNEMONICS
+
+"I-S-M":
+Igneous, Sedimentary, Metamorphic.
+
+"Weathering breaks; erosion takes."
+
+📋 QUICK REFERENCE
+
+Igneous: cooling magma or lava.
+
+Sedimentary: sediment formation.
+
+Metamorphic: change through heat and pressure.
+
+📝 REVIEW QUESTIONS
+
+1. Name the four main layers of Earth.
+2. Which rock forms from cooling lava?
+3. What is weathering?
+4. Give one example of a metamorphic rock.
+
+✅ ANSWERS
+
+1. Crust, mantle, outer core and inner core.
+2. Extrusive igneous rock.
+3. Breakdown of rock in place.
+4. Marble or slate.` },
+                    { title: "Weather, Climate & Climate Change", content: `📖 DEFINITION
+
+Weather is the short-term condition of the atmosphere at a particular place and time.
+
+Climate is the long-term pattern of weather conditions in a region, commonly assessed over about 30 years.
+
+🌦️ ELEMENTS OF WEATHER
+
+1. Temperature.
+2. Rainfall.
+3. Humidity.
+4. Air pressure.
+5. Wind.
+6. Cloud cover.
+
+🎯 FACTORS AFFECTING CLIMATE
+
+Latitude:
+Places near the Equator generally receive more direct solar radiation.
+
+Altitude:
+Temperature generally decreases with increasing altitude in the troposphere.
+
+Distance from the sea:
+Coastal regions often have smaller temperature ranges than inland areas.
+
+Ocean currents:
+Can warm or cool nearby coastal regions.
+
+Prevailing winds:
+Transport air masses and moisture.
+
+Relief:
+Mountains influence rainfall and temperature.
+
+🌧️ TYPES OF RAINFALL
+
+Convectional rainfall:
+Occurs when heated air rises, cools and condenses.
+
+Relief rainfall:
+Occurs when moist air rises over mountains.
+
+Frontal rainfall:
+Occurs when air masses meet and warmer air is forced upward.
+
+🌍 CLIMATE CHANGE
+
+Climate change means long-term changes in climate patterns.
+
+Human activities contribute to recent global warming through increased greenhouse gases.
+
+Important greenhouse gases:
+- Carbon dioxide.
+- Methane.
+- Nitrous oxide.
+- Water vapour.
+
+🎯 CLIMATE RESPONSES
+
+Mitigation:
+Reducing the causes of climate change.
+
+Adaptation:
+Adjusting to actual or expected climate impacts.
+
+💡 WORKED EXAMPLE
+
+A mountain slope receives more rainfall on its windward side.
+
+Reason:
+Moist air rises, cools and condenses as it moves over the mountain.
+
+The descending air on the leeward side is often drier.
+
+This is called the rain-shadow effect.
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: Weather and climate are the same.
+✅ Correct: Weather is short-term; climate is long-term.
+
+❌ Wrong: One cold day disproves global warming.
+✅ Correct: Global warming concerns long-term global temperature trends.
+
+❌ Wrong: Adaptation and mitigation mean the same thing.
+✅ Correct: Mitigation reduces causes; adaptation reduces vulnerability to impacts.
+
+🧠 MNEMONICS
+
+"Weather is now; climate is the pattern."
+
+"Mitigation reduces causes; adaptation adjusts."
+
+📋 QUICK REFERENCE
+
+Weather: short-term.
+
+Climate: long-term.
+
+Convectional: heated air rises.
+
+Relief: air rises over mountains.
+
+Frontal: air masses meet.
+
+📝 REVIEW QUESTIONS
+
+1. Define climate.
+2. Name three elements of weather.
+3. What causes relief rainfall?
+4. Distinguish mitigation from adaptation.
+5. Name two greenhouse gases.
+
+✅ ANSWERS
+
+1. Long-term patterns of weather.
+2. Temperature, rainfall and humidity.
+3. Moist air rises over high land, cools and condenses.
+4. Mitigation reduces causes; adaptation prepares for impacts.
+5. Carbon dioxide and methane.` }
+                ]
+            },
+       
+            history: {
+                title: "History",
+                topics: [
+                    { title: "Historical Methods & Sources", content: `📖 DEFINITION
+
+History is the systematic study and interpretation of the human past using evidence.
+
+Historians collect, examine, compare and interpret sources to understand past events.
+
+📚 TYPES OF HISTORICAL SOURCES
+
+PRIMARY SOURCES:
+
+Evidence produced during the period being studied.
+
+Examples:
+- Letters.
+- Coins.
+- Official documents.
+- Inscriptions.
+- Photographs.
+- Tools and buildings.
+
+SECONDARY SOURCES:
+
+Works produced later that interpret or analyse historical evidence.
+
+Examples:
+- History textbooks.
+- Historical research articles.
+- Biographies written after the events.
+
+ORAL SOURCES:
+
+Information passed through spoken accounts and traditions.
+
+ARCHAEOLOGICAL SOURCES:
+
+Physical remains such as buildings, pottery, tools and human remains.
+
+🕰️ CHRONOLOGY
+
+Chronology means arranging events in the order in which they occurred.
+
+BCE:
+Before Common Era.
+
+CE:
+Common Era.
+
+In BCE:
+A larger number is earlier.
+
+Example:
+500 BCE is earlier than 200 BCE.
+
+🔍 SOURCE EVALUATION
+
+Ask:
+
+1. Who created the source?
+2. When was it created?
+3. Why was it created?
+4. Who was its intended audience?
+5. What information does it provide?
+6. What are its limitations?
+
+💡 WORKED EXAMPLE
+
+A coin produced during a king's reign is a primary source.
+
+It may provide evidence about:
+- The ruler's name.
+- Political authority.
+- Symbols.
+- Economic activity.
+- Trade connections.
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: Every primary source is automatically accurate.
+✅ Correct: Primary sources may contain bias, errors or incomplete information.
+
+❌ Wrong: 300 BCE is later than 100 BCE.
+✅ Correct: 300 BCE is earlier.
+
+❌ Wrong: Historians rely on only one source.
+✅ Correct: Comparing different sources helps test evidence and interpretations.
+
+🧠 MNEMONICS
+
+"Who, when, why, for whom, what, and what is missing?"
+
+📋 QUICK REFERENCE
+
+Primary = from the period.
+
+Secondary = later interpretation.
+
+Chronology = order of events.
+
+Archaeology = study of material remains.
+
+📝 REVIEW QUESTIONS
+
+1. What is a primary source?
+2. Give two examples of archaeological evidence.
+3. Which is earlier: 450 BCE or 120 BCE?
+4. Why do historians compare sources?
+
+✅ ANSWERS
+
+1. Evidence produced during the period being studied.
+2. Pottery and tools.
+3. 450 BCE.
+4. To evaluate reliability and compare interpretations.` },
+                    { title: "Ancient Civilizations", content: `📖 DEFINITION
+
+An ancient civilization is a complex society with organised settlements, government, economic activities, social organisation and cultural traditions.
+
+🎯 IMPORTANT FEATURES OF CIVILIZATIONS
+
+- Permanent settlements.
+- Agriculture.
+- Food surplus.
+- Specialised labour.
+- Trade.
+- Government.
+- Social organisation.
+- Writing or record-keeping in many civilizations.
+- Religious and cultural institutions.
+
+🏛️ MESOPOTAMIA
+
+Location:
+Between the Tigris and Euphrates rivers.
+
+Important contributions:
+- Early cities.
+- Cuneiform writing.
+- Legal traditions.
+- Irrigation agriculture.
+
+🏛️ ANCIENT EGYPT
+
+Location:
+Along the Nile River.
+
+Important features:
+- Pharaohs.
+- Pyramids.
+- Hieroglyphic writing.
+- Irrigation agriculture.
+- Monumental architecture.
+
+🏛️ INDUS VALLEY CIVILIZATION
+
+Important features:
+- Planned cities.
+- Drainage systems.
+- Standardised bricks.
+- Long-distance trade.
+
+🏛️ ANCIENT CHINA
+
+Important features:
+- Early dynasties.
+- Agricultural development.
+- Writing traditions.
+- Technological and philosophical contributions.
+
+🌾 AGRICULTURE AND CIVILIZATION
+
+Agriculture helped societies produce food surpluses.
+
+Food surpluses supported:
+- Population growth.
+- Permanent settlements.
+- Craftspeople.
+- Traders.
+- Administrators.
+- Urban development.
+
+💡 WORKED EXAMPLE
+
+When a community produces more food than it needs, some people can specialise in pottery, construction, trade and administration.
+
+This helps the community develop more complex economic and political institutions.
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: All ancient civilizations developed identically.
+✅ Correct: Civilizations had different environments, political systems and cultures.
+
+❌ Wrong: River floods were always beneficial.
+✅ Correct: Floods could improve soil fertility but could also destroy settlements and crops.
+
+❌ Wrong: Agriculture had no effect on urban development.
+✅ Correct: Agricultural surplus helped support larger settlements and specialised work.
+
+🧠 MNEMONICS
+
+"Food surplus → Specialisation → Trade → Urban growth."
+
+📋 QUICK REFERENCE
+
+Mesopotamia: Tigris and Euphrates.
+
+Egypt: Nile.
+
+Indus: planned cities and drainage.
+
+China: early dynasties and writing traditions.
+
+📝 REVIEW QUESTIONS
+
+1. Which two rivers were central to Mesopotamia?
+2. Which river supported ancient Egyptian agriculture?
+3. What is cuneiform?
+4. How did food surplus support civilization?
+
+✅ ANSWERS
+
+1. Tigris and Euphrates.
+2. Nile.
+3. An ancient writing system used in Mesopotamia.
+4. It supported population growth, specialised labour and larger settlements.` },
+                    { title: "Ethiopian History & Heritage", content: `📖 DEFINITION
+
+Ethiopian history studies the development of societies, states, political institutions, trade, religions and cultural traditions in the Horn of Africa.
+
+🏺 DʿMT
+
+Dʿmt was an early state in northern Ethiopia and Eritrea.
+
+It is associated with early political organisation, agriculture, trade and monumental traditions.
+
+🏛️ AKSUMITE KINGDOM
+
+Aksum became an important state and trading power in the Horn of Africa.
+
+IMPORTANT FEATURES:
+
+- Red Sea trade connections.
+- Coin production.
+- Monumental stelae.
+- Geʿez writing tradition.
+- Adoption of Christianity in the fourth century CE.
+
+Aksum traded with regions around the Red Sea and beyond.
+
+🏰 ZAGWE DYNASTY
+
+The Zagwe dynasty is particularly associated with the rock-hewn churches of Lalibela.
+
+These churches are important examples of Ethiopian religious architecture.
+
+👑 SOLOMONIC DYNASTY
+
+The Solomonic dynasty was traditionally restored in 1270 CE under Yekuno Amlak.
+
+The dynasty connected its legitimacy to the Solomonic tradition.
+
+📋 QUICK REFERENCE
+
+Dʿmt:
+Early state formation.
+
+Aksum:
+Trade, coins, stelae and Christianity.
+
+Zagwe:
+Rock-hewn churches of Lalibela.
+
+Solomonic restoration:
+Traditionally dated to 1270 CE.
+
+💡 WORKED EXAMPLE
+
+An Aksumite coin is a material historical source.
+
+Historians can examine its inscriptions and images to investigate rulers, political authority and economic connections.
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: Aksum was isolated from other regions.
+✅ Correct: Aksum participated in Red Sea and wider trade networks.
+
+❌ Wrong: Lalibela's rock-hewn churches are mainly associated with Aksum.
+✅ Correct: They are particularly associated with the Zagwe period.
+
+❌ Wrong: The Solomonic restoration occurred in 1270 BCE.
+✅ Correct: The traditional date is 1270 CE.
+
+🧠 MNEMONICS
+
+"A-Z-S":
+Aksum → Zagwe → Solomonic restoration.
+
+📝 REVIEW QUESTIONS
+
+1. Name one important feature of Aksum.
+2. Which dynasty is associated with Lalibela's rock-hewn churches?
+3. In which year was the Solomonic dynasty traditionally restored?
+4. Name one form of Aksumite historical evidence.
+
+✅ ANSWERS
+
+1. Red Sea trade, coins, stelae or Christianity.
+2. Zagwe.
+3. 1270 CE.
+4. Coins, inscriptions or stelae.` }
+                ]
+            },
+        economics: {
+                title: "Economics",
+                topics: [
+                    { title: "Introduction to Economics & Scarcity", content: `📖 DEFINITION
+
+Economics is the social science that studies how individuals, businesses and societies allocate scarce resources among competing wants.
+
+🎯 BASIC ECONOMIC PROBLEMS
+
+Scarcity:
+Resources are limited relative to human wants.
+
+Choice:
+Selecting one option from available alternatives.
+
+Opportunity cost:
+The value of the next best alternative forgone.
+
+Resource allocation:
+How scarce resources are distributed among different uses.
+
+📊 FACTORS OF PRODUCTION
+
+1. LAND:
+Natural resources used in production.
+
+Reward: Rent.
+
+2. LABOUR:
+Human physical and mental effort.
+
+Reward: Wages.
+
+3. CAPITAL:
+Man-made resources used to produce goods and services.
+
+Reward: Interest in the traditional classification.
+
+4. ENTREPRENEURSHIP:
+Organising production and taking business risks.
+
+Reward: Profit.
+
+🏭 MICROECONOMICS AND MACROECONOMICS
+
+Microeconomics:
+Studies individual consumers, firms and markets.
+
+Macroeconomics:
+Studies the economy as a whole, including inflation, unemployment and national output.
+
+📈 PRODUCTION POSSIBILITY FRONTIER (PPF)
+
+A PPF shows the maximum combinations of two goods an economy can produce with available resources and technology.
+
+Points on the curve:
+Productively efficient.
+
+Points inside the curve:
+Inefficient production or underused resources.
+
+Points outside the curve:
+Currently unattainable with existing resources and technology.
+
+💡 WORKED EXAMPLE
+
+A student has one hour and can study either economics or mathematics.
+
+If the student chooses economics, the opportunity cost is the best mathematics-study opportunity forgone.
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: Opportunity cost is the value of every alternative.
+✅ Correct: It is the value of the next best alternative forgone.
+
+❌ Wrong: Scarcity means a product is rare.
+✅ Correct: Scarcity means resources are limited relative to wants.
+
+❌ Wrong: Capital means money only.
+✅ Correct: In production theory, capital refers to man-made productive resources such as machinery and equipment.
+
+🧠 MNEMONICS
+
+"L-L-C-E":
+Land, Labour, Capital, Entrepreneurship.
+
+📋 QUICK REFERENCE
+
+Scarcity → Choice → Opportunity cost.
+
+Microeconomics → individual markets.
+
+Macroeconomics → whole economy.
+
+📝 REVIEW QUESTIONS
+
+1. Define scarcity.
+2. What is opportunity cost?
+3. Name the four factors of production.
+4. What does a point inside a PPF indicate?
+
+✅ ANSWERS
+
+1. Limited resources relative to wants.
+2. Value of the next best alternative forgone.
+3. Land, labour, capital and entrepreneurship.
+4. Inefficient production or underused resources.` },
+                    { title: "Demand, Supply & Market Equilibrium", content: `📖 DEFINITION
+
+Demand is the quantity of a good or service consumers are willing and able to buy at different prices during a given period.
+
+Supply is the quantity producers are willing and able to sell at different prices during a given period.
+
+📉 LAW OF DEMAND
+
+Other things being equal, when price increases, quantity demanded generally decreases.
+
+When price decreases, quantity demanded generally increases.
+
+📈 LAW OF SUPPLY
+
+Other things being equal, when price increases, quantity supplied generally increases.
+
+When price decreases, quantity supplied generally decreases.
+
+🎯 FACTORS AFFECTING DEMAND
+
+- Consumer income.
+- Prices of related goods.
+- Tastes and preferences.
+- Population.
+- Expectations about future prices.
+
+🎯 FACTORS AFFECTING SUPPLY
+
+- Production costs.
+- Technology.
+- Taxes and subsidies.
+- Number of producers.
+- Expectations.
+- Prices of inputs.
+
+⚖️ MARKET EQUILIBRIUM
+
+Equilibrium occurs when:
+
+Qd = Qs
+
+Qd = quantity demanded.
+Qs = quantity supplied.
+
+SURPLUS:
+Quantity supplied > quantity demanded.
+
+SHORTAGE:
+Quantity demanded > quantity supplied.
+
+💡 WORKED EXAMPLE
+
+Suppose:
+
+Qd = 100 - 2P
+
+Qs = 20 + 2P
+
+At equilibrium:
+
+100 - 2P = 20 + 2P
+
+80 = 4P
+
+P = 20
+
+Substitute into demand:
+
+Qd = 100 - 2(20)
+
+Qd = 60
+
+Equilibrium price = 20.
+
+Equilibrium quantity = 60.
+
+📋 QUICK REFERENCE
+
+Price above equilibrium → surplus.
+
+Price below equilibrium → shortage.
+
+Demand increases → demand curve shifts right.
+
+Supply increases → supply curve shifts right.
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: A change in a product's own price shifts its demand curve.
+✅ Correct: It causes movement along the demand curve, other things equal.
+
+❌ Wrong: Demand means desire only.
+✅ Correct: Demand requires willingness and ability to pay.
+
+❌ Wrong: Equilibrium occurs when demand is zero.
+✅ Correct: Equilibrium occurs when quantity demanded equals quantity supplied.
+
+🧠 MNEMONICS
+
+"Price moves along; other factors shift."
+
+"Surplus = supply is extra."
+
+"Shortage = demand is greater."
+
+📝 REVIEW QUESTIONS
+
+1. State the law of demand.
+2. What is a market shortage?
+3. What happens when price is above equilibrium?
+4. Find equilibrium if Qd = 50 - P and Qs = 10 + P.
+
+✅ ANSWERS
+
+1. Higher price generally leads to lower quantity demanded, other things equal.
+2. Quantity demanded exceeds quantity supplied.
+3. A surplus occurs.
+4. P = 20 and Q = 30.` },
+                    { title: "Consumer Theory & Utility", content: `📖 DEFINITION
+
+Consumer behaviour studies how individuals make purchasing decisions with limited income and different preferences.
+
+Utility is the satisfaction a consumer obtains from consuming goods and services.
+
+🎯 IMPORTANT CONCEPTS
+
+TOTAL UTILITY (TU):
+
+The total satisfaction gained from consuming a quantity of a good.
+
+MARGINAL UTILITY (MU):
+
+The additional satisfaction gained from consuming one more unit.
+
+DIMINISHING MARGINAL UTILITY:
+
+As a consumer consumes more units of a good, the additional satisfaction from each extra unit generally decreases, other things equal.
+
+📐 IMPORTANT FORMULA
+
+MU = Change in total utility / Change in quantity
+
+MU = ΔTU / ΔQ
+
+📊 EXAMPLE TABLE
+
+Units consumed | Total utility | Marginal utility
+
+1 | 10 | 10
+2 | 18 | 8
+3 | 24 | 6
+4 | 28 | 4
+5 | 30 | 2
+
+Marginal utility decreases as consumption increases.
+
+Total utility still increases, but at a decreasing rate.
+
+⚖️ CONSUMER EQUILIBRIUM
+
+In a simple model with two goods, consumer equilibrium occurs when:
+
+MUx/Px = MUy/Py
+
+The consumer also faces a budget constraint.
+
+This means marginal utility per unit of money is equal across goods at the optimum, under the model's assumptions.
+
+💡 WORKED EXAMPLE
+
+A good provides marginal utility of 30 utils and costs 6 birr.
+
+MU/P = 30/6
+
+MU/P = 5 utils per birr.
+
+📋 QUICK REFERENCE
+
+TU = total satisfaction.
+
+MU = additional satisfaction.
+
+Diminishing MU = extra satisfaction generally decreases.
+
+Consumer equilibrium = best affordable allocation under the model.
+
+⚠️ COMMON MISTAKES
+
+❌ Wrong: Diminishing marginal utility means total utility always decreases.
+✅ Correct: Total utility may continue increasing, but by smaller amounts.
+
+❌ Wrong: Marginal utility and total utility are identical.
+✅ Correct: Marginal utility is the additional utility from an extra unit.
+
+❌ Wrong: Consumer equilibrium requires spending equal amounts on every product.
+✅ Correct: It concerns marginal utility per unit of price, subject to the budget.
+
+🧠 MNEMONICS
+
+"TU totals; MU measures the next unit."
+
+"Compare MU per money unit."
+
+📝 REVIEW QUESTIONS
+
+1. Define utility.
+2. What is marginal utility?
+3. State the law of diminishing marginal utility.
+4. If MU = 40 and price = 8 birr, calculate MU/P.
+5. Does diminishing marginal utility always mean total utility decreases?
+
+✅ ANSWERS
+
+1. Satisfaction from consuming goods and services.
+2. Additional total utility from consuming one more unit.
+3. Additional utility generally decreases as more units are consumed, other things equal.
+4. 5 utils per birr.
+5. No. Total utility may still increase at a decreasing rate.` }
+                ]
+            }
+        };
+
+const drawer=document.getElementById('drawer');
+document.getElementById('menuButton').addEventListener('click',()=>drawer.classList.add('open'));
+document.getElementById('closeMenu').addEventListener('click',()=>drawer.classList.remove('open'));
+drawer.addEventListener('click',event=>{if(event.target===drawer)drawer.classList.remove('open')});
+function goTo(page,button){drawer.classList.remove('open');document.querySelectorAll('.nav-item').forEach(item=>item.classList.remove('active'));if(button)button.classList.add('active');if(page==='home'){closeNotes();window.scrollTo({top:0,behavior:'smooth'});return;}if(page==='lessons'){closeNotes();document.querySelector('.subject-grid').scrollIntoView({behavior:'smooth',block:'start'});return;}alert(page.charAt(0).toUpperCase()+page.slice(1)+' page has not been connected yet.');}
+document.getElementById('notesBackButton').addEventListener('click',closeNotes);
+document.getElementById('notesTopicBackButton').addEventListener('click',()=>{document.getElementById('notesLessonPanel').hidden=true;document.getElementById('notesSubjectsPanel').hidden=false;document.getElementById('notesOverlay').scrollTop=0;});
+function openSubject(subject){
+  const keys = {
+    Mathematics:'math',
+    Physics:'physics',
+    Chemistry:'chemistry',
+    Biology:'biology',
+    Geography:'geography',
+    History:'history',
+    Economics:'economics'
+  };
+  const key = keys[subject] || subject.toLowerCase();
+  const data = subjectsData[key];
+  if(!data) return;
+  document.getElementById('notesSubjectHeading').textContent = data.title;
+  const list = document.getElementById('notesTopicsList');
+  list.innerHTML = '';
+  data.topics.forEach((topic,index)=>{
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'notes-topic';
+    const textWrap = document.createElement('span');
+    const title = document.createElement('span');
+    title.className = 'notes-topic-title';
+    title.textContent = (index+1)+'. '+topic.title;
+    const desc = document.createElement('span');
+    desc.className = 'notes-topic-desc';
+    desc.textContent = 'Open detailed notes';
+    textWrap.append(title,desc);
+    const arrow = document.createElement('span');
+    arrow.className = 'notes-topic-arrow';
+    arrow.textContent = '›';
+    card.append(textWrap,arrow);
+    card.addEventListener('click',()=>openLessonNote(topic));
+    list.appendChild(card);
+  });
+  document.getElementById('notesSubjectsPanel').hidden = false;
+  document.getElementById('notesLessonPanel').hidden = true;
+  document.getElementById('notesOverlay').classList.add('open');
+  document.getElementById('notesOverlay').scrollTop = 0;
+}
+function openLessonNote(topic){
+  document.getElementById('notesLessonHeading').textContent = topic.title;
+  document.getElementById('notesLessonContent').textContent = topic.content;
+  document.getElementById('notesSubjectsPanel').hidden = true;
+  document.getElementById('notesLessonPanel').hidden = false;
+  document.getElementById('notesOverlay').scrollTop = 0;
+}
+function closeNotes(){
+  document.getElementById('notesOverlay').classList.remove('open');
+  document.getElementById('notesSubjectsPanel').hidden = false;
+  document.getElementById('notesLessonPanel').hidden = true;
+}
+</script>
+</body>
+</html>
