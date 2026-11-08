@@ -1,12 +1,7 @@
-LearnBridge update
+LearnBridge Lessons screen update
 
-Replace index.html in your GitHub repository. Keep all existing JPG files beside it:
-hero-student.jpg, mathematics.jpg, physics.jpg, chemistry.jpg, biology.jpg,
-geography.jpg, history.jpg, economics.jpg.
+Replace index.html in your GitHub repository. Keep your existing JPG files beside it with exactly the same filenames.
 
-Lessons opens the existing seven subject cards and uses the existing subject images.
-Choose a subject to see its topics, then choose a topic to open its notes.
-The notes viewer colors and responsive subject-card layout have been improved.
+The Lessons bottom-navigation item now opens a dedicated screen styled like your screenshot: Home back control, Lessons heading and description, and seven horizontal subject cards with the existing subject images, names, topic counts, and arrows. Tapping a subject opens its three topics; tapping a topic opens its notes.
 
-The complete subjectsData notes block is unchanged byte-for-byte. No note text,
-formulas, examples, or topic order was written, removed, or edited.
+No new images are included. The complete subjectsData notes block was verified byte-for-byte unchanged. No note wording, formulas, examples, or topic order was changed.
