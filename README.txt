@@ -1,16 +1,12 @@
-LearnBridge project update
+LearnBridge update
 
-Files included: index.html
+Replace index.html in your GitHub repository. Keep all existing JPG files beside it:
+hero-student.jpg, mathematics.jpg, physics.jpg, chemistry.jpg, biology.jpg,
+geography.jpg, history.jpg, economics.jpg.
 
-Important: The existing notes data block was preserved byte-for-byte. No note wording, formulas, examples, ordering, or note presentation was edited.
+Lessons opens the existing seven subject cards and uses the existing subject images.
+Choose a subject to see its topics, then choose a topic to open its notes.
+The notes viewer colors and responsive subject-card layout have been improved.
 
-Implemented in this update:
-- Subject cards now show 3 Notes each (7 subjects, 21 topics).
-- Lessons navigation opens the subject cards; subject and topic navigation works.
-- Bookmark and completed-topic controls save locally in this browser.
-- Progress page shows completion progress for all subjects.
-- Profile page stores student name, grade, and school locally; no account creation is included.
-- Bottom navigation uses inline SVG icons for Home, Lessons, Quizzes, Progress, and Profile.
-- Quizzes page includes subject/topic/difficulty selection UI. A real multiple-choice question bank was not present in the supplied file, so no invented questions or altered notes were used.
-
-Assets: The uploaded HTML references hero-student.jpg and seven subject JPG files. Those image files were not included with the current upload, so add your existing image files beside index.html when uploading the project to GitHub.
+The complete subjectsData notes block is unchanged byte-for-byte. No note text,
+formulas, examples, or topic order was written, removed, or edited.
