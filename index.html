@@ -114,6 +114,21 @@ body.lessons-view .arrow{margin-left:auto;background:transparent;color:#1762df;w
  .subject-topic-hint{font-size:16px}
 }
 
+
+/* Additional homepage feature cards; existing lesson and note content is untouched. */
+.extra-features{margin:30px 0 28px}
+.extra-features .section-heading{margin-bottom:18px}
+.extra-features .section-heading h2{font-size:clamp(23px,3vw,30px)}
+.extra-features .section-heading p{font-size:17px;line-height:1.5}
+.extra-features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:15px}
+.feature-card{min-width:0;min-height:178px;display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:19px;background:linear-gradient(145deg,#fff 0%,#f3f7ff 100%);border:1px solid #d7e2ff;border-radius:18px;box-shadow:0 4px 15px #123b9510}
+.feature-icon{width:48px;height:48px;display:grid;place-items:center;flex:none;border-radius:14px;background:#e8efff;font-size:27px}
+.feature-card h3{font-size:19px;line-height:1.3;color:#092b8d;margin-bottom:7px;overflow-wrap:anywhere}
+.feature-card p{font-size:16px;line-height:1.55;color:#465780;overflow-wrap:anywhere}
+.feature-tag{display:inline-flex;margin-top:auto;padding:6px 10px;border-radius:20px;background:#fff2c2;color:#604900;font-size:13px;font-weight:700}
+@media(max-width:650px){.extra-features{margin-top:24px}.extra-features-grid{grid-template-columns:1fr;gap:12px}.feature-card{min-height:0;padding:17px;display:grid;grid-template-columns:46px minmax(0,1fr);column-gap:13px;row-gap:8px}.feature-icon{width:44px;height:44px;grid-row:1/3;font-size:25px}.feature-card h3{font-size:18px}.feature-card p{font-size:16px}.feature-tag{grid-column:2;justify-self:start;margin-top:0}}
+@media(min-width:651px) and (max-width:1000px){.feature-card{padding:16px}.feature-card h3{font-size:18px}.feature-card p{font-size:16px}}
+
 </style>
 </head>
 <body>
@@ -146,6 +161,17 @@ body.lessons-view .arrow{margin-left:auto;background:transparent;color:#1762df;w
     </div>
   </section>
   <section class="cta"><div class="trophy">🏆</div><div class="cta-content"><h2>Ready to Achieve More?</h2><p>Start studying now and reach your goals!</p></div><button class="exam-button" onclick="goTo('quizzes')">Go to Exams&nbsp; →</button></section>
+  <section class="extra-features" aria-labelledby="extraFeaturesHeading">
+    <div class="section-heading"><h2 id="extraFeaturesHeading">Explore More on LearnBridge</h2><p>Build strong study habits and prepare with confidence.</p></div>
+    <div class="extra-features-grid">
+      <article class="feature-card"><span class="feature-icon" aria-hidden="true">🎯</span><div><h3>Exam Preparation Center</h3><p>Prepare for your national entrance examination with focused revision and study guidance.</p></div><span class="feature-tag">Exam prep</span></article>
+      <article class="feature-card"><span class="feature-icon" aria-hidden="true">🌟</span><div><h3>Daily Learning Challenge</h3><p>Take on a daily question and keep your learning active across the seven subjects.</p></div><span class="feature-tag">Daily practice</span></article>
+      <article class="feature-card"><span class="feature-icon" aria-hidden="true">🗓️</span><div><h3>Study Planner</h3><p>Organize your week with a clear timetable for lessons, revision, and practice.</p></div><span class="feature-tag">Plan your week</span></article>
+      <article class="feature-card"><span class="feature-icon" aria-hidden="true">🏅</span><div><h3>Achievements &amp; Awards</h3><p>Celebrate learning milestones and recognize the progress you make over time.</p></div><span class="feature-tag">Milestones</span></article>
+      <article class="feature-card"><span class="feature-icon" aria-hidden="true">⚡</span><div><h3>Quick Revision</h3><p>Review important concepts and key points from your existing LearnBridge lessons.</p></div><span class="feature-tag">Fast review</span></article>
+      <article class="feature-card"><span class="feature-icon" aria-hidden="true">💡</span><div><h3>Learning Tips</h3><p>Find practical tips for studying effectively, remembering information, and preparing for exams.</p></div><span class="feature-tag">Study smarter</span></article>
+    </div>
+  </section>
 </main>
 
 <section class="app-panel" id="quizzesPanel">

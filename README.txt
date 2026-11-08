@@ -1,12 +1,5 @@
-LearnBridge subject detail screen update
+LearnBridge updated homepage
 
-Replace index.html in your GitHub repository. Keep all existing JPG image files beside it.
+This package contains the updated index.html. The six requested homepage feature cards were added below “Ready to Achieve More?” and before the bottom navigation. Existing lesson notes and note content were preserved.
 
-When a student selects a subject, the page now shows an All subjects button, a large subject
-information card, the subject name, a short description, the number of learning topics, and
-the matching existing subject image. Under it, each topic appears in a numbered white card
-with its title, 'Open detailed lesson' text, and blue arrow. Selecting a topic opens its notes.
-
-The subject image is reused from the existing subject card; no new images are added.
-The complete subjectsData notes block was verified byte-for-byte identical. No note wording,
-formulas, examples, or topic ordering was changed.
+The page references the existing subject image files (mathematics.jpg, physics.jpg, chemistry.jpg, biology.jpg, geography.jpg, history.jpg, economics.jpg, and hero-student.jpg). Keep those image files in the same folder as index.html when deploying the site.
