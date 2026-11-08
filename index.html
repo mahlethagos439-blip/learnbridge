@@ -215,7 +215,8 @@ body.lessons-view .arrow{margin-left:auto;background:transparent;color:#1762df;w
  <label for="planReminder"><b>Remind me</b></label><select class="panel-select" id="planReminder"><option value="0">At the scheduled time</option><option value="3s">3 seconds before</option><option value="60">1 minute before</option><option value="300">5 minutes before</option><option value="600">10 minutes before</option><option value="900">15 minutes before</option><option value="1800">30 minutes before</option><option value="3600">1 hour before</option><option value="custom">Custom reminder</option></select>
  <div id="customReminderFields" hidden><label for="customReminderAmount"><b>Custom reminder amount</b></label><input class="panel-input" id="customReminderAmount" type="number" min="1" max="10080" value="5"><label for="customReminderUnit"><b>Unit</b></label><select class="panel-select" id="customReminderUnit"><option value="seconds">Seconds</option><option value="minutes" selected>Minutes</option><option value="hours">Hours</option></select></div>
  <label for="planGoal"><b>What will you study?</b></label><input class="panel-input" id="planGoal" type="text" placeholder="e.g. Revise algebra" maxlength="120">
- <button class="panel-button" id="addPlanEntry" type="button">Add to my plan</button><p class="small-muted" id="planMessage" aria-live="polite"></p><p class="small-muted">Reminders are based only on your saved study plans. Keep LearnBridge open for browser reminders; reminders while the browser is fully closed require a native Android app or a server-backed push notification setup.</p></div>
+ <button class="panel-button secondary" id="enablePushNotifications" type="button">Enable device notifications</button><p class="small-muted" id="pushNotificationStatus" aria-live="polite">Allow notifications on this device to prepare LearnBridge push messaging.</p>
+ <button class="panel-button" id="addPlanEntry" type="button">Add to my plan</button><p class="small-muted" id="planMessage" aria-live="polite"></p><p class="small-muted">Device notifications are being connected. Scheduled reminders while LearnBridge is closed will be activated after the secure server connection is completed.</p></div>
  <div class="panel-card"><b>My weekly plan</b><div id="weeklyPlanList" class="small-muted" style="margin-top:12px">No study sessions added yet.</div><button class="panel-button secondary" id="clearPlan" type="button">Clear weekly plan</button></div>
 </section>
 <section class="app-panel" id="quizzesPanel">
@@ -272,6 +273,9 @@ body.lessons-view .arrow{margin-left:auto;background:transparent;color:#1762df;w
   </div>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-messaging-compat.js"></script>
+<script src="learnbridge-notifications.js"></script>
 <script>
         const subjectsData = {
             math: {
