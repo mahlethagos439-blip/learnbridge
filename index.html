@@ -40,7 +40,7 @@ main{max-width:900px;margin:0 auto;padding:0 24px}
 @media(max-width:370px){.hero{height:280px}.hero-content{width:58%;padding-left:16px}.hero h2{font-size:27px}.hero p{font-size:14px}.start-button{font-size:13px;padding:11px 12px}.stats{gap:5px}.stat{min-height:100px}.stat strong{font-size:16px}.stat span:last-child{font-size:11px}.subject-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.subject-card img{height:105px}.subject-info h3{font-size:15px}.cta{flex-wrap:wrap}.exam-button{margin-left:auto}.nav-item{font-size:10px}}
 
 /* LearnBridge lesson notes viewer */
-.notes-overlay{display:none;position:fixed;inset:0;z-index:100;background:linear-gradient(180deg,#eef3ff 0%,#f8faff 220px);overflow-y:auto;padding:18px 14px 110px}
+.notes-overlay{display:none;position:relative;inset:auto;z-index:1;background:linear-gradient(180deg,#f0f4ff 0%,#f8faff 260px);overflow:visible;padding:18px 14px 112px;min-height:calc(100vh - 88px)}
 .notes-overlay.open{display:block}
 .notes-shell{max-width:900px;margin:0 auto}
 .notes-back{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#0757f5,#123baf);color:#fff;padding:11px 16px;border-radius:12px;font-weight:700;margin:4px 0 20px;box-shadow:0 5px 14px #0757f52b}
@@ -85,6 +85,34 @@ body.lessons-view .note-label{font-size:16px}
 body.lessons-view .arrow{margin-left:auto;background:transparent;color:#1762df;width:34px;height:34px;font-size:30px}
 @media(max-width:650px){body.lessons-view main{padding:24px 18px 20px}body.lessons-view .subject-grid{gap:15px}body.lessons-view .subject-card{min-height:111px;padding:13px 16px;gap:15px}body.lessons-view .subject-card img{width:99px;height:79px;flex-basis:99px}body.lessons-view .subject-info h3{font-size:19px}body.lessons-view .subject-bottom,body.lessons-view .note-label{font-size:15px}body.lessons-view .section-heading h2{font-size:29px}}
 @media(max-width:370px){body.lessons-view .subject-card{gap:10px;padding:11px}body.lessons-view .subject-card img{width:82px;height:70px;flex-basis:82px}body.lessons-view .subject-info h3{font-size:16px}}
+
+
+/* Subject detail screen: header and bottom navigation remain visible */
+.subject-detail-back{display:inline-flex;align-items:center;gap:8px;background:#e8efff;color:#173a80;border-radius:15px;padding:14px 20px;font-weight:800;font-size:17px;margin:4px 0 26px}
+.subject-detail-hero{background:linear-gradient(120deg,#edf3ff 0%,#f8faff 100%);border:1px solid #d9e3f5;border-radius:28px;padding:20px;margin:0 0 28px;box-shadow:0 4px 18px #173b9508}
+.subject-detail-title{font-size:30px;line-height:1.2;color:#10285e;margin:0 0 24px;font-weight:800}
+.subject-detail-description{font-size:19px;line-height:1.55;color:#586887;margin:0 0 22px}
+.subject-detail-count{font-size:19px;font-weight:800;color:#17264d;margin:0 0 26px}
+.subject-detail-image{display:block;width:100%;height:220px;object-fit:cover;border-radius:19px;background:#e6edff}
+.subject-topic-card{display:grid;grid-template-columns:26px minmax(0,1fr) 32px;align-items:center;gap:12px;width:100%;min-height:112px;text-align:left;background:#fff;border:1px solid #d7e1f1;border-radius:25px;padding:17px 18px;margin:0 0 17px;color:#17264d;box-shadow:0 5px 18px #173b950d}
+.subject-topic-number{font-size:21px;font-weight:700;text-align:center}
+.subject-topic-main{min-width:0;display:flex;flex-direction:column;gap:8px}
+.subject-topic-name{font-size:19px;font-weight:800;line-height:1.32;color:#172b57}
+.subject-topic-hint{font-size:16px;color:#697894}
+.subject-topic-arrow{font-size:31px;line-height:1;color:#1762df;text-align:right}
+.subject-topic-card:active{transform:scale(.995)}
+@media(max-width:650px){
+ .notes-overlay{padding:18px 20px 110px;min-height:calc(100vh - 88px)}
+ .subject-detail-back{font-size:17px;padding:14px 20px;margin-bottom:26px}
+ .subject-detail-hero{padding:19px;border-radius:27px;margin-bottom:29px}
+ .subject-detail-title{font-size:30px;margin-bottom:25px}
+ .subject-detail-description{font-size:19px;line-height:1.58;margin-bottom:22px}
+ .subject-detail-count{font-size:19px;margin-bottom:26px}
+ .subject-detail-image{height:220px}
+ .subject-topic-card{grid-template-columns:25px minmax(0,1fr) 30px;gap:11px;min-height:112px;padding:16px 17px;border-radius:25px;margin-bottom:17px}
+ .subject-topic-name{font-size:18px}
+ .subject-topic-hint{font-size:16px}
+}
 
 </style>
 </head>
@@ -156,8 +184,13 @@ body.lessons-view .arrow{margin-left:auto;background:transparent;color:#1762df;w
   <div class="notes-shell">
     <button class="notes-back" id="notesBackButton" type="button">← Back to subjects</button>
     <section id="notesSubjectsPanel">
-      <h2 class="notes-heading" id="notesSubjectHeading">Subject</h2>
-      <p class="notes-subtitle">Choose a topic to read its detailed notes.</p>
+      <button class="subject-detail-back" id="allSubjectsButton" type="button">← All subjects</button>
+      <div class="subject-detail-hero">
+        <h2 class="subject-detail-title" id="notesSubjectHeading">Subject</h2>
+        <p class="subject-detail-description">Explore three organized topics, study detailed notes, and track your learning.</p>
+        <p class="subject-detail-count" id="notesSubjectCount">3 learning topics</p>
+        <img class="subject-detail-image" id="notesSubjectImage" src="mathematics.jpg" alt="Subject image">
+      </div>
       <div id="notesTopicsList"></div>
     </section>
     <section id="notesLessonPanel" hidden>
@@ -2608,8 +2641,58 @@ document.getElementById('menuButton').addEventListener('click',()=>drawer.classL
 document.getElementById('closeMenu').addEventListener('click',()=>drawer.classList.remove('open'));
 drawer.addEventListener('click',event=>{if(event.target===drawer)drawer.classList.remove('open')});
 document.getElementById('notesBackButton').addEventListener('click',closeNotes);
+document.getElementById('allSubjectsButton').addEventListener('click',closeNotes);
 document.getElementById('notesTopicBackButton').addEventListener('click',()=>{document.getElementById('notesLessonPanel').hidden=true;document.getElementById('notesSubjectsPanel').hidden=false;document.getElementById('notesOverlay').scrollTop=0;});
-function openSubject(subject){document.body.classList.remove('lessons-view');const key=subjectKeys[subject]||subject.toLowerCase();const data=subjectsData[key];if(!data)return;document.querySelector('main').style.display='none';document.querySelectorAll('.app-panel').forEach(p=>p.classList.remove('active'));setActiveNav('lessons');document.getElementById('notesSubjectHeading').textContent=data.title;const list=document.getElementById('notesTopicsList');list.innerHTML='';data.topics.forEach((topic,index)=>{const card=document.createElement('button');card.type='button';card.className='notes-topic';const textWrap=document.createElement('span');const title=document.createElement('span');title.className='notes-topic-title';title.textContent=(index+1)+'. '+topic.title;const desc=document.createElement('span');desc.className='notes-topic-desc';desc.textContent=(store.completed.includes(topic.title)?'✓ Completed · ':'')+(store.saved.includes(topic.title)?'★ Saved':'Open detailed notes');textWrap.append(title,desc);const arrow=document.createElement('span');arrow.className='notes-topic-arrow';arrow.textContent='›';card.append(textWrap,arrow);card.addEventListener('click',()=>openLessonNote(topic));list.appendChild(card);});document.getElementById('notesSubjectsPanel').hidden=false;document.getElementById('notesLessonPanel').hidden=true;document.getElementById('notesOverlay').classList.add('open');document.getElementById('notesOverlay').scrollTop=0;}
+function openSubject(subject){
+ document.body.classList.remove('lessons-view');
+ const key=subjectKeys[subject]||subject.toLowerCase();
+ const data=subjectsData[key];
+ if(!data)return;
+ document.querySelector('main').style.display='none';
+ document.querySelectorAll('.app-panel').forEach(p=>p.classList.remove('active'));
+ setActiveNav('lessons');
+ document.getElementById('notesSubjectHeading').textContent=data.title;
+ document.getElementById('notesSubjectCount').textContent=data.topics.length+' learning topics';
+ const subjectCard=[...document.querySelectorAll('.subject-card')].find(card=>{
+   const heading=card.querySelector('.subject-info h3');
+   return heading && heading.textContent.trim().toLowerCase()===data.title.toLowerCase();
+ });
+ const existingImage=subjectCard ? subjectCard.querySelector('img') : null;
+ const subjectImage=document.getElementById('notesSubjectImage');
+ if(existingImage){
+   subjectImage.src=existingImage.getAttribute('src');
+   subjectImage.alt=existingImage.alt || data.title;
+ }
+ const list=document.getElementById('notesTopicsList');
+ list.innerHTML='';
+ data.topics.forEach((topic,index)=>{
+   const card=document.createElement('button');
+   card.type='button';
+   card.className='subject-topic-card';
+   const number=document.createElement('span');
+   number.className='subject-topic-number';
+   number.textContent=String(index+1);
+   const main=document.createElement('span');
+   main.className='subject-topic-main';
+   const title=document.createElement('span');
+   title.className='subject-topic-name';
+   title.textContent=topic.title;
+   const hint=document.createElement('span');
+   hint.className='subject-topic-hint';
+   hint.textContent='Open detailed lesson';
+   main.append(title,hint);
+   const arrow=document.createElement('span');
+   arrow.className='subject-topic-arrow';
+   arrow.textContent='→';
+   card.append(number,main,arrow);
+   card.addEventListener('click',()=>openLessonNote(topic));
+   list.appendChild(card);
+ });
+ document.getElementById('notesSubjectsPanel').hidden=false;
+ document.getElementById('notesLessonPanel').hidden=true;
+ document.getElementById('notesOverlay').classList.add('open');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
 function openLessonNote(topic){document.getElementById('notesLessonHeading').textContent=topic.title;document.getElementById('notesLessonContent').textContent=topic.content;document.getElementById('notesSubjectsPanel').hidden=true;document.getElementById('notesLessonPanel').hidden=false;document.getElementById('notesOverlay').scrollTop=0;store.lastTopic=topic.title;saveStore();let controls=document.getElementById('lessonActions');if(!controls){controls=document.createElement('div');controls.id='lessonActions';controls.className='panel-card';document.getElementById('notesLessonPanel').appendChild(controls);}controls.innerHTML='';const done=document.createElement('button');done.className='panel-button';done.textContent=store.completed.includes(topic.title)?'Mark as not completed':'Mark as completed';done.onclick=()=>{store.completed=store.completed.includes(topic.title)?store.completed.filter(x=>x!==topic.title):[...store.completed,topic.title];saveStore();openLessonNote(topic);};const bookmark=document.createElement('button');bookmark.className='panel-button secondary';bookmark.textContent=store.saved.includes(topic.title)?'Remove bookmark':'Bookmark lesson';bookmark.onclick=()=>{store.saved=store.saved.includes(topic.title)?store.saved.filter(x=>x!==topic.title):[...store.saved,topic.title];saveStore();openLessonNote(topic);};controls.append(done,bookmark);}
 function closeNotes(){document.getElementById('notesOverlay').classList.remove('open');document.getElementById('notesSubjectsPanel').hidden=false;document.getElementById('notesLessonPanel').hidden=true;document.querySelector('main').style.display='';document.body.classList.add('lessons-view');document.getElementById('subjectsHeading').textContent='Lessons';document.getElementById('subjectsIntro').textContent='Choose one of the seven subjects to explore its three topics.';setActiveNav('lessons');}
 function renderProgress(){const total=Object.values(subjectsData).reduce((n,x)=>n+x.topics.length,0);const done=store.completed.length;const pct=Math.round(done/total*100);document.getElementById('overallProgressText').textContent=pct+'%';document.getElementById('overallProgressBar').style.width=pct+'%';document.getElementById('completedCount').textContent=done+' of '+total+' topics completed';const list=document.getElementById('subjectProgressList');list.innerHTML='';subjectNames.forEach(name=>{const data=subjectsData[subjectKeys[name]];const count=data.topics.filter(t=>store.completed.includes(t.title)).length;const row=document.createElement('div');row.className='subject-progress';row.innerHTML='<b></b><span class="small-muted"></span><div class="progress-track" style="grid-column:1/3"><div class="progress-fill"></div></div>';row.children[0].textContent=name;row.children[1].textContent=count+'/'+data.topics.length;row.children[2].firstElementChild.style.width=(count/data.topics.length*100)+'%';list.appendChild(row);});const saved=document.getElementById('savedLessonsList');saved.textContent=store.saved.length?store.saved.join(' · '):'No saved lessons yet.';}
