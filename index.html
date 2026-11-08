@@ -149,6 +149,40 @@ body.lessons-view .arrow{margin-left:auto;background:transparent;color:#1762df;w
 .plan-countdown.is-now{background:#fff4d6;color:#684900}
 @media(max-width:650px){.planner-intro{padding:19px 17px;border-radius:19px}.planner-intro-main{font-size:17px}.planner-intro-detail{font-size:15px}.plan-countdown{font-size:14px}}
 
+
+/* LearnBridge: lesson-note-only visual styling. Does not style homepage or navigation. */
+#notesLessonPanel { --note-accent:#2457c5; --note-soft:#edf3ff; --note-border:#cbd9fb; }
+#notesLessonPanel.note-math { --note-accent:#2457c5; --note-soft:#edf3ff; --note-border:#cbd9fb; }
+#notesLessonPanel.note-physics { --note-accent:#7046b8; --note-soft:#f2edff; --note-border:#d9cdf8; }
+#notesLessonPanel.note-chemistry { --note-accent:#087f75; --note-soft:#e8f7f4; --note-border:#bde7df; }
+#notesLessonPanel.note-biology { --note-accent:#43833b; --note-soft:#eef7e9; --note-border:#cfe5c5; }
+#notesLessonPanel.note-geography { --note-accent:#167e9b; --note-soft:#e8f5fa; --note-border:#c4e4ef; }
+#notesLessonPanel.note-history { --note-accent:#a85e2a; --note-soft:#fff2e8; --note-border:#f0d4bd; }
+#notesLessonPanel.note-economics { --note-accent:#987315; --note-soft:#fbf5df; --note-border:#eadca9; }
+#notesLessonPanel .notes-content-title { color:var(--note-accent); }
+#notesLessonPanel .notes-content { display:flex; flex-direction:column; gap:13px; white-space:normal; line-height:1.7; }
+#notesLessonPanel .note-section { overflow:hidden; border:1px solid var(--note-border); border-left:5px solid var(--note-accent); border-radius:14px; background:#fff; box-shadow:0 3px 12px rgba(20,40,90,.055); }
+#notesLessonPanel .note-section-heading { margin:0; padding:11px 14px; color:var(--note-accent); background:var(--note-soft); font-weight:800; letter-spacing:.025em; font-size:1rem; }
+#notesLessonPanel .note-section-body { padding:12px 15px; color:#263451; white-space:pre-wrap; overflow-wrap:anywhere; }
+#notesLessonPanel .note-line { display:block; min-height:1.55em; }
+#notesLessonPanel .note-line + .note-line { margin-top:3px; }
+#notesLessonPanel .note-line.note-numbered { padding-left:4px; }
+#notesLessonPanel .note-line.note-wrong { color:#b42332; font-weight:700; background:#fff0f1; border-radius:6px; padding:3px 7px; }
+#notesLessonPanel .note-line.note-correct { color:#167344; font-weight:700; background:#eaf8ef; border-radius:6px; padding:3px 7px; }
+#notesLessonPanel .note-line.note-formula { display:block; margin:8px 0; padding:12px; border-radius:10px; text-align:center; color:#765400; background:#fff7d6; border:1px solid #f0dc8a; font-weight:800; font-size:1.08em; }
+#notesLessonPanel .note-section.note-section-formula { border-color:#efd98b; border-left-color:#d9a900; }
+#notesLessonPanel .note-section.note-section-formula .note-section-heading { color:#805d00; background:#fff5cf; }
+#notesLessonPanel .note-section.note-section-example { border-left-color:#29945b; }
+#notesLessonPanel .note-section.note-section-example .note-section-heading { color:#187345; background:#eaf8ef; }
+#notesLessonPanel .note-section.note-section-mistakes { border-left-color:#d43c48; }
+#notesLessonPanel .note-section.note-section-mistakes .note-section-heading { color:#b42332; background:#fff0f1; }
+#notesLessonPanel .note-section.note-section-mnemonics { border-left-color:#8055bd; }
+#notesLessonPanel .note-section.note-section-mnemonics .note-section-heading { color:#7046a8; background:#f3edff; }
+#notesLessonPanel .note-section.note-section-questions { border-left-color:#d17a20; }
+#notesLessonPanel .note-section.note-section-questions .note-section-heading { color:#a85b12; background:#fff2e3; }
+#notesLessonPanel .note-section.note-section-answers { border-left-color:#29945b; }
+#notesLessonPanel .note-section.note-section-answers .note-section-heading { color:#187345; background:#eaf8ef; }
+
 </style>
 </head>
 <body>
@@ -2768,7 +2802,22 @@ function openSubject(subject){
  document.getElementById('notesOverlay').classList.add('open');
  window.scrollTo({top:0,behavior:'smooth'});
 }
-function openLessonNote(topic){document.getElementById('notesLessonHeading').textContent=topic.title;document.getElementById('notesLessonContent').textContent=topic.content;document.getElementById('notesSubjectsPanel').hidden=true;document.getElementById('notesLessonPanel').hidden=false;document.getElementById('notesOverlay').scrollTop=0;store.lastTopic=topic.title;saveStore();let controls=document.getElementById('lessonActions');if(!controls){controls=document.createElement('div');controls.id='lessonActions';controls.className='panel-card';document.getElementById('notesLessonPanel').appendChild(controls);}controls.innerHTML='';const done=document.createElement('button');done.className='panel-button';done.textContent=store.completed.includes(topic.title)?'Mark as not completed':'Mark as completed';done.onclick=()=>{store.completed=store.completed.includes(topic.title)?store.completed.filter(x=>x!==topic.title):[...store.completed,topic.title];saveStore();openLessonNote(topic);};const bookmark=document.createElement('button');bookmark.className='panel-button secondary';bookmark.textContent=store.saved.includes(topic.title)?'Remove bookmark':'Bookmark lesson';bookmark.onclick=()=>{store.saved=store.saved.includes(topic.title)?store.saved.filter(x=>x!==topic.title):[...store.saved,topic.title];saveStore();openLessonNote(topic);};controls.append(done,bookmark);}
+function renderStyledLessonNote(content){
+ const panel=document.getElementById('notesLessonPanel');
+ const subjectName=Object.values(subjectsData).find(group=>group.topics.some(item=>item.title===document.getElementById('notesLessonHeading').textContent))?.title||'';
+ const classBySubject={Mathematics:'note-math',Physics:'note-physics',Chemistry:'note-chemistry',Biology:'note-biology',Geography:'note-geography',History:'note-history',Economics:'note-economics'};
+ panel.className='';
+ if(classBySubject[subjectName]) panel.classList.add(classBySubject[subjectName]);
+ const root=document.getElementById('notesLessonContent');root.replaceChildren();
+ const lines=String(content??'').split('\n');
+ const headingPattern=/^(?:📖|🎯|📊|📦|📐|💡|⚠️|🧠|📋|📝|✅)\s*[^\n]+$/;
+ let section=null, body=null;
+ const sectionType=(h)=>/IMPORTANT FORMULA/i.test(h)?'formula':/WORKED EXAMPLE/i.test(h)?'example':/COMMON MISTAKES/i.test(h)?'mistakes':/MNEMONICS/i.test(h)?'mnemonics':/REVIEW QUESTIONS/i.test(h)?'questions':/^✅|ANSWERS/i.test(h)?'answers':'';
+ const makeSection=(heading)=>{section=document.createElement('section');section.className='note-section '+(sectionType(heading)?'note-section-'+sectionType(heading):'');const title=document.createElement('h3');title.className='note-section-heading';title.textContent=heading;body=document.createElement('div');body.className='note-section-body';section.append(title,body);root.appendChild(section);};
+ const appendLine=(line)=>{if(!body){makeSection('');section.querySelector('.note-section-heading').hidden=true;}const el=document.createElement('span');el.className='note-line';el.textContent=line;if(/^❌\s*Wrong:/i.test(line))el.classList.add('note-wrong');else if(/^✅\s*Correct:/i.test(line))el.classList.add('note-correct');else if(/^(?:n\(|[a-zA-Z]?\s*\w*\s*=|[A-Za-z]+\s*[∪∩]|[A-Za-z]+\s*[-=])/u.test(line.trim())&&(/=|∪|∩|√|π|⊂/.test(line)))el.classList.add('note-formula');else if(/^\d+\.\s/.test(line))el.classList.add('note-numbered');body.appendChild(el);};
+ lines.forEach((line)=>{if(headingPattern.test(line.trim())){makeSection(line.trim());}else{appendLine(line);}});
+}
+function openLessonNote(topic){document.getElementById('notesLessonHeading').textContent=topic.title;renderStyledLessonNote(topic.content);document.getElementById('notesSubjectsPanel').hidden=true;document.getElementById('notesLessonPanel').hidden=false;document.getElementById('notesOverlay').scrollTop=0;store.lastTopic=topic.title;saveStore();let controls=document.getElementById('lessonActions');if(!controls){controls=document.createElement('div');controls.id='lessonActions';controls.className='panel-card';document.getElementById('notesLessonPanel').appendChild(controls);}controls.innerHTML='';const done=document.createElement('button');done.className='panel-button';done.textContent=store.completed.includes(topic.title)?'Mark as not completed':'Mark as completed';done.onclick=()=>{store.completed=store.completed.includes(topic.title)?store.completed.filter(x=>x!==topic.title):[...store.completed,topic.title];saveStore();openLessonNote(topic);};const bookmark=document.createElement('button');bookmark.className='panel-button secondary';bookmark.textContent=store.saved.includes(topic.title)?'Remove bookmark':'Bookmark lesson';bookmark.onclick=()=>{store.saved=store.saved.includes(topic.title)?store.saved.filter(x=>x!==topic.title):[...store.saved,topic.title];saveStore();openLessonNote(topic);};controls.append(done,bookmark);}
 function closeNotes(){document.getElementById('notesOverlay').classList.remove('open');document.getElementById('notesSubjectsPanel').hidden=false;document.getElementById('notesLessonPanel').hidden=true;document.querySelector('main').style.display='';document.body.classList.add('lessons-view');document.getElementById('subjectsHeading').textContent='Lessons';document.getElementById('subjectsIntro').textContent='Choose one of the seven subjects to explore its three topics.';setActiveNav('lessons');}
 function renderProgress(){const total=Object.values(subjectsData).reduce((n,x)=>n+x.topics.length,0);const done=store.completed.length;const pct=Math.round(done/total*100);document.getElementById('overallProgressText').textContent=pct+'%';document.getElementById('overallProgressBar').style.width=pct+'%';document.getElementById('completedCount').textContent=done+' of '+total+' topics completed';const list=document.getElementById('subjectProgressList');list.innerHTML='';subjectNames.forEach(name=>{const data=subjectsData[subjectKeys[name]];const count=data.topics.filter(t=>store.completed.includes(t.title)).length;const row=document.createElement('div');row.className='subject-progress';row.innerHTML='<b></b><span class="small-muted"></span><div class="progress-track" style="grid-column:1/3"><div class="progress-fill"></div></div>';row.children[0].textContent=name;row.children[1].textContent=count+'/'+data.topics.length;row.children[2].firstElementChild.style.width=(count/data.topics.length*100)+'%';list.appendChild(row);});const saved=document.getElementById('savedLessonsList');saved.textContent=store.saved.length?store.saved.join(' · '):'No saved lessons yet.';const achievements=document.getElementById('achievementsList');const earned=[];if(done>=1)earned.push('🌱 First Step — completed your first topic');if(done>=5)earned.push('📘 Focused Learner — completed 5 topics');if(done>=10)earned.push('⭐ Consistent Student — completed 10 topics');if(done>=21)earned.push('🏆 Topic Master — completed all 21 topics');achievements.textContent=earned.length?earned.join('  •  '):'Complete lesson topics to earn your first achievement.';}
 function formatReminder(entry){
