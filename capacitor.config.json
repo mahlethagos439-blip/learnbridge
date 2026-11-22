@@ -1,0 +1,11 @@
+{
+  "appId": "com.learnbridge.app",
+  "appName": "LearnBridge",
+  "webDir": "www",
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_icon_config_sample",
+      "iconColor": "#1762DF"
+    }
+  }
+}

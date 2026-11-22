@@ -1,0 +1,67 @@
+LEARNBRIDGE ANDROID APP - SETUP STEPS
+======================================
+
+What this is
+------------
+A real Android app that opens LearnBridge (www/index.html) and schedules
+Study Planner reminders as phone notifications. Notifications appear even
+when the app is closed, play a sound, and show in the notification shade.
+
+You need (one time, on your computer)
+-------------------------------------
+1. Node.js 18 or newer           https://nodejs.org
+2. Android Studio                https://developer.android.com/studio
+   (install it; accept the default Android SDK)
+3. Your Android phone with USB debugging, or just use the APK file.
+
+Steps
+-----
+1. Unzip this folder. Open a terminal inside it.
+
+2. Install the Capacitor tools:
+      npm install
+
+3. Create the Android project (first time only):
+      npx cap add android
+
+4. Copy the latest www/index.html into the app:
+      npx cap sync android
+
+5. Open the project in Android Studio:
+      npx cap open android
+   Wait for Gradle to finish syncing.
+
+6. Build the APK:
+      Build > Build Bundle(s) / APK(s) > Build APK(s)
+   The file appears at:
+      android/app/build/outputs/apk/debug/app-debug.apk
+
+7. Copy app-debug.apk to your phone and install it.
+   (Allow "Install unknown apps" when Android asks.)
+
+8. Open LearnBridge, create your account, go to Smart Study Planner,
+   add a session. Tap "Allow" when Android asks for notification permission.
+
+Important phone settings
+------------------------
+- Notifications: Settings > Apps > LearnBridge > Notifications > Allow.
+- Sound: make sure the phone is not on Silent or Vibrate only.
+- Battery: Settings > Apps > LearnBridge > Battery > Unrestricted,
+  so Android does not delay reminders.
+- Test: add a session 2-3 minutes from now with a 0-minute reminder,
+  then close the app and wait.
+
+Updating the app later
+----------------------
+Replace www/index.html with the new file, then run:
+      npx cap sync android
+and build the APK again.
+
+Publishing to Google Play later needs a signed release build and a
+Google Play developer account. We can do that when you are ready.
+
+Notes
+-----
+- The app works offline after install. Quizzes and lessons are all in
+  the file. Accounts and progress are stored on the phone only.
+- The reminder sound is the phone's default notification sound.
