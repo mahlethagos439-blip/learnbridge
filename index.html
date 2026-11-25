@@ -351,16 +351,8 @@ body.lb-quiz-running #quizLiveArea .quiz-live-option.lb-wrong{border-color:#dc26
 #lbConfirmDialog .lb-confirm-yes{background:linear-gradient(110deg,#0757f5,#1745b5);color:#fff}
 </style>
 
-<style id="lb-offline-style">
-#lbOfflineStatus{position:sticky;top:0;z-index:9998;display:none;text-align:center;padding:7px 10px;background:#fff4d6;color:#805600;font:700 12px/1.4 system-ui,sans-serif;border-bottom:1px solid #f0d58a}
-#lbOfflineStatus.lb-show{display:block}
-</style>
-
 </head>
 <body>
-<div id="lbOfflineStatus" role="status">You are offline · Your saved lessons and practice are available on this device.</div>
-
-
 <div id="lbConfirmDialog" role="dialog" aria-modal="true" aria-labelledby="lbConfirmTitle">
  <div class="lb-confirm-card">
   <div class="lb-confirm-brand"><div class="lb-confirm-logo">🎓</div><div><strong>LearnBridge</strong><small>Learn Today. Build Tomorrow.</small></div></div>
@@ -55747,14 +55739,6 @@ if(add)add.addEventListener('click',function(){lbAudioCtx();},true);})();
 
 <script id="lb-offline-registration">
 (function(){
- function updateOfflineBanner(){
-  var n=document.getElementById('lbOfflineStatus');
-  if(n)n.classList.toggle('lb-show',!navigator.onLine);
- }
- window.addEventListener('online',updateOfflineBanner);
- window.addEventListener('offline',updateOfflineBanner);
- document.addEventListener('DOMContentLoaded',updateOfflineBanner);
- updateOfflineBanner();
  if('serviceWorker' in navigator && location.protocol==='https:'){
   window.addEventListener('load',function(){
    navigator.serviceWorker.register('./sw.js').catch(function(e){console.warn('LearnBridge offline setup:',e);});
