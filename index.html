@@ -350,8 +350,16 @@ body.lb-quiz-running #quizLiveArea .quiz-live-option.lb-wrong{border-color:#dc26
 #lbConfirmDialog .lb-confirm-no{background:#edf1f8;color:#344663}
 #lbConfirmDialog .lb-confirm-yes{background:linear-gradient(110deg,#0757f5,#1745b5);color:#fff}
 </style>
+
+<style id="lb-offline-style">
+#lbOfflineStatus{position:sticky;top:0;z-index:9998;display:none;text-align:center;padding:7px 10px;background:#fff4d6;color:#805600;font:700 12px/1.4 system-ui,sans-serif;border-bottom:1px solid #f0d58a}
+#lbOfflineStatus.lb-show{display:block}
+</style>
+
 </head>
 <body>
+<div id="lbOfflineStatus" role="status">You are offline · Your saved lessons and practice are available on this device.</div>
+
 
 <div id="lbConfirmDialog" role="dialog" aria-modal="true" aria-labelledby="lbConfirmTitle">
  <div class="lb-confirm-card">
@@ -55387,6 +55395,39 @@ q.o.forEach(function(op,i){if(i===q.a)return;var line=document.createElement('di
   $('acctName').textContent=(acc.name||acc.email||'Student')+(acc.grade?' ('+acc.grade+')':'');
   renderAvatar($('acctAvatar'),acc);renderAvatar($('navAvatar'),acc);
  }
+
+ function saveOfflineIdentity(user,extra){
+  try{
+   var account={uid:user.uid||'',email:user.email||'',name:(extra&&extra.name)||user.displayName||((user.email||'Student').split('@')[0]),grade:(extra&&extra.grade)||(typeof store!=='undefined'&&store.profile&&store.profile.grade)||'',photoURL:user.photoURL||'',savedAt:Date.now()};
+   localStorage.setItem('lb_offline_identity_v1',JSON.stringify(account));
+  }catch(e){}
+ }
+ function readOfflineIdentity(){
+  try{return JSON.parse(localStorage.getItem('lb_offline_identity_v1')||'null');}catch(e){return null;}
+ }
+ function ensureAccountBox(){
+  var box=$('acctBox');if(box)return box;
+  box=document.createElement('div');box.className='acct-box';box.id='acctBox';box.hidden=true;
+  box.innerHTML='<div class="acct-row"><div class="acct-avatar" id="acctAvatar">A</div><div>Signed in as <b id="acctName"></b><small style="display:block;color:#64748b">Offline learning mode</small></div></div><button type="button" id="logoutBtn">Log out</button>';
+  var dt=document.querySelector('.drawer-top');if(dt)dt.after(box);
+  $('logoutBtn').addEventListener('click',function(){
+   try{localStorage.removeItem('lb_offline_identity_v1');}catch(e){}
+   window.lbOfflineMode=false;window.lbAccount=null;currentUser=null;
+   showAccount(null);gate.hidden=false;setTab(false);
+   setMsg($('loginMsg'),'You have logged out on this device. Sign in again when you are online.','ok');
+  });
+  return box;
+ }
+ function openOfflineMode(){
+  var cached=readOfflineIdentity();
+  if(!cached)return false;
+  ensureAccountBox();
+  window.lbOfflineMode=true;
+  window.lbAccount={name:cached.name||'Student',email:cached.email||'',grade:cached.grade||'',offline:true};
+  showAccount(window.lbAccount);
+  gate.hidden=true;
+  return true;
+ }
  function needAuth(el){
   if(auth)return true;
   var st=window.firebase?'loaded':'not loaded';
@@ -55400,7 +55441,7 @@ q.o.forEach(function(op,i){if(i===q.a)return;var line=document.createElement('di
   gate.hidden=false;setChecking(true);
   Promise.all([loadSdk('https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js'),loadSdk('https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js')])
    .then(function(){sdkLoading=false;init();})
-   .catch(function(){sdkLoading=false;setChecking(false);gate.hidden=false;setMsg($('loginMsg'),'Could not reach Google’s sign-in files. This usually means the phone is offline or a network blocks gstatic.com. Check your internet connection, then reload the page.','err');});
+   .catch(function(){sdkLoading=false;setChecking(false);if(openOfflineMode())return;gate.hidden=false;setMsg($('loginMsg'),'You are offline. Connect to the internet to create or sign in to an account. Previously saved learning may be available after this app has been cached on your device.','err');});
  }
  function setTab(create){
   $('tabCreate').classList.toggle('on',create);$('tabLogin').classList.toggle('on',!create);
@@ -55443,12 +55484,13 @@ q.o.forEach(function(op,i){if(i===q.a)return;var line=document.createElement('di
   catch(e){setMsg($('loginMsg'),errorText(e),'err');}
  });
  function signIn(user,extra){
-  currentUser=user;window.lbAccount={name:(extra&&extra.name)||user.displayName||'',email:user.email||'',grade:(extra&&extra.grade)||''};safeProfile(user,extra);
+  currentUser=user;window.lbAccount={name:(extra&&extra.name)||user.displayName||'',email:user.email||'',grade:(extra&&extra.grade)||''};saveOfflineIdentity(user,extra);window.lbOfflineMode=false;safeProfile(user,extra);
   var acc=accountFromUser(user);if(extra&&extra.grade)acc.grade=extra.grade;
   showAccount(acc);gate.hidden=true;
  }
  function signOut(){
-  if(!auth)return;window.lbAccount=null;
+  if(!auth){try{localStorage.removeItem('lb_offline_identity_v1');}catch(e){}window.lbOfflineMode=false;window.lbAccount=null;showAccount(null);gate.hidden=false;setTab(false);setMsg($('loginMsg'),'You have logged out on this device.','ok');return;}window.lbAccount=null;
+  try{localStorage.removeItem('lb_offline_identity_v1');}catch(e){}
   auth.signOut().then(function(){showAccount(null);gate.hidden=false;setTab(false);setMsg($('loginMsg'),'You have logged out. Log in again to use LearnBridge.','ok');})
   .catch(function(e){setMsg($('loginMsg'),errorText(e),'err');});
  }
@@ -55484,11 +55526,13 @@ q.o.forEach(function(op,i){if(i===q.a)return;var line=document.createElement('di
    ready=true;setChecking(false);
    var who=auth.currentUser||redirectUser;
    if(who){signIn(who);}
+   else if(!navigator.onLine&&openOfflineMode()){}
    else{currentUser=null;showAccount(null);gate.hidden=false;}
   }
   auth.onAuthStateChanged(function(user){
    if(!ready){stateSettled=true;finishCheck();return;}
    if(user){signIn(user);}
+   else if(!navigator.onLine&&openOfflineMode()){}
    else{currentUser=null;showAccount(null);gate.hidden=false;}
   });
   auth.getRedirectResult().then(function(result){
@@ -55700,5 +55744,24 @@ if(add)add.addEventListener('click',function(){lbAudioCtx();},true);})();
  });
 })();
 </script>
+
+<script id="lb-offline-registration">
+(function(){
+ function updateOfflineBanner(){
+  var n=document.getElementById('lbOfflineStatus');
+  if(n)n.classList.toggle('lb-show',!navigator.onLine);
+ }
+ window.addEventListener('online',updateOfflineBanner);
+ window.addEventListener('offline',updateOfflineBanner);
+ document.addEventListener('DOMContentLoaded',updateOfflineBanner);
+ updateOfflineBanner();
+ if('serviceWorker' in navigator && location.protocol==='https:'){
+  window.addEventListener('load',function(){
+   navigator.serviceWorker.register('./sw.js').catch(function(e){console.warn('LearnBridge offline setup:',e);});
+  });
+ }
+})();
+</script>
+
 </body>
 </html>
