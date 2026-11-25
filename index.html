@@ -351,6 +351,14 @@ body.lb-quiz-running #quizLiveArea .quiz-live-option.lb-wrong{border-color:#dc26
 #lbConfirmDialog .lb-confirm-yes{background:linear-gradient(110deg,#0757f5,#1745b5);color:#fff}
 </style>
 
+
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
 </head>
 <body>
 <div id="lbConfirmDialog" role="dialog" aria-modal="true" aria-labelledby="lbConfirmTitle">
@@ -55744,6 +55752,28 @@ if(add)add.addEventListener('click',function(){lbAudioCtx();},true);})();
    navigator.serviceWorker.register('./sw.js').catch(function(e){console.warn('LearnBridge offline setup:',e);});
   });
  }
+})();
+</script>
+
+
+<style id="lb-install-prompt-style">
+#lb-install-prompt{position:fixed;left:14px;right:14px;bottom:calc(86px + env(safe-area-inset-bottom));z-index:99999;max-width:560px;margin:auto;background:#fff;border:1px solid #dbe4ff;border-radius:18px;box-shadow:0 12px 36px rgba(10,35,100,.18);padding:14px 16px;display:none;align-items:center;gap:12px;color:#101b48;font-family:Arial,sans-serif}
+#lb-install-prompt .lb-install-copy{flex:1;min-width:0}#lb-install-prompt strong{display:block;font-size:15px;margin-bottom:4px}#lb-install-prompt small{display:block;color:#53618d;font-size:12px;line-height:1.4}#lb-install-prompt button{border:0;border-radius:12px;padding:10px 13px;background:#0757f5;color:#fff;font-weight:700;white-space:nowrap}#lb-install-dismiss{background:#eef2ff!important;color:#24345f!important;padding:8px 10px!important}
+</style>
+<div id="lb-install-prompt" role="dialog" aria-label="Install LearnBridge">
+ <div class="lb-install-copy"><strong>Install LearnBridge</strong><small>Get quick access from your home screen and use saved learning materials offline.</small></div>
+ <button id="lb-install-action" type="button">Install</button><button id="lb-install-dismiss" type="button" aria-label="Dismiss">×</button>
+</div>
+<script id="lb-pwa-install">
+(function(){
+ let installEvent=null; const box=document.getElementById('lb-install-prompt'); const installBtn=document.getElementById('lb-install-action'); const closeBtn=document.getElementById('lb-install-dismiss');
+ if(!box||!installBtn||!closeBtn) return;
+ const standalone=window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone===true;
+ if(standalone || localStorage.getItem('lb-install-dismissed')==='1') return;
+ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();installEvent=e;box.style.display='flex';});
+ installBtn.addEventListener('click',async function(){if(!installEvent){return;} installEvent.prompt(); try{await installEvent.userChoice;}catch(_){} installEvent=null; box.style.display='none';});
+ closeBtn.addEventListener('click',function(){box.style.display='none';localStorage.setItem('lb-install-dismissed','1');});
+ window.addEventListener('appinstalled',function(){box.style.display='none';});
 })();
 </script>
 
