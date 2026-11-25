@@ -1,89 +1,47 @@
-'use strict';
-const CACHE_NAME = 'learnbridge-offline-v1';
-const APP_SHELL = ['./', './index.html'];
-const FIREBASE_FILES = [
-  'https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js',
-  'https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js'
-];
+/* LearnBridge offline support: saves the app page and the Firebase files on first online visit,
+   so the app opens without internet on the same device. Uploaded at the site root as sw.js. */
+const CACHE = 'learnbridge-offline-v1';
+const SHELL = ['./', './index.html'];
 
-self.addEventListener('install', event => {
-  event.waitUntil((async () => {
-    const cache = await caches.open(CACHE_NAME);
-    for (const url of [...APP_SHELL, ...FIREBASE_FILES]) {
-      try {
-        const request = new Request(url, { mode: url.startsWith('http') ? 'no-cors' : 'same-origin' });
-        const response = await fetch(request);
-        if (response && (response.ok || response.type === 'opaque')) {
-          await cache.put(request, response);
-        }
-      } catch (_) {}
+self.addEventListener('install', function (event) {
+  event.waitUntil(
+    caches.open(CACHE).then(function (cache) {
+      return cache.addAll(SHELL).catch(function () {});
+    }).then(function () { return self.skipWaiting(); })
+  );
+});
+
+self.addEventListener('activate', function (event) {
+  event.waitUntil(self.clients.claim());
+});
+
+self.addEventListener('fetch', function (event) {
+  var req = event.request;
+  if (req.method !== 'GET') return;
+  var url = new URL(req.url);
+  var isFirebase = url.hostname === 'www.gstatic.com' && url.pathname.indexOf('/firebasejs/') === 0;
+  var isSame = url.origin === self.location.origin;
+  if (!isFirebase && !isSame) return;
+
+  event.respondWith(caches.open(CACHE).then(function (cache) {
+    if (isFirebase) {
+      // Firebase files never change for a version number: use the saved copy first.
+      return cache.match(req).then(function (hit) {
+        if (hit) return hit;
+        return fetch(req).then(function (res) {
+          if (res.ok || res.type === 'opaque') cache.put(req, res.clone());
+          return res;
+        }).catch(function () { return Response.error(); });
+      });
     }
-    await self.skipWaiting();
-  })());
-});
-
-self.addEventListener('activate', event => {
-  event.waitUntil((async () => {
-    const keys = await caches.keys();
-    await Promise.all(keys.filter(key => key.startsWith('learnbridge-') && key !== CACHE_NAME).map(key => caches.delete(key)));
-    await self.clients.claim();
-  })());
-});
-
-self.addEventListener('fetch', event => {
-  const request = event.request;
-  if (request.method !== 'GET') return;
-
-  const url = new URL(request.url);
-  const isFirebase = url.origin === 'https://www.gstatic.com' && url.pathname.includes('/firebasejs/');
-  const isAppPage = url.origin === self.location.origin && request.mode === 'navigate';
-
-  if (isFirebase) {
-    event.respondWith((async () => {
-      const cache = await caches.open(CACHE_NAME);
-      const cached = await cache.match(request);
-      if (cached) return cached;
-      try {
-        const response = await fetch(request);
-        if (response && (response.ok || response.type === 'opaque')) await cache.put(request, response.clone());
-        return response;
-      } catch (_) {
-        return new Response('/* LearnBridge sign-in library is not cached yet. */', { headers: { 'Content-Type': 'application/javascript' } });
-      }
-    })());
-    return;
-  }
-
-  if (isAppPage) {
-    event.respondWith((async () => {
-      try {
-        const response = await fetch(request);
-        if (response && response.ok) {
-          const cache = await caches.open(CACHE_NAME);
-          await cache.put('./index.html', response.clone());
-        }
-        return response;
-      } catch (_) {
-        const cache = await caches.open(CACHE_NAME);
-        return (await cache.match(request)) || (await cache.match('./index.html')) || (await cache.match('./')) ||
-          new Response('LearnBridge has not been cached on this device yet. Connect to the internet once, open LearnBridge, and try again.', { status: 503, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
-      }
-    })());
-    return;
-  }
-
-  if (url.origin === self.location.origin) {
-    event.respondWith((async () => {
-      const cache = await caches.open(CACHE_NAME);
-      const cached = await cache.match(request);
-      if (cached) return cached;
-      try {
-        const response = await fetch(request);
-        if (response && response.ok) await cache.put(request, response.clone());
-        return response;
-      } catch (_) {
-        return new Response('', { status: 504, statusText: 'Offline' });
-      }
-    })());
-  }
+    // Pages and images: fresh copy when online, saved copy when offline.
+    return fetch(req).then(function (res) {
+      if (res.ok) cache.put(req, res.clone());
+      return res;
+    }).catch(function () {
+      return cache.match(req).then(function (hit) {
+        return hit || cache.match('./index.html') || Response.error();
+      });
+    });
+  }));
 });
